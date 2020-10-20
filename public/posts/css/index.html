@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>CSS总结 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="CSS总结" />
+<meta property="og:description" content="浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/css/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-09-30T10:02:12+08:00" />
+<meta property="article:modified_time" content="2020-09-30T10:02:12+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="CSS总结"/>
+<meta name="twitter:description" content="浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH"/>
+<meta name="application-name" content="WUMANHO&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/css/" /><link rel="next" href="/posts/jshistory/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CSS总结",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/css\/"
+        },"genre": "posts","wordcount":  1092 ,
+        "url": "\/posts\/css\/","datePublished": "2020-09-30T10:02:12+08:00","dateModified": "2020-09-30T10:02:12+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">CSS总结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-30">2020-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1092 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="content" id="content"><h1 id="浏览器的渲染原理">浏览器的渲染原理</h1>
+<h2 id="渲染树构建">渲染树构建</h2>
+<p>要解释浏览器的渲染原理，需要先了解三棵树：</p>
+<ul>
+<li>DOM树</li>
+<li>CSSOM树</li>
+<li>Render树</li>
+</ul>
+<p>DOM树通过解析HTML/SVG/XHTML三种文件产生。</p>
+<p>CSSOM树通过解析CSS产生。</p>
+<p>Render树则是由DOM树和CSSOM树合并而成。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/render-tree-construction.png"
+        data-srcset="/images/render-tree-construction.png, /images/render-tree-construction.png 1.5x, /images/render-tree-construction.png 2x"
+        data-sizes="auto"
+        alt="/images/render-tree-construction.png"
+        title="tree" /></p>
+<h2 id="布局与绘制">布局与绘制</h2>
+<p>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。通常这一行为也被称为“自动重排”。</p>
+<p>布局流程的输出是一个“盒模型”，它会精确地捕获每个元素在视口内的确切位置和尺寸，所有相对测量值都将转换为屏幕上的绝对像素。</p>
+<p>布局完成后，浏览器会立即发出“Paint Setup”和“Paint”事件，将渲染树转换成屏幕上的像素。</p>
+<p>下面简要概述了浏览器完成渲染的步骤：</p>
+<ol>
+<li>处理 HTML 标记并构建 DOM 树。</li>
+<li>处理 CSS 标记并构建 CSSOM 树。</li>
+<li>将 DOM 与 CSSOM 合并成一个渲染树。</li>
+<li>根据渲染树来布局，以计算每个节点的几何信息。</li>
+<li>将各个节点绘制到屏幕上。</li>
+</ol>
+<h2 id="更新样式">更新样式</h2>
+<p>更新样式一般会通过 JS 来操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">div</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s2">&#34;red&#34;</span><span class="p">;</span> <span class="c1">//设置背景色
+</span><span class="c1"></span><span class="nx">div</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&#34;none&#34;</span><span class="p">;</span> <span class="c1">//设置display
+</span><span class="c1"></span><span class="nx">div</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span> <span class="c1">//删除节点
+</span></code></pre></td></tr></table>
+</div>
+</div><p>更新方式共有三种，根据更新样式的不同，触发不同的更新方式：<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/treeupdate.png"
+        data-srcset="/images/treeupdate.png, /images/treeupdate.png 1.5x, /images/treeupdate.png 2x"
+        data-sizes="auto"
+        alt="/images/treeupdate.png"
+        title="update" /> <br>
+<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h1 id="css-动画的两种做法">CSS 动画的两种做法</h1>
+<h2 id="transform">transform</h2>
+<p>transform四种常用属性</p>
+<ul>
+<li>translate 移动</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">translateX</span><span class="o">(</span><span class="nt">200px</span><span class="o">);</span>       <span class="c">/* 向X轴移动200像素 */</span>
+<span class="nt">transform</span><span class="o">:</span> <span class="nt">translateY</span><span class="o">(</span><span class="nt">100px</span><span class="o">);</span>       <span class="c">/* 向Y轴移动100像素 */</span>
+<span class="nt">transform</span><span class="o">:</span> <span class="nt">translate</span><span class="o">(</span><span class="nt">50px</span><span class="o">,</span><span class="nt">50px</span><span class="o">);</span>  <span class="c">/*同时向X轴移动50像素,向Y轴移动50像素*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>scale 缩放</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">scale</span><span class="o">(</span><span class="nt">1</span><span class="p">.</span><span class="nc">5</span><span class="o">);</span>  <span class="c">/* 放大为原来的1.5倍 */</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>rotate 旋转</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">45deg</span><span class="o">);</span>           <span class="c">/* 顺时针旋转45度 */</span>
+<span class="nt">transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>          <span class="c">/* 逆时针旋转45度 */</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>skew 倾斜</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">skew</span><span class="o">(</span><span class="nt">30deg</span><span class="o">);</span>             <span class="c">/* 水平方向倾斜30度 */</span>
+<span class="nt">transform</span><span class="o">:</span> <span class="nt">skew</span><span class="o">(</span><span class="nt">30deg</span><span class="o">,</span> <span class="nt">30deg</span><span class="o">);</span>      <span class="c">/* 水平方向倾斜30度,//垂直方向倾斜30度 */</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>transition: 属性名 | 时长 | 过渡方式 | 延迟</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transition</span><span class="p">:</span><span class="nd">right</span> <span class="nt">1ms</span> <span class="nt">linear</span> <span class="nt">1ms</span><span class="o">;</span>    <span class="c">/* 1ms内完成向右移动，动画形式为线性表示，延迟为1ms */</span>
+<span class="nt">transition</span><span class="p">:</span><span class="nd">all</span> <span class="nt">5s</span> <span class="nt">ease</span> <span class="nt">1ms</span><span class="o">;</span>         <span class="c">/* 5s内完成所有动画，动画形式为缓速表示，延迟为1ms */</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="animation">animation</h2>
+<p>animation可以解决transform的一些痛点，就是使用transform制作多段动画比较麻烦。</p>
+<p>animation语法和属性：</p>
+<ul>
+<li>
+<p>animation: 时长 | 过渡方式 | 延迟 | 次数 | 方向 | 填充模式 | 是否暂停 | 动画名</p>
+</li>
+<li>
+<p>时长: 可以使用s或者ms作为单位，表示动画从开始到结束花费的时长</p>
+</li>
+<li>
+<p>过渡方式: 动画通过什么方式进行转换，默认ease</p>
+</li>
+<li>
+<p>次数: 有限次数或者infinite(无限)</p>
+</li>
+<li>
+<p>方向: reverse(从结束向开始)、alternate(开始与结束相互循环)</p>
+</li>
+<li>
+<p>填充模式: forward(定格在最后一帧)</p>
+</li>
+<li>
+<p>暂停：paused | running</p>
+</li>
+</ul>
+<p>@keyframes<br>
+keyframes是与animation结合使用的模块，常用语法:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">名称</span><span class="p">{</span>
+ <span class="nt">0</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">0</span><span class="p">;}</span>     <span class="c">/* 动画开始时的动作 */</span>
+ <span class="nt">50</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">5</span><span class="kt">px</span><span class="p">;}</span>  <span class="c">/* 动画进行到50%的动作 */</span>
+ <span class="nt">100</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span> <span class="k">top</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span><span class="p">;}</span>   <span class="c">/* 动画结束时的动作 */</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="其他想写的">其他想写的</h1>
+<pre><code>没想到CSS这么难
+</code></pre>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-09-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/jshistory/" class="next" rel="next" title="JavaScript 的诞生">JavaScript 的诞生<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.68.3">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - WUMANHO的博客</title>
+        <link>/posts/</link>
+        <description>所有文章 | WUMANHO的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Fri, 16 Oct 2020 11:59:41 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript 函数的执行时机</title>
+    <link>/posts/jsfunctiontiming/</link>
+    <pubDate>Fri, 16 Oct 2020 11:59:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsfunctiontiming/</guid>
+    <description><![CDATA[解释为什么如下代码会打印 6 个 6 1 2 3 4 5 6 let i = 0 for(i = 0; i&lt;6; i++){ setTimeout(()=&gt;{ console.log(i) },0) } setTimeout 函数的主要用于在一段时间之后，执行相应的延迟操作，且只会运行一次，不会]]></description>
+</item><item>
+    <title>JavaScript 对象基本用法</title>
+    <link>/posts/jsobject/</link>
+    <pubDate>Tue, 13 Oct 2020 11:42:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsobject/</guid>
+    <description><![CDATA[如何声明一个对象 方法一：使用 let 关键字 let 允许声明一个作用域被限制在块级中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局]]></description>
+</item><item>
+    <title>JS 基本语法</title>
+    <link>/posts/jssyntax/</link>
+    <pubDate>Sun, 11 Oct 2020 15:47:04 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jssyntax/</guid>
+    <description><![CDATA[什么是表达式和语句 表达式 表达式一般都会有“值”，例如： 表达式 1 + 2 的值为3 表达式add(1,2)的值为函数add的返回值 console.log 表达式的值为函数本]]></description>
+</item><item>
+    <title>JavaScript 的诞生</title>
+    <link>/posts/jshistory/</link>
+    <pubDate>Mon, 05 Oct 2020 22:49:40 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jshistory/</guid>
+    <description><![CDATA[JavaScript 简介 JavaScript 简称&quot;JS&rdquo;，是一种高级的、解析型的编程语言。JavaScript是一门基于原型、函数先行的语言，它支持面向对]]></description>
+</item><item>
+    <title>CSS总结</title>
+    <link>/posts/css/</link>
+    <pubDate>Wed, 30 Sep 2020 10:02:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/css/</guid>
+    <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
+</item></channel>
+</rss>
