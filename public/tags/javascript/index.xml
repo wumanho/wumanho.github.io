@@ -1,26 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>WUMANHO的博客</title>
-        <link>/</link>
-        <description>WUMANHO的博客</description>
+        <title>JavaScript - 标签 - WUMANHO的博客</title>
+        <link>/tags/javascript/</link>
+        <description>JavaScript - 标签 - WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 22 Jul 2020 20:30:02 &#43;0800</lastBuildDate>
-            <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>新概念二册-Lesson 2 笔记</title>
-    <link>/posts/0202/</link>
-    <pubDate>Wed, 22 Jul 2020 20:30:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0202/</guid>
-    <description><![CDATA[Lesson 2 Breakfast or lunch key structure 现在进行时： 谓语动词： is/am/are + doing 用法1：表示现在正在进行的事 I am having breakfast now J.K Rowling is writing another book this year 现在进行时可以表示狭义的现在 -&gt; 此时此刻，与说]]></description>
-</item><item>
-    <title>新概念二册-Lesson 1 笔记</title>
-    <link>/posts/0201/</link>
-    <pubDate>Tue, 21 Jul 2020 08:57:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0201/</guid>
-    <description><![CDATA[Lesson 1 A private conversation 生词短语用法 pay attention to sb. / sth. May I have your attention，please？ --&gt; 请注意咯 attract / catch one's attention --&gt; 吸引某人注意力 none of --&gt; 都没有 形容词一般用于修]]></description>
-</item><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 16 Apr 2020 11:59:41 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
     <title>JavaScript 函数的执行时机</title>
     <link>/posts/jsfunctiontiming/</link>
     <pubDate>Thu, 16 Apr 2020 11:59:41 &#43;0800</pubDate>
@@ -48,12 +32,5 @@
     <author>作者</author>
     <guid>/posts/jshistory/</guid>
     <description><![CDATA[JavaScript 简介 JavaScript 简称&quot;JS&rdquo;，是一种高级的、解析型的编程语言。JavaScript是一门基于原型、函数先行的语言，它支持面向对]]></description>
-</item><item>
-    <title>CSS总结</title>
-    <link>/posts/css/</link>
-    <pubDate>Mon, 30 Mar 2020 10:02:12 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/css/</guid>
-    <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
 </item></channel>
 </rss>

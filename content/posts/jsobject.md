@@ -3,6 +3,7 @@ title: "JavaScript 对象基本用法"
 date: 2020-04-13T11:42:26+08:00
 draft: false
 categories: ["前端笔记"]
+tags: ["JavaScript"]
 ---
 
 # 如何声明一个对象  

@@ -3,6 +3,7 @@ title: "JS 基本语法"
 date: 2020-04-11T15:47:04+08:00
 draft: false
 categories: ["前端笔记"]
+tags: ["JavaScript"]
 ---
 
 # 什么是表达式和语句
