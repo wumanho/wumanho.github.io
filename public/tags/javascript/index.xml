@@ -17,7 +17,7 @@
     <pubDate>Mon, 13 Apr 2020 11:42:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/jsobject/</guid>
-    <description><![CDATA[如何声明一个对象 方法一：使用 let 关键字 let 允许声明一个作用域被限制在块级中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局]]></description>
+    <description><![CDATA[如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o]]></description>
 </item><item>
     <title>JS 基本语法</title>
     <link>/posts/jssyntax/</link>

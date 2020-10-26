@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>JavaScript 对象基本用法 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="JavaScript 对象基本用法" />
-<meta property="og:description" content="如何声明一个对象 方法一：使用 let 关键字 let 允许声明一个作用域被限制在块级中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局" />
+<meta property="og:description" content="如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/jsobject/" />
 <meta property="og:image" content="/logo.png"/>
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="JavaScript 对象基本用法"/>
-<meta name="twitter:description" content="如何声明一个对象 方法一：使用 let 关键字 let 允许声明一个作用域被限制在块级中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局"/>
+<meta name="twitter:description" content="如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o"/>
 <meta name="application-name" content="WUMANHO&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/jsobject\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  616 ,
+        },"genre": "posts","keywords": "JavaScript","wordcount":  441 ,
         "url": "\/posts\/jsobject\/","datePublished": "2020-04-13T11:42:26+08:00","dateModified": "2020-04-13T11:42:26+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,31 +76,25 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">JavaScript 对象基本用法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>前端笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-13">2020-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 616 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-13">2020-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 441 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="content" id="content"><h1 id="如何声明一个对象">如何声明一个对象</h1>
-<p>方法一：使用 let 关键字</p>
-<p><strong>let</strong> 允许声明一个作用域被限制在<strong>块级</strong>中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局或者整个函数块的。ES6之后不建议使用 var 关键字声明变量。</p>
+<p>方法一：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span>
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;wu&#39;</span><span class="p">,</span><span class="s1">&#39;age&#39;</span><span class="o">:</span><span class="mi">18</span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>方法二：使用 const 关键字</p>
-<p><strong>const</strong> 用法跟 let 几乎相同，不过使用 const 关键字声明的变量成为<strong>常量</strong>，常量是块级范围的，非常类似用 let 语句定义的变量。但常量的值是无法（通过重新赋值）改变的，也不能被重新声明。</p>
+</div><p>方法二：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="o">:</span><span class="s1">&#39;wu&#39;</span><span class="p">,</span><span class="s1">&#39;age&#39;</span><span class="o">:</span><span class="mi">18</span><span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
 </div><p> 

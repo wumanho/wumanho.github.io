@@ -8,19 +8,13 @@ tags: ["JavaScript"]
 
 # 如何声明一个对象  
   
-方法一：使用 let 关键字  
-
-**let** 允许声明一个作用域被限制在**块级**中的变量、语句或者表达式。与 var 关键字不同的是， var声明的变量只能是全局或者整个函数块的。ES6之后不建议使用 var 关键字声明变量。
+方法一： 
 ```JavaScript
-let x = 2
-console.log(x)
+let obj = {'name':'wu','age':18}
 ```
-方法二：使用 const 关键字   
-
-**const** 用法跟 let 几乎相同，不过使用 const 关键字声明的变量成为**常量**，常量是块级范围的，非常类似用 let 语句定义的变量。但常量的值是无法（通过重新赋值）改变的，也不能被重新声明。
+方法二： 
 ```JavaScript
-const a = 2
-console.log(a)
+let obj = new Object({'name':'wu','age':18})
 ```
 &nbsp;
 &nbsp;  
