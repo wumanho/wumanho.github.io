@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>jQuery 使用简介 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用简介" />
+<meta property="og:description" content="jQuery 简单介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/jq01/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-11-07T20:20:01+08:00" />
+<meta property="article:modified_time" content="2020-11-07T20:20:01+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="jQuery 使用简介"/>
+<meta name="twitter:description" content="jQuery 简单介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀"/>
+<meta name="application-name" content="WUMANHO&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0204/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "jQuery 使用简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/jq01\/"
+        },"genre": "posts","keywords": "JavaScript","wordcount":  1329 ,
+        "url": "\/posts\/jq01\/","datePublished": "2020-11-07T20:20:01+08:00","dateModified": "2020-11-07T20:20:01+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用简介</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>前端笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1329 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="content" id="content"><h2 id="jquery-简单介绍">jQuery 简单介绍</h2>
+<p>jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。</p>
+<p> </p>
+<p>至于为什么 jQuery  可以被称之为经典，我想是因为首先他有非常优秀的代码设计，使得整个库使用起来非常简单，也便于理解和学习，其次是因为 DOM 本身非常难以操作，开发者需要一个可以简单使用 DOM 的库，而 jQuery 在这件事情上无疑是当时甚至现在做得最好的。</p>
+<p> </p>
+<p>jQuery 的设计非常有意思，他<strong>不会直接返回</strong>你所选择的元素的对象，而是<strong>返回一个封装了该对象以及操作该对象的 API 的对象</strong>，用代码表示大概是这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">window</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selector</span><span class="p">){</span>
+    <span class="c1">//封装
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="c1">//返回一个可以操作 elements 的对象，通过闭包保持了该对象的可用性
+</span><span class="c1"></span>        <span class="nx">print</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>  </p>
+<h2 id="jquery-如何获取元素">jQuery 如何获取元素</h2>
+<p>很简单，可以通过 css 选择器的方式获取，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">　<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span> <span class="c1">//选择整个文档对象
+</span><span class="c1"></span>
+　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myId&#39;</span><span class="p">)</span> <span class="c1">//选择ID为myId的网页元素
+</span><span class="c1"></span>
+　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div.myClass&#39;</span><span class="p">)</span> <span class="c1">// 选择class为myClass的div元素
+</span><span class="c1"></span>
+　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;input[name=first]&#39;</span><span class="p">)</span> <span class="c1">// 选择name属性等于first的input元素
+</span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="jquery-创建元素">jQuery 创建元素</h2>
+<p>创建新元素的方法非常简单，只要把新元素直接传入jQuery的构造函数就行了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;Hello&lt;/p&gt;&#39;</span><span class="p">);</span>
+
+　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&#34;new&#34;&gt;new list item&lt;/li&gt;&#39;</span><span class="p">);</span>
+
+　<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;list item&lt;/li&gt;&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="jquery-修改元素">jQuery 修改元素</h2>
+<p>一般来说我们获取了网页元素，最常见的需求就是取得他们的值或者对他们进行赋值操作。</p>
+<p>列举一些常用的 API ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">　　<span class="p">.</span><span class="nx">html</span><span class="p">()</span> <span class="c1">//取出或设置html内容
+</span><span class="c1"></span>
+　　<span class="p">.</span><span class="nx">text</span><span class="p">()</span> <span class="c1">//取出或设置text内容
+</span><span class="c1"></span>
+　　<span class="p">.</span><span class="nx">attr</span><span class="p">()</span> <span class="c1">//取出或设置某个属性的值
+</span><span class="c1"></span>
+　　<span class="p">.</span><span class="nx">width</span><span class="p">()</span> <span class="c1">//取出或设置某个元素的宽度
+</span><span class="c1"></span>
+　　<span class="p">.</span><span class="nx">height</span><span class="p">()</span> <span class="c1">//取出或设置某个元素的高度
+</span><span class="c1"></span>
+　　<span class="p">.</span><span class="nx">val</span><span class="p">()</span> <span class="c1">//取出某个表单元素的值
+</span></code></pre></td></tr></table>
+</div>
+</div><p>值得一提的是 jQuery 的设计思想之一，就是使用同一个函数，来完成取值（getter）和赋值（setter），即&quot;取值器&quot;与&quot;赋值器&quot;合一。到底是取值还是赋值，由函数的参数决定。</p>
+<p>至于实现 getter/setter ，我想只要判断参数长度，猜测一下用户行为就可以做到，大概是这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">window</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selector</span><span class="p">){</span>
+    <span class="c1">//首先还是封装一下元素
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">text</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">string</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">){</span> <span class="c1">//如果用户传入的参数不为空，那就是需要添加，即 setter
+</span><span class="c1"></span>                <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                	<span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">string</span>
+            	<span class="p">}</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span> <span class="c1">//如果用户没有传入参数，那就是需要获取元素的文本内容，即 getter
+</span><span class="c1"></span>                <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                	<span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">string</span>
+                    <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">textContent</span><span class="p">)</span>
+            	<span class="p">}</span>
+                <span class="k">return</span> <span class="nx">arr</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="jquery-复制删除元素">jQuery 复制、删除元素</h2>
+<p>复制元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="c1">//不保留被删除元素的事件
+</span><span class="c1"></span>
+<span class="p">.</span><span class="nx">detach</span><span class="p">()</span> <span class="c1">//保留被删除元素的事件
+</span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="jquery-的链式操作是如何实现的">jQuery 的链式操作是如何实现的</h2>
+<p>jQuery 的链式操作可以方便地实现一些更复杂的 DOM 操作，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&#34;#div1&#34;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&#34;#child&#34;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&#34;hello&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这种链式操作看似很简单，但仔细想的话会发现不太对劲，因为根据前面所说，jQuery 会将用户第一次获取的元素（在这里是div1）封装，然后返回一个可以操作 div1 的对象，而我们的需求却是使用 find 函数找到 div1 的子元素 #child，再对 #child 做操作，所以实际上要实现这种链式操作，还必须要在刚才的基础上再加一层封装，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">window</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selectorOrArray</span><span class="p">){</span>
+    <span class="c1">//封装
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">elements</span> 
+    <span class="c1">//判断一下参数类型
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">selectorOrArray</span> <span class="o">===</span> <span class="s2">&#34;string&#34;</span><span class="p">){</span>
+        <span class="c1">//如果是字符串，代表是用户传入的选择器
+</span><span class="c1"></span>        <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selectorOrArray</span><span class="p">)</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">selectorOrArray</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">){</span>
+        <span class="c1">//如果是数组，代表是用户传入的可能是子元素集合
+</span><span class="c1"></span>        <span class="nx">elements</span> <span class="o">=</span> <span class="nx">selectorOrArray</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="c1">//返回一个可以操作 elements 的对象，通过闭包保持了该对象的可用性
+</span><span class="c1"></span>        <span class="nx">print</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elements</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">find</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">selector</span><span class="p">){</span>
+            <span class="c1">//声明一个数组存放子元素
+</span><span class="c1"></span>            <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">elements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">elements</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">))</span>
+            <span class="p">}</span>
+            <span class="c1">//返回一个新的，可操作封装了子元素的对象
+</span><span class="c1"></span>            <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h3 id="参考">参考</h3>
+<p><a href="http://www.ruanyifeng.com/blog/2011/07/jquery_fundamentals.html" target="_blank" rel="noopener noreffer">jQuery设计思想 - 阮一峰</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-11-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/0204/" class="prev" rel="prev" title="新概念二册-Lesson 4 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 4 笔记</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
