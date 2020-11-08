@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>jQuery 使用简介 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用简介" />
-<meta property="og:description" content="jQuery 简单介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀" />
+        <title>jQuery 使用和设计简介 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用和设计简介" />
+<meta property="og:description" content="jQuery 介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的代" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/jq01/" />
 <meta property="og:image" content="/logo.png"/>
@@ -15,21 +15,21 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="jQuery 使用简介"/>
-<meta name="twitter:description" content="jQuery 简单介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀"/>
+<meta name="twitter:title" content="jQuery 使用和设计简介"/>
+<meta name="twitter:description" content="jQuery 介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的代"/>
 <meta name="application-name" content="WUMANHO&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0204/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0205/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "jQuery 使用简介",
+        "headline": "jQuery 使用和设计简介",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/jq01\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  1329 ,
+        },"genre": "posts","keywords": "JavaScript","wordcount":  1327 ,
         "url": "\/posts\/jq01\/","datePublished": "2020-11-07T20:20:01+08:00","dateModified": "2020-11-07T20:20:01+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -74,11 +74,11 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用简介</h1><div class="post-meta">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用和设计简介</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>前端笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1329 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1327 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="jquery-简单介绍">jQuery 简单介绍</h2>
+        </div><div class="content" id="content"><h2 id="jquery-介绍">jQuery 介绍</h2>
 <p>jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。</p>
 <p> </p>
 <p>至于为什么 jQuery  可以被称之为经典，我想是因为首先他有非常优秀的代码设计，使得整个库使用起来非常简单，也便于理解和学习，其次是因为 DOM 本身非常难以操作，开发者需要一个可以简单使用 DOM 的库，而 jQuery 在这件事情上无疑是当时甚至现在做得最好的。</p>
@@ -358,7 +358,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/0204/" class="prev" rel="prev" title="新概念二册-Lesson 4 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 4 笔记</a></div>
+    <div class="post-nav"><a href="/posts/0205/" class="prev" rel="prev" title="新概念二册-Lesson 5 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 5 笔记</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
@@ -373,5 +373,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
