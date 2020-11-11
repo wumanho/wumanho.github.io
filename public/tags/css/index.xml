@@ -11,5 +11,12 @@
     <author>作者</author>
     <guid>/posts/css/</guid>
     <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
+</item><item>
+    <title>Flex 布局常用属性值</title>
+    <link>/posts/flex/</link>
+    <pubDate>Tue, 27 Aug 2019 18:33:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/flex/</guid>
+    <description><![CDATA[前言 记录一些 Flex 常用属性值，主要给自己看的，方便自己查找。 Flex 布局有两个关键字： 容器 元素 Container 让一个元素变成一个 flex 容器： 1 2 3 .container{ display:flex; } 改变 items 的流动方向]]></description>
 </item></channel>
 </rss>

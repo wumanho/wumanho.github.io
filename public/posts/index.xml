@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 07 Nov 2020 20:20:01 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DOM 事件与事件委托</title>
+    <link>/posts/domevent/</link>
+    <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/domevent/</guid>
+    <description><![CDATA[什么是 DOM 事件 DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承]]></description>
+</item><item>
     <title>jQuery 使用和设计简介</title>
     <link>/posts/jq01/</link>
     <pubDate>Sat, 07 Nov 2020 20:20:01 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/jssyntax/</guid>
     <description><![CDATA[什么是表达式和语句 表达式 表达式一般都会有“值”，例如： 表达式 1 + 2 的值为3 表达式add(1,2)的值为函数add的返回值 console.log 表达式的值为函数本]]></description>
-</item><item>
-    <title>JavaScript 的诞生</title>
-    <link>/posts/jshistory/</link>
-    <pubDate>Sun, 05 Apr 2020 22:49:40 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jshistory/</guid>
-    <description><![CDATA[JavaScript 简介 JavaScript 简称&quot;JS&rdquo;，是一种高级的、解析型的编程语言。JavaScript是一门基于原型、函数先行的语言，它支持面向对]]></description>
 </item></channel>
 </rss>
