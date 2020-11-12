@@ -55,29 +55,29 @@ transform四种常用属性
 transform: translateX(200px);       /* 向X轴移动200像素 */
 transform: translateY(100px);       /* 向Y轴移动100像素 */
 transform: translate(50px,50px);  /*同时向X轴移动50像素,向Y轴移动50像素*/
-```  
+```
 * scale 缩放
 ```CSS
 transform: scale(1.5);  /* 放大为原来的1.5倍 */
-``` 
+```
 
 * rotate 旋转
 ```CSS
 transform: rotate(45deg);           /* 顺时针旋转45度 */
 transform: rotate(-45deg);          /* 逆时针旋转45度 */
-``` 
+```
 
 * skew 倾斜
 ```CSS
 transform: skew(30deg);             /* 水平方向倾斜30度 */
 transform: skew(30deg, 30deg);      /* 水平方向倾斜30度,//垂直方向倾斜30度 */
-```  
+```
 
 transition: 属性名 | 时长 | 过渡方式 | 延迟
 ```CSS
 transition:right 1ms linear 1ms;    /* 1ms内完成向右移动，动画形式为线性表示，延迟为1ms */
 transition:all 5s ease 1ms;         /* 5s内完成所有动画，动画形式为缓速表示，延迟为1ms */
-```  
+```
 ## animation
 animation可以解决transform的一些痛点，就是使用transform制作多段动画比较麻烦。  
 
@@ -97,6 +97,7 @@ animation语法和属性：
 
 * 暂停：paused | running  
   
+
 @keyframes  
 keyframes是与animation结合使用的模块，常用语法:
 ```CSS

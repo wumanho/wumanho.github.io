@@ -65,6 +65,14 @@ align-items: center;			/*居中*/
 align-items: flex-end;			/*往次轴结束的地方挤*/
 ```
 
+## 补充一个常用居中技巧
+
+```css
+display:flex;
+justify-content: center;
+align-items: center;
+```
+
 &nbsp;
 
 ## items
