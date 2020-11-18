@@ -2,7 +2,7 @@
 title: "JavaScript 的诞生"
 date: 2020-04-05T22:49:40+08:00
 draft: false
-categories: ["前端笔记"]
+categories: ["前端"]
 tags: ["JavaScript"]
 ---
 

@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 jQuery 发送 AJAX 请求</title>
+    <link>/posts/ajaxjq/</link>
+    <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/ajaxjq/</guid>
+    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
+</item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/jsobject/</guid>
     <description><![CDATA[如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o]]></description>
-</item><item>
-    <title>JS 基本语法</title>
-    <link>/posts/jssyntax/</link>
-    <pubDate>Sat, 11 Apr 2020 15:47:04 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jssyntax/</guid>
-    <description><![CDATA[什么是表达式和语句 表达式 表达式一般都会有“值”，例如： 表达式 1 + 2 的值为3 表达式add(1,2)的值为函数add的返回值 console.log 表达式的值为函数本]]></description>
 </item></channel>
 </rss>

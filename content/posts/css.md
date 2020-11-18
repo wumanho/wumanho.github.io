@@ -2,7 +2,7 @@
 title: "CSS总结"
 date: 2020-03-30T10:02:12+08:00
 draft: false
-categories: ["前端笔记"]
+categories: ["前端"]
 tags: ["CSS"]
 ---
 

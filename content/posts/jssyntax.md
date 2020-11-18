@@ -2,7 +2,7 @@
 title: "JS 基本语法"
 date: 2020-04-11T15:47:04+08:00
 draft: false
-categories: ["前端笔记"]
+categories: ["前端"]
 tags: ["JavaScript"]
 ---
 
@@ -65,7 +65,7 @@ while(a < 5){
     console.log(a)
     a++
 }
-```  
+```
 ## for循环语句
 for语句可以视为while语句的语法糖，因为同样的循环逻辑，for语句写起来更加方便  
 语法：for(语句1;表达式2;语句3){循环体}  

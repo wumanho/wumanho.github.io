@@ -1,10 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>JavaScript - 标签 - WUMANHO的博客</title>
-        <link>/tags/javascript/</link>
-        <description>JavaScript - 标签 - WUMANHO的博客</description>
+        <title>前端 - 分类 - WUMANHO的博客</title>
+        <link>/categories/%E5%89%8D%E7%AB%AF/</link>
+        <description>前端 - 分类 - WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
     <title>利用 jQuery 发送 AJAX 请求</title>
     <link>/posts/ajaxjq/</link>
     <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
@@ -53,5 +53,19 @@
     <author>作者</author>
     <guid>/posts/jshistory/</guid>
     <description><![CDATA[JavaScript 简介 JavaScript 简称&quot;JS&rdquo;，是一种高级的、解析型的编程语言。JavaScript是一门基于原型、函数先行的语言，它支持面向对]]></description>
+</item><item>
+    <title>CSS总结</title>
+    <link>/posts/css/</link>
+    <pubDate>Mon, 30 Mar 2020 10:02:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/css/</guid>
+    <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
+</item><item>
+    <title>Flex 布局常用属性值</title>
+    <link>/posts/flex/</link>
+    <pubDate>Tue, 27 Aug 2019 18:33:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/flex/</guid>
+    <description><![CDATA[前言 记录一些 Flex 常用属性值，主要给自己看的，方便自己查找。 Flex 布局有两个关键字： 容器 元素 Container 让一个元素变成一个 flex 容器： 1 2 3 .container{ display:flex; } 改变 items 的流动方向]]></description>
 </item></channel>
 </rss>

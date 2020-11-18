@@ -2,7 +2,7 @@
 title: "JavaScript 函数的执行时机"
 date: 2020-04-16T11:59:41+08:00
 draft: false
-categories: ["前端笔记"]
+categories: ["前端"]
 tags: ["JavaScript"]
 ---
 
@@ -14,7 +14,7 @@ for(i = 0; i<6; i++){
     console.log(i)
   },0)
 }
-```  
+```
 setTimeout 函数的主要用于在一段时间之后，执行相应的延迟操作，且只会运行一次，不会重复执行，所以上面代码执行过程如下：  
 1. 语句 let i = 0 声明了一个变量 i  
 2. 变量 i 的作用域在 for 循环之外。  
