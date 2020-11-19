@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/ajaxjq\/"
-        },"genre": "posts","keywords": "JavaScript, jQuery, AJAX","wordcount":  1547 ,
+        },"genre": "posts","keywords": "JavaScript, jQuery, AJAX","wordcount":  1554 ,
         "url": "\/posts\/ajaxjq\/","datePublished": "2020-11-18T11:36:57+08:00","dateModified": "2020-11-18T11:36:57+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,14 +76,14 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">利用 jQuery 发送 AJAX 请求</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1547 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1554 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="content" id="content"><p> </p>
 <p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。
  </p>
 <p>由于 AJAX 是异步的（这里不对同步异步作更多介绍），这意味着利用 AJAX 可以同时向后台请求多个数据，而不必等待同步阻塞的时间，这对与效率和用户体验都是非常大的提升。<br>
  </p>
-<h2 id="原生-js-实现-ajax-请求">原生 JS 实现 AJAX 请求</h2>
+<h2 id="原生-js-实现-ajax-请求-">原生 JS 实现 AJAX 请求 👋</h2>
 <p>利用原生 JS 发送 AJAX 请求，只需要记住四个步骤：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -193,7 +193,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="使用-jquery-发送请求">使用 jQuery 发送请求</h2>
+<h2 id="使用-jquery-发送请求-">使用 jQuery 发送请求 💨</h2>
 <p>使用原生方式发送请求还是比较复杂的，而且更多功能还需要手动实现，例如如果需要添加 post 请求体，则需要在 <code>send()</code> 函数中传递。</p>
 <p>所以先不折腾，只需要简单理解即可，因为生产中几乎没有人会用原生 JS 的方式请求数据，实际上 jQuery 为我们提供了更强大、使用更简单的 API，而且从 jQuery 1.5 开始，<code>$.ajax()</code>返回的  <a href="https://www.jquery123.com/jQuery.ajax/#jqXHR" target="_blank" rel="noopener noreffer">jqXHR</a> 对象 实现了 Promise 接口, 使它拥有了 Promise 的所有属性，方法和行为。</p>
 <p>语法( jQuery 1.5 )：<code>jQuery.ajax(url, [settings])</code>，它会返回一个 <a href="https://www.jquery123.com/jQuery.ajax/#jqXHR" target="_blank" rel="noopener noreffer">jqXHR</a> 对象，<code>settings </code>是可选的，列举一些常用参数：</p>
@@ -218,9 +218,9 @@
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="jquery-处理-ajax-异步回调">jQuery 处理 AJAX 异步回调</h2>
+<h2 id="jquery-处理-ajax-异步回调-">jQuery 处理 AJAX 异步回调 🔄</h2>
 <p>如上述所说，1.5 之后 jQuery 提供了类似 Promise 的方法来处理各种回调，解决了一些在使用传统异步和回调的方式下的问题。</p>
-<p><strong>需要注意的是</strong>，<code>jqXHR.success()</code>, <code>jqXHR.error()</code>, 和 <code>jqXHR.complete()</code>回调从 jQuery 1.8开始 被弃用。他们将最终被取消，您的代码应做好准备，使用以下展示的 API <code>jqXHR.done()</code>, <code>jqXHR.fail()</code>, 和 <code>jqXHR.always()</code> 代替。<a href="https://www.jquery123.com/jQuery.ajax/#jqXHR" target="_blank" rel="noopener noreffer">详情可参考官方文档</a></p>
+<p><strong>⚠️需要注意的是</strong>，<code>jqXHR.success()</code>, <code>jqXHR.error()</code>, 和 <code>jqXHR.complete()</code>回调从 jQuery 1.8开始 被弃用。他们将最终被取消，您的代码应做好准备，使用以下展示的 API <code>jqXHR.done()</code>, <code>jqXHR.fail()</code>, 和 <code>jqXHR.always()</code> 代替。<a href="https://www.jquery123.com/jQuery.ajax/#jqXHR" target="_blank" rel="noopener noreffer">详情可参考官方文档</a></p>
 <p> </p>
 <ul>
 <li><strong>jqXHR.done(function(data, textStatus, jqXHR) {});</strong></li>
@@ -237,7 +237,7 @@
 <p> </p>
 </li>
 </ul>
-<p>所以，目前推荐的使用方法是：</p>
+<p>✔️所以，目前推荐的使用方法是：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

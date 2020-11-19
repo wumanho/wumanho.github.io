@@ -13,7 +13,7 @@ AJAX 全称 *ASynchronous JavaScript And XML*，异步 JS 和 XML，本质上是
 由于 AJAX 是异步的（这里不对同步异步作更多介绍），这意味着利用 AJAX 可以同时向后台请求多个数据，而不必等待同步阻塞的时间，这对与效率和用户体验都是非常大的提升。  
 &nbsp;
 
-## 原生 JS 实现 AJAX 请求
+## 原生 JS 实现 AJAX 请求 :wave:
 利用原生 JS 发送 AJAX 请求，只需要记住四个步骤：  
 ```JavaScript
 //假设我们有一个单击事件
@@ -72,7 +72,7 @@ ajax("GET","/xxx",{
 
 &nbsp;
 
-## 使用 jQuery 发送请求
+## 使用 jQuery 发送请求 :dash:
 
 使用原生方式发送请求还是比较复杂的，而且更多功能还需要手动实现，例如如果需要添加 post 请求体，则需要在 `send()` 函数中传递。
 
@@ -96,11 +96,11 @@ $.ajax("/xxx",{
 
 &nbsp;
 
-## jQuery 处理 AJAX 异步回调
+## jQuery 处理 AJAX 异步回调 :arrows_counterclockwise:
 
 如上述所说，1.5 之后 jQuery 提供了类似 Promise 的方法来处理各种回调，解决了一些在使用传统异步和回调的方式下的问题。
 
-**需要注意的是**，`jqXHR.success()`, `jqXHR.error()`, 和 `jqXHR.complete()`回调从 jQuery 1.8开始 被弃用。他们将最终被取消，您的代码应做好准备，使用以下展示的 API `jqXHR.done()`, `jqXHR.fail()`, 和 `jqXHR.always()` 代替。[详情可参考官方文档](https://www.jquery123.com/jQuery.ajax/#jqXHR)
+**:warning:需要注意的是**，`jqXHR.success()`, `jqXHR.error()`, 和 `jqXHR.complete()`回调从 jQuery 1.8开始 被弃用。他们将最终被取消，您的代码应做好准备，使用以下展示的 API `jqXHR.done()`, `jqXHR.fail()`, 和 `jqXHR.always()` 代替。[详情可参考官方文档](https://www.jquery123.com/jQuery.ajax/#jqXHR)
 
 &nbsp;
 
@@ -118,7 +118,7 @@ $.ajax("/xxx",{
 
   &nbsp;
 
-所以，目前推荐的使用方法是：
+:heavy_check_mark:所以，目前推荐的使用方法是：
 
 ```javascript
 $.ajax("/api/v1/xxx",{

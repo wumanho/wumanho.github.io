@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>DOM 事件与事件委托 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="DOM 事件与事件委托" />
-<meta property="og:description" content="什么是 DOM 事件 DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承" />
+<meta property="og:description" content="什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/domevent/" />
 <meta property="og:image" content="/logo.png"/>
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="DOM 事件与事件委托"/>
-<meta name="twitter:description" content="什么是 DOM 事件 DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承"/>
+<meta name="twitter:description" content="什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继"/>
 <meta name="application-name" content="WUMANHO&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/domevent\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  967 ,
+        },"genre": "posts","keywords": "JavaScript","wordcount":  974 ,
         "url": "\/posts\/domevent\/","datePublished": "2020-11-08T16:08:51+08:00","dateModified": "2020-11-08T16:08:51+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,9 +76,9 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">DOM 事件与事件委托</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 967 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 974 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="什么是-dom-事件">什么是 DOM 事件</h2>
+        </div><div class="content" id="content"><h2 id="什么是-dom-事件-">什么是 DOM 事件 ❓</h2>
 <p>DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。</p>
 <p>发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承自 Event 接口的对象，可以包括自定义的成员属性及函数用于获取事件发生时相关的更多信息。JS 与 html 之间的交互是通过事件实现的，DOM 支持大量的事件，列举一些常用的事件：</p>
 <table>
@@ -128,7 +128,7 @@
 </tbody>
 </table>
 <p> </p>
-<h2 id="dom-事件流">DOM 事件流</h2>
+<h2 id="dom-事件流-">DOM 事件流 🙋‍♂️</h2>
 <p>DOM 事件模型分为两种，一种是捕获，一种是冒泡，至于为什么是两种，这里其实涉及了多年前的浏览器厂商之间的战争和 W3C 委员会的介入，这里不多赘述。</p>
 <p>一个事件发生后，会在子元素和父元素之间传播，这种传播分为三个阶段。</p>
 <ol>
@@ -160,7 +160,7 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="事件委托">事件委托</h2>
+<h2 id="事件委托-">事件委托 🤝</h2>
 <p>事件委托简单来说就是将一个元素的响应事件，委托到另一个元素上，为什么需要事件委托？可以想象一下以下场景：</p>
 <ul>
 <li>
@@ -282,7 +282,7 @@
 </li>
 </ul>
 <p> </p>
-<p>从上述演示中可以看出，事件委托的好处主要有两点：</p>
+<p>😏从上述演示中可以看出，事件委托的好处主要有两点：</p>
 <ul>
 <li>省内存（只需要设置一个监听）</li>
 <li>可以监听动态生成的元素</li>

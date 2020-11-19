@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>jQuery 使用和设计简介 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用和设计简介" />
-<meta property="og:description" content="jQuery 介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的代" />
+<meta property="og:description" content="jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/jq01/" />
 <meta property="og:image" content="/logo.png"/>
@@ -16,11 +16,11 @@
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="jQuery 使用和设计简介"/>
-<meta name="twitter:description" content="jQuery 介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的代"/>
+<meta name="twitter:description" content="jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的"/>
 <meta name="application-name" content="WUMANHO&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0205/" /><link rel="next" href="/posts/domevent/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0206/" /><link rel="next" href="/posts/domevent/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/jq01\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  1327 ,
+        },"genre": "posts","keywords": "JavaScript, jQuery","wordcount":  1335 ,
         "url": "\/posts\/jq01\/","datePublished": "2020-11-07T20:20:01+08:00","dateModified": "2020-11-07T20:20:01+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,9 +76,9 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用和设计简介</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1327 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1335 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="jquery-介绍">jQuery 介绍</h2>
+        </div><div class="content" id="content"><h2 id="jquery-介绍-">jQuery 介绍 📗</h2>
 <p>jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。</p>
 <p> </p>
 <p>至于为什么 jQuery  可以被称之为经典，我想是因为首先他有非常优秀的代码设计，使得整个库使用起来非常简单，也便于理解和学习，其次是因为 DOM 本身非常难以操作，开发者需要一个可以简单使用 DOM 的库，而 jQuery 在这件事情上无疑是当时甚至现在做得最好的。</p>
@@ -111,7 +111,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>  </p>
-<h2 id="jquery-如何获取元素">jQuery 如何获取元素</h2>
+<h2 id="jquery-如何获取元素-">jQuery 如何获取元素 📌</h2>
 <p>很简单，可以通过 css 选择器的方式获取，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -134,7 +134,7 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="jquery-创建元素">jQuery 创建元素</h2>
+<h2 id="jquery-创建元素-">jQuery 创建元素 🔨</h2>
 <p>创建新元素的方法非常简单，只要把新元素直接传入jQuery的构造函数就行了：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -153,7 +153,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="jquery-修改元素">jQuery 修改元素</h2>
+<h2 id="jquery-修改元素-">jQuery 修改元素 🛠️</h2>
 <p>一般来说我们获取了网页元素，最常见的需求就是取得他们的值或者对他们进行赋值操作。</p>
 <p>列举一些常用的 API ：</p>
 <div class="highlight"><div class="chroma">
@@ -235,7 +235,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="jquery-复制删除元素">jQuery 复制、删除元素</h2>
+<h2 id="jquery-复制删除元素-">jQuery 复制、删除元素 🗑️</h2>
 <p>复制元素：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -259,7 +259,7 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><p> </p>
-<h2 id="jquery-的链式操作是如何实现的">jQuery 的链式操作是如何实现的</h2>
+<h2 id="jquery-的链式操作是如何实现的-">jQuery 的链式操作是如何实现的 🔫</h2>
 <p>jQuery 的链式操作可以方便地实现一些更复杂的 DOM 操作，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -352,13 +352,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a>,&nbsp;<a href="/tags/jquery/">jQuery</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/0205/" class="prev" rel="prev" title="新概念二册-Lesson 5 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 5 笔记</a>
+    <div class="post-nav"><a href="/posts/0206/" class="prev" rel="prev" title="新概念二册-Lesson 6 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 6 笔记</a>
             <a href="/posts/domevent/" class="next" rel="next" title="DOM 事件与事件委托">DOM 事件与事件委托<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>

@@ -19,14 +19,21 @@
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/domevent/</guid>
-    <description><![CDATA[什么是 DOM 事件 DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承]]></description>
+    <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
 </item><item>
     <title>jQuery 使用和设计简介</title>
     <link>/posts/jq01/</link>
     <pubDate>Sat, 07 Nov 2020 20:20:01 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的代]]></description>
+    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
+</item><item>
+    <title>新概念二册-Lesson 6 笔记</title>
+    <link>/posts/0206/</link>
+    <pubDate>Mon, 27 Jul 2020 18:59:17 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/0206/</guid>
+    <description><![CDATA[Lesson 6 Percy Buttons 生词短语用法 call on sb. / call at sp. 拜访人用call on，光顾某个地方用call at 可以用visit sb./sp. 代替 ask for ... 寻求 -&gt; He asked me for a meal In return for ... 作为对]]></description>
 </item><item>
     <title>新概念二册-Lesson 5 笔记</title>
     <link>/posts/0205/</link>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>/posts/jsfunctiontiming/</guid>
     <description><![CDATA[解释为什么如下代码会打印 6 个 6 1 2 3 4 5 6 let i = 0 for(i = 0; i&lt;6; i++){ setTimeout(()=&gt;{ console.log(i) },0) } setTimeout 函数的主要用于在一段时间之后，执行相应的延迟操作，且只会运行一次，不会]]></description>
-</item><item>
-    <title>JavaScript 对象基本用法</title>
-    <link>/posts/jsobject/</link>
-    <pubDate>Mon, 13 Apr 2020 11:42:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsobject/</guid>
-    <description><![CDATA[如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o]]></description>
 </item></channel>
 </rss>
