@@ -1,10 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>所有文章 - WUMANHO的博客</title>
+        <title>所有文章 - OK Computer</title>
         <link>/posts/</link>
-        <description>所有文章 | WUMANHO的博客</description>
+        <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>用 Node.js 写一个简易静态服务器</title>
+    <link>/posts/nodesimpleserver/</link>
+    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/nodesimpleserver/</guid>
+    <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
+</item><item>
     <title>利用 jQuery 发送 AJAX 请求</title>
     <link>/posts/ajaxjq/</link>
     <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
@@ -19,13 +26,6 @@
     <guid>/posts/domevent/</guid>
     <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
 </item><item>
-    <title>jQuery 使用和设计简介</title>
-    <link>/posts/jq01/</link>
-    <pubDate>Sat, 07 Nov 2020 20:20:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
-</item><item>
     <title>新概念二册-Lesson 6 笔记</title>
     <link>/posts/0206/</link>
     <pubDate>Mon, 27 Jul 2020 18:59:17 &#43;0800</pubDate>
@@ -39,6 +39,13 @@
     <author>作者</author>
     <guid>/posts/0205/</guid>
     <description><![CDATA[Lesson 5 No wrong numbers 生词短语用法 🍜 send / receive / get / leave + a message 名词以ce结尾的话，换成形容词就转换成t distance n.距离 -&gt; distant adj.遥远的；difference 差异 -&gt;]]></description>
+</item><item>
+    <title>jQuery 使用和设计简介</title>
+    <link>/posts/jq01/</link>
+    <pubDate>Sat, 25 Jul 2020 20:20:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jq01/</guid>
+    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
 </item><item>
     <title>新概念二册-Lesson 4 笔记</title>
     <link>/posts/0204/</link>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/0201/</guid>
     <description><![CDATA[Lesson 1 A private conversation 生词短语用法 🙆‍♂️ pay attension to sb. / sth. May I have your attension，please？ &ndash;&gt; 请注意咯 attract / catch one&rsquo;s attension &ndash;&gt; 吸引某人注意力 none of &ndash;&gt; 都没有 形容词一]]></description>
-</item><item>
-    <title>新概念第一册-笔记-动词不定式</title>
-    <link>/posts/0101/</link>
-    <pubDate>Fri, 01 May 2020 08:57:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0101/</guid>
-    <description><![CDATA[动词不定式打破了一个准则，在动词不定式中，句子中是可以有两个动词的，而不是之前所认为的只能有一个。 构成 to do（to是动词不定式中最最重要的标]]></description>
 </item></channel>
 </rss>

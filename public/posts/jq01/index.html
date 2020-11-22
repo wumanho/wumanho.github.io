@@ -5,22 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>jQuery 使用和设计简介 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用和设计简介" />
+        <title>jQuery 使用和设计简介 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="jQuery 使用和设计简介" />
 <meta property="og:description" content="jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/jq01/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2020-11-07T20:20:01+08:00" />
-<meta property="article:modified_time" content="2020-11-07T20:20:01+08:00" />
+<meta property="article:published_time" content="2020-07-25T20:20:01+08:00" />
+<meta property="article:modified_time" content="2020-07-25T20:20:01+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="jQuery 使用和设计简介"/>
 <meta name="twitter:description" content="jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的"/>
-<meta name="application-name" content="WUMANHO&#39;s blog">
-<meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0206/" /><link rel="next" href="/posts/domevent/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jq01/" /><link rel="prev" href="/posts/0204/" /><link rel="next" href="/posts/0205/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,7 +30,7 @@
             "@type": "WebPage",
             "@id": "\/posts\/jq01\/"
         },"genre": "posts","keywords": "JavaScript, jQuery","wordcount":  1335 ,
-        "url": "\/posts\/jq01\/","datePublished": "2020-11-07T20:20:01+08:00","dateModified": "2020-11-07T20:20:01+08:00","publisher": {
+        "url": "\/posts\/jq01\/","datePublished": "2020-07-25T20:20:01+08:00","dateModified": "2020-07-25T20:20:01+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
                 "@type": "Person",
@@ -43,10 +43,10 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+            <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -56,13 +56,13 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+                <a href="/" title="OK Computer">OK Computer</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -76,7 +76,7 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用和设计简介</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1335 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-25">2020-07-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1335 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="content" id="content"><h2 id="jquery-介绍-">jQuery 介绍 📗</h2>
 <p>jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。</p>
@@ -339,7 +339,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-11-07</span>
+                <span>更新于 2020-07-25</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -358,8 +358,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/0206/" class="prev" rel="prev" title="新概念二册-Lesson 6 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 6 笔记</a>
-            <a href="/posts/domevent/" class="next" rel="next" title="DOM 事件与事件委托">DOM 事件与事件委托<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/0204/" class="prev" rel="prev" title="新概念二册-Lesson 4 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 4 笔记</a>
+            <a href="/posts/0205/" class="next" rel="next" title="新概念二册-Lesson 5 笔记">新概念二册-Lesson 5 笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>DOM 事件与事件委托 - WUMANHO的博客</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="DOM 事件与事件委托" />
+        <title>DOM 事件与事件委托 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="DOM 事件与事件委托" />
 <meta property="og:description" content="什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/domevent/" />
@@ -17,10 +17,10 @@
 
 <meta name="twitter:title" content="DOM 事件与事件委托"/>
 <meta name="twitter:description" content="什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继"/>
-<meta name="application-name" content="WUMANHO&#39;s blog">
-<meta name="apple-mobile-web-app-title" content="WUMANHO&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/domevent/" /><link rel="prev" href="/posts/jq01/" /><link rel="next" href="/posts/ajaxjq/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/domevent/" /><link rel="prev" href="/posts/0206/" /><link rel="next" href="/posts/ajaxjq/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/domevent\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  974 ,
+        },"genre": "posts","keywords": "JavaScript, DOM事件","wordcount":  974 ,
         "url": "\/posts\/domevent\/","datePublished": "2020-11-08T16:08:51+08:00","dateModified": "2020-11-08T16:08:51+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -43,10 +43,10 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+            <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -56,13 +56,13 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="WUMANHO的博客">WUMANHO的博客</a>
+                <a href="/" title="OK Computer">OK Computer</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -306,13 +306,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a>,&nbsp;<a href="/tags/dom%E4%BA%8B%E4%BB%B6/">DOM事件</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/jq01/" class="prev" rel="prev" title="jQuery 使用和设计简介"><i class="fas fa-angle-left fa-fw"></i>jQuery 使用和设计简介</a>
+    <div class="post-nav"><a href="/posts/0206/" class="prev" rel="prev" title="新概念二册-Lesson 6 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 6 笔记</a>
             <a href="/posts/ajaxjq/" class="next" rel="next" title="利用 jQuery 发送 AJAX 请求">利用 jQuery 发送 AJAX 请求<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>

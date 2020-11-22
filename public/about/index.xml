@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on OK Computer</title>
+    <link>/about/</link>
+    <description>Recent content in Abouts on OK Computer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+    <webMaster>wumanho@tutanota.com (wumanho)</webMaster>
+    <lastBuildDate>Tue, 18 Feb 2020 01:07:17 +0800</lastBuildDate>
+    
+	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于 OK Computer</title>
+      <link>/about/about/</link>
+      <pubDate>Tue, 18 Feb 2020 01:07:17 +0800</pubDate>
+      <author>wumanho@tutanota.com (wumanho)</author>
+      <guid>/about/about/</guid>
+      <description>这里是在干什么 ❓ 这是一个博客，本来应该不需要解释，不过鉴于之前有过被 00 后表妹真诚发问&amp;quot;&amp;ldquo;什么是博客&amp;quot;&amp;ldq</description>
+    </item>
+    
+  </channel>
+</rss>

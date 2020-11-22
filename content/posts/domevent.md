@@ -3,7 +3,7 @@ title: "DOM 事件与事件委托"
 date: 2020-11-08T16:08:51+08:00
 draft: false
 categories: ["前端"]
-tags: ["JavaScript"]
+tags: ["JavaScript","DOM事件"]
 ---
 
 ## 什么是 DOM 事件 :question:

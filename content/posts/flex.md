@@ -3,7 +3,7 @@ title: "Flex 布局常用属性值"
 date: 2019-08-27T18:33:57+08:00
 draft: false
 categories: ["前端"]
-tags: ["CSS"]
+tags: ["CSS","flex"]
 ---
 
 ## 前言

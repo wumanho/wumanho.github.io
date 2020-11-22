@@ -1,10 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>新概念一册 - 分类 - WUMANHO的博客</title>
+        <title>新概念一册 - 分类 - OK Computer</title>
         <link>/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/</link>
-        <description>新概念一册 - 分类 - WUMANHO的博客</description>
+        <description>新概念一册 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Fri, 01 May 2020 08:57:02 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 08 Jun 2020 23:01:29 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" rel="self" type="application/rss+xml" /><item>
+    <title>新概念第一册-笔记-时态集合</title>
+    <link>/posts/0102/</link>
+    <pubDate>Mon, 08 Jun 2020 23:01:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/0102/</guid>
+    <description><![CDATA[时态概述 ⌛ 两个关键的概念：时间，状态 时间：过去、现在、将来 状态：一般、进行、完成 (时态)现在进行时 ⏳ 即 此时此刻正在做 用法：动词 + ing 例：eat]]></description>
+</item><item>
     <title>新概念第一册-笔记-动词不定式</title>
     <link>/posts/0101/</link>
     <pubDate>Fri, 01 May 2020 08:57:02 &#43;0800</pubDate>

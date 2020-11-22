@@ -1,10 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>JavaScript - 标签 - WUMANHO的博客</title>
+        <title>JavaScript - 标签 - OK Computer</title>
         <link>/tags/javascript/</link>
-        <description>JavaScript - 标签 - WUMANHO的博客</description>
+        <description>JavaScript - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>用 Node.js 写一个简易静态服务器</title>
+    <link>/posts/nodesimpleserver/</link>
+    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/nodesimpleserver/</guid>
+    <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
+</item><item>
     <title>利用 jQuery 发送 AJAX 请求</title>
     <link>/posts/ajaxjq/</link>
     <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
@@ -21,7 +28,7 @@
 </item><item>
     <title>jQuery 使用和设计简介</title>
     <link>/posts/jq01/</link>
-    <pubDate>Sat, 07 Nov 2020 20:20:01 &#43;0800</pubDate>
+    <pubDate>Sat, 25 Jul 2020 20:20:01 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/jq01/</guid>
     <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>

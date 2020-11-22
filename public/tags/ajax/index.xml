@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>AJAX - 标签 - WUMANHO的博客</title>
+        <title>AJAX - 标签 - OK Computer</title>
         <link>/tags/ajax/</link>
-        <description>AJAX - 标签 - WUMANHO的博客</description>
+        <description>AJAX - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
             <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</lastBuildDate><atom:link href="/tags/ajax/" rel="self" type="application/rss+xml" /><item>
     <title>利用 jQuery 发送 AJAX 请求</title>
