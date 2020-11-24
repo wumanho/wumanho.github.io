@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Radiohead - The Tourist 歌词翻译</title>
+    <link>/posts/thetourist/</link>
+    <pubDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/thetourist/</guid>
+    <description><![CDATA[⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 wumanho@tutanota.com 删除文章。 It barks at no one else but me 它只会对着我乱吠 Like it&rsquo;s seen a ghost 就好像看到鬼一样 I]]></description>
+</item><item>
     <title>用 Node.js 写一个简易静态服务器</title>
     <link>/posts/nodesimpleserver/</link>
     <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/0202/</guid>
     <description><![CDATA[Lesson 2 Breakfast or lunch key structure 🔑 现在进行时： 谓语动词： is/am/are + doing 用法1：表示现在正在进行的事 I am having breakfast now J.K Rowling is writing another book this year 现在进行时可以表示狭义的现在 -&gt; 此时此刻，与]]></description>
-</item><item>
-    <title>新概念二册-Lesson 1 笔记</title>
-    <link>/posts/0201/</link>
-    <pubDate>Tue, 21 Jul 2020 08:57:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0201/</guid>
-    <description><![CDATA[Lesson 1 A private conversation 生词短语用法 🙆‍♂️ pay attension to sb. / sth. May I have your attension，please？ &ndash;&gt; 请注意咯 attract / catch one&rsquo;s attension &ndash;&gt; 吸引某人注意力 none of &ndash;&gt; 都没有 形容词一]]></description>
 </item></channel>
 </rss>
