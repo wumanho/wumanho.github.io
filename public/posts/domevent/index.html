@@ -20,7 +20,7 @@
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/domevent/" /><link rel="prev" href="/posts/0206/" /><link rel="next" href="/posts/ajaxjq/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/domevent/" /><link rel="prev" href="/posts/jsinheritance/" /><link rel="next" href="/posts/ajaxjq/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/domevent\/"
-        },"genre": "posts","keywords": "JavaScript, DOM事件","wordcount":  974 ,
+        },"genre": "posts","keywords": "JavaScript, DOM事件","wordcount":  1146 ,
         "url": "\/posts\/domevent\/","datePublished": "2020-11-08T16:08:51+08:00","dateModified": "2020-11-08T16:08:51+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,8 +76,8 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">DOM 事件与事件委托</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 974 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1146 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="content" id="content"><h2 id="什么是-dom-事件-">什么是 DOM 事件 ❓</h2>
 <p>DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。</p>
 <p>发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继承自 Event 接口的对象，可以包括自定义的成员属性及函数用于获取事件发生时相关的更多信息。JS 与 html 之间的交互是通过事件实现的，DOM 支持大量的事件，列举一些常用的事件：</p>
@@ -156,10 +156,50 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s1">&#39;onclick&#39;</span><span class="p">,</span><span class="nx">fn</span><span class="p">)</span> <span class="c1">// 冒泡
 </span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">fn</span><span class="p">)</span> <span class="c1">//捕获
-</span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">bool</span><span class="p">)</span>  <span class="c1">//如果第三个参数不为true，或者为空，就是冒泡，否则就是捕获
+</span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>  <span class="c1">//冒泡
 </span></code></pre></td></tr></table>
 </div>
 </div><p> </p>
+<h2 id="阻止事件传播-">阻止事件传播 ⛔</h2>
+<p>阻止冒泡是指阻止捕获和冒泡阶段中当前事件的进一步传播。</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#testButton&#34;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)=&gt;{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;测试按钮被点击了&#34;</span><span class="p">)</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span> 
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>⚠️需要注意的是，它不能防止任何默认动作的发生；</p>
+<p> </p>
+<h2 id="阻止默认动作-">阻止默认动作 🚫</h2>
+<p>如果希望阻止一个目标元素的默认动作，可以使用<code>Event</code> 接口的 <code>preventDefault()</code>方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>⚠️不是所有元素都具有默认行为，如果元素不具备默认行为，自然就无法被取消。</p>
+<p> </p>
 <h2 id="事件委托-">事件委托 🤝</h2>
 <p>事件委托简单来说就是将一个元素的响应事件，委托到另一个元素上，为什么需要事件委托？可以想象一下以下场景：</p>
 <ul>
@@ -312,7 +352,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/0206/" class="prev" rel="prev" title="新概念二册-Lesson 6 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 6 笔记</a>
+    <div class="post-nav"><a href="/posts/jsinheritance/" class="prev" rel="prev" title="JavaScript 继承"><i class="fas fa-angle-left fa-fw"></i>JavaScript 继承</a>
             <a href="/posts/ajaxjq/" class="next" rel="next" title="利用 jQuery 发送 AJAX 请求">利用 jQuery 发送 AJAX 请求<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>

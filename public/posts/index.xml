@@ -33,6 +33,13 @@
     <guid>/posts/domevent/</guid>
     <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
 </item><item>
+    <title>JavaScript 继承</title>
+    <link>/posts/jsinheritance/</link>
+    <pubDate>Wed, 26 Aug 2020 15:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsinheritance/</guid>
+    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
+</item><item>
     <title>新概念二册-Lesson 6 笔记</title>
     <link>/posts/0206/</link>
     <pubDate>Mon, 27 Jul 2020 18:59:17 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/0203/</guid>
     <description><![CDATA[Lesson 3 Please send me a card 生词短语用法 😲 be friendly to -&gt; He is friendly to all of us（friendly是名词 + ly，作形容词） lend sb. sth. = lend sth. to sb. lend 借出 / borrow 借入 -&gt; borow sth. from sb. teach sb. sth.]]></description>
-</item><item>
-    <title>新概念二册-Lesson 2 笔记</title>
-    <link>/posts/0202/</link>
-    <pubDate>Wed, 22 Jul 2020 20:30:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0202/</guid>
-    <description><![CDATA[Lesson 2 Breakfast or lunch key structure 🔑 现在进行时： 谓语动词： is/am/are + doing 用法1：表示现在正在进行的事 I am having breakfast now J.K Rowling is writing another book this year 现在进行时可以表示狭义的现在 -&gt; 此时此刻，与]]></description>
 </item></channel>
 </rss>

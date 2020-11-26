@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>JavaScript 继承 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="JavaScript 继承" />
+<meta property="og:description" content="「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/jsinheritance/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-08-26T15:03:57+08:00" />
+<meta property="article:modified_time" content="2020-08-26T15:03:57+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="JavaScript 继承"/>
+<meta name="twitter:description" content="「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/jsinheritance/" /><link rel="prev" href="/posts/0206/" /><link rel="next" href="/posts/domevent/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "JavaScript 继承",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/jsinheritance\/"
+        },"genre": "posts","keywords": "JavaScript","wordcount":  985 ,
+        "url": "\/posts\/jsinheritance\/","datePublished": "2020-08-26T15:03:57+08:00","dateModified": "2020-08-26T15:03:57+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">JavaScript 继承</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-26">2020-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 985 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+        </div><div class="content" id="content"><p>  「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定义继承关系，再创建对象，而是使用了另一种概念： 「原型」和「原型链」实现了类似继承的特性。</p>
+<h2 id="创建构造函数-">创建构造函数 👨‍🔧</h2>
+<p>在 ES6 以前，由于没有<code>class</code>关键字，我们会使用<strong>构造函数</strong>来创建对象。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>小提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">按照规范，构造函数的函数名通常会<em>首字母大写</em></div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//声明一个构造函数，用于创建人类
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">=</span> <span class="nx">firstName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span> <span class="o">=</span> <span class="nx">lastName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getFullName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，我们定义了一个用于构造<code>Person</code>对象的构造函数，包含了私有属性<code>FirstName</code>、<code>LastName</code>以及<strong>共有</strong>的函数<code>getFullName</code>。</p>
+<p> </p>
+<h2 id="创建-person-对象-">创建 Person 对象 🙎‍♂️</h2>
+<p>定义了构造函数之后，我们可以使用 JS 提供的<code>new</code>关键字来创建出 Person 对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">student1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&#34;zhang&#34;</span><span class="p">,</span><span class="s2">&#34;san&#34;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">student2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&#34;li&#34;</span><span class="p">,</span><span class="s2">&#34;si&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>实际上，<code>new</code>关键字在背后偷偷做了几件事：</p>
+<ol>
+<li>自动创建空对象</li>
+<li>自动为空对象关联原型，原型地址指定为 Person.prototype</li>
+<li>将 this 指定为刚刚创建的空对象</li>
+<li>自动 return this</li>
+</ol>
+<p>所以，<em>student1</em>和<em>student2</em>这两个对象的原型都是 Person.prototype ，来证明一下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">student1</span><span class="p">.</span><span class="nx">getFullName</span> <span class="o">===</span> <span class="nx">student2</span><span class="p">.</span><span class="nx">getFullName</span> <span class="c1">//true
+</span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="继承-person-对象-">继承 Person 对象 👨‍🎓</h2>
+<p>现在我们可以考虑一下，有没有办法可以定义一个对象拥有 Person 属性的同时又可以拥有自己的属性，例如 Student 对象，除了姓名外，还有学校，成绩等属性。实现这个过程就叫做「继承」。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Student</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">schoolName</span><span class="p">,</span> <span class="nx">grade</span><span class="p">){</span>
+    <span class="c1">//构造函数绑定，将父类的构造函数绑定在子类上
+</span><span class="c1"></span>    <span class="nx">Person</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span>
+	<span class="c1">//定义子类私有属性
+</span><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">SchoolName</span> <span class="o">=</span> <span class="nx">schoolName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">Grade</span> <span class="o">=</span> <span class="nx">grade</span> <span class="o">||</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="c1">//Student.prototype = Person.prototype
+</span><span class="c1"></span><span class="nx">Student</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">()</span>
+<span class="nx">Student</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">Student</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这种继承方式一般叫做「组合继承」，即通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现了函数复用。</p>
+<p>创建对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">student1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;zhang&#34;</span><span class="p">,</span><span class="s2">&#34;san&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;100&#34;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">student2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;li&#34;</span><span class="p">,</span><span class="s2">&#34;si&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;60&#34;</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">())</span> <span class="c1">//zhangsan
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Student</span><span class="p">)</span> <span class="c1">//true
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Person</span><span class="p">)</span> <span class="c1">//true
+</span></code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="es6-面向对象-">ES6 面向对象 👼</h2>
+<p>在 ES6 之后，JavaScript 引入了<code>class</code>和<code>extends</code>关键字，变得跟 Java 更像了😵，使用这两个关键字可以更加简洁地用 JavaScript 实现类的定义和继承，不过这仅仅是一个<code>语法糖</code>，JavaScript 的面向对象今天依然是基于 Prototype 实现的。</p>
+<h3 id="定义-person-类">定义 Person 类</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Person</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">=</span> <span class="nx">firstName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span> <span class="o">=</span> <span class="nx">lastName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+  <span class="p">}</span>
+    <span class="nx">getFullName</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="继承-person-类">继承 Person 类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Student</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">,</span> <span class="nx">schoolName</span><span class="p">,</span> <span class="nx">grade</span><span class="p">)</span> <span class="p">{</span>
+    	<span class="kr">super</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span>
+    	<span class="k">this</span><span class="p">.</span><span class="nx">schoolName</span> <span class="o">=</span> <span class="nx">schoolName</span>
+    	<span class="k">this</span><span class="p">.</span><span class="nx">grade</span> <span class="o">=</span> <span class="nx">grade</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建 Student 对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">student1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;zhang&#34;</span><span class="p">,</span><span class="s2">&#34;san&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;100&#34;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nx">student2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;li&#34;</span><span class="p">,</span><span class="s2">&#34;si&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;60&#34;</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">())</span> <span class="c1">//zhangsan
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Student</span><span class="p">)</span> <span class="c1">//true
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Person</span><span class="p">)</span> <span class="c1">//true
+</span></code></pre></td></tr></table>
+</div>
+</div><p>结果跟使用原型链实现的继承是一样的。</p>
+<p> </p>
+<p>（完）</p>
+<p> </p>
+<h3 id="参考">参考</h3>
+<p><a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener noreffer">JavaScript 继承机制的设计思想 - 阮一峰</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-08-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/0206/" class="prev" rel="prev" title="新概念二册-Lesson 6 笔记"><i class="fas fa-angle-left fa-fw"></i>新概念二册-Lesson 6 笔记</a>
+            <a href="/posts/domevent/" class="next" rel="next" title="DOM 事件与事件委托">DOM 事件与事件委托<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

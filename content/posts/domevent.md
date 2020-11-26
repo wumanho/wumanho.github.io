@@ -1,4 +1,5 @@
 ---
+
 title: "DOM 事件与事件委托"
 date: 2020-11-08T16:08:51+08:00
 draft: false
@@ -47,8 +48,43 @@ DOM 事件模型分为两种，一种是捕获，一种是冒泡，至于为什�
 ```javascript
 .attachEvent('onclick',fn) // 冒泡
 .addEventListener('click',fn) //捕获
-.addEventListener('click', fn, bool)  //如果第三个参数不为true，或者为空，就是冒泡，否则就是捕获
+.addEventListener('click', fn, false)  //冒泡
 ```
+
+&nbsp;
+
+## 阻止事件传播 :no_entry:
+
+阻止冒泡是指阻止捕获和冒泡阶段中当前事件的进一步传播。
+
+语法：
+
+```javascript
+event.stopPropagation(); 
+```
+
+示例：
+
+```javascript
+document.querySelector("#testButton").addEventListener("click", (event)=>{
+    console.log("测试按钮被点击了")
+    event.stopPropagation(); 
+})
+```
+
+:warning:需要注意的是，它不能防止任何默认动作的发生；
+
+&nbsp;
+
+## 阻止默认动作 :no_entry_sign:
+
+如果希望阻止一个目标元素的默认动作，可以使用`Event` 接口的 `preventDefault()`方法：
+
+```javascript
+event.preventDefault();
+```
+
+:warning:不是所有元素都具有默认行为，如果元素不具备默认行为，自然就无法被取消。
 
 &nbsp;
 
