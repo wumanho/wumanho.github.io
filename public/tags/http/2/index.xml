@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HTTP/2 - 标签 - OK Computer</title>
+        <link>/tags/http/2/</link>
+        <description>HTTP/2 - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><atom:link href="/tags/http/2/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 HTTP/2 为网站提速</title>
+    <link>/posts/introductiontohttp2/</link>
+    <pubDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/introductiontohttp2/</guid>
+    <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
+</item></channel>
+</rss>

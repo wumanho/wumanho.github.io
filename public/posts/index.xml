@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 29 Nov 2020 23:04:35 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 HTTP/2 为网站提速</title>
+    <link>/posts/introductiontohttp2/</link>
+    <pubDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/introductiontohttp2/</guid>
+    <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
+</item><item>
     <title>假假條 x 梅卡德尔</title>
     <link>/posts/show1129/</link>
     <pubDate>Sun, 29 Nov 2020 23:04:35 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/jq01/</guid>
     <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
-</item><item>
-    <title>新概念二册-Lesson 4 笔记</title>
-    <link>/posts/0204/</link>
-    <pubDate>Fri, 24 Jul 2020 13:37:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0204/</guid>
-    <description><![CDATA[Lesson 4 An exciting trip 生词短语用法 🧀 in the center of &hellip; 在 ..中心 have been in Guangzhou for three years 一直在广州三年了 a great/large number of &hellip; 许多 大量（可数名词） abroad是副词，所以go to abr]]></description>
 </item></channel>
 </rss>
