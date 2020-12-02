@@ -39,33 +39,5 @@
     <author>作者</author>
     <guid>/posts/jq01/</guid>
     <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
-</item><item>
-    <title>JavaScript 函数的执行时机</title>
-    <link>/posts/jsfunctiontiming/</link>
-    <pubDate>Thu, 16 Apr 2020 11:59:41 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsfunctiontiming/</guid>
-    <description><![CDATA[解释为什么如下代码会打印 6 个 6 1 2 3 4 5 6 let i = 0 for(i = 0; i&lt;6; i++){ setTimeout(()=&gt;{ console.log(i) },0) } setTimeout 函数的主要用于在一段时间之后，执行相应的延迟操作，且只会运行一次，不会]]></description>
-</item><item>
-    <title>JavaScript 对象基本用法</title>
-    <link>/posts/jsobject/</link>
-    <pubDate>Mon, 13 Apr 2020 11:42:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsobject/</guid>
-    <description><![CDATA[如何声明一个对象 方法一： 1 let obj = {&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18} 方法二： 1 let obj = new Object({&#39;name&#39;:&#39;wu&#39;,&#39;age&#39;:18}) 如何删除对象的属性 使用 delete 关键字即可删除对象属性 1 2 3 4 5 6 7 let obj = { name:&#34;wumanho&#34; } delete obj.name //删除o]]></description>
-</item><item>
-    <title>JS 基本语法</title>
-    <link>/posts/jssyntax/</link>
-    <pubDate>Sat, 11 Apr 2020 15:47:04 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jssyntax/</guid>
-    <description><![CDATA[什么是表达式和语句 表达式 表达式一般都会有“值”，例如： 表达式 1 + 2 的值为3 表达式add(1,2)的值为函数add的返回值 console.log 表达式的值为函数本]]></description>
-</item><item>
-    <title>JavaScript 的诞生</title>
-    <link>/posts/jshistory/</link>
-    <pubDate>Sun, 05 Apr 2020 22:49:40 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jshistory/</guid>
-    <description><![CDATA[JavaScript 简介 JavaScript 简称&quot;JS&rdquo;，是一种高级的、解析型的编程语言。JavaScript是一门基于原型、函数先行的语言，它支持面向对]]></description>
 </item></channel>
 </rss>

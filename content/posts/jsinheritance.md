@@ -95,16 +95,16 @@ console.log(student1 instanceof Person) //true
 ```javascript
 class Person{
     constructor(firstName, lastName) {
-    this.FirstName = firstName || "unknown"
-    this.LastName = lastName || "unknown"
+    this.firstName = firstName || "unknown"
+    this.lastName = lastName || "unknown"
   }
     getFullName(){
-        return this.FirstName + " " + this.LastName
+        return this.firstName + " " + this.lastName
     }
 }
 ```
 
-## 继承 Person 类
+### 继承 Person 类
 
 ```javascript
 class Student extends Person{
@@ -113,6 +113,9 @@ class Student extends Person{
     	this.schoolName = schoolName
     	this.grade = grade
   }
+    getFullName(){
+        return this.firstName + " " + this.lastName + " " + this.schoolName + " " + this.grade
+    }
 }
 ```
 
@@ -122,7 +125,7 @@ class Student extends Person{
 let student1 = new Student("zhang","san","MIT","100")
 let student2 = new Student("li","si","MIT","60")
 
-console.log(student1.getFullName()) //zhangsan
+console.log(student1.getFullName()) //zhang san MIT 100
 console.log(student1 instanceof Student) //true
 console.log(student1 instanceof Person) //true
 ```

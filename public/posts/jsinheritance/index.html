@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/jsinheritance\/"
-        },"genre": "posts","keywords": "JavaScript","wordcount":  985 ,
+        },"genre": "posts","keywords": "JavaScript","wordcount":  1010 ,
         "url": "\/posts\/jsinheritance\/","datePublished": "2020-08-26T15:03:57+08:00","dateModified": "2020-08-26T15:03:57+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,8 +76,8 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">JavaScript 继承</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-26">2020-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 985 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-26">2020-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1010 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="content" id="content"><p>  「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定义继承关系，再创建对象，而是使用了另一种概念： 「原型」和「原型链」实现了类似继承的特性。</p>
 <h2 id="创建构造函数-">创建构造函数 👨‍🔧</h2>
 <p>在 ES6 以前，由于没有<code>class</code>关键字，我们会使用<strong>构造函数</strong>来创建对象。</p>
@@ -211,25 +211,28 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Person</span><span class="p">{</span>
     <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">=</span> <span class="nx">firstName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span> <span class="o">=</span> <span class="nx">lastName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span> <span class="o">||</span> <span class="s2">&#34;unknown&#34;</span>
   <span class="p">}</span>
     <span class="nx">getFullName</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">FirstName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">LastName</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="继承-person-类">继承 Person 类</h2>
+</div><h3 id="继承-person-类">继承 Person 类</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Student</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
@@ -238,6 +241,9 @@
     	<span class="k">this</span><span class="p">.</span><span class="nx">schoolName</span> <span class="o">=</span> <span class="nx">schoolName</span>
     	<span class="k">this</span><span class="p">.</span><span class="nx">grade</span> <span class="o">=</span> <span class="nx">grade</span>
   <span class="p">}</span>
+    <span class="nx">getFullName</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">schoolName</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">grade</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -255,7 +261,7 @@
 <pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">student1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;zhang&#34;</span><span class="p">,</span><span class="s2">&#34;san&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;100&#34;</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nx">student2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Student</span><span class="p">(</span><span class="s2">&#34;li&#34;</span><span class="p">,</span><span class="s2">&#34;si&#34;</span><span class="p">,</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span><span class="s2">&#34;60&#34;</span><span class="p">)</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">())</span> <span class="c1">//zhangsan
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">())</span> <span class="c1">//zhang san MIT 100
 </span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Student</span><span class="p">)</span> <span class="c1">//true
 </span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">student1</span> <span class="k">instanceof</span> <span class="nx">Person</span><span class="p">)</span> <span class="c1">//true
 </span></code></pre></td></tr></table>
