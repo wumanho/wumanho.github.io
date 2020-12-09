@@ -19,6 +19,20 @@
     <guid>/tags/%E6%A2%85%E5%8D%A1%E5%BE%B7%E5%B0%94/</guid>
     <description><![CDATA[]]></description>
 </item><item>
+    <title>bash</title>
+    <link>/tags/bash/</link>
+    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/bash/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>ssh</title>
+    <link>/tags/ssh/</link>
+    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/ssh/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>OK Computer</title>
     <link>/tags/ok-computer/</link>
     <pubDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</pubDate>
@@ -59,20 +73,6 @@
     <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/tags/jquery/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>DOM事件</title>
-    <link>/tags/dom%E4%BA%8B%E4%BB%B6/</link>
-    <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/dom%E4%BA%8B%E4%BB%B6/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>冠词</title>
-    <link>/tags/%E5%86%A0%E8%AF%8D/</link>
-    <pubDate>Mon, 27 Jul 2020 18:59:17 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/%E5%86%A0%E8%AF%8D/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

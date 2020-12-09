@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ssh - 标签 - OK Computer</title>
+        <link>/tags/ssh/</link>
+        <description>ssh - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</lastBuildDate><atom:link href="/tags/ssh/" rel="self" type="application/rss+xml" /><item>
+    <title>命令行的本质和四要素（一）</title>
+    <link>/posts/cmd/</link>
+    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cmd/</guid>
+    <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
+</item></channel>
+</rss>

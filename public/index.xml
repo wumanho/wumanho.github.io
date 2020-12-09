@@ -21,6 +21,13 @@
     <guid>/posts/show1129/</guid>
     <description><![CDATA[昨晚在 B10 看了假假條和梅卡的演出，假假條几位大哥飞机故障导致延迟开场把我们晾在门外面一个多小时，冷的人都快没了，积攒了不少怒气在后面全部发泄出]]></description>
 </item><item>
+    <title>命令行的本质和四要素（一）</title>
+    <link>/posts/cmd/</link>
+    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cmd/</guid>
+    <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
+</item><item>
     <title>Radiohead - The Tourist 歌词翻译</title>
     <link>/posts/thetourist/</link>
     <pubDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</pubDate>
@@ -56,11 +63,11 @@
     <guid>/posts/jsinheritance/</guid>
     <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
 </item><item>
-    <title>新概念二册-Lesson 6 笔记</title>
-    <link>/posts/0206/</link>
+    <title>新概念二册-Lesson 6~10 笔记</title>
+    <link>/posts/0206to0210/</link>
     <pubDate>Mon, 27 Jul 2020 18:59:17 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/0206/</guid>
+    <guid>/posts/0206to0210/</guid>
     <description><![CDATA[Lesson 6 Percy Buttons 生词短语用法 🚀 call on sb. / call at sp. 拜访人用call on，光顾某个地方用call at 可以用visit sb./sp. 代替 ask for &hellip; 寻求 -&gt; He asked me for a meal In return for &hellip; 作为]]></description>
 </item><item>
     <title>新概念二册-Lesson 1~5 笔记</title>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>/posts/0201to0205/</guid>
     <description><![CDATA[Lesson 1 A private conversation 生词短语用法 🙆‍♂️ pay attension to sb. / sth. May I have your attension，please？ &ndash;&gt; 请注意咯 attract / catch one&rsquo;s attension &ndash;&gt; 吸引某人注意力 none of &ndash;&gt; 都没有 形容词一]]></description>
-</item><item>
-    <title>jQuery 使用和设计简介</title>
-    <link>/posts/jq01/</link>
-    <pubDate>Sat, 25 Jul 2020 20:20:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
 </item></channel>
 </rss>

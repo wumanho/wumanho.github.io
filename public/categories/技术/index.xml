@@ -12,6 +12,13 @@
     <guid>/posts/introductiontohttp2/</guid>
     <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
 </item><item>
+    <title>命令行的本质和四要素（一）</title>
+    <link>/posts/cmd/</link>
+    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cmd/</guid>
+    <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
+</item><item>
     <title>用 Node.js 写一个简易静态服务器</title>
     <link>/posts/nodesimpleserver/</link>
     <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
