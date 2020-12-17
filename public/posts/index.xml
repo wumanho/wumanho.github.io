@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>前端 MVC</title>
+    <link>/posts/mvcintro/</link>
+    <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/mvcintro/</guid>
+    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
+</item><item>
     <title>利用 HTTP/2 为网站提速</title>
     <link>/posts/introductiontohttp2/</link>
     <pubDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/0206to0210/</guid>
     <description><![CDATA[Lesson 6 Percy Buttons 生词短语用法 🚀 call on sb. / call at sp. 拜访人用call on，光顾某个地方用call at 可以用visit sb./sp. 代替 ask for &hellip; 寻求 -&gt; He asked me for a meal In return for &hellip; 作为]]></description>
-</item><item>
-    <title>新概念二册-Lesson 1~5 笔记</title>
-    <link>/posts/0201to0205/</link>
-    <pubDate>Sun, 26 Jul 2020 12:40:38 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0201to0205/</guid>
-    <description><![CDATA[Lesson 1 A private conversation 生词短语用法 🙆‍♂️ pay attension to sb. / sth. May I have your attension，please？ &ndash;&gt; 请注意咯 attract / catch one&rsquo;s attension &ndash;&gt; 吸引某人注意力 none of &ndash;&gt; 都没有 形容词一]]></description>
 </item></channel>
 </rss>

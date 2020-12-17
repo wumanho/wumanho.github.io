@@ -47,8 +47,9 @@ DOM 事件模型分为两种，一种是捕获，一种是冒泡，至于为什�
 
 ```javascript
 .attachEvent('onclick',fn) // 冒泡
-.addEventListener('click',fn) //捕获
+.addEventListener('click',fn) //冒泡
 .addEventListener('click', fn, false)  //冒泡
+.addEventListener('click', fn, true)  //捕获
 ```
 
 &nbsp;

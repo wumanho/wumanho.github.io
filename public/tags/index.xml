@@ -4,7 +4,21 @@
         <link>/tags/</link>
         <description>Tags - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 29 Nov 2020 23:04:35 &#43;0800</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</lastBuildDate><atom:link href="/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript</title>
+    <link>/tags/javascript/</link>
+    <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/javascript/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>MVC</title>
+    <link>/tags/mvc/</link>
+    <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/tags/mvc/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>假假條</title>
     <link>/tags/%E5%81%87%E5%81%87%E6%A2%9D/</link>
     <pubDate>Sun, 29 Nov 2020 23:04:35 &#43;0800</pubDate>
@@ -47,13 +61,6 @@
     <guid>/tags/radiohead/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>JavaScript</title>
-    <link>/tags/javascript/</link>
-    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/javascript/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>Node.js</title>
     <link>/tags/node.js/</link>
     <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/tags/ajax/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>jQuery</title>
-    <link>/tags/jquery/</link>
-    <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/tags/jquery/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

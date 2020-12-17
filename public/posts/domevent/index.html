@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/domevent\/"
-        },"genre": "posts","keywords": "JavaScript, DOM事件","wordcount":  1146 ,
+        },"genre": "posts","keywords": "JavaScript, DOM事件","wordcount":  1154 ,
         "url": "\/posts\/domevent\/","datePublished": "2020-11-08T16:08:51+08:00","dateModified": "2020-11-08T16:08:51+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,7 +76,7 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">DOM 事件与事件委托</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1146 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-08">2020-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1154 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="content" id="content"><h2 id="什么是-dom-事件-">什么是 DOM 事件 ❓</h2>
 <p>DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。</p>
@@ -152,11 +152,13 @@
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s1">&#39;onclick&#39;</span><span class="p">,</span><span class="nx">fn</span><span class="p">)</span> <span class="c1">// 冒泡
-</span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">fn</span><span class="p">)</span> <span class="c1">//捕获
+</span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="nx">fn</span><span class="p">)</span> <span class="c1">//冒泡
 </span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>  <span class="c1">//冒泡
+</span><span class="c1"></span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>  <span class="c1">//捕获
 </span></code></pre></td></tr></table>
 </div>
 </div><p> </p>

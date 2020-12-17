@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>前端 MVC - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="前端 MVC" />
+<meta property="og:description" content="前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/mvcintro/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-12-17T17:19:01+08:00" />
+<meta property="article:modified_time" content="2020-12-17T17:19:01+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="前端 MVC"/>
+<meta name="twitter:description" content="前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/mvcintro/" /><link rel="prev" href="/posts/introductiontohttp2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端 MVC",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/mvcintro\/"
+        },"genre": "posts","keywords": "JavaScript, MVC","wordcount":  1420 ,
+        "url": "\/posts\/mvcintro\/","datePublished": "2020-12-17T17:19:01+08:00","dateModified": "2020-12-17T17:19:01+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">前端 MVC</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-17">2020-12-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1420 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="content" id="content"><p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>
+<p>由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发中借鉴而来的思想，彻底改变了前端领域在初期时那种不受约束的意大利面条式代码组织方式，同时为前端带来了更多的模块化的思想。</p>
+<p>随着前端领域的发展，如今已经延申出许多如「MVP」、「MVVM」等其他类似的概念，不过本篇博客还是着重于介绍最经典的 MVC 模式。</p>
+<p> </p>
+<h2 id="model-模型层-">Model 模型层 💃</h2>
+<p><strong>It simply means data</strong>.</p>
+<p>实际上任何与<strong>数据</strong>相关的对象或者数据结构都可以封装到 Model ，除此之外，对于数据的增删改查或其他用于操作数据的方法也将会被封装到 Model  里面。</p>
+<p>以下示例演示了一个最简单的 model 模型，他包含了数据本身和对数据的增删改查操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">//数据对象
+</span><span class="c1"></span>    <span class="nx">data</span><span class="o">:</span><span class="p">{</span>
+        <span class="cm">/*从数据源获取数据*/</span>
+    <span class="p">},</span>
+    
+    <span class="c1">//操作数据的方法
+</span><span class="c1"></span>    <span class="nx">create</span><span class="p">(){</span>
+        <span class="cm">/*对数据的增加操作*/</span>
+    <span class="p">},</span>
+    <span class="k">delete</span><span class="p">(){</span>
+        <span class="cm">/*对数据的删除操作*/</span>
+    <span class="p">},</span>
+    <span class="nx">update</span><span class="p">(){</span>
+        <span class="cm">/*对数据的修改操作*/</span>
+    <span class="p">},</span>
+    <span class="nx">query</span><span class="p">(){</span>
+        <span class="cm">/*对数据的查询操作*/</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="view-视图层-">View 视图层 📺</h2>
+<p>顾名思义，视图层是 MVC 三层中用于被展示图到用户屏幕的一部分，视图层的数据来源于 model 当模型的数据发生变化，视图将会刷新自己。</p>
+<p>以下示例展示了一个最基础的视图层对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="cm">/*页面内容*/</span><span class="p">,</span>
+    
+    <span class="nx">render</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="cm">/*获取数据，并刷新页面的操作*/</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="controller-控制器-">Controller 控制器 🎮</h2>
+<p>Controller 通常扮演着视图层和模型层的纽带这么一种角色，所以通常来说例如全局的初始化以及与事件相关的操作等等都是写在 Controller 中的。</p>
+<p>不过由于 Controller 与 View 有着密不可分的关系，例如 Controller 执行全局初始化的时候，可能需要先从 View 中获取某些元素，必须先拿到这些元素，才能执行全局初始化，所以后来 View 和 Controller 有时候会被合并，因此 MVC 中的「C」是一个值得讨论的问题。</p>
+<p>以下示例展示了一个最基础的控制器对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">Controller</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">init</span><span class="p">(){</span>
+        <span class="cm">/*执行初始化操作*/</span>
+        <span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">view</span><span class="p">,</span><span class="nx">model</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="c1">//第一次渲染页面
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">autoBindEvents</span><span class="p">()</span> 			  <span class="c1">//自动绑定事件
+</span><span class="c1"></span>        <span class="nx">eventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="cm">/*监听传递事件*/</span><span class="p">)</span>     <span class="c1">//很多时候需要使用 eventBus 处理一些组件间传递的事件
+</span><span class="c1"></span>    <span class="p">},</span>
+    <span class="nx">method</span><span class="p">(){</span>
+        <span class="cm">/*事件操作*/</span>
+    <span class="p">},</span>
+    <span class="nx">autoBindEvents</span><span class="p">(){</span>
+        <span class="cm">/*事件绑定*/</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h3 id="eventbus-事件总线-">eventBus 事件总线 🚌</h3>
+<p>说到这里顺便提一下事件总线<code>eventBus</code>，它主要被用于解决模块以及组件之间通信的问题，例如当某一个数据被修改时，可能涉及到其他多处信息的展示更新，这时候如果每一次都要重复这种调用就会让代码显得繁琐而且不可靠，所以利用<code>eventBus</code>承担起一个事件中心的角色。</p>
+<p>一般来说<code>eventBus</code>只需要包含几个关键的 API：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">on</span><span class="p">()</span>        <span class="c1">//用于事件订阅
+</span><span class="c1"></span><span class="nx">trigger</span><span class="p">()</span>   <span class="c1">//用于事件发布
+</span><span class="c1"></span><span class="nx">off</span><span class="p">()</span>       <span class="c1">//用于取消事件订阅
+</span></code></pre></td></tr></table>
+</div>
+</div><p>实际上 jquery 和 vue 中所构建的对象都包含以上三个方法，所以如果想要初始化一个事件总线，其实只要创建一个全局变量，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">eventBus</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>小提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">用于事件发布的 API，在 jquery 对象中称为 <em>trigger</em>，而在 vue 对象中则称为 <em>$emit</em></div>
+        </div>
+    </div>
+<p>然后就可以利用这个全局变量的三个 API <code>on()</code>，<code>trigger()</code>，<code>off()</code>来进行事件传递了。</p>
+<p> </p>
+<h2 id="关于模块化-">关于模块化 🎤</h2>
+<p>JavaScript 和其他常见的高级语言不同，JS 在设计初期是没有考虑到包、模块这种概念的，不过随着前端项目的复杂度增加，前端开发者必然需要通过一些手段来组织代码。</p>
+<p>这些手段就是模块化，其实模块化可以简单理解为对于复杂代码的隔离、封装等操作。</p>
+<p>其实 MVC 就是模块化的体现之一，MVC 将一个页面上的不同部分分离，降低代码耦合度，减少重复代码，提高代码重用性，并且在项目结构上更加清晰，便于维护。</p>
+<p>其实在 JavaScript 中还有很多其他对模块化的体现，例如：<code>CommonJS</code>、<code>AMD</code>,<code>CMD</code>，还有 ES6 的 <code>import/export</code>等。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-12-17</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a>,&nbsp;<a href="/tags/mvc/">MVC</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/introductiontohttp2/" class="prev" rel="prev" title="利用 HTTP/2 为网站提速"><i class="fas fa-angle-left fa-fw"></i>利用 HTTP/2 为网站提速</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

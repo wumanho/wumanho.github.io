@@ -4,7 +4,14 @@
         <link>/tags/javascript/</link>
         <description>JavaScript - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>前端 MVC</title>
+    <link>/posts/mvcintro/</link>
+    <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/mvcintro/</guid>
+    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
+</item><item>
     <title>用 Node.js 写一个简易静态服务器</title>
     <link>/posts/nodesimpleserver/</link>
     <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
