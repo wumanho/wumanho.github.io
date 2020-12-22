@@ -4,9 +4,16 @@
         <link>/</link>
         <description>WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</lastBuildDate>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>ElasticSearch 内存占用百分比问题</title>
+    <link>/posts/esmem/</link>
+    <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/esmem/</guid>
+    <description><![CDATA[由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号]]></description>
+</item><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
@@ -20,13 +27,6 @@
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
     <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
-</item><item>
-    <title>假假條 x 梅卡德尔</title>
-    <link>/posts/show1129/</link>
-    <pubDate>Sun, 29 Nov 2020 23:04:35 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/show1129/</guid>
-    <description><![CDATA[昨晚在 B10 看了假假條和梅卡的演出，假假條几位大哥飞机故障导致延迟开场把我们晾在门外面一个多小时，冷的人都快没了，积攒了不少怒气在后面全部发泄出]]></description>
 </item><item>
     <title>命令行的本质和四要素（一）</title>
     <link>/posts/cmd/</link>
