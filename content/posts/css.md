@@ -20,7 +20,7 @@ CSSOM树通过解析CSS产生。
 
 Render树则是由DOM树和CSSOM树合并而成。  
 
-![tree](/images/render-tree-construction.png)
+![tree](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/render-tree-construction.png)
 
 ## 布局与绘制
 当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。通常这一行为也被称为“自动重排”。  
@@ -44,7 +44,7 @@ div.remove(); //删除节点
 ```
 
 更新方式共有三种，根据更新样式的不同，触发不同的更新方式：  
-![update](/images/treeupdate.png)    
+![update](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/treeupdate.png)    
 <br/><br/>
 
 # CSS 动画的两种做法

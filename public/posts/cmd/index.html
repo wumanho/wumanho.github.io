@@ -85,10 +85,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/cmd/shell.png"
-        data-srcset="/images/cmd/shell.png, /images/cmd/shell.png 1.5x, /images/cmd/shell.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png 2x"
         data-sizes="auto"
-        alt="/images/cmd/shell.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png"
         title="shell示意图" /></p>
 <p> </p>
 <h2 id="命令行的本质-">命令行的本质 🤔</h2>
@@ -97,10 +97,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/cmd/proc.png"
-        data-srcset="/images/cmd/proc.png, /images/cmd/proc.png 1.5x, /images/cmd/proc.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png 2x"
         data-sizes="auto"
-        alt="/images/cmd/proc.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png"
         title="init示意图" /></p>
 <p>SSHD 的 「D」是 Daemon 的意思，在计算机领域常用于表示一个<strong>后台进程</strong>，类似的还有「firewalld」等。</p>
 <p>SSHD 进程默认监听 22 端口，监听端口可以通过修改 /etc/ssh/sshd_config 配置文件指定，一旦有远程设备发起对 22 端口的请求，验证通过之后，SSHD 就会 fork 出来一个新的进程，该新进程名字就叫做 bash（或者其他 Shell）。</p>
@@ -109,10 +109,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/cmd/pstree.png"
-        data-srcset="/images/cmd/pstree.png, /images/cmd/pstree.png 1.5x, /images/cmd/pstree.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png 2x"
         data-sizes="auto"
-        alt="/images/cmd/pstree.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png"
         title="pstree命令" /></p>
 <p>图中可以看到，bash 是 SSHD fork 出来的子进程，而当我执行 pstree 命令之后，bash 又 fork 出来一个 pstree 进程。</p>
 <p> </p>
@@ -179,11 +179,11 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/cmd/path.png"
-        data-srcset="/images/cmd/path.png, /images/cmd/path.png 1.5x, /images/cmd/path.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png 2x"
         data-sizes="auto"
-        alt="/images/cmd/path.png"
-        title="/images/cmd/path.png" /></p>
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png"
+        title="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png" /></p>
 <p>如上图所示，当我执行<code>mvn</code>命令时，系统提示「找不到命令」错误，但我输入<code>docker</code>的时候，就可以正确执行，这其实就是 Shell 根据查找机制没有找到 mvn 命令导致的。</p>
 <p>当用户输入一个非内置命令时，当前的 Shell 就会开始尝试找到这个命令的位置，它会去哪里找呢？</p>
 <p>默认情况下，它会去 <code>$PATH</code>环境变量定义的路径中找：</p>

@@ -89,10 +89,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/http2/http01.png"
-        data-srcset="/images/http2/http01.png, /images/http2/http01.png 1.5x, /images/http2/http01.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png 2x"
         data-sizes="auto"
-        alt="/images/http2/http01.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png"
         title="HTTP/1.1 通信过程" /></p>
 <p> </p>
 <p>由于 TCP 是全双工的工作模式，意味着收发可以同时进行，但是 HTTP/1.x 却是半双工的，也就是说接受和发送只能同时做一个，协议要么是发送状态，要么是接受状态，可以说 HTTP 是对 TCP 传输能力的一种浪费。</p>
@@ -110,10 +110,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/http2/http02.png"
-        data-srcset="/images/http2/http02.png, /images/http2/http02.png 1.5x, /images/http2/http02.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png 2x"
         data-sizes="auto"
-        alt="/images/http2/http02.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png"
         title="HTTP2 编码" /></p>
 <p>从上图可以看到，与 HTTP/1.x 使用纯文本编码不同，HTTP/2 将所有传输的信息分割为更小的消息和帧，一个 POST 请求，请求行、请求头等内容被分割到 <em>HEADERS</em> 帧，而请求体内容则被分割到  <em>DATA</em> 帧，并采用<strong>二进制格式</strong>对它们编码，这也是实现多路复用的关键。</p>
 <h3 id="多路复用">多路复用</h3>
@@ -126,10 +126,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/http2/http03.png"
-        data-srcset="/images/http2/http03.png, /images/http2/http03.png 1.5x, /images/http2/http03.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png 2x"
         data-sizes="auto"
-        alt="/images/http2/http03.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png"
         title="数据交换方式" /></p>
 <p>上图可以看到，一个 TCP 连接（Connection）是一条双向的运输通道，一个连接可以包含多个<strong>流</strong>，每个流包含了一端向另一端发送的<strong>消息</strong>，每个消息又被拆分成了几个<strong>帧</strong>，这些消息被发送出去之后，同一个流的帧会在另一端被重新组合，还原成一个完整的 HTTP 请求或响应。</p>
 <p>这就是为什么说利用二进制而非文本的方式传输，是性能提升的关键。</p>
@@ -138,11 +138,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/http2/http04.png"
-        data-srcset="/images/http2/http04.png, /images/http2/http04.png 1.5x, /images/http2/http04.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png 2x"
         data-sizes="auto"
-        alt="/images/http2/http04.png"
-        title="/images/http2/http04.png" /></p>
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png"
+        title="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png" /></p>
 <p>关于 HTTP/2 的更多新特性，请参考：<a href="https://developers.google.com/web/fundamentals/performance/http2" target="_blank" rel="noopener noreffer">Google Developers HTTP/2 简介</a></p>
 <p> </p>
 <h2 id="为服务器启用-http2">为服务器启用 HTTP/2</h2>
@@ -171,10 +171,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/http2/http05.png"
-        data-srcset="/images/http2/http05.png, /images/http2/http05.png 1.5x, /images/http2/http05.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png 2x"
         data-sizes="auto"
-        alt="/images/http2/http05.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png"
         title="效果图" /></p>
 <p> </p>
 <p>（完）</p>

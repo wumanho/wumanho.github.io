@@ -8,7 +8,7 @@ tags: ["JavaScript","Node.js"]
 
 Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Google Chrome 的内核），这意味着 Node.js 拥有足够优秀的的性能。  
 
-![logo](/images/nodejslogo.png)
+![logo](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/nodejslogo.png)
 
 &nbsp;
 

@@ -37,7 +37,7 @@ DOM 事件模型分为两种，一种是捕获，一种是冒泡，至于为什�
 2. 目标阶段：真正的目标节点正在处理事件的阶段；
 3. 冒泡阶段：事件从目标节点由下往上向 document 对象传播的阶段；（微软提出）
 
-![示意图](/images/event.png)
+![示意图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/event.png)
 
 &nbsp;
 

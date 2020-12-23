@@ -84,20 +84,20 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/rampercent.png"
-        data-srcset="/images/ES/rampercent.png, /images/ES/rampercent.png 1.5x, /images/ES/rampercent.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png 2x"
         data-sizes="auto"
-        alt="/images/ES/rampercent.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png"
         title="kibana结果" /></p>
 <p>有两个节点甚至到了 100%，而根据官方文档显示，该列的值所表示的意思是<strong>该ES实例所在的物理主机的内存使用率</strong>。</p>
 <p>但是通过 zabbix 查看服务器状态却截然不同，实际上物理主机的内存可用百分比还有很多。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/zabbix.png"
-        data-srcset="/images/ES/zabbix.png, /images/ES/zabbix.png 1.5x, /images/ES/zabbix.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png 2x"
         data-sizes="auto"
-        alt="/images/ES/zabbix.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png"
         title="zabbix结果" /></p>
 <p>这就跟官方文档的说法造成了一些冲突，到底谁才是正确的呢？</p>
 <p> </p>
@@ -106,20 +106,20 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/stackoverflow.png"
-        data-srcset="/images/ES/stackoverflow.png, /images/ES/stackoverflow.png 1.5x, /images/ES/stackoverflow.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png 2x"
         data-sizes="auto"
-        alt="/images/ES/stackoverflow.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png"
         title="stackoverflow提问" /></p>
 <p>他的问题是：关于 ES 内存占用的疑惑。他说明明只分配了 30G 给 ES 实例，为什么会显示我使用了 200G 的内存？</p>
 <p>显然提问者不知道到他指定的<code>-Xms</code>和<code>-Xmx</code>是为 JVM 指定堆内存的参数，并不是指所有内存，下面的回答也指出了，而且还补充了一点，就是关于 Lucene（ES 底层搜索库）会通过占用操作系统的内存来为 Lucene 的索引做缓存加速，<a href="https://www.elastic.co/guide/en/elasticsearch/guide/2.x/heap-sizing.html#_give_less_than_half_your_memory_to_lucene" target="_blank" rel="noopener noreffer">官方文档</a>对此也有详细说明。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/guanwang.png"
-        data-srcset="/images/ES/guanwang.png, /images/ES/guanwang.png 1.5x, /images/ES/guanwang.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png 2x"
         data-sizes="auto"
-        alt="/images/ES/guanwang.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png"
         title="官网截图" /></p>
 <p>可以看到，ES 社区表示<strong>务必</strong>要预留足够大的内存给 Lucene 作为缓存使用，不要将物理主机的所有内存都分配给 ES JVM 实例使用，不然会大大影响性能。</p>
 <p>但是，直到这里，我们的疑问还是没有得到解决，为什么明明 ES 提示占用了这么多内存，我们在 zabbix 上还看到这么多剩余的可用内存？</p>
@@ -131,28 +131,28 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/atemyram.png"
-        data-srcset="/images/ES/atemyram.png, /images/ES/atemyram.png 1.5x, /images/ES/atemyram.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png 2x"
         data-sizes="auto"
-        alt="/images/ES/atemyram.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png"
         title="Linux吃了我的内存" /></p>
 <p>这篇文章很清晰地说明了，Linux 的磁盘缓存可以让操作系统更快地相应，而且没有缺点，<strong>它并不会以任何方式占用应用程序的内存</strong>。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/atemyram2.png"
-        data-srcset="/images/ES/atemyram2.png, /images/ES/atemyram2.png 1.5x, /images/ES/atemyram2.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png 2x"
         data-sizes="auto"
-        alt="/images/ES/atemyram2.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png"
         title="Linux吃了我的内存" /></p>
 <p>如果主机上的其他应用程序需要申请内存，这些被借出去作为磁盘缓存的内存会立即回收。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/images/ES/atemyram3.png"
-        data-srcset="/images/ES/atemyram3.png, /images/ES/atemyram3.png 1.5x, /images/ES/atemyram3.png 2x"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png 2x"
         data-sizes="auto"
-        alt="/images/ES/atemyram3.png"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png"
         title="Linux吃了我的内存" /></p>
 <p>这篇文章还列举了很多例子，包括实际操作验证，可以打开链接自行了解。</p>
 <p> </p>

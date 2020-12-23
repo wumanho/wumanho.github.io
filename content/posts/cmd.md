@@ -14,7 +14,7 @@ tags: ["bash","ssh"]
 
 我们耳熟能详的 Shell 包括 bash、zsh、csh 等等，其实 Windows 提供的图形界面也是一个 Shell。
 
-![shell示意图](/images/cmd/shell.png)
+![shell示意图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png)
 
 &nbsp;
 
@@ -24,7 +24,7 @@ tags: ["bash","ssh"]
 
 init 进程始终会是 Linux 系统的第一个进程，其余必要的进程会由 init 进程 fork 出来，注意这个时候是没有 SHELL 的，只有一堆后台进程在运行，其中还包括一个叫做 「SSHD」的进程。
 
-![init示意图](/images/cmd/proc.png)
+![init示意图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png)
 
 SSHD 的 「D」是 Daemon 的意思，在计算机领域常用于表示一个**后台进程**，类似的还有「firewalld」等。  
 
@@ -34,7 +34,7 @@ Shell 进程为用户提供一个可交互的窗口，它的工作就是读取�
 
 以上的过程可以通过 `pstree` 命令验证：
 
-![pstree命令](/images/cmd/pstree.png)
+![pstree命令](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/pstree.png)
 
 图中可以看到，bash 是 SSHD fork 出来的子进程，而当我执行 pstree 命令之后，bash 又 fork 出来一个 pstree 进程。
 
@@ -82,7 +82,7 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 
 但如果用户输入的命令不是一个内置命令，那么当前的 Shell 就会根据查找机制去找到命令所在的路径再去执行，如果找不到就报错。
 
-![](/images/cmd/path.png)
+![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png)
 
 如上图所示，当我执行`mvn`命令时，系统提示「找不到命令」错误，但我输入`docker`的时候，就可以正确执行，这其实就是 Shell 根据查找机制没有找到 mvn 命令导致的。
 

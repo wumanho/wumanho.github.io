@@ -12,13 +12,13 @@ tags: ["ElasticSearch"]
 
 在使用 Kibana `get _cat/nodes?v` 查看集群所有节点状态的时候，看到所有节点的内存占用百分比都非常高：
 
-![kibana结果](/images/ES/rampercent.png)
+![kibana结果](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png)
 
 有两个节点甚至到了 100%，而根据官方文档显示，该列的值所表示的意思是**该ES实例所在的物理主机的内存使用率**。
 
 但是通过 zabbix 查看服务器状态却截然不同，实际上物理主机的内存可用百分比还有很多。
 
-![zabbix结果](/images/ES/zabbix.png)
+![zabbix结果](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/zabbix.png)
 
 这就跟官方文档的说法造成了一些冲突，到底谁才是正确的呢？
 
@@ -28,13 +28,13 @@ tags: ["ElasticSearch"]
 
 由于这个问题搜出来的结果不多，包括在 ES 社区也没有针对这个值的详细说明，在 [Stackoverflow](https://stackoverflow.com/questions/37350418/confused-about-elasticsearch-memory-consumption) 上面有一个提问比较接近，但是并不完全匹配
 
-![stackoverflow提问](/images/ES/stackoverflow.png)
+![stackoverflow提问](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/stackoverflow.png)
 
 他的问题是：关于 ES 内存占用的疑惑。他说明明只分配了 30G 给 ES 实例，为什么会显示我使用了 200G 的内存？
 
 显然提问者不知道到他指定的`-Xms`和`-Xmx`是为 JVM 指定堆内存的参数，并不是指所有内存，下面的回答也指出了，而且还补充了一点，就是关于 Lucene（ES 底层搜索库）会通过占用操作系统的内存来为 Lucene 的索引做缓存加速，[官方文档](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/heap-sizing.html#_give_less_than_half_your_memory_to_lucene)对此也有详细说明。
 
-![官网截图](/images/ES/guanwang.png)
+![官网截图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/guanwang.png)
 
 可以看到，ES 社区表示**务必**要预留足够大的内存给 Lucene 作为缓存使用，不要将物理主机的所有内存都分配给 ES JVM 实例使用，不然会大大影响性能。
 
@@ -50,15 +50,15 @@ tags: ["ElasticSearch"]
 
 什么意思呢？该用户还贴出了一个链接说明这件事：[Linux吃了我的内存！](https://www.linuxatemyram.com/)
 
-![Linux吃了我的内存](/images/ES/atemyram.png)
+![Linux吃了我的内存](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram.png)
 
 这篇文章很清晰地说明了，Linux 的磁盘缓存可以让操作系统更快地相应，而且没有缺点，**它并不会以任何方式占用应用程序的内存**。
 
-![Linux吃了我的内存](/images/ES/atemyram2.png)
+![Linux吃了我的内存](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram2.png)
 
 如果主机上的其他应用程序需要申请内存，这些被借出去作为磁盘缓存的内存会立即回收。
 
-![Linux吃了我的内存](/images/ES/atemyram3.png)
+![Linux吃了我的内存](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/atemyram3.png)
 
 这篇文章还列举了很多例子，包括实际操作验证，可以打开链接自行了解。
 

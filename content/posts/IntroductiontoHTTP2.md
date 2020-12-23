@@ -16,7 +16,7 @@ HTTP 协议建立在 TCP 协议的基础之上，是网络传输中重要的一�
 2. 客户端发送请求：建立 TCP 连接后，客户端会向服务端发送一个 HTTP 请求，该请求包含了请求头、请求体等描述了客户端相关的信息以及所需要申请的资源；
 3. 服务器响应：服务器接收到请求后，进行路由、鉴权、获取客户端请求资源等等一系列处理后，返回给客户端一个 HTTP 响应信息；  
 
-![HTTP/1.1 通信过程](/images/http2/http01.png)
+![HTTP/1.1 通信过程](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http01.png)
 
 &nbsp;
 
@@ -44,7 +44,7 @@ HTTP/2 来源于 Google 开发的一个实验性协议 SPDY ，在 2015 年发�
 
 HTTP/2 定义了一种全新 HTTP 消息封装格式。
 
-![HTTP2 编码](/images/http2/http02.png)
+![HTTP2 编码](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http02.png)
 
 从上图可以看到，与 HTTP/1.x 使用纯文本编码不同，HTTP/2 将所有传输的信息分割为更小的消息和帧，一个 POST 请求，请求行、请求头等内容被分割到 *HEADERS* 帧，而请求体内容则被分割到  *DATA* 帧，并采用**二进制格式**对它们编码，这也是实现多路复用的关键。
 
@@ -56,7 +56,7 @@ HTTP/2 定义了一种全新 HTTP 消息封装格式。
 * 消息（Message）：与逻辑请求或响应消息对应的完整的一系列帧。
 * 帧（Frame）：HTTP/2 通信的最小单位，每个帧都包含帧头，至少也会标识出当前帧所属的数据流。
 
-![数据交换方式](/images/http2/http03.png)
+![数据交换方式](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http03.png)
 
 上图可以看到，一个 TCP 连接（Connection）是一条双向的运输通道，一个连接可以包含多个**流**，每个流包含了一端向另一端发送的**消息**，每个消息又被拆分成了几个**帧**，这些消息被发送出去之后，同一个流的帧会在另一端被重新组合，还原成一个完整的 HTTP 请求或响应。
 
@@ -66,7 +66,7 @@ HTTP/2 定义了一种全新 HTTP 消息封装格式。
 
 HTTP/2 中新的二进制分帧层突破了这些限制，实现了完整的请求和响应复用：客户端和服务器可以将 HTTP 消息分解为互不依赖的帧，然后交错发送，最后再在另一端把它们重新组装起来。
 
-![](/images/http2/http04.png)
+![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http04.png)
 
 关于 HTTP/2 的更多新特性，请参考：[Google Developers HTTP/2 简介](https://developers.google.com/web/fundamentals/performance/http2)
 
@@ -92,7 +92,7 @@ server{
 
 重启 Nginx 容器，HTTP/2 就生效了。
 
-![效果图](/images/http2/http05.png)
+![效果图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/http2/http05.png)
 
 &nbsp;
 
