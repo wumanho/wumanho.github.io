@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Vue 运行时版本简介</title>
+    <link>/posts/vueruntime/</link>
+    <pubDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueruntime/</guid>
+    <description><![CDATA[在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本]]></description>
+</item><item>
     <title>ElasticSearch 内存占用百分比问题</title>
     <link>/posts/esmem/</link>
     <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
@@ -12,19 +19,19 @@
     <guid>/posts/esmem/</guid>
     <description><![CDATA[由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号]]></description>
 </item><item>
-    <title>前端 MVC</title>
-    <link>/posts/mvcintro/</link>
-    <pubDate>Thu, 17 Dec 2020 17:19:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/mvcintro/</guid>
-    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
-</item><item>
     <title>利用 HTTP/2 为网站提速</title>
     <link>/posts/introductiontohttp2/</link>
-    <pubDate>Tue, 01 Dec 2020 09:50:23 &#43;0800</pubDate>
+    <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
     <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
+</item><item>
+    <title>11~12月看的几个现场记录</title>
+    <link>/posts/recentshows/</link>
+    <pubDate>Tue, 01 Dec 2020 10:58:24 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/recentshows/</guid>
+    <description><![CDATA[「航海时代」- 停止幻想 阵容：梅卡德尔，假假條 地点：深圳 B10 今年最期待的组合，虽然我买的溢价票，不过我认为相当值得，梅卡和假假條的主创赵泰和刘与]]></description>
 </item><item>
     <title>命令行的本质和四要素（一）</title>
     <link>/posts/cmd/</link>
@@ -61,18 +68,11 @@
     <guid>/posts/domevent/</guid>
     <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
 </item><item>
-    <title>JavaScript 继承</title>
-    <link>/posts/jsinheritance/</link>
-    <pubDate>Wed, 26 Aug 2020 15:03:57 &#43;0800</pubDate>
+    <title>前端 MVC</title>
+    <link>/posts/mvcintro/</link>
+    <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/jsinheritance/</guid>
-    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
-</item><item>
-    <title>新概念二册-Lesson 11~15 笔记</title>
-    <link>/posts/0211to0215/</link>
-    <pubDate>Wed, 29 Jul 2020 09:22:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0211to0215/</guid>
-    <description><![CDATA[Lesson 11 One good turn deserves another 生词短语用法 🍊 生词短语用法： turn作名词可以翻译成：行为、举止 key structure 🔑 这一课主要是复习时态，背诵课文，看笔记，多做练习题。 Lesson 12]]></description>
+    <guid>/posts/mvcintro/</guid>
+    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
 </item></channel>
 </rss>

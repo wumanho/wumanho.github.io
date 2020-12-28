@@ -1,6 +1,6 @@
 ---
 title: "前端 MVC"
-date: 2020-12-17T17:19:01+08:00
+date: 2020-09-05T17:19:01+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript","MVC"]

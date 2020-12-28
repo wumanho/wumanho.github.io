@@ -10,7 +10,7 @@ tags: ["ElasticSearch"]
 
 公司使用的 ES 集群版本号为`5.5.3`，最近一次故障排查的时候查到 ES 这边，发现一个比较奇怪的现象，当时还对我们造成了一些误导，为我们排错制造了一些弯路。
 
-在使用 Kibana `get _cat/nodes?v` 查看集群所有节点状态的时候，看到所有节点的内存占用百分比都非常高：
+在 Kibana 使用`get _cat/nodes?v` 查看集群所有节点状态的时候，看到所有节点的内存占用百分比都非常高：
 
 ![kibana结果](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/ES/rampercent.png)
 

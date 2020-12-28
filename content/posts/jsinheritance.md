@@ -1,5 +1,5 @@
 ---
-title: "JavaScript 继承"
+title: "JavaScript 继承介绍与应用"
 date: 2020-08-26T15:03:57+08:00
 draft: false
 categories: ["前端"]
