@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/cmd\/"
-        },"genre": "posts","keywords": "bash, ssh","wordcount":  1656 ,
+        },"genre": "posts","keywords": "bash, ssh","wordcount":  1639 ,
         "url": "\/posts\/cmd\/","datePublished": "2020-11-27T14:10:08+08:00","dateModified": "2020-11-27T14:10:08+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -76,7 +76,7 @@
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">命令行的本质和四要素（一）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1656 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1639 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="content" id="content"><h2 id="内核与壳-">内核与壳 🐢</h2>
 <p>内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且工作在一个非常特殊的状态，叫「内核态」。</p>
@@ -142,32 +142,30 @@
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
-</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># cat /etc/passwd</span>
-root: x:0:0:root:/root:/bin/bash
-bin: x:1:1:bin:/bin:/sbin/nologin
-daemon: x:2:2:daemon:/sbin:/sbin/nologin
-adm: x:3:4:adm:/var/adm:/sbin/nologin
-lp: x:4:7:lp:/var/spool/lpd:/sbin/nologin
-sync: x:5:0:sync:/sbin:/bin/sync
-shutdown: x:6:0:shutdown:/sbin:/sbin/shutdown
-halt: x:7:0:halt:/sbin:/sbin/halt
-mail: x:8:12:mail:/var/spool/mail:/sbin/nologin
-operator: x:11:0:operator:/root:/sbin/nologin
-games: x:12:100:games:/usr/games:/sbin/nologin
-ftp: x:14:50:FTP User:/var/ftp:/sbin/nologin
-nobody: x:99:99:Nobody:/:/sbin/nologin
-systemd-bus-proxy: x:999:998:systemd Bus Proxy:/:/sbin/nologin
-systemd-network: x:192:192:systemd Network Management:/:/sbin/nologin
-dbus: x:81:81:System message bus:/:/sbin/nologin
-polkitd: x:998:997:User <span class="k">for</span> polkitd:/:/sbin/nologin
-tss: x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
-sshd: x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
-postfix: x:89:89::/var/spool/postfix:/sbin/nologin
-chrony: x:997:995::/var/lib/chrony:/sbin/nologin
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span>#
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">#</span> <span class="nx">cat</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">passwd</span>
+<span class="nx">root</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="nx">root</span><span class="p">:</span><span class="o">/</span><span class="nx">root</span><span class="p">:</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">bash</span>
+<span class="nx">bin</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nx">bin</span><span class="p">:</span><span class="o">/</span><span class="nx">bin</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">daemon</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="nx">daemon</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">adm</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="nx">adm</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">adm</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">lp</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="nx">lp</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">spool</span><span class="o">/</span><span class="nx">lpd</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">sync</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="nx">sync</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="p">:</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">sync</span>
+<span class="nx">shutdown</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="nx">shutdown</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">shutdown</span>
+<span class="nx">halt</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="nx">halt</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">halt</span>
+<span class="nx">mail</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="nx">mail</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">spool</span><span class="o">/</span><span class="nx">mail</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">operator</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="nx">operator</span><span class="p">:</span><span class="o">/</span><span class="nx">root</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">games</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="nx">games</span><span class="p">:</span><span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">games</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">ftp</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="nx">FTP</span> <span class="nx">User</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">ftp</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">nobody</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">99</span><span class="p">:</span><span class="mi">99</span><span class="p">:</span><span class="nx">Nobody</span><span class="p">:</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">systemd</span><span class="o">-</span><span class="nx">bus</span><span class="o">-</span><span class="nx">proxy</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">999</span><span class="p">:</span><span class="mi">998</span><span class="p">:</span><span class="nx">systemd</span> <span class="nx">Bus</span> <span class="nx">Proxy</span><span class="p">:</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">systemd</span><span class="o">-</span><span class="nx">network</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">192</span><span class="p">:</span><span class="mi">192</span><span class="p">:</span><span class="nx">systemd</span> <span class="nx">Network</span> <span class="nx">Management</span><span class="p">:</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">dbus</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">81</span><span class="p">:</span><span class="mi">81</span><span class="p">:</span><span class="nx">System</span> <span class="nx">message</span> <span class="nx">bus</span><span class="p">:</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">polkitd</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">998</span><span class="p">:</span><span class="mi">997</span><span class="p">:</span><span class="nx">User</span> <span class="k">for</span> <span class="nx">polkitd</span><span class="p">:</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">tss</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="nx">Account</span> <span class="nx">used</span> <span class="nx">by</span> <span class="nx">the</span> <span class="nx">trousers</span> <span class="kn">package</span> <span class="nx">to</span> <span class="nx">sandbox</span> <span class="nx">the</span> <span class="nx">tcsd</span> <span class="nx">daemon</span><span class="p">:</span><span class="o">/</span><span class="nx">dev</span><span class="o">/</span><span class="nx">null</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">sshd</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">74</span><span class="p">:</span><span class="mi">74</span><span class="p">:</span><span class="nx">Privilege</span><span class="o">-</span><span class="nx">separated</span> <span class="nx">SSH</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">empty</span><span class="o">/</span><span class="nx">sshd</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">postfix</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">89</span><span class="p">:</span><span class="mi">89</span><span class="p">::</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">spool</span><span class="o">/</span><span class="nx">postfix</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
+<span class="nx">chrony</span><span class="p">:</span> <span class="nx">x</span><span class="p">:</span><span class="mi">997</span><span class="p">:</span><span class="mi">995</span><span class="p">::</span><span class="o">/</span><span class="kd">var</span><span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">chrony</span><span class="p">:</span><span class="o">/</span><span class="nx">sbin</span><span class="o">/</span><span class="nx">nologin</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>每一行的最后一个<code>:</code>后面的内容，就是对应该用户登录之后，默认打开的 Shell 进程是哪个一个，如果是<code>nologin</code>的话，则以为着该用户无法登录。</p>
@@ -191,12 +189,10 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># echo $PATH</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span># 
 </code></pre></td></tr></table>
 </div>
 </div><p>当 Shell 没有在 <code>$PATH</code>环境变量定义的路径中找到用户输入的命令对应的可执行程序时，就会报错，通常是非常熟悉的<code>command not found</code>错误。</p>
@@ -215,12 +211,12 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># node</span>
-&gt; console.log<span class="o">(</span><span class="s2">&#34;Hello&#34;</span><span class="o">)</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># node
+&gt; console.log(&#34;Hello&#34;)
 Hello
 undefined
 &gt; .exit
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span># 
+# 
 </code></pre></td></tr></table>
 </div>
 </div><p>同理，也有另外一种常见的情况，如果用户创建一个脚本 script.sh，内容是 export 一个 AAA 环境变量，值为 123：</p>
@@ -230,8 +226,8 @@ undefined
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># cat script.sh</span> 
-<span class="nb">export</span> <span class="nv">AAA</span><span class="o">=</span><span class="m">123</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># cat script.sh 
+export AAA=123
 </code></pre></td></tr></table>
 </div>
 </div><p>执行一下，却发现什么也没有发生：</p>
@@ -243,10 +239,10 @@ undefined
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># sh script.sh</span> 
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># echo $AAA</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># sh script.sh 
+# echo $AAA
 
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span>#
+#
 </code></pre></td></tr></table>
 </div>
 </div><p>原因是用户是用<code>sh</code>命令，执行 script.sh 的话，script.sh 其实就相当于是 <code>sh</code> 命令的参数，当前的 Shell 会为 <code>sh</code> 命令 fork 一个新的子进程，然后读取参数 script.sh 并且在<strong>新的子进程中</strong>执行，执行完毕后自动退出，而 export 只会新的子进程环境中生效，所以当前进程中，是看不到 AAA 变量的。</p>
@@ -260,10 +256,10 @@ undefined
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># source script.sh</span> 
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span><span class="c1"># echo $AAA</span>
-<span class="m">123</span>
-<span class="o">[</span>root@fresh-bytes-1 ~<span class="o">]</span># 
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># source script.sh 
+# echo $AAA
+123
+# 
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
@@ -298,7 +294,7 @@ undefined
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

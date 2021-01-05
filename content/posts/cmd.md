@@ -44,8 +44,8 @@ Shell 进程为用户提供一个可交互的窗口，它的工作就是读取�
 
 Linux 有一个著名的文件`/etc/passwd`，该文件中保存了系统中所有用户的信息，每一行就是一个用户。
 
-```bash
-[root@fresh-bytes-1 ~]# cat /etc/passwd
+```
+# cat /etc/passwd
 root: x:0:0:root:/root:/bin/bash
 bin: x:1:1:bin:/bin:/sbin/nologin
 daemon: x:2:2:daemon:/sbin:/sbin/nologin
@@ -67,7 +67,6 @@ tss: x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/de
 sshd: x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
 postfix: x:89:89::/var/spool/postfix:/sbin/nologin
 chrony: x:997:995::/var/lib/chrony:/sbin/nologin
-[root@fresh-bytes-1 ~]#
 ```
 
 每一行的最后一个`:`后面的内容，就是对应该用户登录之后，默认打开的 Shell 进程是哪个一个，如果是`nologin`的话，则以为着该用户无法登录。
@@ -90,10 +89,9 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 
 默认情况下，它会去 `$PATH`环境变量定义的路径中找：
 
-```shell
-[root@fresh-bytes-1 ~]# echo $PATH
+```
+# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
-[root@fresh-bytes-1 ~]# 
 ```
 
 当 Shell 没有在 `$PATH`环境变量定义的路径中找到用户输入的命令对应的可执行程序时，就会报错，通常是非常熟悉的`command not found`错误。
@@ -108,29 +106,29 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 
 例如当用户在命令行窗口输入`node`命令并敲下回车，bash 就会 fork 一个子进程 node，之后将所有参数以及控制权交给这个进程，这之后发生的事情就是程序自己的事情了，bash 并不会管，直到程序执行完成或者用户退出。
 
-```shell
-[root@fresh-bytes-1 ~]# node
+```
+# node
 > console.log("Hello")
 Hello
 undefined
 > .exit
-[root@fresh-bytes-1 ~]# 
+# 
 ```
 
 同理，也有另外一种常见的情况，如果用户创建一个脚本 script.sh，内容是 export 一个 AAA 环境变量，值为 123：
 
-```shell
-[root@fresh-bytes-1 ~]# cat script.sh 
+```
+# cat script.sh 
 export AAA=123
 ```
 
 执行一下，却发现什么也没有发生：
 
-```shell
-[root@fresh-bytes-1 ~]# sh script.sh 
-[root@fresh-bytes-1 ~]# echo $AAA
+```
+# sh script.sh 
+# echo $AAA
 
-[root@fresh-bytes-1 ~]#
+#
 ```
 
 原因是用户是用`sh`命令，执行 script.sh 的话，script.sh 其实就相当于是 `sh` 命令的参数，当前的 Shell 会为 `sh` 命令 fork 一个新的子进程，然后读取参数 script.sh 并且在**新的子进程中**执行，执行完毕后自动退出，而 export 只会新的子进程环境中生效，所以当前进程中，是看不到 AAA 变量的。
@@ -139,11 +137,11 @@ export AAA=123
 
 `source`命令可以使指定的 Shell 程序文件在当前环境中执行并生效：
 
-```shell
-[root@fresh-bytes-1 ~]# source script.sh 
-[root@fresh-bytes-1 ~]# echo $AAA
+```
+# source script.sh 
+# echo $AAA
 123
-[root@fresh-bytes-1 ~]# 
+# 
 ```
 
 &nbsp;
