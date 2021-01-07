@@ -74,11 +74,31 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">命令行的本质和四要素（一）</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">命令行的本质和四要素（一）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1639 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="内核与壳-">内核与壳 🐢</h2>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#内核与壳-">内核与壳 🐢</a></li>
+    <li><a href="#命令行的本质-">命令行的本质 🤔</a>
+      <ul>
+        <li><a href="#如何指定-shell-">如何指定 Shell 🏌️‍♂️</a></li>
+        <li><a href="#shell-的查找机制-">Shell 的查找机制 💁‍♀️</a></li>
+        <li><a href="#命令的执行-">命令的执行 🎯</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="内核与壳-">内核与壳 🐢</h2>
 <p>内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且工作在一个非常特殊的状态，叫「内核态」。</p>
 <p>壳（Shell）就是我们用于跟内核打交道的方式，Shell 是<strong>一类程序的统称</strong>，并不单单指某一个特定程序。</p>
 <p>我们耳熟能详的 Shell 包括 bash、zsh、csh 等等，其实 Windows 提供的图形界面也是一个 Shell。</p>

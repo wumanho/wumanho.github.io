@@ -74,11 +74,31 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">前端 MVC</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">前端 MVC</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-05">2020-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1420 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
-        </div><div class="content" id="content"><p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#model-模型层-">Model 模型层 💃</a></li>
+    <li><a href="#view-视图层-">View 视图层 📺</a></li>
+    <li><a href="#controller-控制器-">Controller 控制器 🎮</a>
+      <ul>
+        <li><a href="#eventbus-事件总线-">eventBus 事件总线 🚌</a></li>
+      </ul>
+    </li>
+    <li><a href="#关于模块化-">关于模块化 🎤</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>
 <p>由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发中借鉴而来的思想，彻底改变了前端领域在初期时那种不受约束的意大利面条式代码组织方式，同时为前端带来了更多的模块化的思想。</p>
 <p>随着前端领域的发展，如今已经延申出许多如「MVP」、「MVVM」等其他类似的概念，不过本篇博客还是着重于介绍最经典的 MVC 模式。</p>
 <p> </p>

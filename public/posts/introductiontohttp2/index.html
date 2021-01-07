@@ -74,11 +74,35 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">利用 HTTP/2 为网站提速</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">利用 HTTP/2 为网站提速</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-07">2020-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1731 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么需要-http2">为什么需要 HTTP/2</a></li>
+    <li><a href="#http2">HTTP/2</a>
+      <ul>
+        <li><a href="#二进制分帧层">二进制分帧层</a></li>
+        <li><a href="#多路复用">多路复用</a></li>
+      </ul>
+    </li>
+    <li><a href="#为服务器启用-http2">为服务器启用 HTTP/2</a>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
 <p>在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。</p>
 <p>HTTP 协议建立在 TCP 协议的基础之上，是网络传输中重要的一环，举个例子，假设当我们用浏览器向一个网站发送一个静态资源请求，那么必然会经历如下几个过程：</p>
 <ol>

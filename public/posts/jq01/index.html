@@ -74,11 +74,33 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用和设计简介</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">jQuery 使用和设计简介</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-25">2020-07-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1335 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
-        </div><div class="content" id="content"><h2 id="jquery-介绍-">jQuery 介绍 📗</h2>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#jquery-介绍-">jQuery 介绍 📗</a></li>
+    <li><a href="#jquery-如何获取元素-">jQuery 如何获取元素 📌</a></li>
+    <li><a href="#jquery-创建元素-">jQuery 创建元素 🔨</a></li>
+    <li><a href="#jquery-修改元素-">jQuery 修改元素 🛠️</a></li>
+    <li><a href="#jquery-复制删除元素-">jQuery 复制、删除元素 🗑️</a></li>
+    <li><a href="#jquery-的链式操作是如何实现的-">jQuery 的链式操作是如何实现的 🔫</a>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="jquery-介绍-">jQuery 介绍 📗</h2>
 <p>jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。</p>
 <p> </p>
 <p>至于为什么 jQuery  可以被称之为经典，我想是因为首先他有非常优秀的代码设计，使得整个库使用起来非常简单，也便于理解和学习，其次是因为 DOM 本身非常难以操作，开发者需要一个可以简单使用 DOM 的库，而 jQuery 在这件事情上无疑是当时甚至现在做得最好的。</p>
