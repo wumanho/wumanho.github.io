@@ -2,7 +2,7 @@
 title: "Radiohead - The Tourist 歌词翻译"
 date: 2020-11-23T22:52:06+08:00
 draft: false
-categories: ["闲聊"]
+categories: ["生活"]
 tags: ["Radiohead","OK Computer"]
 ---
 

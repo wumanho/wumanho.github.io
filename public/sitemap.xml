@@ -2,21 +2,23 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>/categories/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/javascript/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/posts/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/vue/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>/posts/vueruntime/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>/categories/%E5%89%8D%E7%AB%AF/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>/tags/elasticsearch/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>/posts/esmem/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>/categories/%E6%8A%80%E6%9C%AF/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>/posts/introductiontohttp2/</loc><lastmod>2020-12-07T09:50:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>/posts/recentshows/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/tags/%E7%8B%AC%E7%AB%8B%E9%9F%B3%E4%B9%90/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>/categories/%E9%97%B2%E8%81%8A/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/.sync/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/posts/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/vue/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/categories/%E5%89%8D%E7%AB%AF/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/posts/vuesyncmodyfier/</loc><lastmod>2021-01-12T11:26:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>/tags/javascript/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>/posts/vueruntime/</loc><lastmod>2020-12-28T15:54:49&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>/tags/elasticsearch/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>/posts/esmem/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>/categories/%E6%8A%80%E6%9C%AF/</loc><lastmod>2020-12-20T18:03:52&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>/posts/introductiontohttp2/</loc><lastmod>2020-12-07T09:50:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/posts/recentshows/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>/tags/%E7%8B%AC%E7%AB%8B%E9%9F%B3%E4%B9%90/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>/categories/%E7%94%9F%E6%B4%BB/</loc><lastmod>2021-01-01T20:58:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>/tags/bash/</loc><lastmod>2020-11-27T14:10:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/ssh/</loc><lastmod>2020-11-27T14:10:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/posts/cmd/</loc><lastmod>2020-11-27T14:10:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>理解.sync修饰符</title>
+    <link>/posts/vuesyncmodyfier/</link>
+    <pubDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vuesyncmodyfier/</guid>
+    <description><![CDATA[Vue 在 2.3 版本得时候引入了.sync修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。 很多时候我们希望使用双向绑定来简化大量业务无关的]]></description>
+</item><item>
     <title>Vue 运行时版本简介</title>
     <link>/posts/vueruntime/</link>
     <pubDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/domevent/</guid>
     <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
-</item><item>
-    <title>前端 MVC</title>
-    <link>/posts/mvcintro/</link>
-    <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/mvcintro/</guid>
-    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
 </item></channel>
 </rss>
