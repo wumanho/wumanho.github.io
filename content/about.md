@@ -16,5 +16,5 @@ draft: false
 
 ## 什么是 OK Computer :ok_hand:
 
-[OK Computer](https://baike.baidu.com/item/OK%20Computer) 是我非常喜欢的一张专辑，Radiohead :guitar:最具有标志性的作品，在 1997 年发行，距今已经 20 多年，作品中对于“速度、科技、经济全球化”的思考却非常前卫。至于「好电脑」，并不是官方翻译，自己瞎翻的，不过我很喜欢这个翻译。
+[OK Computer](https://baike.baidu.com/item/OK%20Computer) 是我非常喜欢的一张专辑，Radiohead :guitar:最具有标志性的作品，在 1997 年发行，距今已经 20 多年，不过当中的作品却有非常前卫的表达，拿出几首来说是去年发布的新作也不为过。至于「好电脑」，并不是官方翻译，自己瞎翻的，不过我很喜欢这个翻译。
 
