@@ -19,13 +19,6 @@
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本]]></description>
 </item><item>
-    <title>利用 jQuery 发送 AJAX 请求</title>
-    <link>/posts/ajaxjq/</link>
-    <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/ajaxjq/</guid>
-    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
-</item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
@@ -47,12 +40,12 @@
     <guid>/posts/jsinheritance/</guid>
     <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
 </item><item>
-    <title>jQuery 使用和设计简介</title>
-    <link>/posts/jq01/</link>
-    <pubDate>Sat, 25 Jul 2020 20:20:01 &#43;0800</pubDate>
+    <title>利用 jQuery 发送 AJAX 请求</title>
+    <link>/posts/ajaxjq/</link>
+    <pubDate>Sat, 18 Apr 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
+    <guid>/posts/ajaxjq/</guid>
+    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
 </item><item>
     <title>CSS总结</title>
     <link>/posts/css/</link>
@@ -60,6 +53,13 @@
     <author>作者</author>
     <guid>/posts/css/</guid>
     <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
+</item><item>
+    <title>jQuery 使用和设计简介</title>
+    <link>/posts/jq01/</link>
+    <pubDate>Tue, 25 Feb 2020 20:20:01 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jq01/</guid>
+    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
 </item><item>
     <title>Flex 布局常用属性值</title>
     <link>/posts/flex/</link>

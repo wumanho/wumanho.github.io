@@ -1,6 +1,6 @@
 ---
 title: "利用 jQuery 发送 AJAX 请求"
-date: 2020-11-18T11:36:57+08:00
+date: 2020-04-18T11:36:57+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript","jQuery","AJAX"]

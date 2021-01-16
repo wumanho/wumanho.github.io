@@ -61,18 +61,18 @@
     <guid>/posts/nodesimpleserver/</guid>
     <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
 </item><item>
-    <title>利用 jQuery 发送 AJAX 请求</title>
-    <link>/posts/ajaxjq/</link>
-    <pubDate>Wed, 18 Nov 2020 11:36:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/ajaxjq/</guid>
-    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
-</item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/domevent/</guid>
     <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
+</item><item>
+    <title>新概念二册-Lesson 16~20 笔记</title>
+    <link>/posts/0216to0220/</link>
+    <pubDate>Mon, 14 Sep 2020 21:13:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/0216to0220/</guid>
+    <description><![CDATA[更多新概念笔记 新概念一册笔记集合 新概念二册笔记集合 Lesson 16 A polite request 生词短语用法 🌍 park作动词为停放汽车, park your car in the wrong place reminder，加了er]]></description>
 </item></channel>
 </rss>
