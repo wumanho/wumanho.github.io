@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>利用 openVPN 构建互访混合云环境 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="利用 openVPN 构建互访混合云环境" />
+<meta property="og:description" content="背景 由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。 但后来经过调研发现了一个问题，就是我们的公有云服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/openvpn/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-01-17T19:18:26+08:00" />
+<meta property="article:modified_time" content="2021-01-17T19:18:26+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="利用 openVPN 构建互访混合云环境"/>
+<meta name="twitter:description" content="背景 由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。 但后来经过调研发现了一个问题，就是我们的公有云服务"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/openvpn/" /><link rel="prev" href="/posts/vuesyncmodyfier/" /><link rel="next" href="/posts/whyredisisfast/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "利用 openVPN 构建互访混合云环境",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/openvpn\/"
+        },"genre": "posts","keywords": "openVPN","wordcount":  1650 ,
+        "url": "\/posts\/openvpn\/","datePublished": "2021-01-17T19:18:26+08:00","dateModified": "2021-01-17T19:18:26+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">利用 openVPN 构建互访混合云环境</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-17">2021-01-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1650 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#拓扑">拓扑</a></li>
+    <li><a href="#部署-server">部署 Server</a>
+      <ul>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#安装-openvpn">安装 openvpn</a></li>
+        <li><a href="#创建证书">创建证书</a></li>
+        <li><a href="#配置-server">配置 server</a></li>
+        <li><a href="#启动-openvpn-server">启动 openvpn server</a></li>
+        <li><a href="#公有云配置">公有云配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#部署-client">部署 Client</a>
+      <ul>
+        <li><a href="#配置客户端">配置客户端</a></li>
+        <li><a href="#启动客户端">启动客户端</a></li>
+        <li><a href="#本地业务服务器配置静态路由">本地业务服务器配置静态路由</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="背景">背景</h2>
+<p>由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。</p>
+<p>但后来经过调研发现了一个问题，就是我们的公有云服务商是某个外国云的中国区环境，并不提供原生 VPN 隧道服务，且由于时间比较赶来不及申请专线资源。</p>
+<p>经过讨论，最终决定选择利用 openVPN 将本地局域网以及公有云上的私有子网打通，作为临时方案。</p>
+<p> </p>
+<h2 id="拓扑">拓扑</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/openvpn.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/openvpn.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/openvpn.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/openvpn.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/openvpn.png"
+        title="拓扑" /></p>
+<p>本地子网：172.16.11.0/24</p>
+<p>公有云 VPC 子网：10.20.0.0/16</p>
+<p>隧道网段：10.8.0.0/24</p>
+<p> </p>
+<h2 id="部署-server">部署 Server</h2>
+<h3 id="准备工作">准备工作</h3>
+<p>修改<code>/etc/selinux/config</code>配置文件，关闭 selinux</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SELINUX</span><span class="o">=</span>disabled
+</code></pre></td></tr></table>
+</div>
+</div><p>关闭防火墙</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl disable firewalld
+systemctl stop firewalld
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="安装-openvpn">安装 openvpn</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
+yum update
+yum -y install openvpn easy-rsa
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="创建证书">创建证书</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/
+./easyrsa init-pki
+./easyrsa build-ca nopass
+./easyrsa build-server-full &lt;server-name&gt; nopass
+./easyrsa build-client-full &lt;client-name&gt; nopass
+</code></pre></td></tr></table>
+</div>
+</div><p>将<code>&lt;server-name&gt;</code>和<code>&lt;client-name&gt;</code>分别替换为服务端和客户端的证书名，<code>nopass</code>则表示不使用密码加密证书，client 可以创建多个，如果多个设备同时使用一个客户端证书，向服务器申请时会获取到同一个 IP 地址，最终造成互相冲突，所以通常是每个设备创建一个客户端证书。</p>
+<h3 id="配置-server">配置 server</h3>
+<p>将证书复制到 openvpn目录<code>/etc/openvpn/server/</code>，然后创建<code>dh.pem</code>和<code>ta.key</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/pki
+cp ca.crt issued/&lt;server-name&gt;.crt private/&lt;server-name&gt;.key /etc/openvpn/server/
+<span class="nb">cd</span> /etc/openvpn/server
+openssl dhparam -out dh.pem <span class="m">2048</span>
+openvpn --genkey --secret ta.key
+</code></pre></td></tr></table>
+</div>
+</div><p>在<code>/etc/openvpn/server/</code>中创建一个配置文件<code>&lt;server-name&gt;.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">port <span class="m">1994</span>
+proto udp                                    
+dev tun
+ca /etc/openvpn/server/ca.crt
+cert /etc/openvpn/server/server.crt
+key /etc/openvpn/server/server.key
+dh /etc/openvpn/server/dh.pem
+server 10.8.0.0 255.255.255.0                <span class="c1">#隧道IP</span>
+push <span class="s2">&#34;route 10.20.0.0 255.255.0.0&#34;</span>           <span class="c1">#公有云VPC子网网段</span>
+client-config-dir /etc/openvpn/ccd            <span class="c1">#手动创建，而且建立客户端名称文件</span>
+route 192.168.3.0 255.255.255.0               <span class="c1">#客户端网络，与ccd下客户端文件对应</span>
+route 172.16.11.0 255.255.255.0              <span class="c1">#客户端网络，与ccd下客户端文件对应</span>
+ifconfig-pool-persist ipp.txt
+keepalive <span class="m">10</span> <span class="m">120</span>
+max-clients <span class="m">100</span>
+status openvpn-status.log
+verb <span class="m">3</span>
+client-to-client                            <span class="c1">#允许客户端之间互访</span>
+log /var/log/openvpn.log
+persist-key
+persist-tun
+</code></pre></td></tr></table>
+</div>
+</div><p>在服务器端<code>/etc/openvpn/</code>下创建 CCD 目录，添加客户端配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/openvpn/ccd/clientvm
+iroute 192.168.3.0 255.255.255.0
+iroute 172.16.11.0 255.255.255.0
+</code></pre></td></tr></table>
+</div>
+</div><p>配置 IP 转发</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
+sysctl -p
+systemctl restart network
+</code></pre></td></tr></table>
+</div>
+</div><p>配置 NAT，为了避免重启后失效，建议写到<code>rc.local</code>里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+iptables -L -n -t nat
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="启动-openvpn-server">启动 openvpn server</h3>
+<p>可以使用<code>systemctl enable</code>设置为开机自启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-server@&lt;server-name&gt;
+systemctl <span class="nb">enable</span> openvpn-server@&lt;server-name&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="公有云配置">公有云配置</h3>
+<p>禁用源/目标端检查，否则无法转发</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/yuanduanjiancha.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/yuanduanjiancha.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/yuanduanjiancha.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/yuanduanjiancha.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/yuanduanjiancha.png"
+        title="禁用源端检查" /></p>
+<p>可以为需要访问本地服务的子网直接添加路由表，避免每个实例逐条添加</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/routingtable.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/routingtable.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/routingtable.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/routingtable.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/openvpn/routingtable.png"
+        title="路由表" /></p>
+<p> </p>
+<h2 id="部署-client">部署 Client</h2>
+<p>客户端的安装部署方式跟 Server 是一样的</p>
+<ol>
+<li>关闭 SELINUX</li>
+<li>关闭防火墙</li>
+<li>安装 openvpn</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
+yum update
+yum -y install openvpn
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="配置客户端">配置客户端</h3>
+<p>openvpn 客户端和服务端都是同一个程序，只是根据配置文件来区分。</p>
+<p>安装好 openvpn 之后，需要将在服务器生成的<code>ca.crt</code>、<code>ta.key</code>、<code>&lt;client-name&gt;.key</code>、<code>&lt;client-name&gt;.crt</code>复制到<code>/etc/openvpn/client/</code>目录下，然后在该目录下创建一个<code>&lt;client-name&gt;.conf</code>配置文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">client <span class="c1">#指定当前VPN是客户端</span>
+dev tun <span class="c1">#使用tun隧道传输协议</span>
+proto udp <span class="c1">#使用udp协议传输数据</span>
+remote  52.83.152.63 <span class="m">1994</span>  <span class="c1">#openvpn服务器IP地址端口号</span>
+resolv-retry infinite <span class="c1">#断线自动重新连接，在网络不稳定的情况下非常有用</span>
+remote-cert-tls server
+auth-nocache 
+nobind <span class="c1">#不绑定本地特定的端口号</span>
+ca /etc/openvpn/client/ca.crt <span class="c1">#指定CA证书的文件路径</span>
+cert /etc/openvpn/client/clientvm.crt <span class="c1">#指定当前客户端的证书文件路径</span>
+key /etc/openvpn/client/clientvm.key <span class="c1">#指定当前客户端的私钥文件路径</span>
+verb <span class="m">3</span> <span class="c1">#指定日志文件的记录详细级别，可选0-9，等级越高日志内容越详细</span>
+persist-key <span class="c1">#通过keepalive检测超时后，重新启动VPN，不重新读取keys，保留第一次使用的keys</span>
+persist-tun <span class="c1">#检测超时后，重新启动VPN，一直保持tun是linkup的。否则网络会先linkdown然后再linkup</span>
+status openvpn-status.log    				<span class="c1">#日志</span>
+log /var/log/openvpn/openvpn.log 			<span class="c1">#按需配置</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>配置 IP 转发</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
+sysctl -p
+systemctl restart network
+</code></pre></td></tr></table>
+</div>
+</div><p>配置 NAT，为了避免重启后失效，建议写到<code>rc.local</code>里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+iptables -L -n -t nat
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="启动客户端">启动客户端</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-client@&lt;client-name&gt;
+systemctl <span class="nb">enable</span> openvpn-client@&lt;client-name&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="本地业务服务器配置静态路由">本地业务服务器配置静态路由</h3>
+<p>本地 License 等服务器需要通过 openvpn client 转发数据到公有云，所以需要在每个服务器上添加一条静态路由</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">route add -net 10.20.0.0/16 gw 172.16.11.16  <span class="c1">### 指向VPN client 的IP为路由</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<p>（完）</p>
+<p> </p>
+<h3 id="参考">参考</h3>
+<p><a href="https://www.xiexianbin.cn/linux/vpn/2016-10-28-openvpn-client-config/index.html" target="_blank" rel="noopener noreffer">OpenVPN client端配置文件详细说明</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-01-17</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/openvpn/">openVPN</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/vuesyncmodyfier/" class="prev" rel="prev" title="理解 .sync 修饰符"><i class="fas fa-angle-left fa-fw"></i>理解 .sync 修饰符</a>
+            <a href="/posts/whyredisisfast/" class="next" rel="next" title="深入理解「Redis 为什么快」">深入理解「Redis 为什么快」<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

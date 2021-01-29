@@ -1,4 +1,5 @@
 ---
+weight: 2
 title: "ElasticSearch 内存占用百分比问题"
 date: 2020-12-20T18:03:52+08:00
 draft: false

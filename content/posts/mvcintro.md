@@ -1,4 +1,5 @@
 ---
+weight: 2
 title: "前端 MVC"
 date: 2020-09-05T17:19:01+08:00
 draft: false

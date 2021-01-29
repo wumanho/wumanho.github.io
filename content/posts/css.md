@@ -1,5 +1,6 @@
 ---
-title: "CSS总结"
+weight: 2
+title: "CSS 总结"
 date: 2020-03-30T10:02:12+08:00
 draft: false
 categories: ["前端"]

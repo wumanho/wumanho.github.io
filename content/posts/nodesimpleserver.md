@@ -1,4 +1,5 @@
 ---
+weight: 2
 title: "用 Node.js 写一个简易静态服务器"
 date: 2020-11-22T00:29:18+08:00
 draft: false

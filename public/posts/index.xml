@@ -4,8 +4,29 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>理解.sync修饰符</title>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 28 Jan 2021 18:03:52 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>新概念二册-Lesson 16~20 笔记</title>
+    <link>/posts/0216to0220/</link>
+    <pubDate>Mon, 14 Sep 2020 21:13:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/0216to0220/</guid>
+    <description><![CDATA[更多新概念笔记 新概念一册笔记集合 新概念二册笔记集合 Lesson 16 A polite request 生词短语用法 🌍 park作动词为停放汽车, park your car in the wrong place reminder，加了er]]></description>
+</item><item>
+    <title>深入理解「Redis 为什么快」</title>
+    <link>/posts/whyredisisfast/</link>
+    <pubDate>Thu, 21 Jan 2021 08:49:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/whyredisisfast/</guid>
+    <description><![CDATA[Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友]]></description>
+</item><item>
+    <title>利用 openVPN 构建互访混合云环境</title>
+    <link>/posts/openvpn/</link>
+    <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/openvpn/</guid>
+    <description><![CDATA[背景 由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。 但后来经过调研发现了一个问题，就是我们的公有云服务]]></description>
+</item><item>
+    <title>理解 .sync 修饰符</title>
     <link>/posts/vuesyncmodyfier/</link>
     <pubDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</pubDate>
     <author>作者</author>
@@ -33,7 +54,7 @@
     <guid>/posts/introductiontohttp2/</guid>
     <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
 </item><item>
-    <title>2020观演记录</title>
+    <title>2020 观演记录</title>
     <link>/posts/recentshows/</link>
     <pubDate>Tue, 01 Dec 2020 10:58:24 &#43;0800</pubDate>
     <author>作者</author>
@@ -53,26 +74,5 @@
     <author>作者</author>
     <guid>/posts/thetourist/</guid>
     <description><![CDATA[⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 wumanho@tutanota.com 删除文章。 It barks at no one else but me 它只会对着我乱吠 Like it&rsquo;s seen a ghost 就好像看到鬼一样 I]]></description>
-</item><item>
-    <title>用 Node.js 写一个简易静态服务器</title>
-    <link>/posts/nodesimpleserver/</link>
-    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/nodesimpleserver/</guid>
-    <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
-</item><item>
-    <title>DOM 事件与事件委托</title>
-    <link>/posts/domevent/</link>
-    <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/domevent/</guid>
-    <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
-</item><item>
-    <title>新概念二册-Lesson 16~20 笔记</title>
-    <link>/posts/0216to0220/</link>
-    <pubDate>Mon, 14 Sep 2020 21:13:07 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/0216to0220/</guid>
-    <description><![CDATA[更多新概念笔记 新概念一册笔记集合 新概念二册笔记集合 Lesson 16 A polite request 生词短语用法 🌍 park作动词为停放汽车, park your car in the wrong place reminder，加了er]]></description>
 </item></channel>
 </rss>

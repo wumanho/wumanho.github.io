@@ -1,5 +1,6 @@
 ---
-title: "理解.sync修饰符"
+weight: 2
+title: "理解 .sync 修饰符"
 date: 2021-01-12T11:26:08+08:00
 draft: false
 categories: ["前端"]

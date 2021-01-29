@@ -1,5 +1,5 @@
 ---
-
+weight: 2
 title: "DOM 事件与事件委托"
 date: 2020-11-08T16:08:51+08:00
 draft: false

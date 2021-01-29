@@ -1,4 +1,5 @@
 ---
+weight: 2
 title: "Vue 运行时版本简介"
 date: 2020-12-28T15:54:49+08:00
 draft: false

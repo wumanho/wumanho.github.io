@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>深入理解「Redis 为什么快」 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="深入理解「Redis 为什么快」" />
+<meta property="og:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/whyredisisfast/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-01-21T08:49:20+08:00" />
+<meta property="article:modified_time" content="2021-01-21T08:49:20+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="深入理解「Redis 为什么快」"/>
+<meta name="twitter:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/whyredisisfast/" /><link rel="prev" href="/posts/openvpn/" /><link rel="next" href="/posts/0216to0220/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "深入理解「Redis 为什么快」",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/whyredisisfast\/"
+        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5202 ,
+        "url": "\/posts\/whyredisisfast\/","datePublished": "2021-01-21T08:49:20+08:00","dateModified": "2021-01-21T08:49:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">深入理解「Redis 为什么快」</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5202 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#单线程的-redis-">单线程的 Redis 🤔</a>
+      <ul>
+        <li><a href="#并发问题">并发问题</a></li>
+        <li><a href="#上下文切换">上下文切换</a></li>
+      </ul>
+    </li>
+    <li><a href="#多路复用-io-机制-">多路复用 I/O 机制 🎉</a>
+      <ul>
+        <li><a href="#block-io-模型">Block I/O 模型</a></li>
+        <li><a href="#多路复用的关键-select-poll-和-epoll">多路复用的关键 select, poll 和 epoll</a></li>
+        <li><a href="#select">select</a></li>
+        <li><a href="#poll">poll</a></li>
+        <li><a href="#epoll">epoll</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/whyredisisfast/Redis_logo.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/whyredisisfast/Redis_logo.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/whyredisisfast/Redis_logo.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/whyredisisfast/Redis_logo.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/whyredisisfast/Redis_logo.png"
+        title="Redis logo" /></p>
+<p>Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友就算没用过也一定听说过它的大名。</p>
+<p>Redis 被使用最多的应该是缓存和集群这两种场景，由于它是基于内存的，而且有丰富的数据结构支持，所以在几年前第一次接触到这个被称为「内存数据库」的东西的时候，我第一感觉就是<em>这不就是一段可以跨设备共享的内存吗</em>😅。</p>
+<p>确实，随着系统架构由「单机」演变成「集群」或者「分布式」，依靠多台机器协同工作的时候，一些需要共享的数据不再适合保存在内存中，例如用户的会话信息，而仅仅依靠传统关系型数据库又无法保证访问速度，所以 Redis 便担起了这一重任。</p>
+<p>不过经过一些时间的学习和使用后，发现在 Redis 为什么快这个问题上，如果仅仅解释为「因为它是基于内存的」，其实并不够，所以这篇博客就主要就来探讨一下这个问题。</p>
+<p>不过，虽然这篇博客是以 Redis 为标题和出发点展开讨论，但涉及到 Redis 本身的篇幅却不多，主要会聚焦在操作系统以及 I/O 的角度，探讨 Redis 的架构设计为它带来的优势，算是一次对于计算机基础的复习和回顾。</p>
+<h2 id="单线程的-redis-">单线程的 Redis 🤔</h2>
+<p>刚刚接触 Redis 的时候通常会被告知 Redis 是单线程的，虽然这么理解也没错，只是并不严谨，因为它并不是严格的单线程结构。</p>
+<p>说 Redis 单线程实际上是指<strong>Redis 的网络 IO和键值对读写是由一个线程来完成的，这也是 Redis 对外提供键值存储服务的主要流程</strong>。而 Redis 的持久化、数据同步等功能其实还是由 fork 出来的子进程去完成。</p>
+<p>在大多数时候我们可能总是会认为多线程就等于高并发，可以增加系统吞吐率，意味着高性能，那为什么 Redis 要如此反直觉地使用单线程模型呢，要更好地理解这一点，就需要先了解多线程的开销。</p>
+<h3 id="并发问题">并发问题</h3>
+<p>通常情况下，多线程系统在有合理的资源分配的情况下，确实可以增加系统中处理请求操作的资源实体，进而提升系统能够同时处理的请求数，即吞吐率。</p>
+<p>不过，一个多线程系统无可避免的需要面对<strong>并发问题</strong>，原因是系统中通常会存在被多线程同时访问的共享资源，比如一个共享的数据结构。</p>
+<p>当有多个线程要修改这个共享资源时，为了保证共享资源的正确性，就需要有额外的机制进行保证，例如常用的锁机制，而这个额外的机制，就会带来额外的开销。</p>
+<h3 id="上下文切换">上下文切换</h3>
+<p>我们知道 Linux 是一个多任务系统，操作系统通过将 CPU 执行权在极短的时间内轮流分配给这些进程，去造成多任务同时运行的错觉。</p>
+<p>而「上下文切换」，就是指 CPU 从一个进程或线程切换到另一个进程或线程这个动作。</p>
+<p>「进程」是指一个程序运行的实例，在 Linux 系统中，「线程」就是能并行运行并且与他们的父进程（创建他们的进程）共享同一地址空间（一段内存区域）和其他资源的轻量级的进程，<strong>实际上这两者在 Linux 系统上并无区别，线程本质上就是一个进程（有时称作微进程），都属于操作系统调度的基本单位</strong>。</p>
+<p>「上下文」是指某一时间点 CPU 「寄存器」和「程序计数器」的内容。</p>
+<p>寄存器是 CPU 内部的高速内存，通过对常用值（通常是运算的中间值）的快速访问来提高计算机程序运行的速度。</p>
+<p>程序计数器则用于表明指令序列中 CPU 正在执行的位置，计数器的值为正在执行的指令的位置或者下一个将要被执行的指令的位置。</p>
+<p>当发生硬件中断、程序主动挂起、或进程所分配的 CPU 时间片耗尽时，会发生上下文切换，过程大概如下：</p>
+<ol>
+<li>挂起一个进程（或线程），将这个进程在 CPU 中的上下文存储于内存中的某处</li>
+<li>在内存中检索下一个进程（或线程）的上下文并将其在 CPU 的寄存器中恢复</li>
+<li>跳转到程序计数器所指向的位置（即跳转到进程被中断时的代码行），以恢复该进程</li>
+</ol>
+<p>从以上几个步骤可以发现，操作系统发生线程切换的时候，需要保留线程的上下文，然后执行系统调用。</p>
+<p>此时如果线程数过高，可能执行线程切换的时间甚至会大于线程执行的时间，带来的表现往往是系统 load 偏高、CPU sys 使用率特别高（超过 20% 以上)，导致系统几乎陷入不可用的状态。</p>
+<p>而且，<strong>唯一可以保存上下文的地方</strong>就只有 CPU 外部相对较慢的 RAM 内存，而 RAM 内存对于 CPU 来说是非常慢的，在 RAM 中对上下文的存取和检索操作约等于白白浪费了 1000 个 CPU 时钟周期。</p>
+<p>所以可以确认，上下文切换是计算密集型的，需要相当可观的处理器时间，对于一个多线程系统来说，将会是一笔不可忽略的开销。</p>
+<p>说到这里，我们应该可以理解 Redis 为什么设计为单线程，所以接下来的问题是，Redis 如何通过单线程架构实现超高性能。</p>
+<p> </p>
+<h2 id="多路复用-io-机制-">多路复用 I/O 机制 🎉</h2>
+<p>Redis 在只使用单线程响应客户端的前提下，仍然可以提供每秒数十万级别的处理能力，需要归功于另一个设计，I/O 多路复用机制。</p>
+<p>与多进程和多线程技术相比，I/O 多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销。</p>
+<h3 id="block-io-模型">Block I/O 模型</h3>
+<p>先回忆一下传统的服务器端同步阻塞 I/O 处理的经典编程模型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*以下是伪代码*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyServer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">//创建一个 socket 绑定到本地端口
+</span><span class="c1"></span>        <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">();</span>
+        <span class="n">serverSocket</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span><span class="s">&#34;8080&#34;</span><span class="o">);</span>
+		
+        <span class="c1">//死循环等待客户端请求，并处理读写事件
+</span><span class="c1"></span>        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+            <span class="c1">//这时候会阻塞，如果没有客户端连接，将会永远阻塞
+</span><span class="c1"></span>            <span class="kd">final</span> <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+            <span class="c1">//当有客户端访问，则可以利用socket对象读取以及写入返回数据
+</span><span class="c1"></span>            <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">().</span><span class="na">read</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">data</span><span class="o">){</span>
+                <span class="n">socket</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;...&#34;</span><span class="o">)</span> <span class="c1">//写数据
+</span><span class="c1"></span>            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>请注意，在上面的代码中，socket.accept()、socket.read()、socket.write() 三个主要函数都是同步阻塞的，意味着当一个连接在处理 I/O 的时候，系统如果是单线程的，就必然会挂死在那里。</p>
+<p>不过线程阻塞的时候，CPU 是被释放出来的，所以实际情况下，当有请求到达时，通常会利用一个新的线程去处理读写事件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/*以下是伪代码*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyServer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">//创建一个 socket 绑定到本地端口
+</span><span class="c1"></span>        <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">();</span>
+        <span class="n">serverSocket</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span><span class="s">&#34;8080&#34;</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+            <span class="kd">final</span> <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+            <span class="c1">//start 一个新的线程处理读写事件
+</span><span class="c1"></span>            <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="n">socket</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//执行读写逻辑
+</span><span class="c1"></span><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Socket</span> <span class="n">socket</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">MyThread</span><span class="o">(</span><span class="n">Socket</span> <span class="n">socket</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+       <span class="c1">//获取客户端输入
+</span><span class="c1"></span>       <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">().</span><span class="na">read</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这就是经典的 Block I/O 模型，它所导致的问题也很明显，就是严重依赖线程。</p>
+<p>而根据上文的分析，线程属于非常昂贵的资源，每个线程都需要一定的内存资源保存线程栈，当线程数量过多的时候，还需要考虑上下文切换的开销问题。</p>
+<p>在面对少量客户端的时候，这种便于理解和维护的经典 BIO 模型其实是一个不错的选择，不过当面对大量并发连接的时候，为每一个客户端都创建一个线程不是一个好的主意。</p>
+<h3 id="多路复用的关键-select-poll-和-epoll">多路复用的关键 select, poll 和 epoll</h3>
+<p>多路复用解决方案的核心是利用内核机制对一组文件描述符（file descriptors 简称FD）进行轮询操作，以达到以单个线程处理多个 I/O 事件的效果。</p>
+<p>在 Linux（Unix）系统中有一个重要的基本概念，就是「一切皆文件」，每个 Linux 进程都有一个文件描述符表（File descriptor table）指向文件、设备、socket 连接等等操作系统对象，也就是说，每一个客户端 socket 连接，在 Linux 看来就是一个 FD。</p>
+<p><code>select()</code>、<code>poll()</code>和<code>epoll()</code>都是由 Linux 内核提供的系统调用，这几个系统调用函数提供了一种相同的思路：<strong>创建并监听一组文件描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），通知程序进行相应的读写操作</strong>。</p>
+<p>目前主流的高级语言都有对于上述系统调用的封装，例如 <code>Java</code> 的 <code>NIO</code>包，<code>golang</code> 和 <code>Node.js</code> 的网络库等等，本文的主角 Redis 也不例外，它的多路复用模块同样封装了<code>select()</code>，<code>epoll()</code>，<code>kqueue()</code>这些系统调用，为上层提供了相同的接口。</p>
+<h3 id="select">select</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">select</span><span class="p">(</span><span class="kt">int</span> <span class="n">nfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">readfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">writefds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">exceptfds</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">timeout</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>select()</code>会返回就绪描述符的数目，超时返回0，出错返回-1，对 <code>select()</code> 的调用将会阻塞，直到给定的文件描述符可以执行 I/O ，或者直到指定的超时时间结束。</p>
+<p><code>select()</code>监听的文件描述符会被分成三类：</p>
+<ul>
+<li>readfds 集合中的文件描述符会被监听以检查数据是否可以读取；</li>
+<li>writefds 集合中的文件描述符会被监听以检查写操作是否可以完成；</li>
+<li>exceptfds 集合中的文件描述符会被监听以检查是否发生了异常；</li>
+</ul>
+<p>如果某个集合为 Null ，那么 select 则不会监听它的事件。</p>
+<p>不过<code>select()</code>也存在一些缺陷，先看看以下示例代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="c1">//子进程
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">child_process</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="kt">char</span> <span class="n">msg</span><span class="p">[</span><span class="n">MAXBUF</span><span class="p">];</span>
+  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">addr</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">srandom</span><span class="p">(</span><span class="n">getpid</span><span class="p">());</span>
+  <span class="cm">/* 创建 socket 并连接服务器 */</span>
+  <span class="n">sockfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="p">);</span>
+ 
+  <span class="n">connect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+ 
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child {%d} connected </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">sl</span> <span class="o">=</span> <span class="p">(</span><span class="n">random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10</span> <span class="p">)</span> <span class="o">+</span>  <span class="mi">1</span><span class="p">;</span>
+        <span class="n">num</span><span class="o">++</span><span class="p">;</span>
+     	<span class="n">sleep</span><span class="p">(</span><span class="n">sl</span><span class="p">);</span>
+  	<span class="n">sprintf</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s">&#34;Test message %d from client %d&#34;</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+  	<span class="n">n</span> <span class="o">=</span> <span class="n">write</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">msg</span><span class="p">));</span>	<span class="cm">/* 发送消息 */</span>
+  <span class="p">}</span>
+ 
+<span class="p">}</span>
+<span class="c1">//服务器进程
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//初始化设置，启动子进程
+</span><span class="c1"></span>  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="n">MAXBUF</span><span class="p">];</span>
+  <span class="kt">int</span> <span class="n">fds</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">addr</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">client</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">addrlen</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="p">;;</span>
+  <span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="n">commfd</span><span class="p">;</span>
+  <span class="n">fd_set</span> <span class="n">rset</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+  	<span class="k">if</span><span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+  	<span class="p">{</span>
+  		<span class="n">child_process</span><span class="p">();</span>
+  		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  	<span class="p">}</span>
+  <span class="p">}</span>
+ <span class="c1">//socket建立，创建文件描述符
+</span><span class="c1"></span>  <span class="n">sockfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>
+  <span class="n">bind</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span> <span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+  <span class="n">listen</span> <span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> 
+ 
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+  <span class="p">{</span>
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">client</span><span class="p">));</span>
+    <span class="n">addrlen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+    <span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addrlen</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
+    	<span class="n">max</span> <span class="o">=</span> <span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="c1">//创建死循环，调用select
+</span><span class="c1"></span>  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+	<span class="n">FD_ZERO</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rset</span><span class="p">);</span>
+  	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+  		<span class="n">FD_SET</span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="o">&amp;</span><span class="n">rset</span><span class="p">);</span>
+  	<span class="p">}</span>
+ 
+   	<span class="n">puts</span><span class="p">(</span><span class="s">&#34;round again&#34;</span><span class="p">);</span>
+	<span class="n">select</span><span class="p">(</span><span class="n">max</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rset</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+ 
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">FD_ISSET</span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">rset</span><span class="p">)){</span>
+			<span class="n">memset</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">MAXBUF</span><span class="p">);</span>
+			<span class="n">read</span><span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">MAXBUF</span><span class="p">);</span>
+			<span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>	
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里启动了五个子进程模拟客户端连接到服务器发送消息，服务器进程在一个死循环中将创建一个包含所有文件描述符的集合，调用<code>select()</code>并遍历检查哪个文件描述符有可读事件发生。</p>
+<p><code>select()</code>返回的时候会将集合替换为只包含那些已经准备好的文件描述符，所以每一次循环都要重新构建文件描述符集合。</p>
+<p>所以我们来总结一下<code>select()</code>的优缺点：</p>
+<ul>
+<li>优点：select 的主要优点是可移植性非常强，所有 unix like 操作系统都支持；</li>
+<li>缺点：每次调用前都需要重新构建集合；</li>
+<li>缺点：对socket进行扫描时是线性扫描，即采用轮询的方法，效率较低，时间复杂度O(n)；</li>
+<li>缺点：单个进程能够监视的文件描述符的数量存在最大限制，一般来说这个数目和系统内存关系很大，具体数目可以<code>cat /proc/sys/fs/file-max</code>察看；</li>
+<li>缺点：<code>select()</code>基于位图，这也是它数量存在最大限制的原因，而且即使只监听 5 个文件描述符，也要遍历所有位图。</li>
+</ul>
+<h3 id="poll">poll</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">int</span> <span class="nf">poll</span> <span class="p">(</span><span class="k">struct</span> <span class="n">pollfd</span> <span class="o">*</span><span class="n">fds</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nfds</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>poll()</code>最大的改进是取消了像<code>select()</code>那样的最大链接数限制，并且将<code>select()</code>的三类文件描述符集合改成了使用单一 nfds pollfd结构数组，原型更简单。</p>
+<p><code>poll()</code>本质上和<code>select()</code>没有区别，它将用户传入的数组拷贝到内核空间，然后查询每个 fd 对应的设备状态，如果设备就绪则在设备等待队列中加入一项并继续遍历，如果遍历完所有 fd 后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时，被唤醒后它又要再次遍历 fd。这个过程经历了多次无谓的遍历。</p>
+<p>总结一下<code>poll()</code>的优缺点：</p>
+<ul>
+<li>优点：没有最大链接数限制；</li>
+<li>改进：不需要像<code>select()</code>一样遍历位图，但不幸的是仍然要遍历整个文件描述符集合；</li>
+<li>改进：<strong>如果给予的文件描述符集合没有被更改</strong>，则不需要再像<code>select()</code>一样每次都重新构建一个新的集合返回，允许重用；</li>
+<li>缺点：不是所有 Unix 系统都支持；</li>
+</ul>
+<h3 id="epoll">epoll</h3>
+<p><code>epoll</code>在Linux 2.6 内核中被提出，是对<code>select()</code>和<code>poll()</code>的改进版本。</p>
+<p>回想一下刚才的<code>select()</code>和<code>pool()</code>，我们所有操作都发生在用户空间，然后每一次调用都需要将集合在用户空间和内核空间中拷贝一次，而且每当有一个新的 socket 连接时，我们需要将它添加到集合中，然后再重新调用<code>select()</code>/<code>poll()</code>。</p>
+<p>而<code>epoll</code>系统调用帮我们在内核中创建和管理一个简易的文件系统。</p>
+<p>在调用时只需要以下三个操作：</p>
+<ol>
+<li>使用<code>epoll_create(int size)</code>创建一个 <code>epoll</code> 上下文，size 参数用于告诉内核这个监听的数目一共有多大；</li>
+<li>使用<code>epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)</code>向<code>epoll</code>添加、删除或修改文件描述符，告诉内核需要监听什么事件；</li>
+<li>使用<code> epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)</code>在给定的timeout时间内，当在监控的所有句柄中有事件发生时，就返回用户态的进程；</li>
+</ol>
+<p>将上面的示例改成使用<code>epoll</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"> <span class="k">struct</span> <span class="n">epoll_event</span> <span class="n">events</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="kt">int</span> <span class="n">epfd</span> <span class="o">=</span> <span class="n">epoll_create</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="p">...</span>
+  <span class="p">...</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+  <span class="p">{</span>
+    <span class="k">static</span> <span class="k">struct</span> <span class="n">epoll_event</span> <span class="n">ev</span><span class="p">;</span>
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="p">(</span><span class="n">client</span><span class="p">));</span>
+    <span class="n">addrlen</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">client</span><span class="p">);</span>
+    <span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">client</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addrlen</span><span class="p">);</span>
+    <span class="n">ev</span><span class="p">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">EPOLLIN</span><span class="p">;</span>
+    <span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">);</span> 
+  <span class="p">}</span>
+  
+  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+  	<span class="n">puts</span><span class="p">(</span><span class="s">&#34;round again&#34;</span><span class="p">);</span>
+  	<span class="n">nfds</span> <span class="o">=</span> <span class="n">epoll_wait</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10000</span><span class="p">);</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nfds</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">memset</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">MAXBUF</span><span class="p">);</span>
+			<span class="n">read</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">MAXBUF</span><span class="p">);</span>
+			<span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+	<span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>首先需要创建一个<code>epoll</code>上下文，当客户端连接时，创建一个<code>epoll</code>事件对象并注册到<code>epoll</code>上下文中，在死循环里面我们只需要等待事件通知。</p>
+<p>总结一下<code>epoll</code>的优缺点：</p>
+<ul>
+<li>优点：文件描述符只在调用<code>epoll_ctl()</code>时拷贝，每次调用<code>epoll_wait()</code>不拷贝；</li>
+<li>优点：没有最大连接数限制；</li>
+<li>优点：事件驱动，不需要遍历集合，复杂度O(1)；</li>
+<li>优点：利用<code>mmap()</code>文件映射内存加速与内核空间的消息传递，减少拷贝开销。</li>
+<li>缺点：只有 Linux 支持；</li>
+</ul>
+<p> </p>
+<h2 id="总结">总结</h2>
+<p>这篇博客主要在操作系统以及 I/O 这两个方面分析了 Redis 在简洁的架构下却能表现出优异性能的根本原因。</p>
+<p>Redis 通过单线程规避了并发问题以及多线程上下文切换带来的开销，然后利用设计良好的 I/O 多路复用模块保证了大量并发下的稳定性能，并且由于数据读写都发生在内存中，可以保证超低的读写延迟，利用子进程处理数据的持久化和同步问题，这样简洁又优雅的设计确实值得我们学习。</p>
+<h3 id="参考">参考</h3>
+<p><a href="https://time.geekbang.org/column/intro/100056701" target="_blank" rel="noopener noreffer">极客时间《Redis核心技术与实战》</a></p>
+<p><a href="https://draveness.me/redis-io-multiplexing/" target="_blank" rel="noopener noreffer">Redis 和 I/O 多路复用</a></p>
+<p><a href="https://juejin.cn/post/6844904200141438984#heading-14" target="_blank" rel="noopener noreffer">彻底理解 I/O 多路复用</a></p>
+<p><a href="https://devarea.com/linux-io-multiplexing-select-vs-poll-vs-epoll/#.YBLAbugzZPb" target="_blank" rel="noopener noreffer">LINUX – IO MULTIPLEXING</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-01-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/redis/">Redis</a>,&nbsp;<a href="/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2/">上下文切换</a>,&nbsp;<a href="/tags/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/">多路复用</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/openvpn/" class="prev" rel="prev" title="利用 openVPN 构建互访混合云环境"><i class="fas fa-angle-left fa-fw"></i>利用 openVPN 构建互访混合云环境</a>
+            <a href="/posts/0216to0220/" class="next" rel="next" title="新概念二册-Lesson 16~20 笔记">新概念二册-Lesson 16~20 笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
