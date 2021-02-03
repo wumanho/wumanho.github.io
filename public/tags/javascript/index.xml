@@ -4,14 +4,7 @@
         <link>/tags/javascript/</link>
         <description>JavaScript - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
-    <title>Vue 运行时版本简介</title>
-    <link>/posts/vueruntime/</link>
-    <pubDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vueruntime/</guid>
-    <description><![CDATA[在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本]]></description>
-</item><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
     <title>用 Node.js 写一个简易静态服务器</title>
     <link>/posts/nodesimpleserver/</link>
     <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
@@ -24,14 +17,22 @@
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/domevent/</guid>
-    <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
+    <description><![CDATA[<h2 id="什么是-dom-事件-">什么是 DOM 事件 ❓</h2>
+<p>DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。</p>]]></description>
+</item><item>
+    <title>Vue 运行时版本简介</title>
+    <link>/posts/vueruntime/</link>
+    <pubDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueruntime/</guid>
+    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
 </item><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/mvcintro/</guid>
-    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
+    <description><![CDATA[<p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>]]></description>
 </item><item>
     <title>JavaScript 继承介绍与应用</title>
     <link>/posts/jsinheritance/</link>
@@ -45,7 +46,8 @@
     <pubDate>Sat, 18 Apr 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/ajaxjq/</guid>
-    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
+    <description><![CDATA[<p> </p>
+<p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item><item>
     <title>jQuery 使用和设计简介</title>
     <link>/posts/jq01/</link>

@@ -4,34 +4,35 @@
         <link>/categories/%E5%89%8D%E7%AB%AF/</link>
         <description>前端 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
-    <title>理解 .sync 修饰符</title>
-    <link>/posts/vuesyncmodyfier/</link>
-    <pubDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vuesyncmodyfier/</guid>
-    <description><![CDATA[Vue 在 2.3 版本得时候引入了.sync修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。 很多时候我们希望使用双向绑定来简化大量业务无关的]]></description>
-</item><item>
-    <title>Vue 运行时版本简介</title>
-    <link>/posts/vueruntime/</link>
-    <pubDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vueruntime/</guid>
-    <description><![CDATA[在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本]]></description>
-</item><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
     <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/domevent/</guid>
-    <description><![CDATA[什么是 DOM 事件 ❓ DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。 发送 DOM 事件是为了将发生的相关事情通知代码。每个事件都是继]]></description>
+    <description><![CDATA[<h2 id="什么是-dom-事件-">什么是 DOM 事件 ❓</h2>
+<p>DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。</p>]]></description>
+</item><item>
+    <title>理解 .sync 修饰符</title>
+    <link>/posts/vuesyncmodyfier/</link>
+    <pubDate>Sat, 03 Oct 2020 11:26:08 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vuesyncmodyfier/</guid>
+    <description><![CDATA[<p><a href="https://vuejs.org/" target="_blank" rel="noopener noreffer">Vue</a> 在 2.3 版本得时候引入了<code>.sync</code>修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。</p>]]></description>
+</item><item>
+    <title>Vue 运行时版本简介</title>
+    <link>/posts/vueruntime/</link>
+    <pubDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueruntime/</guid>
+    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
 </item><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/mvcintro/</guid>
-    <description><![CDATA[前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发]]></description>
+    <description><![CDATA[<p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>]]></description>
 </item><item>
     <title>JavaScript 继承介绍与应用</title>
     <link>/posts/jsinheritance/</link>
@@ -45,9 +46,10 @@
     <pubDate>Sat, 18 Apr 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/ajaxjq/</guid>
-    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
+    <description><![CDATA[<p> </p>
+<p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item><item>
-    <title>CSS 总结</title>
+    <title>CSS 原理笔记</title>
     <link>/posts/css/</link>
     <pubDate>Mon, 30 Mar 2020 10:02:12 &#43;0800</pubDate>
     <author>作者</author>

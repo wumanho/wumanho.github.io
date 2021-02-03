@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>前端 MVC - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="前端 MVC" />
-<meta property="og:description" content="前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发" />
+<meta property="og:description" content=" 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/mvcintro/" />
 <meta property="og:image" content="/logo.png"/>
@@ -16,11 +16,11 @@
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="前端 MVC"/>
-<meta name="twitter:description" content="前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。 由于前端领域起步和发展本身比较晚，所以 MVC 本身是从传统软件工程开发"/>
+<meta name="twitter:description" content=" 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。"/>
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/mvcintro/" /><link rel="prev" href="/posts/jsinheritance/" /><link rel="next" href="/posts/domevent/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/mvcintro/" /><link rel="prev" href="/posts/jsinheritance/" /><link rel="next" href="/posts/vueruntime/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -76,7 +76,7 @@
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">前端 MVC</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-05">2020-09-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1420 字&nbsp;
@@ -254,8 +254,7 @@
 <p>JavaScript 和其他常见的高级语言不同，JS 在设计初期是没有考虑到包、模块这种概念的，不过随着前端项目的复杂度增加，前端开发者必然需要通过一些手段来组织代码。</p>
 <p>这些手段就是模块化，其实模块化可以简单理解为对于复杂代码的隔离、封装等操作。</p>
 <p>其实 MVC 就是模块化的体现之一，MVC 将一个页面上的不同部分分离，降低代码耦合度，减少重复代码，提高代码重用性，并且在项目结构上更加清晰，便于维护。</p>
-<p>其实在 JavaScript 中还有很多其他对模块化的体现，例如：<code>CommonJS</code>、<code>AMD</code>,<code>CMD</code>，还有 ES6 的 <code>import/export</code>等。</p>
-</div><div class="post-footer" id="post-footer">
+<p>其实在 JavaScript 中还有很多其他对模块化的体现，例如：<code>CommonJS</code>、<code>AMD</code>,<code>CMD</code>，还有 ES6 的 <code>import/export</code>等。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -279,7 +278,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/jsinheritance/" class="prev" rel="prev" title="JavaScript 继承介绍与应用"><i class="fas fa-angle-left fa-fw"></i>JavaScript 继承介绍与应用</a>
-            <a href="/posts/domevent/" class="next" rel="next" title="DOM 事件与事件委托">DOM 事件与事件委托<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/vueruntime/" class="next" rel="next" title="Vue 运行时版本简介">Vue 运行时版本简介<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

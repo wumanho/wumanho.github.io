@@ -10,6 +10,6 @@
     <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/esmem/</guid>
-    <description><![CDATA[由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号]]></description>
+    <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
 </item></channel>
 </rss>

@@ -1,13 +1,15 @@
 ---
 weight: 2
 title: "Vue 运行时版本简介"
-date: 2020-12-28T15:54:49+08:00
+date: 2020-09-20T15:54:49+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript","Vue"]
 ---
 
 在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的`完整版`与`非完整版`到底有什么区别。
+
+<!--more-->
 
 实际上[官方文档](https://cn.vuejs.org/v2/guide/installation.html#%E5%AF%B9%E4%B8%8D%E5%90%8C%E6%9E%84%E5%BB%BA%E7%89%88%E6%9C%AC%E7%9A%84%E8%A7%A3%E9%87%8A)对于各个版本已经有较明确的解析，所以本文着重于对比两个版本的差异。
 

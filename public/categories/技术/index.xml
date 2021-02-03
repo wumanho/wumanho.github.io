@@ -17,21 +17,23 @@
     <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/openvpn/</guid>
-    <description><![CDATA[背景 由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。 但后来经过调研发现了一个问题，就是我们的公有云服务]]></description>
+    <description><![CDATA[<h2 id="背景">背景</h2>
+<p>由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。</p>]]></description>
 </item><item>
     <title>ElasticSearch 内存占用百分比问题</title>
     <link>/posts/esmem/</link>
     <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/esmem/</guid>
-    <description><![CDATA[由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号]]></description>
+    <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
 </item><item>
     <title>利用 HTTP/2 为网站提速</title>
     <link>/posts/introductiontohttp2/</link>
     <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
+    <description><![CDATA[<h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
+<p>在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。</p>]]></description>
 </item><item>
     <title>命令行的本质和四要素（一）</title>
     <link>/posts/cmd/</link>

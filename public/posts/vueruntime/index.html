@@ -6,21 +6,21 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Vue 运行时版本简介 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="Vue 运行时版本简介" />
-<meta property="og:description" content="在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本" />
+<meta property="og:description" content="在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/vueruntime/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2020-12-28T15:54:49+08:00" />
-<meta property="article:modified_time" content="2020-12-28T15:54:49+08:00" />
+<meta property="article:published_time" content="2020-09-20T15:54:49+08:00" />
+<meta property="article:modified_time" content="2020-09-20T15:54:49+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="Vue 运行时版本简介"/>
-<meta name="twitter:description" content="在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本"/>
+<meta name="twitter:description" content="在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。"/>
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/vueruntime/" /><link rel="prev" href="/posts/esmem/" /><link rel="next" href="/posts/vuesyncmodyfier/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/vueruntime/" /><link rel="prev" href="/posts/mvcintro/" /><link rel="next" href="/posts/vuesyncmodyfier/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,7 +30,7 @@
             "@type": "WebPage",
             "@id": "\/posts\/vueruntime\/"
         },"genre": "posts","keywords": "JavaScript, Vue","wordcount":  956 ,
-        "url": "\/posts\/vueruntime\/","datePublished": "2020-12-28T15:54:49+08:00","dateModified": "2020-12-28T15:54:49+08:00","publisher": {
+        "url": "\/posts\/vueruntime\/","datePublished": "2020-09-20T15:54:49+08:00","dateModified": "2020-09-20T15:54:49+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
                 "@type": "Person",
@@ -76,10 +76,10 @@
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Vue 运行时版本简介</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-28">2020-12-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 956 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-09-20">2020-09-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 956 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -314,12 +314,11 @@
 </div><p> </p>
 <p>（完）</p>
 <h3 id="参考">参考</h3>
-<p><a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener noreffer">vue 官方文档</a></p>
-</div><div class="post-footer" id="post-footer">
+<p><a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener noreffer">vue 官方文档</a></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-12-28</span>
+                <span>更新于 2020-09-20</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -338,7 +337,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/esmem/" class="prev" rel="prev" title="ElasticSearch 内存占用百分比问题"><i class="fas fa-angle-left fa-fw"></i>ElasticSearch 内存占用百分比问题</a>
+    <div class="post-nav"><a href="/posts/mvcintro/" class="prev" rel="prev" title="前端 MVC"><i class="fas fa-angle-left fa-fw"></i>前端 MVC</a>
             <a href="/posts/vuesyncmodyfier/" class="next" rel="next" title="理解 .sync 修饰符">理解 .sync 修饰符<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>

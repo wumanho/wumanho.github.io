@@ -10,6 +10,7 @@
     <pubDate>Sat, 18 Apr 2020 11:36:57 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/ajaxjq/</guid>
-    <description><![CDATA[AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。 由于 AJAX 是异步的（这里不对同步]]></description>
+    <description><![CDATA[<p> </p>
+<p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item></channel>
 </rss>

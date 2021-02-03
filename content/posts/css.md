@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "CSS 总结"
+title: "CSS 原理笔记"
 date: 2020-03-30T10:02:12+08:00
 draft: false
 categories: ["前端"]
@@ -108,9 +108,6 @@ keyframes是与animation结合使用的模块，常用语法:
  100%{top:5px; top:10px;}   /* 动画结束时的动作 */
 }
 ```
-
-# 其他想写的
-    没想到CSS这么难
 
 
 

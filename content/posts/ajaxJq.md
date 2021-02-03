@@ -9,6 +9,9 @@ tags: ["JavaScript","jQuery","AJAX"]
 &nbsp;
 
 AJAX 全称 *ASynchronous JavaScript And XML*，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 **XMLHttpRequest** 创建的对象来发送和接受请求的一种技术。
+
+<!--more-->
+
 &nbsp;
 
 由于 AJAX 是异步的（这里不对同步异步作更多介绍），这意味着利用 AJAX 可以同时向后台请求多个数据，而不必等待同步阻塞的时间，这对与效率和用户体验都是非常大的提升。  

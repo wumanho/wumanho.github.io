@@ -4,13 +4,22 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 28 Jan 2021 18:03:52 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>新概念二册-Lesson 16~20 笔记</title>
-    <link>/posts/0216to0220/</link>
-    <pubDate>Mon, 14 Sep 2020 21:13:07 &#43;0800</pubDate>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 03 Feb 2021 14:15:35 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>新概念二册-Lesson 21~25 笔记</title>
+    <link>/posts/0221to0225/</link>
+    <pubDate>Tue, 13 Oct 2020 22:26:15 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/0216to0220/</guid>
-    <description><![CDATA[更多新概念笔记 新概念一册笔记集合 新概念二册笔记集合 Lesson 16 A polite request 生词短语用法 🌍 park作动词为停放汽车, park your car in the wrong place reminder，加了er]]></description>
+    <guid>/posts/0221to0225/</guid>
+    <description><![CDATA[<h3 id="更多新概念笔记">更多新概念笔记</h3>
+<p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
+<p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
+</item><item>
+    <title>【自制中字】 PewDiePie 2021 intro 健身和阅读的目标</title>
+    <link>/posts/pewdipie2021intro/</link>
+    <pubDate>Wed, 03 Feb 2021 14:15:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/pewdipie2021intro/</guid>
+    <description><![CDATA[PewDiePie 在 2021 年初的时候传了一个视频，主要是关于「新年计划」和分享他健身和阅读的收获，还有重启 Book club 和 Book review 环节，觉得挺有意思的，做了个中文字幕转到 B 站]]></description>
 </item><item>
     <title>深入理解「Redis 为什么快」</title>
     <link>/posts/whyredisisfast/</link>
@@ -24,42 +33,32 @@
     <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/openvpn/</guid>
-    <description><![CDATA[背景 由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。 但后来经过调研发现了一个问题，就是我们的公有云服务]]></description>
-</item><item>
-    <title>理解 .sync 修饰符</title>
-    <link>/posts/vuesyncmodyfier/</link>
-    <pubDate>Tue, 12 Jan 2021 11:26:08 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vuesyncmodyfier/</guid>
-    <description><![CDATA[Vue 在 2.3 版本得时候引入了.sync修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。 很多时候我们希望使用双向绑定来简化大量业务无关的]]></description>
-</item><item>
-    <title>Vue 运行时版本简介</title>
-    <link>/posts/vueruntime/</link>
-    <pubDate>Mon, 28 Dec 2020 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vueruntime/</guid>
-    <description><![CDATA[在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的完整版与非完整版到底有什么区别。 实际上官方文档对于各个版本已经有较明确的解析，所以本]]></description>
+    <description><![CDATA[<h2 id="背景">背景</h2>
+<p>由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。</p>]]></description>
 </item><item>
     <title>ElasticSearch 内存占用百分比问题</title>
     <link>/posts/esmem/</link>
     <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/esmem/</guid>
-    <description><![CDATA[由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号]]></description>
+    <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
 </item><item>
     <title>利用 HTTP/2 为网站提速</title>
     <link>/posts/introductiontohttp2/</link>
     <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[为什么需要 HTTP/2 在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。 HTTP 协议建立在 TCP 协议的]]></description>
+    <description><![CDATA[<h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
+<p>在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。</p>]]></description>
 </item><item>
     <title>2020 观演记录</title>
     <link>/posts/recentshows/</link>
     <pubDate>Tue, 01 Dec 2020 10:58:24 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/recentshows/</guid>
-    <description><![CDATA[「航海时代」- 停止幻想 阵容：梅卡德尔，假假條 地点：深圳 B10 今年最期待的组合，虽然我买的溢价票，不过我认为相当值得，梅卡和假假條的主创赵泰和刘与]]></description>
+    <description><![CDATA[<h2 id="航海时代--停止幻想">「航海时代」- 停止幻想</h2>
+<p>阵容：梅卡德尔，假假條</p>
+<p>地点：深圳 B10</p>]]></description>
 </item><item>
     <title>命令行的本质和四要素（一）</title>
     <link>/posts/cmd/</link>
@@ -73,6 +72,13 @@
     <pubDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/thetourist/</guid>
-    <description><![CDATA[⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 wumanho@tutanota.com 删除文章。 It barks at no one else but me 它只会对着我乱吠 Like it&rsquo;s seen a ghost 就好像看到鬼一样 I]]></description>
+    <description><![CDATA[<p>⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 <a href="mailto:wumanho@tutanota.com">wumanho@tutanota.com</a> 删除文章。</p>]]></description>
+</item><item>
+    <title>用 Node.js 写一个简易静态服务器</title>
+    <link>/posts/nodesimpleserver/</link>
+    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/nodesimpleserver/</guid>
+    <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
 </item></channel>
 </rss>

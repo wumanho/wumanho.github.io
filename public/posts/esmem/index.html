@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>ElasticSearch 内存占用百分比问题 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="ElasticSearch 内存占用百分比问题" />
-<meta property="og:description" content="由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号" />
+<meta property="og:description" content="由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/esmem/" />
 <meta property="og:image" content="/logo.png"/>
@@ -16,11 +16,11 @@
 <meta name="twitter:image" content="/logo.png"/>
 
 <meta name="twitter:title" content="ElasticSearch 内存占用百分比问题"/>
-<meta name="twitter:description" content="由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。 公司使用的 ES 集群版本号"/>
+<meta name="twitter:description" content="由于对 ES 查看集群健康状态 API get _cat/nodes?v 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。"/>
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/esmem/" /><link rel="prev" href="/posts/introductiontohttp2/" /><link rel="next" href="/posts/vueruntime/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/esmem/" /><link rel="prev" href="/posts/introductiontohttp2/" /><link rel="next" href="/posts/openvpn/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -76,7 +76,7 @@
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">ElasticSearch 内存占用百分比问题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-20">2020-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1073 字&nbsp;
@@ -172,8 +172,7 @@
 <p>这篇文章还列举了很多例子，包括实际操作验证，可以打开链接自行了解。</p>
 <p> </p>
 <h2 id="总结">总结</h2>
-<p>由于 ES 的实时性需求，Lucene 在设计时为了提高整体性能，将会大量使用上面所描述的「操作系统磁盘缓存」，使得操作系统的内存看起来被占用了非常多，实则不然，建议在监控 ES 的时候，<strong>主要以观察 heap 内存为主</strong>，实际物理主机占用的内存空间，可以在 zabbix 查看。</p>
-</div><div class="post-footer" id="post-footer">
+<p>由于 ES 的实时性需求，Lucene 在设计时为了提高整体性能，将会大量使用上面所描述的「操作系统磁盘缓存」，使得操作系统的内存看起来被占用了非常多，实则不然，建议在监控 ES 的时候，<strong>主要以观察 heap 内存为主</strong>，实际物理主机占用的内存空间，可以在 zabbix 查看。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -197,7 +196,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/introductiontohttp2/" class="prev" rel="prev" title="利用 HTTP/2 为网站提速"><i class="fas fa-angle-left fa-fw"></i>利用 HTTP/2 为网站提速</a>
-            <a href="/posts/vueruntime/" class="next" rel="next" title="Vue 运行时版本简介">Vue 运行时版本简介<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/openvpn/" class="next" rel="next" title="利用 openVPN 构建互访混合云环境">利用 openVPN 构建互访混合云环境<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

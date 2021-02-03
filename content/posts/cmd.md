@@ -45,7 +45,7 @@ Shell 进程为用户提供一个可交互的窗口，它的工作就是读取�
 
 Linux 有一个著名的文件`/etc/passwd`，该文件中保存了系统中所有用户的信息，每一行就是一个用户。
 
-```
+```bash
 # cat /etc/passwd
 root: x:0:0:root:/root:/bin/bash
 bin: x:1:1:bin:/bin:/sbin/nologin
