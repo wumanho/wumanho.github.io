@@ -10,7 +10,6 @@
     <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/openvpn/</guid>
-    <description><![CDATA[<h2 id="背景">背景</h2>
-<p>由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。</p>]]></description>
+    <description><![CDATA[由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in]]></description>
 </item></channel>
 </rss>

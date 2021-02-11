@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>深入理解「Redis 为什么快」 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="深入理解「Redis 为什么快」" />
+        <title>深度总结「Redis 为什么快」 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="深度总结「Redis 为什么快」" />
 <meta property="og:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/whyredisisfast/" />
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="深入理解「Redis 为什么快」"/>
+<meta name="twitter:title" content="深度总结「Redis 为什么快」"/>
 <meta name="twitter:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友"/>
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -24,12 +24,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "深入理解「Redis 为什么快」",
+        "headline": "深度总结「Redis 为什么快」",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/whyredisisfast\/"
-        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5202 ,
+        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5240 ,
         "url": "\/posts\/whyredisisfast\/","datePublished": "2021-01-21T08:49:20+08:00","dateModified": "2021-01-21T08:49:20+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -77,9 +77,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">深入理解「Redis 为什么快」</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">深度总结「Redis 为什么快」</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5202 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5240 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -565,7 +565,8 @@
 <p><a href="https://time.geekbang.org/column/intro/100056701" target="_blank" rel="noopener noreffer">极客时间《Redis核心技术与实战》</a></p>
 <p><a href="https://draveness.me/redis-io-multiplexing/" target="_blank" rel="noopener noreffer">Redis 和 I/O 多路复用</a></p>
 <p><a href="https://juejin.cn/post/6844904200141438984#heading-14" target="_blank" rel="noopener noreffer">彻底理解 I/O 多路复用</a></p>
-<p><a href="https://devarea.com/linux-io-multiplexing-select-vs-poll-vs-epoll/#.YBLAbugzZPb" target="_blank" rel="noopener noreffer">LINUX – IO MULTIPLEXING</a></p>
+<p><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/" target="_blank" rel="noopener noreffer">Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau (University of Wisconsin-Madison). 2018.Operating Systems: Three Easy Pieces</a></p>
+<p>上面是官方免费英文版，推荐一下中文版：<a href="https://book.douban.com/subject/33463930/" target="_blank" rel="noopener noreffer">《操作系统导论》</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -590,7 +591,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/openvpn/" class="prev" rel="prev" title="利用 openVPN 构建互访混合云环境"><i class="fas fa-angle-left fa-fw"></i>利用 openVPN 构建互访混合云环境</a>
-            <a href="/posts/pewdipie2021intro/" class="next" rel="next" title="【自制中字】 PewDiePie 2021 intro 健身和阅读的目标">【自制中字】 PewDiePie 2021 intro 健身和阅读的目标<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/pewdipie2021intro/" class="next" rel="next" title="【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标">【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

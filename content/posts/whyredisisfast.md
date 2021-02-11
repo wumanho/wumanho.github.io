@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "深入理解「Redis 为什么快」"
+title: "深度总结「Redis 为什么快」"
 date: 2021-01-21T08:49:20+08:00
 draft: false
 categories: ["技术"]
@@ -353,4 +353,7 @@ Redis 通过单线程规避了并发问题以及多线程上下文切换带来�
 
 [彻底理解 I/O 多路复用](https://juejin.cn/post/6844904200141438984#heading-14)
 
-[LINUX – IO MULTIPLEXING](https://devarea.com/linux-io-multiplexing-select-vs-poll-vs-epoll/#.YBLAbugzZPb)
+[Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau (University of Wisconsin-Madison). 2018.Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+
+上面是官方免费英文版，推荐一下中文版：[《操作系统导论》](https://book.douban.com/subject/33463930/)
+

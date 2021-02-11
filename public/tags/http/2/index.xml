@@ -10,7 +10,6 @@
     <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[<h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
-<p>在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。</p>]]></description>
+    <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
 </item></channel>
 </rss>

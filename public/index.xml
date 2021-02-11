@@ -16,14 +16,14 @@
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
 </item><item>
-    <title>【自制中字】 PewDiePie 2021 intro 健身和阅读的目标</title>
+    <title>【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标</title>
     <link>/posts/pewdipie2021intro/</link>
     <pubDate>Wed, 03 Feb 2021 14:15:35 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/pewdipie2021intro/</guid>
     <description><![CDATA[PewDiePie 在 2021 年初的时候传了一个视频，主要是关于「新年计划」和分享他健身和阅读的收获，还有重启 Book club 和 Book review 环节，觉得挺有意思的，做了个中文字幕转到 B 站]]></description>
 </item><item>
-    <title>深入理解「Redis 为什么快」</title>
+    <title>深度总结「Redis 为什么快」</title>
     <link>/posts/whyredisisfast/</link>
     <pubDate>Thu, 21 Jan 2021 08:49:20 &#43;0800</pubDate>
     <author>作者</author>
@@ -35,8 +35,7 @@
     <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/openvpn/</guid>
-    <description><![CDATA[<h2 id="背景">背景</h2>
-<p>由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in。</p>]]></description>
+    <description><![CDATA[由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in]]></description>
 </item><item>
     <title>ElasticSearch 内存占用百分比问题</title>
     <link>/posts/esmem/</link>
@@ -50,17 +49,14 @@
     <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[<h2 id="为什么需要-http2">为什么需要 HTTP/2</h2>
-<p>在介绍 HTTP/2 之前，我们首先要讨论一下当前被广泛使用的 HTTP/1.x ，如果你是一名 WEB 开发者，那么你一定不会对这个名词感到陌生。</p>]]></description>
+    <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
 </item><item>
     <title>2020 观演记录</title>
     <link>/posts/recentshows/</link>
     <pubDate>Tue, 01 Dec 2020 10:58:24 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/recentshows/</guid>
-    <description><![CDATA[<h2 id="航海时代--停止幻想">「航海时代」- 停止幻想</h2>
-<p>阵容：梅卡德尔，假假條</p>
-<p>地点：深圳 B10</p>]]></description>
+    <description><![CDATA[今年看的几场现场演出复盘]]></description>
 </item><item>
     <title>命令行的本质和四要素（一）</title>
     <link>/posts/cmd/</link>
