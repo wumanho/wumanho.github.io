@@ -18,5 +18,12 @@
     <author>作者</author>
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
+</item><item>
+    <title>Vue 封装 icon 组件</title>
+    <link>/posts/vuesvg/</link>
+    <pubDate>Fri, 24 Apr 2020 10:52:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vuesvg/</guid>
+    <description><![CDATA[基于 SVG雪碧图 和 svg-sprite-loader 封装全局 icon 组件]]></description>
 </item></channel>
 </rss>

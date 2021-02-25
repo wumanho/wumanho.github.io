@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>深度总结「Redis 为什么快」 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="深度总结「Redis 为什么快」" />
-<meta property="og:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友" />
+        <title>理解 Redis 简洁高效的系统设计 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="理解 Redis 简洁高效的系统设计" />
+<meta property="og:description" content="对计算机基础进行一些复习和回顾" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/whyredisisfast/" />
 <meta property="og:image" content="/logo.png"/>
@@ -15,8 +15,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="深度总结「Redis 为什么快」"/>
-<meta name="twitter:description" content="Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友"/>
+<meta name="twitter:title" content="理解 Redis 简洁高效的系统设计"/>
+<meta name="twitter:description" content="对计算机基础进行一些复习和回顾"/>
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,12 +24,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "深度总结「Redis 为什么快」",
+        "headline": "理解 Redis 简洁高效的系统设计",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/whyredisisfast\/"
-        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5240 ,
+        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5357 ,
         "url": "\/posts\/whyredisisfast\/","datePublished": "2021-01-21T08:49:20+08:00","dateModified": "2021-01-21T08:49:20+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -77,9 +77,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">深度总结「Redis 为什么快」</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">理解 Redis 简洁高效的系统设计</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5240 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5357 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -121,7 +121,7 @@
 <p>Redis 是一个基于内存的键值数据库，由于使用简单、优秀的设计以及提供了持久化和分片等数据可靠性机制，被广泛应用在各种项目上，相信做过后端开发的朋友就算没用过也一定听说过它的大名。</p>
 <p>Redis 被使用最多的应该是缓存和集群这两种场景，由于它是基于内存的，而且有丰富的数据结构支持，所以在几年前第一次接触到这个被称为「内存数据库」的东西的时候，我第一感觉就是<em>这不就是一段可以跨设备共享的内存吗</em>😅。</p>
 <p>确实，随着系统架构由「单机」演变成「集群」或者「分布式」，依靠多台机器协同工作的时候，一些需要共享的数据不再适合保存在内存中，例如用户的会话信息，而仅仅依靠传统关系型数据库又无法保证访问速度，所以 Redis 便担起了这一重任。</p>
-<p>不过经过一些时间的学习和使用后，发现在 Redis 为什么快这个问题上，如果仅仅解释为「因为它是基于内存的」，其实并不够，所以这篇博客就主要就来探讨一下这个问题。</p>
+<p>不过经过一些时间的学习和使用后，发现在 Redis 为什么快这个问题上，如果仅仅解释为「因为它是基于内存的」，其实并不够，所以这篇博客就主要就来讨论一下这个问题。</p>
 <p>不过，虽然这篇博客是以 Redis 为标题和出发点展开讨论，但涉及到 Redis 本身的篇幅却不多，主要会聚焦在操作系统以及 I/O 的角度，探讨 Redis 的架构设计为它带来的优势，算是一次对于计算机基础的复习和回顾。</p>
 <h2 id="单线程的-redis-">单线程的 Redis 🤔</h2>
 <p>刚刚接触 Redis 的时候通常会被告知 Redis 是单线程的，虽然这么理解也没错，只是并不严谨，因为它并不是严格的单线程结构。</p>
@@ -134,11 +134,11 @@
 <h3 id="上下文切换">上下文切换</h3>
 <p>我们知道 Linux 是一个多任务系统，操作系统通过将 CPU 执行权在极短的时间内轮流分配给这些进程，去造成多任务同时运行的错觉。</p>
 <p>而「上下文切换」，就是指 CPU 从一个进程或线程切换到另一个进程或线程这个动作。</p>
-<p>「进程」是指一个程序运行的实例，在 Linux 系统中，「线程」就是能并行运行并且与他们的父进程（创建他们的进程）共享同一地址空间（一段内存区域）和其他资源的轻量级的进程，<strong>实际上这两者在 Linux 系统上并无区别，线程本质上就是一个进程（有时称作微进程），都属于操作系统调度的基本单位</strong>。</p>
-<p>「上下文」是指某一时间点 CPU 「寄存器」和「程序计数器」的内容。</p>
-<p>寄存器是 CPU 内部的高速内存，通过对常用值（通常是运算的中间值）的快速访问来提高计算机程序运行的速度。</p>
-<p>程序计数器则用于表明指令序列中 CPU 正在执行的位置，计数器的值为正在执行的指令的位置或者下一个将要被执行的指令的位置。</p>
-<p>当发生硬件中断、程序主动挂起、或进程所分配的 CPU 时间片耗尽时，会发生上下文切换，过程大概如下：</p>
+<p>操作系统中的「进程」是指一个程序运行的实例，在 Linux 系统中，「线程」就是能并行运行并且与他们的父进程（创建他们的进程）共享同一地址空间（一段内存区域）和其他资源的轻量级的进程，<strong>但实际上这两者在 Linux 系统上并无区别，线程本质上就是一个进程（有时称作微进程），都属于操作系统调度的基本单位</strong>。</p>
+<p>要理解进程的「上下文」，需要先知道什么是 CPU 「寄存器」和「程序计数器」，因为「上下文」的主要作用便是被用于保存他们的内容。</p>
+<p>寄存器是 CPU 内部的高速内存，通过对常用值（通常是运算的中间值）的快速访问来提高计算机程序运行的速度，而程序计数器则用于表明指令序列中 CPU 正在执行的位置，计数器的值为正在执行的指令的位置或者下一个将要被执行的指令的位置。</p>
+<p>所以简单来说，可以将这些「上下文」理解为该当前进程在某一个时间点的状态，在发生上下文切换时，系统需要将这些状态保留，当该进程再次被调度时，用于恢复进程的状态。</p>
+<p>当发生硬件中断、程序主动挂起、或进程所分配的 CPU 时间片耗尽时，就会发生上下文切换，过程大概如下：</p>
 <ol>
 <li>挂起一个进程（或线程），将这个进程在 CPU 中的上下文存储于内存中的某处</li>
 <li>在内存中检索下一个进程（或线程）的上下文并将其在 CPU 的寄存器中恢复</li>
@@ -147,8 +147,8 @@
 <p>从以上几个步骤可以发现，操作系统发生线程切换的时候，需要保留线程的上下文，然后执行系统调用。</p>
 <p>此时如果线程数过高，可能执行线程切换的时间甚至会大于线程执行的时间，带来的表现往往是系统 load 偏高、CPU sys 使用率特别高（超过 20% 以上)，导致系统几乎陷入不可用的状态。</p>
 <p>而且，<strong>唯一可以保存上下文的地方</strong>就只有 CPU 外部相对较慢的 RAM 内存，而 RAM 内存对于 CPU 来说是非常慢的，在 RAM 中对上下文的存取和检索操作约等于白白浪费了 1000 个 CPU 时钟周期。</p>
-<p>所以可以确认，上下文切换是计算密集型的，需要相当可观的处理器时间，对于一个多线程系统来说，将会是一笔不可忽略的开销。</p>
-<p>说到这里，我们应该可以理解 Redis 为什么设计为单线程，所以接下来的问题是，Redis 如何通过单线程架构实现超高性能。</p>
+<p>所以可以说，上下文切换是计算密集型的，需要占用相当可观的处理器时间，对于一个多线程系统来说，将会是一笔不可忽略的开销。</p>
+<p>所以综上所述，如果理解了 Redis 为什么设计为单线程，接下来的问题便是，Redis 如何通过单线程架构实现超高性能。</p>
 <p> </p>
 <h2 id="多路复用-io-机制-">多路复用 I/O 机制 🎉</h2>
 <p>Redis 在只使用单线程响应客户端的前提下，仍然可以提供每秒数十万级别的处理能力，需要归功于另一个设计，I/O 多路复用机制。</p>

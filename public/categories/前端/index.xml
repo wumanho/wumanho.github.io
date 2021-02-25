@@ -40,6 +40,13 @@
     <guid>/posts/jsinheritance/</guid>
     <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
 </item><item>
+    <title>Vue 封装 icon 组件</title>
+    <link>/posts/vuesvg/</link>
+    <pubDate>Fri, 24 Apr 2020 10:52:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vuesvg/</guid>
+    <description><![CDATA[基于 SVG雪碧图 和 svg-sprite-loader 封装全局 icon 组件]]></description>
+</item><item>
     <title>利用 jQuery 发送 AJAX 请求</title>
     <link>/posts/ajaxjq/</link>
     <pubDate>Sat, 18 Apr 2020 11:36:57 &#43;0800</pubDate>
