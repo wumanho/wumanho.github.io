@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/whyredisisfast\/"
-        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5357 ,
+        },"genre": "posts","keywords": "Redis, 上下文切换, 多路复用","wordcount":  5371 ,
         "url": "\/posts\/whyredisisfast\/","datePublished": "2021-01-21T08:49:20+08:00","dateModified": "2021-01-21T08:49:20+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">理解 Redis 简洁高效的系统设计</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5357 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5371 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -134,7 +134,7 @@
 <h3 id="上下文切换">上下文切换</h3>
 <p>我们知道 Linux 是一个多任务系统，操作系统通过将 CPU 执行权在极短的时间内轮流分配给这些进程，去造成多任务同时运行的错觉。</p>
 <p>而「上下文切换」，就是指 CPU 从一个进程或线程切换到另一个进程或线程这个动作。</p>
-<p>操作系统中的「进程」是指一个程序运行的实例，在 Linux 系统中，「线程」就是能并行运行并且与他们的父进程（创建他们的进程）共享同一地址空间（一段内存区域）和其他资源的轻量级的进程，<strong>但实际上这两者在 Linux 系统上并无区别，线程本质上就是一个进程（有时称作微进程），都属于操作系统调度的基本单位</strong>。</p>
+<p>操作系统中的「进程」是指一个程序运行的实例，在 Linux 系统中，「线程」就是能并行运行并且与他们的父进程（创建他们的进程）共享同一地址空间（一段内存区域）和其他资源的轻量级的进程，<strong>但实际上这两者在 Linux 系统上并无区别，线程本质上就是一个进程（有时称作微进程），都属于操作系统调度的基本单位，只不过线程间的内存是共享的</strong>。</p>
 <p>要理解进程的「上下文」，需要先知道什么是 CPU 「寄存器」和「程序计数器」，因为「上下文」的主要作用便是被用于保存他们的内容。</p>
 <p>寄存器是 CPU 内部的高速内存，通过对常用值（通常是运算的中间值）的快速访问来提高计算机程序运行的速度，而程序计数器则用于表明指令序列中 CPU 正在执行的位置，计数器的值为正在执行的指令的位置或者下一个将要被执行的指令的位置。</p>
 <p>所以简单来说，可以将这些「上下文」理解为该当前进程在某一个时间点的状态，在发生上下文切换时，系统需要将这些状态保留，当该进程再次被调度时，用于恢复进程的状态。</p>
