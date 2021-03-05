@@ -42,7 +42,7 @@
     <guid>/posts/esmem/</guid>
     <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
 </item><item>
-    <title>浅析命令行的本质（二）</title>
+    <title>浅析命令行的本质（下）</title>
     <link>/posts/cmd02/</link>
     <pubDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</pubDate>
     <author>作者</author>
@@ -63,7 +63,7 @@
     <guid>/posts/recentshows/</guid>
     <description><![CDATA[今年看的几场现场演出复盘]]></description>
 </item><item>
-    <title>浅析命令行的本质（一）</title>
+    <title>浅析命令行的本质（上）</title>
     <link>/posts/cmd/</link>
     <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
     <author>作者</author>

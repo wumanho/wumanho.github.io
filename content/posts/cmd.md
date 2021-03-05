@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "浅析命令行的本质（一）"
+title: "浅析命令行的本质（上）"
 date: 2020-11-27T14:10:08+08:00
 draft: false
 categories: ["技术"]

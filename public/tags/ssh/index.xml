@@ -5,7 +5,7 @@
         <description>ssh - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
             <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</lastBuildDate><atom:link href="/tags/ssh/" rel="self" type="application/rss+xml" /><item>
-    <title>浅析命令行的本质（一）</title>
+    <title>浅析命令行的本质（上）</title>
     <link>/posts/cmd/</link>
     <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
     <author>作者</author>
