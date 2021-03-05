@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>浅析命令行的本质（二） - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="浅析命令行的本质（二）" />
+<meta property="og:description" content="在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/cmd02/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-12-20T15:25:07+08:00" />
+<meta property="article:modified_time" content="2020-12-20T15:25:07+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="浅析命令行的本质（二）"/>
+<meta name="twitter:description" content="在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/cmd02/" /><link rel="prev" href="/posts/introductiontohttp2/" /><link rel="next" href="/posts/esmem/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅析命令行的本质（二）",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/cmd02\/"
+        },"genre": "posts","keywords": "bash, 环境变量","wordcount":  2749 ,
+        "url": "\/posts\/cmd02\/","datePublished": "2020-12-20T15:25:07+08:00","dateModified": "2020-12-20T15:25:07+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">浅析命令行的本质（二）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-20">2020-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2749 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#命令的四要素">命令的四要素</a>
+      <ul>
+        <li><a href="#环境变量">环境变量</a></li>
+        <li><a href="#可执行程序">可执行程序</a></li>
+        <li><a href="#参数">参数</a></li>
+        <li><a href="#工作路径">工作路径</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在<a href="https://wumanho.cn/posts/cmd/" target="_blank" rel="noopener noreffer">上一篇博客</a>中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的<code>四要素</code>。</p>
+<p> </p>
+<h2 id="命令的四要素">命令的四要素</h2>
+<p>它们分别是：</p>
+<ul>
+<li>环境变量</li>
+<li>可执行程序</li>
+<li>参数</li>
+<li>工作路径</li>
+</ul>
+<p> </p>
+<h3 id="环境变量">环境变量</h3>
+<p>环境变量最广泛的用途便是将配置从应用程序中解耦。</p>
+<p>首先，任何一个现代的操作系统都支持环境变量（在 Windows 上是不区分大小写的），通常是由一组键值对组成，可以为每个键设置对应的值，例如<a href="https://wumanho.cn/posts/cmd/" target="_blank" rel="noopener noreffer">上一篇博客</a>里，在探讨 Shell 的查找机制过程中，我们使用了 Linux 著名的环境变量 <code>$PATH</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+</code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>$</code>符表示这是一个环境变量，<code>PATH</code>便是环境变量的键名，打印出来的结果是环境变量对应的值。</p>
+<p>其次，所有编程语言都原生支持环境变量，也就是说，如果你需要在两个进程之间实现交互，你是可以<strong>完全放心大胆地使用环境变量而不必担心不被支持</strong>。</p>
+<p>为了证明这一点，我们可以观察一下以下的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># export AAA=123
+# node
+&gt; console.log(process.env[&#39;AAA&#39;])
+123
+&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>先声明了一个环境变量 AAA（环境变量建议大写），并赋值123，然后在 nodejs 里面获取到这个值。</p>
+<p>同理，我们用 golang 试一试，发现同样可以获取到相同的值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;os&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nf">Getenv</span><span class="p">(</span><span class="s">&#34;AAA&#34;</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># go run demo.go
+123
+</code></pre></td></tr></table>
+</div>
+</div><p>不知道你还记不记得在上一篇博客中我们提到过，「在大多数情况下，执行一个命令，就等于 fork 一个新的进程」。</p>
+<p>也就是说在上面的例子中，<code>node</code>和<code>go</code>这两个命令，其实是分别 fork 了一个新的进程去运行的，这其实可以说明一个重点：<strong>被当前进程所派生的所有子进程，都会继承父进程中所有环境变量</strong>。</p>
+<p>不过，子进程中创建的环境变量，却无法反向传递到父进程中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># node
+&gt; process.env.TEST = &#34;Test&#34;
+&#39;test&#39;
+&gt; console.log(process.env[&#39;TEST&#39;])
+test
+&gt; .exit
+# echo $TEST
+
+#
+</code></pre></td></tr></table>
+</div>
+</div><p>环境变量除了可以用于解耦配置之外，还经常被用于初始化程序、保存重要信息等，需要注意的是，通过 <code>export</code>声明的环境变量是临时的，如果需要声明永久的环境变量，则需要将 <code>export</code> 语句写在当前用户的启动配置文件<code>~/.bash_profile</code>中（不同的 shell 配置文件也不同）。</p>
+<p>简单介绍几个经典的环境变量和他们的作用：</p>
+<p><code>$PATH</code>：PATH 环境变量用于记录可执行程序的位置，绝大多数命令都需要从 PATH 环境变量定义的值中寻找执行路径，具体可以参考上一篇博客<a href="https://wumanho.cn/posts/cmd/#shell-%E7%9A%84%E6%9F%A5%E6%89%BE%E6%9C%BA%E5%88%B6-" target="_blank" rel="noopener noreffer">Shell 的查找机制</a>这一节；</p>
+<p><code>PS1</code>：定义命令提示符格式；</p>
+<p><code>CLASSPATH</code>：用于指示 JVM 如何搜索 class</p>
+<p><code>GOPATH</code>：指定 golang 工作目录</p>
+<p> </p>
+<h3 id="可执行程序">可执行程序</h3>
+<p>可执行程序就是你每次输入命令的第一个单词，例如：<code>cd</code>、<code>docker</code>、<code>node</code>、<code>mvn</code>等等。</p>
+<p>在 Windows 中，可执行程序就是常见的 <code>.exe</code>、<code>.bat</code>文件。</p>
+<p>在 Linux 中，如果一个文件具有 「x」权限的话，那么它就是一个可执行程序，「x」是Linux 权限系统的其中一个标记，可以通过<code>chmod +x</code>命令让一个文件成为可执行程序，Linux 权限系统就不在这边赘述。</p>
+<p>当用户输入一个可执行程序并按下回车，Shell 会扫描 <code>$PATH</code>环境变量，找到用户需要的可执行程序，如果没有会报「找不到命令」错误，这个时候用户其实还可以通过指定文件的<strong>相对路径</strong>或者<strong>绝对路径</strong>去执行这个可执行程序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim demo.sh
+# cat demo.sh
+echo &#34;Hello&#34;
+# chmod +x demo.sh
+# demo.sh
+-bash: demo.sh: command not found
+# ./demo.sh
+Hello
+</code></pre></td></tr></table>
+</div>
+</div><p>一个可执行文件可以被执行是因为它拥有「x」权限，那这个可执行文件本身又是什么呢，可以通过<code>file</code>命令查看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">file /usr/local/go/bin/go
+/usr/local/go/bin/go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), not stripped
+</code></pre></td></tr></table>
+</div>
+</div><p>根据结果可以看到 go 是一个 ELF 格式 64 位的二进制可执行程序，它可直接被机器执行而不需要解释器，与之有别的是被我们称为「脚本」的可执行文件，它需要我们我们指定解释器。</p>
+<p>写一个最简单的脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script.sh
+# chmod +x script.sh
+# cat script.sh
+echo &#34;Hello&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>让它打印一个 “Hello”，直接执行看看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ./script.sh
+Hello
+</code></pre></td></tr></table>
+</div>
+</div><p>这里我们没有执行解释器，却可以执行脚本打印结果，是因为这个脚本被 Shell 直接解析执行了，再试一下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script1.sh
+# cat script1.sh
+console.log(&#34;123&#34;)
+# ./script1.sh
+./script1.sh: line 1: syntax error near unexpected token `&#34;123&#34;&#39;
+./script1.sh: line 1: `console.log(&#34;123&#34;)&#39;
+# 
+</code></pre></td></tr></table>
+</div>
+</div><p><code>console.log()</code>是 JS 语法，Shell 不认识这个语法，所以会提示你语法错误，如果要让脚本顺利执行，则需要指定执行它的解释器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script1.sh
+# cat script1.sh
+#! /usr/bin/node
+console.log(&#34;123&#34;)
+
+# ./script1.sh
+123
+</code></pre></td></tr></table>
+</div>
+</div><p>执行正常，<code>#!</code>这个特殊语法必须声明在脚本文件的第一行，为该脚本指定一个解释器，也可以理解为 Shell 帮你将该脚本传递到你指定的解释器。</p>
+<p> </p>
+<h3 id="参数">参数</h3>
+<p>当用户在输入一个命令的时候，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># docker run -d --name redis-01 redis
+</code></pre></td></tr></table>
+</div>
+</div><p>这个命令里面，<code>docker</code>是可执行程序，而后面的所有都是「参数」，Shell 所做的事情就是将这些参数全部丢给可执行程序。</p>
+<p>Shell 不在乎可执行程序是否可以接受这些参数，因为解释这些参数是这个可执行程序的事。</p>
+<p>所以这样听起来，当你的命令运行执行失败的时候，似乎就跟 Shell 无关了？其实不一定，因为 Shell 有可能会在参数中偷偷做手脚，而这些动作可能对用户产生一些误导，甚至制造麻烦。</p>
+<p>看一个例子，准备一个 go 程序 script.go，打印出我们传给它的所有参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;os&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>  <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">k</span><span class="p">,</span><span class="nx">v</span><span class="o">:=</span> <span class="k">range</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;args[%v]=[%v]\n&#34;</span><span class="p">,</span><span class="nx">k</span><span class="p">,</span><span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ls
+demo.go  go.mod  script  script.go  test1.go  test2.go
+
+# ./script *.go
+args[0]=[./script]
+args[1]=[demo.go]
+args[2]=[script.go]
+args[3]=[test1.go]
+args[4]=[test2.go]
+#
+</code></pre></td></tr></table>
+</div>
+</div><p>可以发现，由于 Shell 帮我们将通配符做了展开，所以这就造成了一个现象，就是用户<strong>传给程序的参数跟程序接收到的参数不一致</strong>。</p>
+<p>这在有些时候会误导用户，因为通配符展开是由 Shell 来替我们完成的，所以如果用户在代码中派生一个子进程，然后传递带 * 通配符的参数，希望程序可以将这个通配符展开，实际上是做不到的，同理，<code>?</code>通配符也一样。</p>
+<p>对于参数还有一个需要注意的坑是「变量展开」，在 Linux 系统中，<code>$</code>符号默认被用作变量声明，如果文件名包含<code>$</code>号，同样会被展开：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># export TEST=123
+# touch 1$TEST.go
+# ls
+1123.go
+</code></pre></td></tr></table>
+</div>
+</div><p>展开问题可以通过为参数加单引号<code> ' '</code>来声明参数是一个整体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># touch &#39;1$TEST.go&#39;
+# ls
+1123.go  1$TEST.go
+</code></pre></td></tr></table>
+</div>
+</div><p>上述两个是 Shell 参数比较常见的坑，日常开发时需要多注意，少走弯路。</p>
+<p> </p>
+<h3 id="工作路径">工作路径</h3>
+<p>工作路径可以使用<code>pwd</code>命令查看，Linux 用户登录到系统之后，每时每刻都处于某一个目录当中，这个时候用户所处的目录就称为工作目录。</p>
+<p>我们知道<strong>绝对路径</strong>是从<code>/</code>开始到指定文件的具体路径，而<strong>相对路径</strong>所相对的就是用户的工作目录。</p>
+<p>如果用户在工作目录下执行一个可执行程序，那么对于这个进程来说，这个目录的路径就是它的工作路径。</p>
+<p>我们引用上面的 script.go 代码来演示，这个 go 代码打印出当前目录下所有以  .go 节为的文件名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ls
+1123.go  1$TEST.go  go.mod  script
+# ./script *.go
+args[0]=[./script]
+args[1]=[1123.go]
+args[2]=[1$TEST.go]
+</code></pre></td></tr></table>
+</div>
+</div><p>改变一下 script 程序的目录，将它移动到 <code>/root</code> 下面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># mv ./script /root
+# cd
+# ls
+script a.txt t.txt test.go
+# ./script *.go
+args[0]=[./script]
+args[1]=[test.go]
+</code></pre></td></tr></table>
+</div>
+</div><p>script 被移动后，我们在 <code>/root</code> 目录直接下执行 script，由于工作路径改变，所以打印的内容也会有所改变。</p>
+<p> </p>
+<h2 id="总结">总结</h2>
+<p>四要素之所以重要，是因为它们是命令运行机制的关键所在，理解它们可以帮助你解决关于命令行的一切问题。</p>
+<p>如果命令的四要素完全相同的话，那么命令执行的结果一定可以重现。</p>
+<p>如果相同的命令执行结果跟你预想的不一样，那么一定是四要素中一个或多个发生了改变，所以当碰到奇怪的问题时，例如相同的代码在一台机器上运行正常，在另一台机器上执行失败，可以先问一下自己，当前执行的这个命令的四要素分别是什么。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-12-20</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/bash/">bash</a>,&nbsp;<a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/introductiontohttp2/" class="prev" rel="prev" title="利用 HTTP/2 为网站提速"><i class="fas fa-angle-left fa-fw"></i>利用 HTTP/2 为网站提速</a>
+            <a href="/posts/esmem/" class="next" rel="next" title="ElasticSearch 内存占用百分比问题">ElasticSearch 内存占用百分比问题<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

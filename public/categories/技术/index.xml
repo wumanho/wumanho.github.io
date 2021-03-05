@@ -26,6 +26,13 @@
     <guid>/posts/esmem/</guid>
     <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
 </item><item>
+    <title>浅析命令行的本质（二）</title>
+    <link>/posts/cmd02/</link>
+    <pubDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cmd02/</guid>
+    <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
+</item><item>
     <title>利用 HTTP/2 为网站提速</title>
     <link>/posts/introductiontohttp2/</link>
     <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
@@ -33,7 +40,7 @@
     <guid>/posts/introductiontohttp2/</guid>
     <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
 </item><item>
-    <title>命令行的本质和四要素（一）</title>
+    <title>浅析命令行的本质（一）</title>
     <link>/posts/cmd/</link>
     <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
     <author>作者</author>

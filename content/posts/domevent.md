@@ -2,7 +2,7 @@
 weight: 2
 title: "DOM 事件与事件委托"
 summary: "DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。"
-date: 2020-11-08T16:08:51+08:00
+date: 2020-03-08T16:08:51+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript","DOM事件"]

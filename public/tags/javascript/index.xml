@@ -12,13 +12,6 @@
     <guid>/posts/nodesimpleserver/</guid>
     <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
 </item><item>
-    <title>DOM 事件与事件委托</title>
-    <link>/posts/domevent/</link>
-    <pubDate>Sun, 08 Nov 2020 16:08:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/domevent/</guid>
-    <description><![CDATA[DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。]]></description>
-</item><item>
     <title>Vue 运行时版本简介</title>
     <link>/posts/vueruntime/</link>
     <pubDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</pubDate>
@@ -54,6 +47,13 @@
     <guid>/posts/ajaxjq/</guid>
     <description><![CDATA[<p> </p>
 <p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
+</item><item>
+    <title>DOM 事件与事件委托</title>
+    <link>/posts/domevent/</link>
+    <pubDate>Sun, 08 Mar 2020 16:08:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/domevent/</guid>
+    <description><![CDATA[DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。]]></description>
 </item><item>
     <title>jQuery 使用和设计简介</title>
     <link>/posts/jq01/</link>

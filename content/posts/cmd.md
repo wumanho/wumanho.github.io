@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "命令行的本质和四要素（一）"
+title: "浅析命令行的本质（一）"
 date: 2020-11-27T14:10:08+08:00
 draft: false
 categories: ["技术"]
@@ -14,9 +14,7 @@ tags: ["bash","ssh"]
 壳（Shell）就是我们用于跟内核打交道的方式，Shell 是**一类程序的统称**，并不单单指某一个特定程序。
 
 我们耳熟能详的 Shell 包括 bash、zsh、csh 等等，其实 Windows 提供的图形界面也是一个 Shell。
-
 ![shell示意图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/shell.png)
-
 &nbsp;
 
 ## 命令行的本质 :thinking:
@@ -24,12 +22,11 @@ tags: ["bash","ssh"]
 在 Linux 系统启动后，内核会自行启动一个 init 进程，所谓的 init 进程是一个由内核启动的用户级进程。  
 
 init 进程始终会是 Linux 系统的第一个进程，其余必要的进程会由 init 进程 fork 出来，注意这个时候是没有 SHELL 的，只有一堆后台进程在运行，其中还包括一个叫做 「SSHD」的进程。
-
 ![init示意图](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/proc.png)
 
 SSHD 的 「D」是 Daemon 的意思，在计算机领域常用于表示一个**后台进程**，类似的还有「firewalld」等。  
 
-SSHD 进程默认监听 22 端口，监听端口可以通过修改 /etc/ssh/sshd_config 配置文件指定，一旦有远程设备发起对 22 端口的请求，验证通过之后，SSHD 就会 fork 出来一个新的进程，该新进程名字就叫做 bash（或者其他 Shell）。
+SSHD 进程默认监听 22 端口，监听端口可以通过修改 `/etc/ssh/sshd_config` 配置文件指定，一旦有远程设备发起对 22 端口的请求，验证通过之后，SSHD 就会 fork 出来一个新的进程，该新进程名字就叫做 bash（或者其他 Shell）。
 
 Shell 进程为用户提供一个可交互的窗口，它的工作就是读取用户输入的命令并执行，他的执行结果可能是 fork 一个新的进程，或者输出一些内容，取决于用户输入的具体命令，这其实就是命令行的本质。
 
@@ -81,7 +78,6 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 当用户输入一个「内置」的命令，例如`cd`，那么 Shell 就会立马作出反应，执行命令，切换至目标目录。
 
 但如果用户输入的命令不是一个内置命令，那么当前的 Shell 就会根据查找机制去找到命令所在的路径再去执行，如果找不到就报错。
-
 ![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cmd/path.png)
 
 如上图所示，当我执行`mvn`命令时，系统提示「找不到命令」错误，但我输入`docker`的时候，就可以正确执行，这其实就是 Shell 根据查找机制没有找到 mvn 命令导致的。
@@ -147,6 +143,6 @@ export AAA=123
 
 &nbsp;
 
-（下一篇更新会介绍命令行的关键四要素）
+[下一篇更新：介绍命令行的关键四要素](https://wumanho.cn/posts/cmd02/)
 
 &nbsp;

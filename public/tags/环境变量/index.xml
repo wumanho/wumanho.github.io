@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>环境变量 - 标签 - OK Computer</title>
+        <link>/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+        <description>环境变量 - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</lastBuildDate><atom:link href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>浅析命令行的本质（二）</title>
+    <link>/posts/cmd02/</link>
+    <pubDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cmd02/</guid>
+    <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
+</item></channel>
+</rss>
