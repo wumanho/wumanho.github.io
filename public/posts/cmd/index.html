@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/cmd\/"
-        },"genre": "posts","keywords": "bash, ssh","wordcount":  1637 ,
+        },"genre": "posts","keywords": "bash, ssh","wordcount":  1647 ,
         "url": "\/posts\/cmd\/","datePublished": "2020-11-27T14:10:08+08:00","dateModified": "2020-11-27T14:10:08+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">浅析命令行的本质（上）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1637 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1647 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -211,7 +211,7 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># echo $PATH
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
 </code></pre></td></tr></table>
 </div>
@@ -231,12 +231,12 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># node
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# node
 &gt; console.log(&#34;Hello&#34;)
 Hello
 undefined
 &gt; .exit
-# 
+[root@vm10-0-0-132 ~]# 
 </code></pre></td></tr></table>
 </div>
 </div><p>同理，也有另外一种常见的情况，如果用户创建一个脚本 script.sh，内容是 export 一个 AAA 环境变量，值为 123：</p>
@@ -246,7 +246,7 @@ undefined
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># cat script.sh 
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# cat script.sh 
 export AAA=123
 </code></pre></td></tr></table>
 </div>
@@ -259,10 +259,10 @@ export AAA=123
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># sh script.sh 
-# echo $AAA
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# sh script.sh 
+[root@vm10-0-0-132 ~]# echo $AAA
 
-#
+[root@vm10-0-0-132 ~]#
 </code></pre></td></tr></table>
 </div>
 </div><p>原因是用户是用<code>sh</code>命令，执行 script.sh 的话，script.sh 其实就相当于是 <code>sh</code> 命令的参数，当前的 Shell 会为 <code>sh</code> 命令 fork 一个新的子进程，然后读取参数 script.sh 并且在<strong>新的子进程中</strong>执行，执行完毕后自动退出，而 export 只会新的子进程环境中生效，所以当前进程中，是看不到 AAA 变量的。</p>
@@ -276,10 +276,10 @@ export AAA=123
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># source script.sh 
-# echo $AAA
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# source script.sh 
+[root@vm10-0-0-132 ~]# echo $AAA
 123
-# 
+[root@vm10-0-0-132 ~]# 
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>

@@ -87,7 +87,7 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 默认情况下，它会去 `$PATH`环境变量定义的路径中找：
 
 ```
-# echo $PATH
+[root@vm10-0-0-132 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
 ```
 
@@ -104,28 +104,28 @@ chrony: x:997:995::/var/lib/chrony:/sbin/nologin
 例如当用户在命令行窗口输入`node`命令并敲下回车，bash 就会 fork 一个子进程 node，之后将所有参数以及控制权交给这个进程，这之后发生的事情就是程序自己的事情了，bash 并不会管，直到程序执行完成或者用户退出。
 
 ```
-# node
+[root@vm10-0-0-132 ~]# node
 > console.log("Hello")
 Hello
 undefined
 > .exit
-# 
+[root@vm10-0-0-132 ~]# 
 ```
 
 同理，也有另外一种常见的情况，如果用户创建一个脚本 script.sh，内容是 export 一个 AAA 环境变量，值为 123：
 
 ```
-# cat script.sh 
+[root@vm10-0-0-132 ~]# cat script.sh 
 export AAA=123
 ```
 
 执行一下，却发现什么也没有发生：
 
 ```
-# sh script.sh 
-# echo $AAA
+[root@vm10-0-0-132 ~]# sh script.sh 
+[root@vm10-0-0-132 ~]# echo $AAA
 
-#
+[root@vm10-0-0-132 ~]#
 ```
 
 原因是用户是用`sh`命令，执行 script.sh 的话，script.sh 其实就相当于是 `sh` 命令的参数，当前的 Shell 会为 `sh` 命令 fork 一个新的子进程，然后读取参数 script.sh 并且在**新的子进程中**执行，执行完毕后自动退出，而 export 只会新的子进程环境中生效，所以当前进程中，是看不到 AAA 变量的。
@@ -135,10 +135,10 @@ export AAA=123
 `source`命令可以使指定的 Shell 程序文件在当前环境中执行并生效：
 
 ```
-# source script.sh 
-# echo $AAA
+[root@vm10-0-0-132 ~]# source script.sh 
+[root@vm10-0-0-132 ~]# echo $AAA
 123
-# 
+[root@vm10-0-0-132 ~]# 
 ```
 
 &nbsp;

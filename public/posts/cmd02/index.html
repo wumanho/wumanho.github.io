@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/posts\/cmd02\/"
-        },"genre": "posts","keywords": "bash, 环境变量","wordcount":  2749 ,
+        },"genre": "posts","keywords": "bash, 环境变量","wordcount":  2789 ,
         "url": "\/posts\/cmd02\/","datePublished": "2020-12-20T15:25:07+08:00","dateModified": "2020-12-20T15:25:07+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">浅析命令行的本质（下）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%80%E6%9C%AF/"><i class="far fa-folder fa-fw"></i>技术</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-20">2020-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2749 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-20">2020-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2789 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -119,7 +119,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># echo $PATH
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
 </code></pre></td></tr></table>
 </div>
@@ -135,8 +135,8 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># export AAA=123
-# node
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export AAA=123
+[root@vm10-0-0-132 ~]# node
 &gt; console.log(process.env[&#39;AAA&#39;])
 123
 &gt;
@@ -176,7 +176,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># go run demo.go
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# go run demo.go
 123
 </code></pre></td></tr></table>
 </div>
@@ -196,15 +196,15 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># node
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# node
 &gt; process.env.TEST = &#34;Test&#34;
 &#39;test&#39;
 &gt; console.log(process.env[&#39;TEST&#39;])
 test
 &gt; .exit
-# echo $TEST
+[root@vm10-0-0-132 ~]# echo $TEST
 
-#
+[root@vm10-0-0-132 ~]#
 </code></pre></td></tr></table>
 </div>
 </div><p>环境变量除了可以用于解耦配置之外，还经常被用于初始化程序、保存重要信息等，需要注意的是，通过 <code>export</code>声明的环境变量是临时的，如果需要声明永久的环境变量，则需要将 <code>export</code> 语句写在当前用户的启动配置文件<code>~/.bash_profile</code>中（不同的 shell 配置文件也不同）。</p>
@@ -231,13 +231,13 @@ test
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim demo.sh
-# cat demo.sh
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim demo.sh
+[root@vm10-0-0-132 ~]# cat demo.sh
 echo &#34;Hello&#34;
-# chmod +x demo.sh
-# demo.sh
+[root@vm10-0-0-132 ~]# chmod +x demo.sh
+[root@vm10-0-0-132 ~]# demo.sh
 -bash: demo.sh: command not found
-# ./demo.sh
+[root@vm10-0-0-132 ~]# ./demo.sh
 Hello
 </code></pre></td></tr></table>
 </div>
@@ -248,7 +248,7 @@ Hello
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">file /usr/local/go/bin/go
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# file /usr/local/go/bin/go
 /usr/local/go/bin/go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), not stripped
 </code></pre></td></tr></table>
 </div>
@@ -262,9 +262,9 @@ Hello
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script.sh
-# chmod +x script.sh
-# cat script.sh
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script.sh
+[root@vm10-0-0-132 ~]# chmod +x script.sh
+[root@vm10-0-0-132 ~]# cat script.sh
 echo &#34;Hello&#34;
 </code></pre></td></tr></table>
 </div>
@@ -275,7 +275,7 @@ echo &#34;Hello&#34;
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ./script.sh
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ./script.sh
 Hello
 </code></pre></td></tr></table>
 </div>
@@ -291,13 +291,13 @@ Hello
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script1.sh
-# cat script1.sh
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
+[root@vm10-0-0-132 ~]# cat script1.sh
 console.log(&#34;123&#34;)
-# ./script1.sh
+[root@vm10-0-0-132 ~]# ./script1.sh
 ./script1.sh: line 1: syntax error near unexpected token `&#34;123&#34;&#39;
 ./script1.sh: line 1: `console.log(&#34;123&#34;)&#39;
-# 
+[root@vm10-0-0-132 ~]# 
 </code></pre></td></tr></table>
 </div>
 </div><p><code>console.log()</code>是 JS 语法，Shell 不认识这个语法，所以会提示你语法错误，如果要让脚本顺利执行，则需要指定执行它的解释器：</p>
@@ -312,12 +312,12 @@ console.log(&#34;123&#34;)
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># vim script1.sh
-# cat script1.sh
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
+[root@vm10-0-0-132 ~]# cat script1.sh
 #! /usr/bin/node
 console.log(&#34;123&#34;)
 
-# ./script1.sh
+[root@vm10-0-0-132 ~]# ./script1.sh
 123
 </code></pre></td></tr></table>
 </div>
@@ -330,7 +330,7 @@ console.log(&#34;123&#34;)
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># docker run -d --name redis-01 redis
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# docker run -d --name redis-01 redis
 </code></pre></td></tr></table>
 </div>
 </div><p>这个命令里面，<code>docker</code>是可执行程序，而后面的所有都是「参数」，Shell 所做的事情就是将这些参数全部丢给可执行程序。</p>
@@ -381,16 +381,16 @@ console.log(&#34;123&#34;)
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ls
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
 demo.go  go.mod  script  script.go  test1.go  test2.go
 
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[demo.go]
 args[2]=[script.go]
 args[3]=[test1.go]
 args[4]=[test2.go]
-#
+[root@vm10-0-0-132 ~]#
 </code></pre></td></tr></table>
 </div>
 </div><p>可以发现，由于 Shell 帮我们将通配符做了展开，所以这就造成了一个现象，就是用户<strong>传给程序的参数跟程序接收到的参数不一致</strong>。</p>
@@ -404,9 +404,9 @@ args[4]=[test2.go]
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># export TEST=123
-# touch 1$TEST.go
-# ls
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export TEST=123
+[root@vm10-0-0-132 ~]# touch 1$TEST.go
+[root@vm10-0-0-132 ~]# ls
 1123.go
 </code></pre></td></tr></table>
 </div>
@@ -418,8 +418,8 @@ args[4]=[test2.go]
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># touch &#39;1$TEST.go&#39;
-# ls
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# touch &#39;1$TEST.go&#39;
+[root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go
 </code></pre></td></tr></table>
 </div>
@@ -440,9 +440,9 @@ args[4]=[test2.go]
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># ls
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go  go.mod  script
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[1123.go]
 args[2]=[1$TEST.go]
@@ -460,11 +460,11 @@ args[2]=[1$TEST.go]
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># mv ./script /root
-# cd
-# ls
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# mv ./script /root
+[root@vm10-0-0-132 ~]# cd
+[root@vm10-0-0-132 ~]# ls
 script a.txt t.txt test.go
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[test.go]
 </code></pre></td></tr></table>

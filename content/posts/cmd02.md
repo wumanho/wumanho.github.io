@@ -29,7 +29,7 @@ tags: ["bash","环境变量"]
 首先，任何一个现代的操作系统都支持环境变量（在 Windows 上是不区分大小写的），通常是由一组键值对组成，可以为每个键设置对应的值，例如[上一篇博客](https://wumanho.cn/posts/cmd/)里，在探讨 Shell 的查找机制过程中，我们使用了 Linux 著名的环境变量 `$PATH`。
 
 ```Code
-# echo $PATH
+[root@vm10-0-0-132 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
 ```
 
@@ -40,8 +40,8 @@ tags: ["bash","环境变量"]
 为了证明这一点，我们可以观察一下以下的例子：
 
 ```
-# export AAA=123
-# node
+[root@vm10-0-0-132 ~]# export AAA=123
+[root@vm10-0-0-132 ~]# node
 > console.log(process.env['AAA'])
 123
 >
@@ -65,7 +65,7 @@ func main() {
 ```
 
 ```code
-# go run demo.go
+[root@vm10-0-0-132 ~]# go run demo.go
 123
 ```
 
@@ -76,15 +76,15 @@ func main() {
 不过，子进程中创建的环境变量，却无法反向传递到父进程中：
 
 ```
-# node
+[root@vm10-0-0-132 ~]# node
 > process.env.TEST = "Test"
 'test'
 > console.log(process.env['TEST'])
 test
 > .exit
-# echo $TEST
+[root@vm10-0-0-132 ~]# echo $TEST
 
-#
+[root@vm10-0-0-132 ~]#
 ```
 
 环境变量除了可以用于解耦配置之外，还经常被用于初始化程序、保存重要信息等，需要注意的是，通过 `export`声明的环境变量是临时的，如果需要声明永久的环境变量，则需要将 `export` 语句写在当前用户的启动配置文件`~/.bash_profile`中（不同的 shell 配置文件也不同）。
@@ -112,20 +112,20 @@ test
 当用户输入一个可执行程序并按下回车，Shell 会扫描 `$PATH`环境变量，找到用户需要的可执行程序，如果没有会报「找不到命令」错误，这个时候用户其实还可以通过指定文件的**相对路径**或者**绝对路径**去执行这个可执行程序：
 
 ```code
-# vim demo.sh
-# cat demo.sh
+[root@vm10-0-0-132 ~]# vim demo.sh
+[root@vm10-0-0-132 ~]# cat demo.sh
 echo "Hello"
-# chmod +x demo.sh
-# demo.sh
+[root@vm10-0-0-132 ~]# chmod +x demo.sh
+[root@vm10-0-0-132 ~]# demo.sh
 -bash: demo.sh: command not found
-# ./demo.sh
+[root@vm10-0-0-132 ~]# ./demo.sh
 Hello
 ```
 
 一个可执行文件可以被执行是因为它拥有「x」权限，那这个可执行文件本身又是什么呢，可以通过`file`命令查看：
 
 ```code
-file /usr/local/go/bin/go
+[root@vm10-0-0-132 ~]# file /usr/local/go/bin/go
 /usr/local/go/bin/go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), not stripped
 ```
 
@@ -134,40 +134,40 @@ file /usr/local/go/bin/go
 写一个最简单的脚本：
 
 ```code
-# vim script.sh
-# chmod +x script.sh
-# cat script.sh
+[root@vm10-0-0-132 ~]# vim script.sh
+[root@vm10-0-0-132 ~]# chmod +x script.sh
+[root@vm10-0-0-132 ~]# cat script.sh
 echo "Hello"
 ```
 
 让它打印一个 “Hello”，直接执行看看：
 
 ```
-# ./script.sh
+[root@vm10-0-0-132 ~]# ./script.sh
 Hello
 ```
 
 这里我们没有执行解释器，却可以执行脚本打印结果，是因为这个脚本被 Shell 直接解析执行了，再试一下：
 
 ```code
-# vim script1.sh
-# cat script1.sh
+[root@vm10-0-0-132 ~]# vim script1.sh
+[root@vm10-0-0-132 ~]# cat script1.sh
 console.log("123")
-# ./script1.sh
+[root@vm10-0-0-132 ~]# ./script1.sh
 ./script1.sh: line 1: syntax error near unexpected token `"123"'
 ./script1.sh: line 1: `console.log("123")'
-# 
+[root@vm10-0-0-132 ~]# 
 ```
 
 `console.log()`是 JS 语法，Shell 不认识这个语法，所以会提示你语法错误，如果要让脚本顺利执行，则需要指定执行它的解释器：
 
 ```code
-# vim script1.sh
-# cat script1.sh
+[root@vm10-0-0-132 ~]# vim script1.sh
+[root@vm10-0-0-132 ~]# cat script1.sh
 #! /usr/bin/node
 console.log("123")
 
-# ./script1.sh
+[root@vm10-0-0-132 ~]# ./script1.sh
 123
 ```
 
@@ -180,7 +180,7 @@ console.log("123")
 当用户在输入一个命令的时候，例如：
 
 ```code
-# docker run -d --name redis-01 redis
+[root@vm10-0-0-132 ~]# docker run -d --name redis-01 redis
 ```
 
 这个命令里面，`docker`是可执行程序，而后面的所有都是「参数」，Shell 所做的事情就是将这些参数全部丢给可执行程序。
@@ -207,16 +207,16 @@ func main()  {
 ```
 
 ```code
-# ls
+[root@vm10-0-0-132 ~]# ls
 demo.go  go.mod  script  script.go  test1.go  test2.go
 
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[demo.go]
 args[2]=[script.go]
 args[3]=[test1.go]
 args[4]=[test2.go]
-#
+[root@vm10-0-0-132 ~]#
 ```
 
 可以发现，由于 Shell 帮我们将通配符做了展开，所以这就造成了一个现象，就是用户**传给程序的参数跟程序接收到的参数不一致**。
@@ -226,17 +226,17 @@ args[4]=[test2.go]
 对于参数还有一个需要注意的坑是「变量展开」，在 Linux 系统中，`$`符号默认被用作变量声明，如果文件名包含`$`号，同样会被展开：
 
 ```code
-# export TEST=123
-# touch 1$TEST.go
-# ls
+[root@vm10-0-0-132 ~]# export TEST=123
+[root@vm10-0-0-132 ~]# touch 1$TEST.go
+[root@vm10-0-0-132 ~]# ls
 1123.go
 ```
 
 展开问题可以通过为参数加单引号` ' '`来声明参数是一个整体：
 
 ```code
-# touch '1$TEST.go'
-# ls
+[root@vm10-0-0-132 ~]# touch '1$TEST.go'
+[root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go
 ```
 
@@ -255,9 +255,9 @@ args[4]=[test2.go]
 我们引用上面的 script.go 代码来演示，这个 go 代码打印出当前目录下所有以  .go 节为的文件名：
 
 ```code
-# ls
+[root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go  go.mod  script
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[1123.go]
 args[2]=[1$TEST.go]
@@ -266,11 +266,11 @@ args[2]=[1$TEST.go]
 改变一下 script 程序的目录，将它移动到 `/root` 下面
 
 ```code
-# mv ./script /root
-# cd
-# ls
+[root@vm10-0-0-132 ~]# mv ./script /root
+[root@vm10-0-0-132 ~]# cd
+[root@vm10-0-0-132 ~]# ls
 script a.txt t.txt test.go
-# ./script *.go
+[root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
 args[1]=[test.go]
 ```
