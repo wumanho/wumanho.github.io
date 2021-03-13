@@ -33,13 +33,6 @@
     <guid>/posts/cmd02/</guid>
     <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
 </item><item>
-    <title>利用 HTTP/2 为网站提速</title>
-    <link>/posts/introductiontohttp2/</link>
-    <pubDate>Mon, 07 Dec 2020 09:50:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
-</item><item>
     <title>浅析命令行的本质（上）</title>
     <link>/posts/cmd/</link>
     <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
@@ -47,9 +40,16 @@
     <guid>/posts/cmd/</guid>
     <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
 </item><item>
+    <title>利用 HTTP/2 为网站提速</title>
+    <link>/posts/introductiontohttp2/</link>
+    <pubDate>Wed, 17 Jun 2020 09:50:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/introductiontohttp2/</guid>
+    <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
+</item><item>
     <title>用 Node.js 写一个简易静态服务器</title>
     <link>/posts/nodesimpleserver/</link>
-    <pubDate>Sun, 22 Nov 2020 00:29:18 &#43;0800</pubDate>
+    <pubDate>Tue, 12 May 2020 00:29:18 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/nodesimpleserver/</guid>
     <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
