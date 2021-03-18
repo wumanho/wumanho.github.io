@@ -96,7 +96,7 @@
     </li>
     <li><a href="#多路复用-io-机制-">多路复用 I/O 机制 🎉</a>
       <ul>
-        <li><a href="#block-io-模型">Block I/O 模型</a></li>
+        <li><a href="#blocking-io-模型">Blocking I/O 模型</a></li>
         <li><a href="#多路复用的关键-select-poll-和-epoll">多路复用的关键 select, poll 和 epoll</a></li>
         <li><a href="#select">select</a></li>
         <li><a href="#poll">poll</a></li>
@@ -153,7 +153,7 @@
 <h2 id="多路复用-io-机制-">多路复用 I/O 机制 🎉</h2>
 <p>Redis 在只使用单线程响应客户端的前提下，仍然可以提供每秒数十万级别的处理能力，需要归功于另一个设计，I/O 多路复用机制。</p>
 <p>与多进程和多线程技术相比，I/O 多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销。</p>
-<h3 id="block-io-模型">Block I/O 模型</h3>
+<h3 id="blocking-io-模型">Blocking I/O 模型</h3>
 <p>先回忆一下传统的服务器端同步阻塞 I/O 处理的经典编程模型：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -259,7 +259,7 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>这就是经典的 Block I/O 模型，它所导致的问题也很明显，就是严重依赖线程。</p>
+</div><p>这就是经典的 Blocking I/O 模型，它所导致的问题也很明显，就是严重依赖线程。</p>
 <p>而根据上文的分析，线程属于非常昂贵的资源，每个线程都需要一定的内存资源保存线程栈，当线程数量过多的时候，还需要考虑上下文切换的开销问题。</p>
 <p>在面对少量客户端的时候，这种便于理解和维护的经典 BIO 模型其实是一个不错的选择，不过当面对大量并发连接的时候，为每一个客户端都创建一个线程不是一个好的主意。</p>
 <h3 id="多路复用的关键-select-poll-和-epoll">多路复用的关键 select, poll 和 epoll</h3>
