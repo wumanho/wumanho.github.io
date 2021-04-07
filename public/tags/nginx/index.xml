@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>NGINX - 标签 - OK Computer</title>
+        <link>/tags/nginx/</link>
+        <description>NGINX - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</lastBuildDate><atom:link href="/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker 实战练习 - 部署一个集群</title>
+    <link>/posts/dockerpractice/</link>
+    <pubDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/dockerpractice/</guid>
+    <description><![CDATA[本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目]]></description>
+</item></channel>
+</rss>

@@ -4,7 +4,7 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 03 Feb 2021 14:15:35 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
     <title>新概念二册-Lesson 31~35 笔记【持续更新】</title>
     <link>/posts/0231to0235/</link>
     <pubDate>Sun, 13 Dec 2020 22:26:15 &#43;0800</pubDate>
@@ -13,6 +13,13 @@
     <description><![CDATA[<h3 id="更多新概念笔记">更多新概念笔记</h3>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
+</item><item>
+    <title>Docker 实战练习 - 部署一个集群</title>
+    <link>/posts/dockerpractice/</link>
+    <pubDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/dockerpractice/</guid>
+    <description><![CDATA[本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目]]></description>
 </item><item>
     <title>【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标</title>
     <link>/posts/pewdipie2021intro/</link>
@@ -44,7 +51,7 @@
 </item><item>
     <title>浅析命令行的本质（下）</title>
     <link>/posts/cmd02/</link>
-    <pubDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</pubDate>
+    <pubDate>Thu, 17 Dec 2020 15:25:07 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/cmd02/</guid>
     <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>/posts/thetourist/</guid>
     <description><![CDATA[<p>⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 <a href="mailto:wumanho@tutanota.com">wumanho@tutanota.com</a> 删除文章。</p>]]></description>
-</item><item>
-    <title>理解 .sync 修饰符</title>
-    <link>/posts/vuesyncmodyfier/</link>
-    <pubDate>Sat, 03 Oct 2020 11:26:08 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vuesyncmodyfier/</guid>
-    <description><![CDATA[<p><a href="https://vuejs.org/" target="_blank" rel="noopener noreffer">Vue</a> 在 2.3 版本得时候引入了<code>.sync</code>修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。</p>]]></description>
 </item></channel>
 </rss>

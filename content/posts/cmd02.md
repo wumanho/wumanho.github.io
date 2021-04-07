@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "浅析命令行的本质（下）"
-date: 2020-12-20T15:25:07+08:00
+date: 2020-12-17T15:25:07+08:00
 draft: false
 categories: ["技术"]
 tags: ["bash","环境变量"]

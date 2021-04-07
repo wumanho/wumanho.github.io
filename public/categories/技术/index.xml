@@ -4,7 +4,14 @@
         <link>/categories/%E6%8A%80%E6%9C%AF/</link>
         <description>技术 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 21 Jan 2021 08:49:20 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker 实战练习 - 部署一个集群</title>
+    <link>/posts/dockerpractice/</link>
+    <pubDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/dockerpractice/</guid>
+    <description><![CDATA[本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目]]></description>
+</item><item>
     <title>理解 Redis 简洁高效的系统设计</title>
     <link>/posts/whyredisisfast/</link>
     <pubDate>Thu, 21 Jan 2021 08:49:20 &#43;0800</pubDate>
@@ -28,7 +35,7 @@
 </item><item>
     <title>浅析命令行的本质（下）</title>
     <link>/posts/cmd02/</link>
-    <pubDate>Sun, 20 Dec 2020 15:25:07 &#43;0800</pubDate>
+    <pubDate>Thu, 17 Dec 2020 15:25:07 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/cmd02/</guid>
     <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
