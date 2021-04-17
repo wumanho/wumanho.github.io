@@ -73,7 +73,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 ```code
 [root@localhost ~]# mkdir server
 [root@localhost ~]# cd server/
-[root@localhost ~]# touch Dockerfile
+[root@localhost server]# touch Dockerfile
 [root@localhost server]# ls
 Dockerfile  server.go
 ```

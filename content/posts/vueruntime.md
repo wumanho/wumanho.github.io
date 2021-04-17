@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "Vue 运行时版本简介"
-date: 2020-09-20T15:54:49+08:00
+date: 2020-03-20T15:54:49+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript","Vue"]
@@ -42,7 +42,7 @@ new Vue({
 
 ### 运行时版本
 
-运行时版则只能在 render 函数里用 h 来创建标签，比较麻烦
+运行时版则只能在 render 函数里用 h 来创建标签
 
 ```javascript
 //不需要编译器
@@ -95,7 +95,7 @@ new Vue({
 </template>
 ```
 
-以上 .vue 文件代码，会被 Vue loader 加载，并自动转译为如下的 render 函数
+以上 .vue 文件代码，会被 Vue loader 加载，并自动转译为如下的 render 函数，render 函数所 return 的结果，就是我们熟悉的「虚拟 DOM」
 
 ```javascript
 render() {

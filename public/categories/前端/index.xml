@@ -12,13 +12,6 @@
     <guid>/posts/vuesyncmodyfier/</guid>
     <description><![CDATA[<p><a href="https://vuejs.org/" target="_blank" rel="noopener noreffer">Vue</a> 在 2.3 版本得时候引入了<code>.sync</code>修饰符，它在此前的版本曾经被移除，后来又以新的方式重新加入。</p>]]></description>
 </item><item>
-    <title>Vue 运行时版本简介</title>
-    <link>/posts/vueruntime/</link>
-    <pubDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vueruntime/</guid>
-    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
-</item><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
@@ -54,6 +47,13 @@
     <author>作者</author>
     <guid>/posts/css/</guid>
     <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
+</item><item>
+    <title>Vue 运行时版本简介</title>
+    <link>/posts/vueruntime/</link>
+    <pubDate>Fri, 20 Mar 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueruntime/</guid>
+    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
 </item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>

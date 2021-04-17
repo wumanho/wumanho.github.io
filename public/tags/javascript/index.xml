@@ -4,14 +4,7 @@
         <link>/tags/javascript/</link>
         <description>JavaScript - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
-    <title>Vue 运行时版本简介</title>
-    <link>/posts/vueruntime/</link>
-    <pubDate>Sun, 20 Sep 2020 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/vueruntime/</guid>
-    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
-</item><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
@@ -47,6 +40,13 @@
     <author>作者</author>
     <guid>/posts/jsinheritance/</guid>
     <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
+</item><item>
+    <title>Vue 运行时版本简介</title>
+    <link>/posts/vueruntime/</link>
+    <pubDate>Fri, 20 Mar 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueruntime/</guid>
+    <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
 </item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
