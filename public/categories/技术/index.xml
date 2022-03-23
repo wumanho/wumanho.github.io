@@ -4,7 +4,35 @@
         <link>/categories/%E6%8A%80%E6%9C%AF/</link>
         <description>技术 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 12 Feb 2022 19:29:49 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>【Cloudflare Workers】无服务器应用初体验</title>
+    <link>/posts/cfworkers/</link>
+    <pubDate>Sat, 12 Feb 2022 19:29:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cfworkers/</guid>
+    <description><![CDATA[Serverless 听得不少,来体验看看]]></description>
+</item><item>
+    <title>【JavaScript数据结构】二叉树实现</title>
+    <link>/posts/jsbinarytree/</link>
+    <pubDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsbinarytree/</guid>
+    <description><![CDATA[二叉树定义 二叉树由一组相互链接的结点组合而成，最终表示一种具有层次的树形结构。 二叉树中每个结点通过父-子关系互相链接，每一个结点最多拥有两个]]></description>
+</item><item>
+    <title>【JavaScript数据结构】链表和双向链表</title>
+    <link>/posts/jslinklist/</link>
+    <pubDate>Sun, 14 Nov 2021 10:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jslinklist/</guid>
+    <description><![CDATA[由于最近在复习一些数据结构的知识，作为练习，这篇博客会尝试利用 JavaScript 以最简单的方式实现两个数据结构，链表和双向链表。 链表 定义 链表是一种线性的数据]]></description>
+</item><item>
+    <title>【Node.js】结合 MongoDB 实现一个 TODO 命令行工具</title>
+    <link>/posts/todowithmongo/</link>
+    <pubDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/todowithmongo/</guid>
+    <description><![CDATA[Node.js + MongoDB 练手，做个 TODO 小工具]]></description>
+</item><item>
     <title>Docker 实战练习 - 部署一个集群</title>
     <link>/posts/dockerpractice/</link>
     <pubDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</pubDate>
@@ -46,19 +74,5 @@
     <author>作者</author>
     <guid>/posts/cmd/</guid>
     <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
-</item><item>
-    <title>利用 HTTP/2 为网站提速</title>
-    <link>/posts/introductiontohttp2/</link>
-    <pubDate>Wed, 17 Jun 2020 09:50:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/introductiontohttp2/</guid>
-    <description><![CDATA[HTTP/2 协议简介以及如何为你的个人网站启用 HTTP/2]]></description>
-</item><item>
-    <title>用 Node.js 写一个简易静态服务器</title>
-    <link>/posts/nodesimpleserver/</link>
-    <pubDate>Tue, 12 May 2020 00:29:18 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/nodesimpleserver/</guid>
-    <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
 </item></channel>
 </rss>

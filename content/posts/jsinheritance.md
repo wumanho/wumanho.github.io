@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "JavaScript 继承介绍与应用"
-date: 2020-04-06T15:03:57+08:00
+date: 2020-03-11T15:03:57+08:00
 draft: false
 categories: ["前端"]
 tags: ["JavaScript"]

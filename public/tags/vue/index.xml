@@ -25,5 +25,12 @@
     <author>作者</author>
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
+</item><item>
+    <title>前端路由学习 - 实现一个简易 Vue-Router</title>
+    <link>/posts/simplevrouter/</link>
+    <pubDate>Wed, 12 Feb 2020 10:52:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/simplevrouter/</guid>
+    <description><![CDATA[参考 Vue-Router 源码实现一个具有基本路由功能的插件]]></description>
 </item></channel>
 </rss>

@@ -9,10 +9,10 @@
 <meta property="og:description" content=" 
 AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 XMLHttpRequest 创建的对象来发送和接受请求的一种技术。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/ajaxjq/" />
-<meta property="og:image" content="/logo.png"/>
+<meta property="og:url" content="/posts/ajaxjq/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-04-18T11:36:57+08:00" />
 <meta property="article:modified_time" content="2020-04-18T11:36:57+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -22,7 +22,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/ajaxjq/" /><link rel="prev" href="/posts/jsinheritance/" /><link rel="next" href="/posts/vuesvg/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/ajaxjq/" /><link rel="prev" href="/posts/vueruntime/" /><link rel="next" href="/posts/vuesvg/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -40,7 +40,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -48,7 +48,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
             <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -64,7 +64,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -108,7 +108,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 <p>利用原生 JS 发送 AJAX 请求，只需要记住四个步骤：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -131,7 +131,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="c1">//假设我们有一个单击事件
+<pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="c1">//假设我们有一个单击事件
 </span><span class="c1"></span><span class="nx">button</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()=&gt;{</span>
     <span class="c1">//1.创建 XMLHttpRequest 对象
 </span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
@@ -157,7 +157,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 </div><p>也可以稍微封装一下 ，方便处理成功和失败两种情况（非 <code>promise</code> 写法）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -185,7 +185,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">ajax</span> <span class="o">=</span> <span class="p">(</span><span class="nx">method</span><span class="p">,</span><span class="nx">url</span><span class="p">,</span><span class="nx">options</span><span class="p">)=&gt;{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">ajax</span> <span class="o">=</span> <span class="p">(</span><span class="nx">method</span><span class="p">,</span><span class="nx">url</span><span class="p">,</span><span class="nx">options</span><span class="p">)=&gt;{</span>
     <span class="c1">//ES6 析构赋值语法
 </span><span class="c1"></span>    <span class="kd">let</span> <span class="p">{</span><span class="nx">success</span><span class="p">,</span><span class="nx">fail</span><span class="p">}</span> <span class="o">=</span> <span class="nx">options</span>
     <span class="c1">//首先还是创建对象
@@ -226,13 +226,13 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//发送一个 get 请求，接受一个 json 格式的返回值
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">//发送一个 get 请求，接受一个 json 格式的返回值
 </span><span class="c1"></span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&#34;/xxx&#34;</span><span class="p">,{</span>
     <span class="nx">dataType</span><span class="o">:</span><span class="s2">&#34;json&#34;</span>
 <span class="p">})</span>
@@ -261,7 +261,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 <p>✔️所以，目前推荐的使用方法是：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -272,7 +272,7 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&#34;/api/v1/xxx&#34;</span><span class="p">,{</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&#34;/api/v1/xxx&#34;</span><span class="p">,{</span>
     <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span>
 <span class="p">}).</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)=&gt;{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;data:&#34;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
@@ -311,13 +311,13 @@ AJAX 全称 ASynchronous JavaScript And XML，异步 JS 和 XML，本质上是�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/jsinheritance/" class="prev" rel="prev" title="JavaScript 继承介绍与应用"><i class="fas fa-angle-left fa-fw"></i>JavaScript 继承介绍与应用</a>
+    <div class="post-nav"><a href="/posts/vueruntime/" class="prev" rel="prev" title="Vue 运行时版本简介"><i class="fas fa-angle-left fa-fw"></i>Vue 运行时版本简介</a>
             <a href="/posts/vuesvg/" class="next" rel="next" title="Vue 封装 icon 组件">Vue 封装 icon 组件<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

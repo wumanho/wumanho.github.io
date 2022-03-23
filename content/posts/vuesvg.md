@@ -59,7 +59,7 @@ module.exports = {
     config.module
         .rule("svg-sprite") //指定规则
         .test(/\.svg$/) //正则匹配，指定.svg后缀
-        .include.add(dir).end()
+        .include.add(dir).end() //注意这里需要 end() 回退一下，再加 use
         .use("svg-sprite-loader").loader("svg-sprite-loader").options({extract:false}).end()
     config.plugin("svg-sprite").use(require("svg-sprite-loader/plugin"),[{plainSprite:true}])
     config.module.rule("svg").exclude.add(dir) //其他规则排除指定的目录，避免冲突

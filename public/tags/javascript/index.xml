@@ -4,7 +4,35 @@
         <link>/tags/javascript/</link>
         <description>JavaScript - 标签 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</lastBuildDate><atom:link href="/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>【JavaScript数据结构】二叉树实现</title>
+    <link>/posts/jsbinarytree/</link>
+    <pubDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsbinarytree/</guid>
+    <description><![CDATA[二叉树定义 二叉树由一组相互链接的结点组合而成，最终表示一种具有层次的树形结构。 二叉树中每个结点通过父-子关系互相链接，每一个结点最多拥有两个]]></description>
+</item><item>
+    <title>【JavaScript数据结构】链表和双向链表</title>
+    <link>/posts/jslinklist/</link>
+    <pubDate>Sun, 14 Nov 2021 10:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jslinklist/</guid>
+    <description><![CDATA[由于最近在复习一些数据结构的知识，作为练习，这篇博客会尝试利用 JavaScript 以最简单的方式实现两个数据结构，链表和双向链表。 链表 定义 链表是一种线性的数据]]></description>
+</item><item>
+    <title>【Vue 函数式组件】实现不定高元素折叠动画</title>
+    <link>/posts/coll/</link>
+    <pubDate>Mon, 11 Oct 2021 20:22:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/coll/</guid>
+    <description><![CDATA[参考 Element UI 源码实现的函数式组件]]></description>
+</item><item>
+    <title>【Node.js】结合 MongoDB 实现一个 TODO 命令行工具</title>
+    <link>/posts/todowithmongo/</link>
+    <pubDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/todowithmongo/</guid>
+    <description><![CDATA[Node.js + MongoDB 练手，做个 TODO 小工具]]></description>
+</item><item>
     <title>前端 MVC</title>
     <link>/posts/mvcintro/</link>
     <pubDate>Sat, 05 Sep 2020 17:19:01 &#43;0800</pubDate>
@@ -18,6 +46,13 @@
     <author>作者</author>
     <guid>/posts/nodesimpleserver/</guid>
     <description><![CDATA[Node.js 是一个开源与跨平台的 JavaScript 运行时环境，通过 Node.js 开发者可以在浏览器之外运行 JavaScript 代码，使得 JS 也拥有了开发后端项目的能力。同时 Node.js 运行 V8 JavaScript 引擎（Googl]]></description>
+</item><item>
+    <title>正确使用 Promise 和 async/await 处理多个异步请求</title>
+    <link>/posts/multireq/</link>
+    <pubDate>Sun, 03 May 2020 14:32:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/multireq/</guid>
+    <description><![CDATA[介绍如何通过正确地运用 Promise 的链式调用，以及 Promise.all 方法处理多个异步请求]]></description>
 </item><item>
     <title>Vue 封装 icon 组件</title>
     <link>/posts/vuesvg/</link>
@@ -34,32 +69,11 @@
     <description><![CDATA[<p> </p>
 <p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item><item>
-    <title>JavaScript 继承介绍与应用</title>
-    <link>/posts/jsinheritance/</link>
-    <pubDate>Mon, 06 Apr 2020 15:03:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsinheritance/</guid>
-    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
-</item><item>
     <title>Vue 运行时版本简介</title>
     <link>/posts/vueruntime/</link>
     <pubDate>Fri, 20 Mar 2020 15:54:49 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
-</item><item>
-    <title>DOM 事件与事件委托</title>
-    <link>/posts/domevent/</link>
-    <pubDate>Sun, 08 Mar 2020 16:08:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/domevent/</guid>
-    <description><![CDATA[DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。]]></description>
-</item><item>
-    <title>jQuery 使用和设计简介</title>
-    <link>/posts/jq01/</link>
-    <pubDate>Tue, 25 Feb 2020 20:20:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
 </item></channel>
 </rss>

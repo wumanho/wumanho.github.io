@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MongoDB - 标签 - OK Computer</title>
+        <link>/tags/mongodb/</link>
+        <description>MongoDB - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</lastBuildDate><atom:link href="/tags/mongodb/" rel="self" type="application/rss+xml" /><item>
+    <title>【Node.js】结合 MongoDB 实现一个 TODO 命令行工具</title>
+    <link>/posts/todowithmongo/</link>
+    <pubDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/todowithmongo/</guid>
+    <description><![CDATA[Node.js + MongoDB 练手，做个 TODO 小工具]]></description>
+</item></channel>
+</rss>

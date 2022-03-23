@@ -8,10 +8,10 @@
         <title>Docker 实战练习 - 部署一个集群 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="Docker 实战练习 - 部署一个集群" />
 <meta property="og:description" content="本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/dockerpractice/" />
-<meta property="og:image" content="/logo.png"/>
+<meta property="og:url" content="/posts/dockerpractice/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-06T13:47:29+08:00" />
 <meta property="article:modified_time" content="2021-03-06T13:47:29+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -20,7 +20,7 @@
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/dockerpractice/" /><link rel="prev" href="/posts/pewdipie2021intro/" /><link rel="next" href="/posts/0231to0235/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/dockerpractice/" /><link rel="prev" href="/posts/pewdipie2021intro/" /><link rel="next" href="/posts/todowithmongo/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -38,7 +38,7 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -46,7 +46,7 @@
             <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -62,7 +62,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -116,14 +116,14 @@
 <p>本次实验环境基于一台本地的 <code>CentOS 7</code> 虚拟机，先使用 yum 安装 docker</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# yum -y install docker
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# yum -y install docker
 [root@localhost ~]# systemctl enable docker
 [root@localhost ~]# systemctl start docker
 [root@localhost ~]# docker -v
@@ -135,7 +135,7 @@ Docker version 1.13.1, build 0be3e21/1.13.1
 <p>服务器代码使用 Golang 实现，监听 8080 端口，打印出访问路径，以及 <code>APPNAME</code> 环境变量，用于区分两个容器实例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -154,7 +154,7 @@ Docker version 1.13.1, build 0be3e21/1.13.1
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="cm">/* server.go */</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="cm">/* server.go */</span>
 <span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
@@ -186,14 +186,14 @@ Docker version 1.13.1, build 0be3e21/1.13.1
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# mkdir server
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# mkdir server
 [root@localhost ~]# cd server/
 [root@localhost server]# touch Dockerfile
 [root@localhost server]# ls
@@ -207,7 +207,7 @@ Dockerfile  server.go
 <p><strong>CMD</strong>：容器启动时默认执行的命令，如果 Docker 容器使用命令运行，则将忽略默认命令，如果 Dockerfile 具有多个 CMD 指令，则忽略除最后一个 CMD 指令之外的所有指令；</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -218,7 +218,7 @@ Dockerfile  server.go
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c"># Dockerfile</span><span class="err">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c"># Dockerfile</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="k">FROM</span><span class="s"> golang:1.14</span><span class="err">
 </span><span class="err">
@@ -232,7 +232,7 @@ Dockerfile  server.go
 </div><p>使用 <code>docker build</code>命令构建镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -255,7 +255,7 @@ Dockerfile  server.go
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost server]# docker build -t my-golang-app .
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost server]# docker build -t my-golang-app .
 
 Sending build context to Docker daemon 3.072 kB
 Step 1/4 : FROM golang:1.14
@@ -283,7 +283,7 @@ docker.io/golang    1.14                21a5635903d6        7 weeks ago         
 <p>使用<code>docker pull</code>从仓库中获取最新版的 Nginx 镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -297,7 +297,7 @@ docker.io/golang    1.14                21a5635903d6        7 weeks ago         
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost server]# docker pull nginx
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost server]# docker pull nginx
 Using default tag: latest
 Trying to pull repository docker.io/library/nginx ... 
 latest: Pulling from docker.io/library/nginx
@@ -314,7 +314,7 @@ Status: Downloaded newer image for docker.io/nginx:latest
 </div><p>准备 nginx 配置文件，需要注意的是 upstream 中的 server 字段 ，不可以使用 localhost，这也是 docker 初学者经常会踩的一个坑，因为 localhost 是相对于<strong>当前 Nginx 容器</strong>的 localhost，而我们的需求是将流量转发至<strong>本地服务器的8081、8082端口</strong>，这有一点反直觉。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -334,7 +334,7 @@ Status: Downloaded newer image for docker.io/nginx:latest
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># nginx.conf
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1"># nginx.conf
 </span><span class="c1"></span>
 <span class="k">events</span> <span class="p">{}</span>
 
@@ -359,28 +359,28 @@ Status: Downloaded newer image for docker.io/nginx:latest
 <p>启动 APP1，映射 8081端口，设置环境变量名为 app1</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 8081:8080 -e <span class="nv">APPNAME</span><span class="o">=</span>app1 my-golang-app
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 8081:8080 -e <span class="nv">APPNAME</span><span class="o">=</span>app1 my-golang-app
 </code></pre></td></tr></table>
 </div>
 </div><p>启动 APP2，映射 8082 端口，设置环境变量名为 app2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 8082:8080 -e <span class="nv">APPNAME</span><span class="o">=</span>app2 my-golang-app
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 8082:8080 -e <span class="nv">APPNAME</span><span class="o">=</span>app2 my-golang-app
 </code></pre></td></tr></table>
 </div>
 </div><p>启动 Nginx 容器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -p 80:80 -v /root/server/nginx.conf:/etc/nginx/nginx.conf --name<span class="o">=</span>myNginx -d nginx
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -p 80:80 -v /root/server/nginx.conf:/etc/nginx/nginx.conf --name<span class="o">=</span>myNginx -d nginx
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
@@ -426,12 +426,12 @@ Status: Downloaded newer image for docker.io/nginx:latest
     </div>
 
     <div class="post-nav"><a href="/posts/pewdipie2021intro/" class="prev" rel="prev" title="【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标"><i class="fas fa-angle-left fa-fw"></i>【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标</a>
-            <a href="/posts/0231to0235/" class="next" rel="next" title="新概念二册-Lesson 31~35 笔记【持续更新】">新概念二册-Lesson 31~35 笔记【持续更新】<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/todowithmongo/" class="next" rel="next" title="【Node.js】结合 MongoDB 实现一个 TODO 命令行工具">【Node.js】结合 MongoDB 实现一个 TODO 命令行工具<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

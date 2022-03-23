@@ -8,10 +8,10 @@
         <title>利用 openVPN 构建互访混合云环境 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="利用 openVPN 构建互访混合云环境" />
 <meta property="og:description" content="由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/openvpn/" />
-<meta property="og:image" content="/logo.png"/>
+<meta property="og:url" content="/posts/openvpn/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-17T19:18:26+08:00" />
 <meta property="article:modified_time" content="2021-01-17T19:18:26+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -38,7 +38,7 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -46,7 +46,7 @@
             <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -62,7 +62,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -133,32 +133,32 @@
 <p>修改<code>/etc/selinux/config</code>配置文件，关闭 selinux</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SELINUX</span><span class="o">=</span>disabled
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SELINUX</span><span class="o">=</span>disabled
 </code></pre></td></tr></table>
 </div>
 </div><p>关闭防火墙</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl disable firewalld
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">systemctl disable firewalld
 systemctl stop firewalld
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="安装-openvpn">安装 openvpn</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
 yum update
 yum -y install openvpn easy-rsa
 </code></pre></td></tr></table>
@@ -166,14 +166,14 @@ yum -y install openvpn easy-rsa
 </div><h3 id="创建证书">创建证书</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/
 ./easyrsa init-pki
 ./easyrsa build-ca nopass
 ./easyrsa build-server-full &lt;server-name&gt; nopass
@@ -185,14 +185,14 @@ yum -y install openvpn easy-rsa
 <p>将证书复制到 openvpn目录<code>/etc/openvpn/server/</code>，然后创建<code>dh.pem</code>和<code>ta.key</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/pki
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/share/easy-rsa/3/pki
 cp ca.crt issued/&lt;server-name&gt;.crt private/&lt;server-name&gt;.key /etc/openvpn/server/
 <span class="nb">cd</span> /etc/openvpn/server
 openssl dhparam -out dh.pem <span class="m">2048</span>
@@ -202,7 +202,7 @@ openvpn --genkey --secret ta.key
 </div><p>在<code>/etc/openvpn/server/</code>中创建一个配置文件<code>&lt;server-name&gt;.conf</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -225,7 +225,7 @@ openvpn --genkey --secret ta.key
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">port <span class="m">1994</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">port <span class="m">1994</span>
 proto udp                                    
 dev tun
 ca /etc/openvpn/server/ca.crt
@@ -251,12 +251,12 @@ persist-tun
 </div><p>在服务器端<code>/etc/openvpn/</code>下创建 CCD 目录，添加客户端配置文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/openvpn/ccd/clientvm
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat /etc/openvpn/ccd/clientvm
 iroute 192.168.3.0 255.255.255.0
 iroute 172.16.11.0 255.255.255.0
 </code></pre></td></tr></table>
@@ -264,12 +264,12 @@ iroute 172.16.11.0 255.255.255.0
 </div><p>配置 IP 转发</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
 sysctl -p
 systemctl restart network
 </code></pre></td></tr></table>
@@ -277,11 +277,11 @@ systemctl restart network
 </div><p>配置 NAT，为了避免重启后失效，建议写到<code>rc.local</code>里面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
 iptables -L -n -t nat
 </code></pre></td></tr></table>
 </div>
@@ -289,11 +289,11 @@ iptables -L -n -t nat
 <p>可以使用<code>systemctl enable</code>设置为开机自启动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-server@&lt;server-name&gt;
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-server@&lt;server-name&gt;
 systemctl <span class="nb">enable</span> openvpn-server@&lt;server-name&gt;
 </code></pre></td></tr></table>
 </div>
@@ -326,12 +326,12 @@ systemctl <span class="nb">enable</span> openvpn-server@&lt;server-name&gt;
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum -y install epel-release
 yum update
 yum -y install openvpn
 </code></pre></td></tr></table>
@@ -341,7 +341,7 @@ yum -y install openvpn
 <p>安装好 openvpn 之后，需要将在服务器生成的<code>ca.crt</code>、<code>ta.key</code>、<code>&lt;client-name&gt;.key</code>、<code>&lt;client-name&gt;.crt</code>复制到<code>/etc/openvpn/client/</code>目录下，然后在该目录下创建一个<code>&lt;client-name&gt;.conf</code>配置文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -359,7 +359,7 @@ yum -y install openvpn
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">client <span class="c1">#指定当前VPN是客户端</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">client <span class="c1">#指定当前VPN是客户端</span>
 dev tun <span class="c1">#使用tun隧道传输协议</span>
 proto udp <span class="c1">#使用udp协议传输数据</span>
 remote  52.83.152.63 <span class="m">1994</span>  <span class="c1">#openvpn服务器IP地址端口号</span>
@@ -380,12 +380,12 @@ log /var/log/openvpn/openvpn.log 			<span class="c1">#按需配置</span>
 </div><p>配置 IP 转发</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> &gt;&gt; /etc/sysctl.conf
 sysctl -p
 systemctl restart network
 </code></pre></td></tr></table>
@@ -393,22 +393,22 @@ systemctl restart network
 </div><p>配置 NAT，为了避免重启后失效，建议写到<code>rc.local</code>里面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
 iptables -L -n -t nat
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="启动客户端">启动客户端</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-client@&lt;client-name&gt;
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">systemctl start openvpn-client@&lt;client-name&gt;
 systemctl <span class="nb">enable</span> openvpn-client@&lt;client-name&gt;
 </code></pre></td></tr></table>
 </div>
@@ -416,10 +416,10 @@ systemctl <span class="nb">enable</span> openvpn-client@&lt;client-name&gt;
 <p>本地 License 等服务器需要通过 openvpn client 转发数据到公有云，所以需要在每个服务器上添加一条静态路由</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">route add -net 10.20.0.0/16 gw 172.16.11.16  <span class="c1">### 指向VPN client 的IP为路由</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">route add -net 10.20.0.0/16 gw 172.16.11.16  <span class="c1">### 指向VPN client 的IP为路由</span>
 </code></pre></td></tr></table>
 </div>
 </div><p> </p>
@@ -455,8 +455,8 @@ systemctl <span class="nb">enable</span> openvpn-client@&lt;client-name&gt;
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

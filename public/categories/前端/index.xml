@@ -4,7 +4,21 @@
         <link>/categories/%E5%89%8D%E7%AB%AF/</link>
         <description>前端 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 03 Oct 2020 11:26:08 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>Vue3 源码中的 Reactivity 学习和思考</title>
+    <link>/posts/vue3reactivity/</link>
+    <pubDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vue3reactivity/</guid>
+    <description><![CDATA[写一个 Vue3 Reactivity]]></description>
+</item><item>
+    <title>【Vue 函数式组件】实现不定高元素折叠动画</title>
+    <link>/posts/coll/</link>
+    <pubDate>Mon, 11 Oct 2021 20:22:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/coll/</guid>
+    <description><![CDATA[参考 Element UI 源码实现的函数式组件]]></description>
+</item><item>
     <title>理解 .sync 修饰符</title>
     <link>/posts/vuesyncmodyfier/</link>
     <pubDate>Sat, 03 Oct 2020 11:26:08 &#43;0800</pubDate>
@@ -18,6 +32,13 @@
     <author>作者</author>
     <guid>/posts/mvcintro/</guid>
     <description><![CDATA[<p> 前端 MVC 其实早在 2014 年前后已经引起过大量讨论，在当下已经不是什么非常新鲜的概念。</p>]]></description>
+</item><item>
+    <title>正确使用 Promise 和 async/await 处理多个异步请求</title>
+    <link>/posts/multireq/</link>
+    <pubDate>Sun, 03 May 2020 14:32:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/multireq/</guid>
+    <description><![CDATA[介绍如何通过正确地运用 Promise 的链式调用，以及 Promise.all 方法处理多个异步请求]]></description>
 </item><item>
     <title>Vue 封装 icon 组件</title>
     <link>/posts/vuesvg/</link>
@@ -34,20 +55,6 @@
     <description><![CDATA[<p> </p>
 <p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item><item>
-    <title>JavaScript 继承介绍与应用</title>
-    <link>/posts/jsinheritance/</link>
-    <pubDate>Mon, 06 Apr 2020 15:03:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsinheritance/</guid>
-    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
-</item><item>
-    <title>CSS 原理笔记</title>
-    <link>/posts/css/</link>
-    <pubDate>Mon, 30 Mar 2020 10:02:12 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/css/</guid>
-    <description><![CDATA[浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH]]></description>
-</item><item>
     <title>Vue 运行时版本简介</title>
     <link>/posts/vueruntime/</link>
     <pubDate>Fri, 20 Mar 2020 15:54:49 &#43;0800</pubDate>
@@ -55,25 +62,18 @@
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
 </item><item>
+    <title>JavaScript 继承介绍与应用</title>
+    <link>/posts/jsinheritance/</link>
+    <pubDate>Wed, 11 Mar 2020 15:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsinheritance/</guid>
+    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
+</item><item>
     <title>DOM 事件与事件委托</title>
     <link>/posts/domevent/</link>
     <pubDate>Sun, 08 Mar 2020 16:08:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>/posts/domevent/</guid>
     <description><![CDATA[DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。]]></description>
-</item><item>
-    <title>jQuery 使用和设计简介</title>
-    <link>/posts/jq01/</link>
-    <pubDate>Tue, 25 Feb 2020 20:20:01 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jq01/</guid>
-    <description><![CDATA[jQuery 介绍 📗 jQuery 是一个非常经典的 DOM 库，从 06 年 jQuery 发布之后，至今已经被被广泛使用长达十几年。 至于为什么 jQuery 可以被称之为经典，我想是因为首先他有非常优秀的]]></description>
-</item><item>
-    <title>Flex 布局常用属性值</title>
-    <link>/posts/flex/</link>
-    <pubDate>Tue, 27 Aug 2019 18:33:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/flex/</guid>
-    <description><![CDATA[前言 记录一些 Flex 常用属性值，主要给自己看的，方便自己查找。 Flex 布局有两个关键字： 容器 元素 Container 让一个元素变成一个 flex 容器： 1 2 3 .container{ display:flex; } 改变 items 的流动方向]]></description>
 </item></channel>
 </rss>

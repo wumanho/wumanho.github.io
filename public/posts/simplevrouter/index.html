@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>前端路由学习 - 实现一个简易 Vue-Router - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="前端路由学习 - 实现一个简易 Vue-Router" />
+<meta property="og:description" content="参考 Vue-Router 源码实现一个具有基本路由功能的插件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/simplevrouter/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-12T10:52:44+08:00" />
+<meta property="article:modified_time" content="2020-02-12T10:52:44+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="前端路由学习 - 实现一个简易 Vue-Router"/>
+<meta name="twitter:description" content="参考 Vue-Router 源码实现一个具有基本路由功能的插件"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/simplevrouter/" /><link rel="prev" href="/posts/css/" /><link rel="next" href="/posts/jq01/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "前端路由学习 - 实现一个简易 Vue-Router",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/simplevrouter\/"
+        },"genre": "posts","keywords": "JavaScript, Vue, Vue-Router","wordcount":  2193 ,
+        "url": "\/posts\/simplevrouter\/","datePublished": "2020-02-12T10:52:44+08:00","dateModified": "2020-02-12T10:52:44+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">前端路由学习 - 实现一个简易 Vue-Router</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-12">2020-02-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2193 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#实现思路">实现思路</a></li>
+    <li><a href="#写一个插件">写一个「插件」</a></li>
+    <li><a href="#挂载-router">挂载 $router</a></li>
+    <li><a href="#router-view-组件以及路由跳转功能实现">router-view 组件以及路由跳转功能实现</a></li>
+    <li><a href="#router-link-组件实现">router-link 组件实现</a></li>
+    <li><a href="#测试">测试</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="简介">简介</h2>
+<p>前端路由应该是近几年随着单页应用（SPA）的兴起才开始被广泛讨论的概念，SPA 应用由于其特殊性，一个 WEB 项目只有一个页面，一旦页面加载完成，当前应用不会因为用户的操作而进行页面的重新加载或跳转，取而代之的是利用 JavaScript 动态的变换 HTML 的内容，从而来模拟多个视图间跳转。</p>
+<p>SPA 大大提高了 WEB 应用的交互体验，在与用户的交互过程中，不再需要重新刷新页面，获取数据也是通过 Ajax 异步获取，页面显示变的更加流畅。</p>
+<p>而实现 SPA 的关键概念之一，便是「路由」。</p>
+<p>Vue-Router 便是 Vue 用来实现路由的插件，它的功能非常完善，且与 Vue 的核心深度集成。</p>
+<p> </p>
+<h2 id="实现思路">实现思路</h2>
+<p>出于学习的目的，在一次浅尝辄止的源码阅读以及参考了一些优秀文章之后，打算也尝试着自己写一个简单的 Vue-Router 插件，完成一些基本的路由跳转功能。</p>
+<p>一开始感觉无从下手，先回忆一下平时是如何使用 Vue-Router 的：</p>
+<p>先创建一个 router.js 配置文件，引入 Vue-Router，通过 Vue 定义的全局方法 <code>use</code> 注册插件，然后导出一个 Router 实例，将路由配置以参数的方式传入。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Router</span> <span class="nx">from</span> <span class="s1">&#39;vue-router&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">C</span> <span class="nx">from</span> <span class="s1">&#39;@/components/component.vue&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Home</span> <span class="nx">from</span> <span class="s1">&#39;@/components/home.vue&#39;</span><span class="p">;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">Router</span><span class="p">)</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">({</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="p">[{</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="nx">component</span><span class="o">:</span> <span class="nx">Home</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/c&#39;</span><span class="p">,</span>
+    <span class="nx">component</span><span class="o">:</span> <span class="nx">C</span>
+  <span class="p">}]</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 main.js 中初始化并挂载 router，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/* main.js */</span>
+<span class="kr">import</span> <span class="nx">Vue</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<span class="kr">import</span> <span class="nx">App</span> <span class="nx">from</span> <span class="s1">&#39;./App.vue&#39;</span>
+<span class="kr">import</span> <span class="nx">router</span> <span class="nx">from</span> <span class="s1">&#39;./router.js&#39;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">router</span><span class="p">,</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="nx">h</span> <span class="p">=&gt;</span> <span class="nx">h</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="s1">&#39;#app&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 App.vue 中使用<code>router-link</code>以及<code>router-view</code>组件实现路由跳转和路由出口功能</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="c">&lt;!--</span> <span class="nx">APP</span><span class="p">.</span><span class="nx">vue</span>  <span class="o">--&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;nav&#34;</span><span class="p">&gt;</span>
+       <span class="c">&lt;!--</span> <span class="nx">路由跳转</span> <span class="o">--&gt;</span>
+      <span class="p">&lt;</span><span class="nt">router-link</span> <span class="na">to</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/router-link&gt;|</span>
+      <span class="p">&lt;</span><span class="nt">router-link</span> <span class="na">to</span><span class="o">=</span><span class="s">&#34;/c&#34;</span><span class="p">&gt;</span><span class="nx">Component</span><span class="o">&lt;</span><span class="err">/router-link&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    	<span class="c">&lt;!--</span> <span class="nx">路由占位</span> <span class="o">--&gt;</span>
+    	<span class="p">&lt;</span><span class="nt">router-view</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>于是，在开始之前，先站在小白的角度问自己几个问题：</p>
+<ol>
+<li>如何开发一个插件？</li>
+<li>router-view 和 router-link 哪来的？</li>
+<li>router-view 如何做到替换？</li>
+</ol>
+<p> </p>
+<p>「如何开发一个插件」这个问题，参考 <a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener noreffer">Vue 官方文档</a> 的说明：</p>
+<blockquote>
+<p>如果插件是一个对象，必须提供 install 方法。如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。 该方法需要在调用 <code>new Vue()</code> 之前被调用。 当 install 方法被同一个插件多次调用，插件将只会被安装一次。</p>
+</blockquote>
+<p>所以开发一个 Vue 插件，其实就是实现一个 install 方法，然后将方法暴露，用户便可以使用 <code>Vue.use()</code>注册插件了。</p>
+<p>「router-view 和 router-link 哪来的」：</p>
+<p>参考 <a href="https://github.com/vuejs/vue-router/blob/HEAD/src/install.js" target="_blank" rel="noopener noreffer">Vue-Router 源码</a>，这两个组件实际上是在 install 方法中注册的，所以后面需要实现这两个组件，分别用于路由跳转和路由出口。</p>
+<p>「router-view 如何做到替换」：</p>
+<p>根据 Vue-Router 原理，实现路由跳转组件替换，需要通过监听 <code>hashchange</code>事件，并响应最新的 url，根据 url 获取对应的组件并显示到界面上。</p>
+<p> </p>
+<p>有了思路，就可以开始动手了。🔨</p>
+<p> </p>
+<h2 id="写一个插件">写一个「插件」</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+        <span class="c1">//先获取一下参数
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">$options</span> <span class="o">=</span> <span class="nx">options</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+</span><span class="cm"> * 按照官方的做法，定义 install 方法
+</span><span class="cm"> * Vue规定第一个参数必须接受一个Vue实例
+</span><span class="cm"> * options 就是 use(xxx，options) 传入的第二个参数 options
+</span><span class="cm"> */</span>
+<span class="nx">MyVueRouter</span><span class="p">.</span><span class="nx">install</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">_Vue</span><span class="p">,</span><span class="nx">options</span><span class="p">){</span>
+    <span class="nx">Vue</span> <span class="o">=</span> <span class="nx">_Vue</span> <span class="c1">//使用宿主环境的Vue实例
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="挂载-router">挂载 $router</h2>
+<p>在日常开发的过程中，我们通常会在 main.js 里面，往根实例上挂载 router 选项，以便在组件中使用<code> $router</code> 来获取全局路由实例，所以接下来需要实现的便是挂载 $router。</p>
+<p>不过如何获取根实例中的 router 选项是个问题，如果没有头绪的话，可以参考 Vue-Router 的源码，利用全局混入来实现。</p>
+<p>由于 install 方法会在 <code>new Vue({})</code>之前执行，所以实际上只需要全局混入一个生命周期钩子，在钩子里面便可以实现全局挂载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$options</span> <span class="o">=</span> <span class="nx">options</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">MyVueRouter</span><span class="p">.</span><span class="nx">install</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">_Vue</span><span class="p">,</span><span class="nx">options</span><span class="p">){</span>
+    <span class="nx">Vue</span> <span class="o">=</span> <span class="nx">_Vue</span> 
+    <span class="c1">//全局混入
+</span><span class="c1"></span>    <span class="nx">Vue</span><span class="p">.</span><span class="nx">mixin</span><span class="p">({</span>
+        <span class="c1">//这个钩子会在所有组件中都执行一遍
+</span><span class="c1"></span>        <span class="nx">beforeCreate</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">//需要判断当前实例是否根实例
+</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$options</span><span class="p">.</span><span class="nx">router</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//实际上这里只会进来一次
+</span><span class="c1"></span>                <span class="nx">Vue</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">$router</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$options</span><span class="p">.</span><span class="nx">router</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="router-view-组件以及路由跳转功能实现">router-view 组件以及路由跳转功能实现</h2>
+<p>根据之前的思路分析，我们需要通过 <code>hashchange</code>监听 url 的变化，然后将对应的 Vue 组件显示到页面上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$options</span> <span class="o">=</span> <span class="nx">options</span>
+        
+        <span class="c1">//声明一个变量代表当前 url
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">curl</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span>
+    
+        <span class="c1">//监控url变化，赋值到当前 url
+</span><span class="c1"></span>        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;hashchange&#34;</span><span class="p">,()=&gt;{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">curl</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">})</span>
+        
+        <span class="c1">//遍历用户传入的路由配置，创建路由映射表
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">routeMap</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">routes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">route</span><span class="p">=&gt;{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">routeMap</span><span class="p">[</span><span class="nx">route</span><span class="p">.</span><span class="nx">path</span><span class="p">]</span> <span class="o">=</span> <span class="nx">route</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>有了<code>routeMap</code>以及<code>curl</code>当前路径，就可以实现 router-view 组件了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+     <span class="cm">/* ... */</span>
+<span class="p">}</span>
+
+<span class="nx">MyVueRouter</span><span class="p">.</span><span class="nx">install</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">_Vue</span><span class="p">,</span><span class="nx">options</span><span class="p">){</span>
+    <span class="cm">/* ... */</span>
+    
+    <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&#34;router-view&#34;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="c1">//在 runtime-only 环境下，需要利用 render 函数来描述组件
+</span><span class="c1"></span>        <span class="nx">render</span><span class="p">(</span><span class="nx">h</span><span class="p">){</span>
+            <span class="c1">//获取 path 对应的 component
+</span><span class="c1"></span>            <span class="kd">let</span> <span class="p">{</span><span class="nx">routeMap</span><span class="p">,</span><span class="nx">curl</span><span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$router</span>
+            <span class="c1">// component = 当前 url 对应的组件名
+</span><span class="c1"></span>            <span class="kd">let</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">routeMap</span><span class="p">[</span><span class="nx">curl</span><span class="p">].</span><span class="nx">component</span> <span class="o">||</span> <span class="kc">null</span>
+            <span class="c1">//将 component 用 h 函数渲染即可
+</span><span class="c1"></span>            <span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="nx">component</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>到目前位置，貌似一切顺利，但是当进行测试的时候会发现，<strong>hash 发生变化的时候，页面并没有重新进行渲染</strong>。</p>
+<p>主要原因是，当前的变量<code>curl</code>，并非一个响应式的数据，当他发生改变时，页面并不会重新渲染，如何做到这一点？</p>
+<p>这个时候可以利用 Vue 提供的工具<code>Vue.util.defineReactive</code>，对数据进行响应式处理，<code>defineReactive</code>是一个内部方法，Vue 源码中有时候会用这个方法来对数据做一些响应式处理，所以优化后的代码应该是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$options</span> <span class="o">=</span> <span class="nx">options</span>
+        
+        <span class="c1">//创建响应式的 curl 属性
+</span><span class="c1"></span>        <span class="nx">Vue</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">defineReactive</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s2">&#34;curl&#34;</span><span class="p">,</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="s2">&#34;/&#34;</span><span class="p">)</span>
+    
+        <span class="c1">//监控url变化，赋值到当前 url
+</span><span class="c1"></span>        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;hashchange&#34;</span><span class="p">,()=&gt;{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">curl</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">})</span>
+        
+        <span class="c1">//遍历用户传入的路由配置，创建路由映射表
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">routeMap</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">routes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">route</span><span class="p">=&gt;{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">routeMap</span><span class="p">[</span><span class="nx">route</span><span class="p">.</span><span class="nx">path</span><span class="p">]</span> <span class="o">=</span> <span class="nx">route</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="router-link-组件实现">router-link 组件实现</h2>
+<p>router-link 组件用于实现编程导航，通过组件中的<code>to</code>属性指定目标地址，router-link 最终会被渲染成带有正确链接的 <code>&lt;a&gt;</code> 标签。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="cm">/*my-vue-router.js*/</span>
+<span class="kd">let</span> <span class="nx">Vue</span>
+<span class="kr">class</span> <span class="nx">MyVueRouter</span><span class="p">{</span>
+     <span class="cm">/* ... */</span>
+<span class="p">}</span>
+
+<span class="nx">MyVueRouter</span><span class="p">.</span><span class="nx">install</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">_Vue</span><span class="p">,</span><span class="nx">options</span><span class="p">){</span>
+    <span class="cm">/* ... */</span>
+    
+    <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&#34;router-link&#34;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">to</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+                <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">render</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//渲染一个 a 标签: &lt;a href=&#34;/c&#34;&gt;component&lt;/a&gt;
+</span><span class="c1"></span>            <span class="k">return</span> <span class="nx">h</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">attrs</span><span class="o">:</span> <span class="p">{</span> <span class="nx">href</span><span class="o">:</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">to</span> <span class="p">}</span> <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">$slots</span><span class="p">.</span><span class="k">default</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="测试">测试</h2>
+<p>至此，路由插件已经基本实现完成，将配置修改成自己的路由插件，测试看看效果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/simplevuerouter/test.gif"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/simplevuerouter/test.gif, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/simplevuerouter/test.gif 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/simplevuerouter/test.gif 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/simplevuerouter/test.gif"
+        title="效果图" /></p>
+<p>（完）</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-02-12</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a>,&nbsp;<a href="/tags/vue/">Vue</a>,&nbsp;<a href="/tags/vue-router/">Vue-Router</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/css/" class="prev" rel="prev" title="CSS 原理笔记"><i class="fas fa-angle-left fa-fw"></i>CSS 原理笔记</a>
+            <a href="/posts/jq01/" class="next" rel="next" title="jQuery 使用和设计简介">jQuery 使用和设计简介<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

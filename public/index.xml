@@ -4,17 +4,66 @@
         <link>/</link>
         <description>WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</lastBuildDate>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>新概念二册-Lesson 31~35 笔记【持续更新】</title>
-    <link>/posts/0231to0235/</link>
-    <pubDate>Sun, 13 Dec 2020 22:26:15 &#43;0800</pubDate>
+    <title>新概念二册-Lesson 36~40 笔记【不定期更新】</title>
+    <link>/posts/0236to0240/</link>
+    <pubDate>Sun, 03 Jan 2021 22:26:15 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>/posts/0231to0235/</guid>
+    <guid>/posts/0236to0240/</guid>
     <description><![CDATA[<h3 id="更多新概念笔记">更多新概念笔记</h3>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
+</item><item>
+    <title>Vue3 源码中的 Reactivity 学习和思考</title>
+    <link>/posts/vue3reactivity/</link>
+    <pubDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vue3reactivity/</guid>
+    <description><![CDATA[写一个 Vue3 Reactivity]]></description>
+</item><item>
+    <title>【Cloudflare Workers】无服务器应用初体验</title>
+    <link>/posts/cfworkers/</link>
+    <pubDate>Sat, 12 Feb 2022 19:29:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/cfworkers/</guid>
+    <description><![CDATA[Serverless 听得不少,来体验看看]]></description>
+</item><item>
+    <title>【JavaScript数据结构】二叉树实现</title>
+    <link>/posts/jsbinarytree/</link>
+    <pubDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsbinarytree/</guid>
+    <description><![CDATA[二叉树定义 二叉树由一组相互链接的结点组合而成，最终表示一种具有层次的树形结构。 二叉树中每个结点通过父-子关系互相链接，每一个结点最多拥有两个]]></description>
+</item><item>
+    <title>【JavaScript数据结构】链表和双向链表</title>
+    <link>/posts/jslinklist/</link>
+    <pubDate>Sun, 14 Nov 2021 10:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jslinklist/</guid>
+    <description><![CDATA[由于最近在复习一些数据结构的知识，作为练习，这篇博客会尝试利用 JavaScript 以最简单的方式实现两个数据结构，链表和双向链表。 链表 定义 链表是一种线性的数据]]></description>
+</item><item>
+    <title>【Vue 函数式组件】实现不定高元素折叠动画</title>
+    <link>/posts/coll/</link>
+    <pubDate>Mon, 11 Oct 2021 20:22:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/coll/</guid>
+    <description><![CDATA[参考 Element UI 源码实现的函数式组件]]></description>
+</item><item>
+    <title>【尽量更新】中字/短片：齐柏林飞艇乐队历史</title>
+    <link>/posts/ledzeppelinhistory/</link>
+    <pubDate>Sun, 08 Aug 2021 17:30:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/ledzeppelinhistory/</guid>
+    <description><![CDATA[齐柏林飞艇Led Zeppelin乐队五十周年官方短片，自译]]></description>
+</item><item>
+    <title>【Node.js】结合 MongoDB 实现一个 TODO 命令行工具</title>
+    <link>/posts/todowithmongo/</link>
+    <pubDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/todowithmongo/</guid>
+    <description><![CDATA[Node.js + MongoDB 练手，做个 TODO 小工具]]></description>
 </item><item>
     <title>Docker 实战练习 - 部署一个集群</title>
     <link>/posts/dockerpractice/</link>
@@ -29,54 +78,5 @@
     <author>作者</author>
     <guid>/posts/pewdipie2021intro/</guid>
     <description><![CDATA[PewDiePie 在 2021 年初的时候传了一个视频，主要是关于「新年计划」和分享他健身和阅读的收获，还有重启 Book club 和 Book review 环节，觉得挺有意思的，做了个中文字幕转到 B 站]]></description>
-</item><item>
-    <title>理解 Redis 简洁高效的系统设计</title>
-    <link>/posts/whyredisisfast/</link>
-    <pubDate>Thu, 21 Jan 2021 08:49:20 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/whyredisisfast/</guid>
-    <description><![CDATA[对计算机基础进行一些复习和回顾]]></description>
-</item><item>
-    <title>利用 openVPN 构建互访混合云环境</title>
-    <link>/posts/openvpn/</link>
-    <pubDate>Sun, 17 Jan 2021 19:18:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/openvpn/</guid>
-    <description><![CDATA[由于业务需要，公司内部一个 License 服务器需要与部分部署在公有云私有子网的服务进行互访 check in]]></description>
-</item><item>
-    <title>ElasticSearch 内存占用百分比问题</title>
-    <link>/posts/esmem/</link>
-    <pubDate>Sun, 20 Dec 2020 18:03:52 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/esmem/</guid>
-    <description><![CDATA[<p>由于对 ES 查看集群健康状态 API <code>get _cat/nodes?v</code> 所展示的内存占用百分比有疑问，网上相关资料又比较少，所以简单整理说明一下，便于日后翻查。</p>]]></description>
-</item><item>
-    <title>浅析命令行的本质（下）</title>
-    <link>/posts/cmd02/</link>
-    <pubDate>Thu, 17 Dec 2020 15:25:07 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/cmd02/</guid>
-    <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
-</item><item>
-    <title>2020 观演记录</title>
-    <link>/posts/recentshows/</link>
-    <pubDate>Tue, 01 Dec 2020 10:58:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/recentshows/</guid>
-    <description><![CDATA[今年看的几场现场演出复盘]]></description>
-</item><item>
-    <title>浅析命令行的本质（上）</title>
-    <link>/posts/cmd/</link>
-    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/cmd/</guid>
-    <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
-</item><item>
-    <title>Radiohead - The Tourist 歌词翻译</title>
-    <link>/posts/thetourist/</link>
-    <pubDate>Mon, 23 Nov 2020 22:52:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/thetourist/</guid>
-    <description><![CDATA[<p>⚠️ 本文仅用于自己学习，不作任何商业用途，如触犯任何侵权行为，请联系 <a href="mailto:wumanho@tutanota.com">wumanho@tutanota.com</a> 删除文章。</p>]]></description>
 </item></channel>
 </rss>

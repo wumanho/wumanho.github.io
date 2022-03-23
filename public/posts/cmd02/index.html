@@ -8,10 +8,10 @@
         <title>浅析命令行的本质（下） - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="浅析命令行的本质（下）" />
 <meta property="og:description" content="在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/cmd02/" />
-<meta property="og:image" content="/logo.png"/>
+<meta property="og:url" content="/posts/cmd02/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-12-17T15:25:07+08:00" />
 <meta property="article:modified_time" content="2020-12-17T15:25:07+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -38,7 +38,7 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -46,7 +46,7 @@
             <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -62,7 +62,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -115,11 +115,11 @@
 <p>首先，任何一个现代的操作系统都支持环境变量（在 Windows 上是不区分大小写的），通常是由一组键值对组成，可以为每个键设置对应的值，例如<a href="https://wumanho.cn/posts/cmd/" target="_blank" rel="noopener noreffer">上一篇博客</a>里，在探讨 Shell 的查找机制过程中，我们使用了 Linux 著名的环境变量 <code>$PATH</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# echo $PATH
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
 </code></pre></td></tr></table>
 </div>
@@ -128,14 +128,14 @@
 <p>为了证明这一点，我们可以观察一下以下的例子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export AAA=123
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export AAA=123
 [root@vm10-0-0-132 ~]# node
 &gt; console.log(process.env[&#39;AAA&#39;])
 123
@@ -146,7 +146,7 @@
 <p>同理，我们用 golang 试一试，发现同样可以获取到相同的值：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -158,7 +158,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;fmt&#34;</span>
@@ -172,11 +172,11 @@
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# go run demo.go
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# go run demo.go
 123
 </code></pre></td></tr></table>
 </div>
@@ -185,7 +185,7 @@
 <p>不过，子进程中创建的环境变量，却无法反向传递到父进程中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -196,7 +196,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# node
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# node
 &gt; process.env.TEST = &#34;Test&#34;
 &#39;test&#39;
 &gt; console.log(process.env[&#39;TEST&#39;])
@@ -221,7 +221,7 @@ test
 <p>当用户输入一个可执行程序并按下回车，Shell 会扫描 <code>$PATH</code>环境变量，找到用户需要的可执行程序，如果没有会报「找不到命令」错误，这个时候用户其实还可以通过指定文件的<strong>相对路径</strong>或者<strong>绝对路径</strong>去执行这个可执行程序：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -231,7 +231,7 @@ test
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim demo.sh
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim demo.sh
 [root@vm10-0-0-132 ~]# cat demo.sh
 echo &#34;Hello&#34;
 [root@vm10-0-0-132 ~]# chmod +x demo.sh
@@ -244,11 +244,11 @@ Hello
 </div><p>一个可执行文件可以被执行是因为它拥有「x」权限，那这个可执行文件本身又是什么呢，可以通过<code>file</code>命令查看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# file /usr/local/go/bin/go
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# file /usr/local/go/bin/go
 /usr/local/go/bin/go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), not stripped
 </code></pre></td></tr></table>
 </div>
@@ -256,13 +256,13 @@ Hello
 <p>写一个最简单的脚本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script.sh
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script.sh
 [root@vm10-0-0-132 ~]# chmod +x script.sh
 [root@vm10-0-0-132 ~]# cat script.sh
 echo &#34;Hello&#34;
@@ -271,18 +271,18 @@ echo &#34;Hello&#34;
 </div><p>让它打印一个 “Hello”，直接执行看看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ./script.sh
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ./script.sh
 Hello
 </code></pre></td></tr></table>
 </div>
 </div><p>这里我们没有执行解释器，却可以执行脚本打印结果，是因为这个脚本被 Shell 直接解析执行了，再试一下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -291,7 +291,7 @@ Hello
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
 [root@vm10-0-0-132 ~]# cat script1.sh
 console.log(&#34;123&#34;)
 [root@vm10-0-0-132 ~]# ./script1.sh
@@ -303,7 +303,7 @@ console.log(&#34;123&#34;)
 </div><p><code>console.log()</code>是 JS 语法，Shell 不认识这个语法，所以会提示你语法错误，如果要让脚本顺利执行，则需要指定执行它的解释器：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -312,7 +312,7 @@ console.log(&#34;123&#34;)
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# vim script1.sh
 [root@vm10-0-0-132 ~]# cat script1.sh
 #! /usr/bin/node
 console.log(&#34;123&#34;)
@@ -327,10 +327,10 @@ console.log(&#34;123&#34;)
 <p>当用户在输入一个命令的时候，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# docker run -d --name redis-01 redis
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# docker run -d --name redis-01 redis
 </code></pre></td></tr></table>
 </div>
 </div><p>这个命令里面，<code>docker</code>是可执行程序，而后面的所有都是「参数」，Shell 所做的事情就是将这些参数全部丢给可执行程序。</p>
@@ -339,7 +339,7 @@ console.log(&#34;123&#34;)
 <p>看一个例子，准备一个 go 程序 script.go，打印出我们传给它的所有参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -353,7 +353,7 @@ console.log(&#34;123&#34;)
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&#34;fmt&#34;</span>
@@ -369,7 +369,7 @@ console.log(&#34;123&#34;)
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -381,7 +381,7 @@ console.log(&#34;123&#34;)
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
 demo.go  go.mod  script  script.go  test1.go  test2.go
 
 [root@vm10-0-0-132 ~]# ./script *.go
@@ -398,13 +398,13 @@ args[4]=[test2.go]
 <p>对于参数还有一个需要注意的坑是「变量展开」，在 Linux 系统中，<code>$</code>符号默认被用作变量声明，如果文件名包含<code>$</code>号，同样会被展开：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export TEST=123
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# export TEST=123
 [root@vm10-0-0-132 ~]# touch 1$TEST.go
 [root@vm10-0-0-132 ~]# ls
 1123.go
@@ -413,12 +413,12 @@ args[4]=[test2.go]
 </div><p>展开问题可以通过为参数加单引号<code> ' '</code>来声明参数是一个整体：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# touch &#39;1$TEST.go&#39;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# touch &#39;1$TEST.go&#39;
 [root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go
 </code></pre></td></tr></table>
@@ -432,7 +432,7 @@ args[4]=[test2.go]
 <p>我们引用上面的 script.go 代码来演示，这个 go 代码打印出当前目录下所有以  .go 节为的文件名：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -440,7 +440,7 @@ args[4]=[test2.go]
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# ls
 1123.go  1$TEST.go  go.mod  script
 [root@vm10-0-0-132 ~]# ./script *.go
 args[0]=[./script]
@@ -451,7 +451,7 @@ args[2]=[1$TEST.go]
 </div><p>改变一下 script 程序的目录，将它移动到 <code>/root</code> 下面</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -460,7 +460,7 @@ args[2]=[1$TEST.go]
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# mv ./script /root
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@vm10-0-0-132 ~]# mv ./script /root
 [root@vm10-0-0-132 ~]# cd
 [root@vm10-0-0-132 ~]# ls
 script a.txt t.txt test.go
@@ -503,8 +503,8 @@ args[1]=[test.go]
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

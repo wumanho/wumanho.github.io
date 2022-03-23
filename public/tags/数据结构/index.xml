@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>数据结构 - 标签 - OK Computer</title>
+        <link>/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+        <description>数据结构 - 标签 - OK Computer</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</lastBuildDate><atom:link href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+    <title>【JavaScript数据结构】二叉树实现</title>
+    <link>/posts/jsbinarytree/</link>
+    <pubDate>Mon, 20 Dec 2021 20:05:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jsbinarytree/</guid>
+    <description><![CDATA[二叉树定义 二叉树由一组相互链接的结点组合而成，最终表示一种具有层次的树形结构。 二叉树中每个结点通过父-子关系互相链接，每一个结点最多拥有两个]]></description>
+</item><item>
+    <title>【JavaScript数据结构】链表和双向链表</title>
+    <link>/posts/jslinklist/</link>
+    <pubDate>Sun, 14 Nov 2021 10:03:57 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/jslinklist/</guid>
+    <description><![CDATA[由于最近在复习一些数据结构的知识，作为练习，这篇博客会尝试利用 JavaScript 以最简单的方式实现两个数据结构，链表和双向链表。 链表 定义 链表是一种线性的数据]]></description>
+</item></channel>
+</rss>

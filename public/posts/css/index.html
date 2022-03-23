@@ -8,10 +8,10 @@
         <title>CSS 原理笔记 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="CSS 原理笔记" />
 <meta property="og:description" content="浏览器的渲染原理 渲染树构建 要解释浏览器的渲染原理，需要先了解三棵树： DOM树 CSSOM树 Render树 DOM树通过解析HTML/SVG/XH" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/css/" />
-<meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2020-03-30T10:02:12+08:00" />
-<meta property="article:modified_time" content="2020-03-30T10:02:12+08:00" />
+<meta property="og:url" content="/posts/css/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-28T10:02:12+08:00" />
+<meta property="article:modified_time" content="2020-01-28T10:02:12+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -20,7 +20,7 @@
 <meta name="application-name" content="好电脑">
 <meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/css/" /><link rel="prev" href="/posts/vueruntime/" /><link rel="next" href="/posts/jsinheritance/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/css/" /><link rel="prev" href="/posts/flex/" /><link rel="next" href="/posts/simplevrouter/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,7 +30,7 @@
             "@type": "WebPage",
             "@id": "\/posts\/css\/"
         },"genre": "posts","keywords": "CSS","wordcount":  1078 ,
-        "url": "\/posts\/css\/","datePublished": "2020-03-30T10:02:12+08:00","dateModified": "2020-03-30T10:02:12+08:00","publisher": {
+        "url": "\/posts\/css\/","datePublished": "2020-01-28T10:02:12+08:00","dateModified": "2020-01-28T10:02:12+08:00","publisher": {
             "@type": "Organization",
             "name": "wumanho"},"author": {
                 "@type": "Person",
@@ -38,7 +38,7 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -46,7 +46,7 @@
             <a href="/" title="OK Computer">OK Computer</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -62,7 +62,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">CSS 原理笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-30">2020-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1078 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-01-28">2020-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1078 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -133,12 +133,12 @@
 <p>更新样式一般会通过 JS 来操作。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">div</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s2">&#34;red&#34;</span><span class="p">;</span> <span class="c1">//设置背景色
+<pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="nx">div</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s2">&#34;red&#34;</span><span class="p">;</span> <span class="c1">//设置背景色
 </span><span class="c1"></span><span class="nx">div</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&#34;none&#34;</span><span class="p">;</span> <span class="c1">//设置display
 </span><span class="c1"></span><span class="nx">div</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span> <span class="c1">//删除节点
 </span></code></pre></td></tr></table>
@@ -161,12 +161,12 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">translateX</span><span class="o">(</span><span class="nt">200px</span><span class="o">);</span>       <span class="c">/* 向X轴移动200像素 */</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">translateX</span><span class="o">(</span><span class="nt">200px</span><span class="o">);</span>       <span class="c">/* 向X轴移动200像素 */</span>
 <span class="nt">transform</span><span class="o">:</span> <span class="nt">translateY</span><span class="o">(</span><span class="nt">100px</span><span class="o">);</span>       <span class="c">/* 向Y轴移动100像素 */</span>
 <span class="nt">transform</span><span class="o">:</span> <span class="nt">translate</span><span class="o">(</span><span class="nt">50px</span><span class="o">,</span><span class="nt">50px</span><span class="o">);</span>  <span class="c">/*同时向X轴移动50像素,向Y轴移动50像素*/</span>
 </code></pre></td></tr></table>
@@ -176,10 +176,10 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">scale</span><span class="o">(</span><span class="nt">1</span><span class="p">.</span><span class="nc">5</span><span class="o">);</span>  <span class="c">/* 放大为原来的1.5倍 */</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">scale</span><span class="o">(</span><span class="nt">1</span><span class="p">.</span><span class="nc">5</span><span class="o">);</span>  <span class="c">/* 放大为原来的1.5倍 */</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -187,11 +187,11 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">45deg</span><span class="o">);</span>           <span class="c">/* 顺时针旋转45度 */</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">45deg</span><span class="o">);</span>           <span class="c">/* 顺时针旋转45度 */</span>
 <span class="nt">transform</span><span class="o">:</span> <span class="nt">rotate</span><span class="o">(</span><span class="nt">-45deg</span><span class="o">);</span>          <span class="c">/* 逆时针旋转45度 */</span>
 </code></pre></td></tr></table>
 </div>
@@ -200,22 +200,22 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">skew</span><span class="o">(</span><span class="nt">30deg</span><span class="o">);</span>             <span class="c">/* 水平方向倾斜30度 */</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transform</span><span class="o">:</span> <span class="nt">skew</span><span class="o">(</span><span class="nt">30deg</span><span class="o">);</span>             <span class="c">/* 水平方向倾斜30度 */</span>
 <span class="nt">transform</span><span class="o">:</span> <span class="nt">skew</span><span class="o">(</span><span class="nt">30deg</span><span class="o">,</span> <span class="nt">30deg</span><span class="o">);</span>      <span class="c">/* 水平方向倾斜30度,//垂直方向倾斜30度 */</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>transition: 属性名 | 时长 | 过渡方式 | 延迟</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transition</span><span class="p">:</span><span class="nd">right</span> <span class="nt">1ms</span> <span class="nt">linear</span> <span class="nt">1ms</span><span class="o">;</span>    <span class="c">/* 1ms内完成向右移动，动画形式为线性表示，延迟为1ms */</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="nt">transition</span><span class="p">:</span><span class="nd">right</span> <span class="nt">1ms</span> <span class="nt">linear</span> <span class="nt">1ms</span><span class="o">;</span>    <span class="c">/* 1ms内完成向右移动，动画形式为线性表示，延迟为1ms */</span>
 <span class="nt">transition</span><span class="p">:</span><span class="nd">all</span> <span class="nt">5s</span> <span class="nt">ease</span> <span class="nt">1ms</span><span class="o">;</span>         <span class="c">/* 5s内完成所有动画，动画形式为缓速表示，延迟为1ms */</span>
 </code></pre></td></tr></table>
 </div>
@@ -249,14 +249,14 @@
 keyframes是与animation结合使用的模块，常用语法:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-CSS" data-lang="CSS"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">名称</span><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-CSS" data-lang="CSS"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">名称</span><span class="p">{</span>
  <span class="nt">0</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">0</span><span class="p">;}</span>     <span class="c">/* 动画开始时的动作 */</span>
  <span class="nt">50</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">5</span><span class="kt">px</span><span class="p">;}</span>  <span class="c">/* 动画进行到50%的动作 */</span>
  <span class="nt">100</span><span class="o">%</span><span class="p">{</span><span class="k">top</span><span class="p">:</span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span> <span class="k">top</span><span class="p">:</span><span class="mi">10</span><span class="kt">px</span><span class="p">;}</span>   <span class="c">/* 动画结束时的动作 */</span>
@@ -267,7 +267,7 @@ keyframes是与animation结合使用的模块，常用语法:</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-03-30</span>
+                <span>更新于 2020-01-28</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -286,13 +286,13 @@ keyframes是与animation结合使用的模块，常用语法:</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/vueruntime/" class="prev" rel="prev" title="Vue 运行时版本简介"><i class="fas fa-angle-left fa-fw"></i>Vue 运行时版本简介</a>
-            <a href="/posts/jsinheritance/" class="next" rel="next" title="JavaScript 继承介绍与应用">JavaScript 继承介绍与应用<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/flex/" class="prev" rel="prev" title="Flex 布局常用属性值"><i class="fas fa-angle-left fa-fw"></i>Flex 布局常用属性值</a>
+            <a href="/posts/simplevrouter/" class="next" rel="next" title="前端路由学习 - 实现一个简易 Vue-Router">前端路由学习 - 实现一个简易 Vue-Router<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
                     <span class="icp">粤ICP备20015586号</span></div>
         </div>
     </footer></div>

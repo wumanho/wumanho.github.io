@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>正确使用 Promise 和 async/await 处理多个异步请求 - OK Computer</title><meta name="Description" content="WUMANHO的博客"><meta property="og:title" content="正确使用 Promise 和 async/await 处理多个异步请求" />
+<meta property="og:description" content="介绍如何通过正确地运用 Promise 的链式调用，以及 Promise.all 方法处理多个异步请求" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/multireq/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-03T14:32:51+08:00" />
+<meta property="article:modified_time" content="2020-05-03T14:32:51+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="正确使用 Promise 和 async/await 处理多个异步请求"/>
+<meta name="twitter:description" content="介绍如何通过正确地运用 Promise 的链式调用，以及 Promise.all 方法处理多个异步请求"/>
+<meta name="application-name" content="好电脑">
+<meta name="apple-mobile-web-app-title" content="好电脑"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/multireq/" /><link rel="prev" href="/posts/vuesvg/" /><link rel="next" href="/posts/nodesimpleserver/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "正确使用 Promise 和 async/await 处理多个异步请求",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/multireq\/"
+        },"genre": "posts","keywords": "JavaScript, 异步, async\/await, Promise","wordcount":  1557 ,
+        "url": "\/posts\/multireq\/","datePublished": "2020-05-03T14:32:51+08:00","dateModified": "2020-05-03T14:32:51+08:00","publisher": {
+            "@type": "Organization",
+            "name": "wumanho"},"author": {
+                "@type": "Person",
+                "name": "wumanho"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="OK Computer">OK Computer</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="/friend/"> 友情链接 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="OK Computer">OK Computer</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="/friend/" title="">友情链接</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">正确使用 Promise 和 async/await 处理多个异步请求</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wumanho</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%89%8D%E7%AB%AF/"><i class="far fa-folder fa-fw"></i>前端</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-03">2020-05-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1557 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#场景一请求间有依赖关系">场景一：请求间有依赖关系</a>
+      <ul>
+        <li><a href="#promise-回调地狱">Promise 回调地狱</a></li>
+        <li><a href="#promise-的链式调用">Promise 的链式调用</a></li>
+      </ul>
+    </li>
+    <li><a href="#场景二请求间没有依赖关系">场景二：请求间没有依赖关系</a>
+      <ul>
+        <li><a href="#promiseall--asyncawait-语法">Promise.all() + async/await 语法</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p> 这篇博客主要介绍在相对复杂一点的业务场景下，前端如何通过 <code>Promise</code> 以及 <code>async/await</code> 语法，在一个动作/事件中同时处理多个异步请求，使代码更加简洁。</p>
+<p> 本次介绍的场景主要有两个：</p>
+<ul>
+<li>多个请求之间有依赖关系，一个请求可能依赖上一个请求返回的结果或需要按顺序调用</li>
+<li>多个请求之间没有依赖关系</li>
+</ul>
+<p> </p>
+<h2 id="场景一请求间有依赖关系">场景一：请求间有依赖关系</h2>
+<h3 id="promise-回调地狱">Promise 回调地狱</h3>
+<p>大多数刚刚入门的前端，肯定听过这样一句话：<strong>Promise 解决了传统异步请求的回调地狱问题</strong>。</p>
+<p>但真的是这样吗，看看下面的例子：</p>
+<p>在当前组件初始化的时候，顺序调用三个请求：<code>getUser</code> =&gt; <code>getPost</code> =&gt; <code>getCommons</code>，并假设每个请求依赖前一个请求的结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">&#39;axios&#39;</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">mounted</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">{</span>
+      <span class="nx">posts</span><span class="o">:</span><span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+      <span class="cm">/** 
+</span><span class="cm">     * fake API 来自:https://jsonplaceholder.typicode.com/
+</span><span class="cm">     */</span>
+    <span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+      <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/users/&#39;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+      <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/posts/&#39;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+      <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://jsonplaceholder.typicode.com/posts/&#39;</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;/comments&#39;</span><span class="p">)</span>
+    <span class="p">},</span>
+     <span class="c1">//初始化方法
+</span><span class="c1"></span>    <span class="nx">init</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>  
+      <span class="k">this</span><span class="p">.</span><span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res1</span><span class="p">=&gt;{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res2</span><span class="p">=&gt;{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+          <span class="p">})</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意看初始化方法<code>init()</code>，根据需求我们按顺序调用了三个接口，在异步请求返回时，将返回结果打印出来，这个时候。可怕的回调地狱金字塔就出现了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+     <span class="c1">//初始化方法
+</span><span class="c1"></span>    <span class="nx">init</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>  
+        <span class="c1">//请求一
+</span><span class="c1"></span>      <span class="k">this</span><span class="p">.</span><span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+          <span class="c1">//请求二
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res1</span><span class="p">=&gt;{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+            <span class="c1">//请求三
+</span><span class="c1"></span>          <span class="k">this</span><span class="p">.</span><span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res2</span><span class="p">=&gt;{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+          <span class="p">})</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="promise-的链式调用">Promise 的链式调用</h3>
+<p>所以，在以上的场景下，如果不按照规范来写异步代码，即便使用了 Promise，还是会出现回调地狱。</p>
+<p>那么正确的使用方法应该是怎样的呢？</p>
+<p>其实也很简单，我们在 <code>.then()</code>里面不要直接调用下一个请求，而是<code>return</code>出去，然后再通过<code>.then()</code>来获取他的返回结果就可以了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+     <span class="c1">//初始化方法
+</span><span class="c1"></span>    <span class="nx">init</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+        <span class="c1">//请求一
+</span><span class="c1"></span>      <span class="k">this</span><span class="p">.</span><span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+        <span class="c1">//请求二
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res1</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+        <span class="c1">//请求三
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res2</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>
+      <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">=&gt;{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样做，就避免了请求过多时产生的金字塔形的嵌套，而且还可以通过<code>.catch()</code>的穿透性来捕获错误，使代码更加简洁。</p>
+<p> </p>
+<h2 id="场景二请求间没有依赖关系">场景二：请求间没有依赖关系</h2>
+<p>场景描述：当用户点击时打印加载中，同时调用三个接口：<code>getUser</code> 、 <code>getPost</code>、 <code>getCommons</code>，接口之间没有依赖关系，当三个接口返回成功后，打印加载完毕。</p>
+<h3 id="promiseall--asyncawait-语法">Promise.all() + async/await 语法</h3>
+<p><code>Promise.all()</code>接受一个 Promise 对象数组作为参数，当数组中所有 Promise 对象都返回成功的话，<code>Promise.all()</code>会返回一个状态为兑现的 Promise 对象，否则返回一个状态为拒绝的 Promise 对象。</p>
+<p>async/await 语法使用方法请<a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank" rel="noopener noreffer">参考MDN</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+    <span class="c1">//初始化方法
+</span><span class="c1"></span>     <span class="nx">async</span> <span class="nx">init</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;加载中...&#39;</span><span class="p">)</span>
+      <span class="kr">const</span> <span class="nx">getUser</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求一
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">getPost</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求二
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">getCommons</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求三
+</span><span class="c1"></span>      <span class="c1">//用 Promise.all() 同时发送三个请求
+</span><span class="c1"></span>      <span class="k">try</span><span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getUser</span><span class="p">,</span><span class="nx">getPost</span><span class="p">,</span><span class="nx">getCommons</span><span class="p">])</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;加载完成&#39;</span><span class="p">)</span>
+      <span class="p">}</span><span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>将三个请求作为参数传入 <code>Promise.all()</code>，方法，并利用 try &hellip; catch 捕获可能发生的错误，最终效果如下图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/req.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/req.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/req.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/req.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/req.png"
+        title="请求效果图" /></p>
+<p>可以发现由于三个请求并没有相互依赖关系，所以在同一时间发送可以减少异步请求的等待时间，最后获取到所有结果。</p>
+<p><code>Promise.all()</code>方法返回的是一个数组，里面包含了我们三个请求对应的结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/result.png"
+        data-srcset="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/result.png, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/result.png 1.5x, https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/result.png 2x"
+        data-sizes="auto"
+        alt="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/multiReq/result.png"
+        title="控制台打印结果" /></p>
+<p><strong>这个数组中所包含的的结果，跟我们参数传递的数组中的 Promise 对象是一一对应的</strong>，所以我们可以根据 result 数组的下标，获取到每个请求对应的数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="nx">data</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">{</span>
+      <span class="nx">post</span><span class="o">:</span><span class="p">{},</span>
+      <span class="nx">user</span><span class="o">:</span><span class="p">{},</span>
+      <span class="nx">commons</span><span class="o">:</span><span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+    <span class="c1">//初始化方法
+</span><span class="c1"></span>     <span class="nx">async</span> <span class="nx">init</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;加载中...&#39;</span><span class="p">)</span>
+      <span class="kr">const</span> <span class="nx">getUser</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getUser</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求一
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">getPost</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPost</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求二
+</span><span class="c1"></span>      <span class="kr">const</span> <span class="nx">getCommons</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getCommons</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="c1">//请求三
+</span><span class="c1"></span>      <span class="c1">//用 Promise.all() 同时发送三个请求
+</span><span class="c1"></span>      <span class="k">try</span><span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getUser</span><span class="p">,</span><span class="nx">getPost</span><span class="p">,</span><span class="nx">getCommons</span><span class="p">])</span>
+        <span class="c1">//装载对应的数据
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">data</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">data</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">commons</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">data</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;加载完成&#39;</span><span class="p">)</span>
+      <span class="p">}</span><span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p> </p>
+<h2 id="总结">总结</h2>
+<p>ES6+ 为开发者提供了很多非常好用的 API，正确地使用他们可以写出更加简洁优雅的代码。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-05-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a>,&nbsp;<a href="/tags/%E5%BC%82%E6%AD%A5/">异步</a>,&nbsp;<a href="/tags/async/await/">async/await</a>,&nbsp;<a href="/tags/promise/">Promise</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/vuesvg/" class="prev" rel="prev" title="Vue 封装 icon 组件"><i class="fas fa-angle-left fa-fw"></i>Vue 封装 icon 组件</a>
+            <a href="/posts/nodesimpleserver/" class="next" rel="next" title="用 Node.js 写一个简易静态服务器">用 Node.js 写一个简易静态服务器<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">wumanho</a></span><span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">粤ICP备20015586号</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":90},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
