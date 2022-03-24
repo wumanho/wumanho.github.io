@@ -88,7 +88,7 @@ import { Controller, Post, Headers, Req } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { Request } from "express";
 
-const { execFile } = require("child_process");
+const { exec } = require("child_process");
 const crypto = require("crypto");
 
 @Controller()
@@ -109,7 +109,7 @@ export class AppController {
       return;
     }
       //执行脚本
-    execFile("/opt/blog-bot/exec.sh");
+    exec("bash /opt/blog-bot/exec.sh");
   }
 }
 
