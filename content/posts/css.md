@@ -99,8 +99,10 @@ animation语法和属性：
 * 暂停：paused | running  
   
 
-@keyframes  
-keyframes是与animation结合使用的模块，常用语法:
+`@keyframes`  
+
+`keyframes`是与`animation`结合使用的模块，常用语法:
+
 ```CSS
 @keyframes 名称{
  0%{top:0;}     /* 动画开始时的动作 */
