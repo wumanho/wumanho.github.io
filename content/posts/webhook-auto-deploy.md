@@ -3,7 +3,7 @@ weight: 2
 title: "利用 Github Webhooks 实现博客自动部署"
 summary: "顺便试一试 nest.js"
 date: 2022-03-24T21:57:41+08:00
-draft: true
+draft: false
 categories: ["技术"]
 tags: ["github","webhooks","CI/CD","nest.js"]
 ---
@@ -47,7 +47,7 @@ Secret：用于加密
 
 配置完成后点击 Add webhook 即可，强烈建议设置 Secret，毕竟你的服务应该是直接暴露在公网的：
 
-![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/webhooks/setiing1.png)
+![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/webhooks/setting1.png)
 
 &nbsp;
 
@@ -84,8 +84,9 @@ docker restart mySite
 ## node 服务
 
 ```typescript
-import { Body, Controller, Post, Headers } from "@nestjs/common";
+import { Controller, Post, Headers, Req } from "@nestjs/common";
 import { AppService } from "./app.service";
+import { Request } from "express";
 
 const { execFile } = require("child_process");
 const crypto = require("crypto");
@@ -96,16 +97,38 @@ export class AppController {
   }
 
   @Post("/build")
-  buildBlog(@Body() payload: any, @Headers("X-Hub-Signature-256") publicKey: string): void {
-    const GITHUB_SECRET = "这里填你自己的 secret";
-    const signature = "sha256=" + crypto.createHmac("sha256", GITHUB_SECRET).update(JSON.stringify(payload)).digest("hex");
+  buildBlog(@Req() request: Request, @Headers("X-Hub-Signature-256") publicKey: string): void {
+    const GITHUB_SECRET = "这里填自己的 secret";
+    const signature = "sha256=" + 
+     crypto.createHmac("sha256",GITHUB_SECRET)
+    .update(JSON.stringify(request.body))
+    .digest("hex");
+      
     if (signature !== publicKey) {
       console.log("Invalid key");
       return;
     }
+      //执行脚本
     execFile("/opt/blog-bot/exec.sh");
   }
 }
 
 ```
 
+这是 Nest.js 的控制器，这个熟悉的注解...
+
+将应用打包后，使用`pm2`将 node 服务启动即可
+
+```code
+# pm2 start main.js
+```
+
+![](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/webhooks/serve.png)
+
+
+
+大功告成:tada:
+
+&nbsp;
+
+（完）
