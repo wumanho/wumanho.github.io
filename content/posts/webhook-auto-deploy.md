@@ -19,13 +19,13 @@ tags: ["github","webhooks","CI/CD","nest.js"]
 
 4. 重启 docker 容器
 
-之前还因为图片多导致构建出来的包，越来越大，将图片全部上传到对象存储服务，图片改成 oss 地址引用，真的是完全不嫌麻烦:rofl:
+之前还因为图片多导致构建出来的包越来越大，后来将图片全部上传到对象存储服务，图片改成 oss 地址引用，真的是完全不嫌麻烦:rofl:
 
 用 Webhooks 来自动部署的想法其实一早就有了，只是一直懒得动手。
 
 循例简单介绍一下，[Github Webhooks](https://docs.github.com/cn/developers/webhooks-and-events/webhooks/about-webhooks) 以每个代码仓库为单位，提供一系列事件钩子，例如`push`、`issue`、`PR`等，基本上涵盖了所有 github 操作，当指定的事件被触发时，Webhook 会向定义好的 URL 地址发送一个 POST 请求，达到通知的目的。
 
-就是这么简单，整体思路也不麻烦，用 node.js 在我的服务器上起一个服务来监听 PUSH 事件，然后调用写好的 shell 脚本执行我之前手动完成的操作就可以了。
+就是这么简单，整体思路也不麻烦，用 node.js 在我的服务器上起一个服务来监听 push 事件，然后调用写好的 shell 脚本执行我之前手动完成的操作就可以了。
 
 然后既然是要用到 node ，且最近又在练习 typesctipt，就想到用一个完全支持 OOP 的后端框架 [Nest.js](https://docs.nestjs.cn/8/introduction)，整个框架的哲学跟 Spring 非常相似，代码结构也是 MVC 的模式，还有依赖注入等基本思想的体现，不过这次的需求比较简单，没有完全使用 Nest 丰富的功能，所以只能说是简单玩一下。
 
