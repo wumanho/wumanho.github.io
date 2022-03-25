@@ -96,7 +96,7 @@ export class AppController {
 
   @Post("/build")
   buildBlog(@Req() request: Request, @Headers("X-Hub-Signature-256") publicKey: string): void {
-    const GITHUB_SECRET = "Laohu12#$";
+    const GITHUB_SECRET = "这里填自己的 secret";
     const signature = "sha256=" + 
     crypto.createHmac("sha256", GITHUB_SECRET)
     .update(JSON.stringify(request.body))
