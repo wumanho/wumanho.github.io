@@ -61,10 +61,8 @@ rootPath="/opt"
 
 # 切换至 sourcePath
 cd $sourcePath
-# 拉代码
-git pull
-# 构建
-hugo
+# 拉代码构建
+git pull && hugo
 # 切换至 rootPath
 cd $rootPath
 # 删除旧的备份文件
@@ -84,7 +82,7 @@ docker restart mySite
 ## node 服务
 
 ```typescript
-import { Controller, Post, Headers, Req } from "@nestjs/common";
+import { Body, Controller, Post, Headers, Req } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { Request } from "express";
 
@@ -98,9 +96,9 @@ export class AppController {
 
   @Post("/build")
   buildBlog(@Req() request: Request, @Headers("X-Hub-Signature-256") publicKey: string): void {
-    const GITHUB_SECRET = "这里填自己的 secret";
+    const GITHUB_SECRET = "Laohu12#$";
     const signature = "sha256=" + 
-     crypto.createHmac("sha256",GITHUB_SECRET)
+    crypto.createHmac("sha256", GITHUB_SECRET)
     .update(JSON.stringify(request.body))
     .digest("hex");
       
@@ -108,8 +106,7 @@ export class AppController {
       console.log("Invalid key");
       return;
     }
-      //执行脚本
-    exec("bash /opt/blog-bot/exec.sh");
+    exec("bash /opt/blog-bot/exec.sh 1>>/var/log/footage.log");
   }
 }
 
