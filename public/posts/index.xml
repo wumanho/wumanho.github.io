@@ -4,7 +4,7 @@
         <link>/posts/</link>
         <description>所有文章 | OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 24 Mar 2022 21:57:41 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
     <title>新概念二册-Lesson 36~40 笔记【不定期更新】</title>
     <link>/posts/0236to0240/</link>
     <pubDate>Sun, 03 Jan 2021 22:26:15 &#43;0800</pubDate>
@@ -13,6 +13,13 @@
     <description><![CDATA[<h3 id="更多新概念笔记">更多新概念笔记</h3>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
+</item><item>
+    <title>利用 Github Webhooks 实现博客自动部署</title>
+    <link>/posts/webhook-auto-deploy/</link>
+    <pubDate>Thu, 24 Mar 2022 21:57:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/webhook-auto-deploy/</guid>
+    <description><![CDATA[顺便试一试 nest.js]]></description>
 </item><item>
     <title>Vue3 源码中的 Reactivity 学习和思考</title>
     <link>/posts/vue3reactivity/</link>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>/posts/dockerpractice/</guid>
     <description><![CDATA[本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目]]></description>
-</item><item>
-    <title>【自制中文字幕】 PewDiePie 2021 intro 健身和阅读的目标</title>
-    <link>/posts/pewdipie2021intro/</link>
-    <pubDate>Wed, 03 Feb 2021 14:15:35 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/pewdipie2021intro/</guid>
-    <description><![CDATA[PewDiePie 在 2021 年初的时候传了一个视频，主要是关于「新年计划」和分享他健身和阅读的收获，还有重启 Book club 和 Book review 环节，觉得挺有意思的，做了个中文字幕转到 B 站]]></description>
 </item></channel>
 </rss>

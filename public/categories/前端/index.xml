@@ -55,6 +55,13 @@
     <description><![CDATA[<p> </p>
 <p>AJAX 全称 <em>ASynchronous JavaScript And XML</em>，异步 JS 和 XML，本质上是利用浏览器提供的全局构造函数 <strong>XMLHttpRequest</strong> 创建的对象来发送和接受请求的一种技术。</p>]]></description>
 </item><item>
+    <title>记 Vue 滚动列表实现和踩坑</title>
+    <link>/posts/scrolllist/</link>
+    <pubDate>Mon, 06 Apr 2020 15:54:49 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/scrolllist/</guid>
+    <description><![CDATA[滚动列表功能实现记录]]></description>
+</item><item>
     <title>Vue 运行时版本简介</title>
     <link>/posts/vueruntime/</link>
     <pubDate>Fri, 20 Mar 2020 15:54:49 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>/posts/jsinheritance/</guid>
     <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
-</item><item>
-    <title>DOM 事件与事件委托</title>
-    <link>/posts/domevent/</link>
-    <pubDate>Sun, 08 Mar 2020 16:08:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/domevent/</guid>
-    <description><![CDATA[DOM 事件是指用户在与浏览器交互时，或者浏览器自身运行时执行的某一个动作。]]></description>
 </item></channel>
 </rss>

@@ -4,7 +4,14 @@
         <link>/categories/%E6%8A%80%E6%9C%AF/</link>
         <description>技术 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 12 Feb 2022 19:29:49 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 24 Mar 2022 21:57:41 &#43;0800</lastBuildDate><atom:link href="/categories/%E6%8A%80%E6%9C%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>利用 Github Webhooks 实现博客自动部署</title>
+    <link>/posts/webhook-auto-deploy/</link>
+    <pubDate>Thu, 24 Mar 2022 21:57:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/webhook-auto-deploy/</guid>
+    <description><![CDATA[顺便试一试 nest.js]]></description>
+</item><item>
     <title>【Cloudflare Workers】无服务器应用初体验</title>
     <link>/posts/cfworkers/</link>
     <pubDate>Sat, 12 Feb 2022 19:29:49 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>/posts/cmd02/</guid>
     <description><![CDATA[在上一篇博客中探讨了命令行的本质和 Shell 的查找机制等基础问题之后，接下来需要重点关注的内容是关于命令行的四要素。 命令的四要素 它们分别是： 环境变量]]></description>
-</item><item>
-    <title>浅析命令行的本质（上）</title>
-    <link>/posts/cmd/</link>
-    <pubDate>Fri, 27 Nov 2020 14:10:08 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/cmd/</guid>
-    <description><![CDATA[内核与壳 🐢 内核（Kernel）是计算机操作系统用于与硬件打交道、进程调度、访问文件系统的一小段短小精悍的代码，他为我们屏蔽了硬件的差异，并且]]></description>
 </item></channel>
 </rss>
