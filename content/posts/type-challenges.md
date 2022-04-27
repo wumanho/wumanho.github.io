@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【TypeScript】类型体操通关挑战(持续更新)"
+title: "【TypeScript】类型体操通关挑战（持续更新）"
 summary: "从 easy 到 hard 通关 typescript 类型体操"
 date: 2022-04-27T22:27:18+08:00
 draft: false
