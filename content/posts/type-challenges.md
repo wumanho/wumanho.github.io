@@ -8,7 +8,7 @@ categories: ["技术"]
 tags: ["typescript","challenges","类型体操"]
 ---
 
-## :bookmark:背景
+## 背景 :bookmark:
 
 **TS 类型体操**通俗来说是一系列关于 TS 类型的刷题挑战，本篇博客的挑战主要基于 [Github Type Challenges](https://github.com/type-challenges/type-challenges) 项目。
 
