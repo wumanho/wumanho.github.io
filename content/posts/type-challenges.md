@@ -71,7 +71,7 @@ type MyPick<T,K extends keyof T> = {
 
 ```typescript
 type MyPick<T,K extends keyof T> = {
-    [P in K] : T[P]
+    [F in K] : T[F]
 }
 ```
 
