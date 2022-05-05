@@ -3,6 +3,7 @@ weight: 2
 title: "【TypeScript】类型体操通关挑战（持续更新）"
 summary: "从 easy 到 hard 通关 typescript 类型体操"
 date: 2022-04-27T22:27:18+08:00
+lastmod: 2022-05-05T14:42:11+08:00
 draft: false
 categories: ["技术"]
 tags: ["typescript","challenges","类型体操"]
@@ -78,6 +79,63 @@ type MyPick<T,K extends keyof T> = {
 大功告成。
 
 &nbsp;
+
+## 07_readonly （简单）
+
+### 题目
+
+实现`Readonly<T>`，接收一个 **泛型参数**，并返回一个完全一样的类型，只是所有属性都会被 `readonly` 所修饰。
+
+例如：
+
+```typescript
+interface Todo {
+  title: string
+  description: string
+}
+
+const todo: MyReadonly<Todo> = {
+  title: "Hey",
+  description: "foobar"
+}
+
+todo.title = "Hello" // Error: cannot reassign a readonly property
+todo.description = "barFoo" // Error: cannot reassign a readonly property
+```
+
+### 知识点
+
+* readonly
+* 映射类型 `in、keyof`
+
+### 解题
+
+```typescript
+type MyReadonly<T> = any
+```
+
+题目要求接受一个泛型类型`T`，`T`是一个接口，需要做的就是将接口内的所有字段添加上`readonly`属性。
+
+在 ts 中添加 readonly 属性很简单，只要在字段名称添加 readonly 声明即可，例如：
+
+```typescript
+interface Todo {
+  readonly title: string // title属性只读
+  description: string
+}
+```
+
+所以，解这道题只需要遍历泛型类型`T`的所有字段，并在字段前添加上`readonly`属性：
+
+```typescript
+type MyReadonly<T> = {
+   readonly [F in keyof T]:T[F]
+}
+```
+
+大功告成。
+
+
 
 （持续更新中 ...）
 
