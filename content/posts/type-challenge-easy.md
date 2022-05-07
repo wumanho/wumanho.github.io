@@ -7,7 +7,7 @@ categories: ["技术"]
 tags: ["typescript","challenges","类型体操"]
 ---
 
-## 04_pick （简单）
+## 04_pick
 
 ### 题目
 
@@ -66,7 +66,7 @@ type MyPick<T,K extends keyof T> = {
 
 &nbsp;
 
-## 07_readonly （简单）
+## 07_readonly
 
 ### 题目
 
