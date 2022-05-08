@@ -41,6 +41,7 @@ const todo: TodoPreview = {
 ### 解题
 
 ```typescript
+// 签名
 type MyPick<T, K> = any
 ```
 
@@ -60,6 +61,35 @@ type MyPick<T,K extends keyof T> = {
 type MyPick<T,K extends keyof T> = {
     [F in K] : T[F]
 }
+```
+
+### test-case
+
+```typescript
+import type { Equal, Expect } from '@type-challenges/utils'
+
+type cases = [
+    Expect<Equal<Expected1, MyPick<Todo, 'title'>>>,
+    Expect<Equal<Expected2, MyPick<Todo, 'title' | 'completed'>>>,
+    // @ts-expect-error
+    MyPick<Todo, 'title' | 'completed' | 'invalid'>,
+]
+
+interface Todo {
+    title: string
+    description: string
+    completed: boolean
+}
+
+interface Expected1 {
+    title: string
+}
+
+interface Expected2 {
+    title: string
+    completed: boolean
+}
+
 ```
 
 大功告成。
@@ -97,6 +127,7 @@ todo.description = "barFoo" // Error: cannot reassign a readonly property
 ### 解题
 
 ```typescript
+// 签名
 type MyReadonly<T> = any
 ```
 
@@ -119,6 +150,102 @@ type MyReadonly<T> = {
 }
 ```
 
+### test-case
+
+```typescript
+import type { Equal, Expect } from '@type-challenges/utils'
+
+type cases = [
+  Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>,
+]
+
+interface Todo1 {
+  title: string
+  description: string
+  completed: boolean
+  meta: {
+    author: string
+  }
+}
+
+```
+
 大功告成。
 
 &nbsp;
+
+## 11_Tuple_to_Object
+
+### 题目
+
+传入一个元组类型，将这个元组类型转换为对象类型，这个对象类型的键/值都是从元组中遍历出来。
+
+例如：
+
+```typescript
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+
+type result = TupleToObject<typeof tuple> // expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}
+
+```
+
+### 知识点
+
+* const 断言
+* 遍历数组
+
+### 解题
+
+```typescript
+// 签名
+type TupleToObject<T extends readonly any[]> = any
+```
+
+做这道题需要一些前置知识，就是理解 `as const` 所代表的意义，是 ts 在 3.4 版本中新增的功能，称为 `const 断言` ，具体请参考[官方文档](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions)，在这道题中，`as const` 的作用就是声明一个字面量只读数组：
+
+```typescript
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+
+type r = typeof tuple
+const arr: r = ["aba"] // TS2322: Type '"aba"' is not assignable to type '"tesla"'.
+```
+
+在知道传入的参数到底是什么玩意之后，我们可以先将给到的签名修改一下，约束传入的泛型 `T` 应该是一个只有字符串的数组，而且应该返回一个对象：
+
+```typescript
+type TupleToObject<T extends readonly string[]> = {
+    
+}
+```
+
+然后就需要遍历传入的数组，将提取数组中的值为对象的 key ，value 则是与之相同的值。
+
+在 TS 中遍历一个数组，可以采用 `in T[number]` 的方式：
+
+```typescript
+type TupleToObject<T extends readonly string[]> = {
+    [F in T[number]]: F
+}
+```
+
+### test-case
+
+```typescript
+import type {Equal, Expect} from '@type-challenges/utils'
+
+// 在 ts 中 as const = '字面量类型'，跟 js 的 const 有一定区别
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+
+type cases = [
+    Expect<Equal<TupleToObject<typeof tuple>, { tesla: 'tesla'; 'model 3': 'model 3'; 'model X': 'model X'; 'model Y': 'model Y' }>>,
+]
+
+// @ts-expect-error
+type error = TupleToObject<[[1, 2], {}]>
+```
+
+在测试用例中，最下面有一个 `@ts-expect-error` 的注解声明，意思是如果下面的语句不报错，TS 就会报错，我们在上面传入参数时已经限制了泛型类型 `T` 为 `readonly string[]` ，所以用例中这样传参肯定会抛出错误的，测试通过。
+
+&nbsp;
+
+（持续更新中 ...）
