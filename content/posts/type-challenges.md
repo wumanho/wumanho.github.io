@@ -26,7 +26,7 @@ tags: ["typescript","challenges","类型体操"]
 - [x] [04：Pick](https://wumanho.cn/posts/type-challenge-easy/#04_pick)
 - [x] [07：Readonly](https://wumanho.cn/posts/type-challenge-easy/#07_readonly)
 - [x] [11：Tuple to Object](https://wumanho.cn/posts/type-challenge-easy/#11_tuple_to_object)
-- [x] [14：First of Array](https://wumanho.cn/posts/type-challenge-easy/#14_First)
+- [x] [14：First of Array](https://wumanho.cn/posts/type-challenge-easy/#14_first)
 - [ ] 18：Length of Tuple
 - [ ] 43：Exclude
 - [ ] 189：Awaited
