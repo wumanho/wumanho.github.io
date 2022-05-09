@@ -248,4 +248,85 @@ type error = TupleToObject<[[1, 2], {}]>
 
 &nbsp;
 
+## 14_First
+
+### 题目
+
+实现一个通用`First<T>`，它接受一个数组`T`并返回它的第一个元素的类型。
+
+例如：
+
+```typescript
+type arr1 = ['a', 'b', 'c']
+type arr2 = [3, 2, 1]
+
+type head1 = First<arr1> // expected to be 'a'
+type head2 = First<arr2> // expected to be 3
+```
+
+### 知识点
+
+* `never`
+* 访问数组下标
+* `infer 推断`
+
+### 解题
+
+```typescript
+// 签名
+type First<T extends any[]> = any
+```
+
+按照惯例先约束一下泛型类型 `T`，这一题需要注意，在后面的测试用例中，作为参数的数组并没有限制特定的类型，所以应该使用`unknown[]`约束比较合适：
+
+```typescript
+type First<T extends unknown[]> = any
+```
+
+在 TS 中获取数组的第一个元素方法有很多，这次我将会尝试使用其中两种解法来解这道题，一种是比较简单的，一种是相对进阶的解法。
+
+先来看看最简单的**解法一**：判断传入的参数是否为空数组，如果是空数组，返回`never`，否则返回数组的第一个元素，在 TS 中访问数组下标只需要使用`T[index]`即可
+
+```typescript
+type First<T extends unknown[]> = T extends [] ? never : T[0]
+```
+
+**解法二**，使用关键字`infer`来对数组进行操作，`infer`关键字官方翻译为推断，`infer`必须要结合`extends`一起使用，可以在条件语句中声明一个变量，接收待推断的类型，例如：
+
+```typescript
+// 可以获取函数返回值的类型
+type getReturnType<T> = T extends (...args:any[]) => infer R ? R : any
+
+type funType = getReturnType<(str: string) => string> // string
+```
+
+所以，只要使用`infer`来推断参数数组中第一个元素，返回就可以了：
+
+```typescript
+type First<T extends unknown[]> = T extends [infer First,...unknown[]] ? First : never
+```
+
+### test-case
+
+```typescript
+import type { Equal, Expect } from '@type-challenges/utils'
+
+type cases = [
+  Expect<Equal<First<[3, 2, 1]>, 3>>,
+  Expect<Equal<First<[() => 123, { a: string }]>, () => 123>>,
+  Expect<Equal<First<[]>, never>>,
+  Expect<Equal<First<[undefined]>, undefined>>,
+]
+
+type errors = [
+  // @ts-expect-error
+  First<'notArray'>,
+  // @ts-expect-error
+  First<{ 0: 'arrayLike' }>,
+]
+
+```
+
+&nbsp;
+
 （持续更新中 ...）

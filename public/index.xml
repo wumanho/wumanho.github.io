@@ -4,7 +4,7 @@
         <link>/</link>
         <description>WUMANHO的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Thu, 24 Mar 2022 21:57:41 &#43;0800</lastBuildDate>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Sat, 07 May 2022 22:15:39 &#43;0800</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>新概念二册-Lesson 36~40 笔记【不定期更新】</title>
@@ -15,6 +15,20 @@
     <description><![CDATA[<h3 id="更多新概念笔记">更多新概念笔记</h3>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%B8%80%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念一册笔记集合</a></p>
 <p><a href="https://wumanho.cn/categories/%E6%96%B0%E6%A6%82%E5%BF%B5%E4%BA%8C%E5%86%8C/" target="_blank" rel="noopener noreffer">新概念二册笔记集合</a></p>]]></description>
+</item><item>
+    <title>【TypeScript】类型体操通关挑战（持续更新）</title>
+    <link>/posts/type-challenges/</link>
+    <pubDate>Wed, 27 Apr 2022 22:27:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/type-challenges/</guid>
+    <description><![CDATA[从 easy 到 hard 通关 typescript 类型体操]]></description>
+</item><item>
+    <title>Vue3 源码中的位运算</title>
+    <link>/posts/vueshapeflags/</link>
+    <pubDate>Wed, 06 Apr 2022 20:21:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueshapeflags/</guid>
+    <description><![CDATA[位运算在实际工程中的妙用]]></description>
 </item><item>
     <title>利用 Github Webhooks 实现博客自动部署</title>
     <link>/posts/webhook-auto-deploy/</link>
@@ -64,19 +78,5 @@
     <author>作者</author>
     <guid>/posts/ledzeppelinhistory/</guid>
     <description><![CDATA[齐柏林飞艇Led Zeppelin乐队五十周年官方短片，自译]]></description>
-</item><item>
-    <title>【Node.js】结合 MongoDB 实现一个 TODO 命令行工具</title>
-    <link>/posts/todowithmongo/</link>
-    <pubDate>Sun, 11 Jul 2021 15:54:49 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/todowithmongo/</guid>
-    <description><![CDATA[Node.js + MongoDB 练手，做个 TODO 小工具]]></description>
-</item><item>
-    <title>Docker 实战练习 - 部署一个集群</title>
-    <link>/posts/dockerpractice/</link>
-    <pubDate>Sat, 06 Mar 2021 13:47:29 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/dockerpractice/</guid>
-    <description><![CDATA[本篇博客整理自之前学习 Docker 时的笔记，是一个非常好的 Docker 入门练习项目]]></description>
 </item></channel>
 </rss>

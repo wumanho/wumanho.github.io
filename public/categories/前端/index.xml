@@ -4,7 +4,14 @@
         <link>/categories/%E5%89%8D%E7%AB%AF/</link>
         <description>前端 - 分类 - OK Computer</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>wumanho@tutanota.com (wumanho)</managingEditor>
-            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wumanho@tutanota.com (wumanho)</webMaster><lastBuildDate>Wed, 06 Apr 2022 20:21:51 &#43;0800</lastBuildDate><atom:link href="/categories/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>Vue3 源码中的位运算</title>
+    <link>/posts/vueshapeflags/</link>
+    <pubDate>Wed, 06 Apr 2022 20:21:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>/posts/vueshapeflags/</guid>
+    <description><![CDATA[位运算在实际工程中的妙用]]></description>
+</item><item>
     <title>Vue3 源码中的 Reactivity 学习和思考</title>
     <link>/posts/vue3reactivity/</link>
     <pubDate>Wed, 16 Mar 2022 22:55:29 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>/posts/vueruntime/</guid>
     <description><![CDATA[<p>在刚刚开始使用 Vue 构建项目时，可能会遇到一个疑惑，就是 Vue 的<code>完整版</code>与<code>非完整版</code>到底有什么区别。</p>]]></description>
-</item><item>
-    <title>JavaScript 继承介绍与应用</title>
-    <link>/posts/jsinheritance/</link>
-    <pubDate>Wed, 11 Mar 2020 15:03:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>/posts/jsinheritance/</guid>
-    <description><![CDATA[「继承」在面向对象编程中属于核心概念，不过 JavaScript 并不是严格意义上的面向对象语言，JS 不像传统的面向对象编程语言例如 Java 那样，倾向于通过先定义类，定]]></description>
 </item></channel>
 </rss>
