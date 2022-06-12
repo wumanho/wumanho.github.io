@@ -267,7 +267,7 @@ type head2 = First<arr2> // expected to be 3
 ### 知识点
 
 * `never`
-* 访问数组下标
+* 数组下标取值
 * `infer 推断`
 
 ### 解题
@@ -326,6 +326,68 @@ type errors = [
 ]
 
 ```
+
+&nbsp;
+
+## 18_Length_of_Tuple
+
+### 题目
+
+创建一个通用的`Length`，接受一个`readonly`的数组，返回这个数组的长度。
+
+例如：
+
+```typescript
+type tesla = ['tesla', 'model 3', 'model X', 'model Y']
+type spaceX = ['FALCON 9', 'FALCON HEAVY', 'DRAGON', 'STARSHIP', 'HUMAN SPACEFLIGHT']
+
+type teslaLength = Length<tesla> // expected 4
+type spaceXLength = Length<spaceX> // expected 5
+```
+
+### 知识点
+
+* 数组长度
+* 元组
+
+### 解题
+
+```typescript
+// 签名
+type Length<T> = any
+```
+
+首先处理一下测试用例中的 `@ts-expect-error` ，只要加上约束即可，参数是字符串元组，元组是只读的，所以：
+
+```typescript
+type Length<T extends readonly string[]> = any
+```
+
+然后，TS 中取数组长度有一个最简单的方法，就是 `T["length"]` ，所以这题可以直接用这个方法解：
+
+```typescript
+type Length<T extends readonly string[]> = T["length"]
+```
+
+### test-case
+
+```typescript
+import type { Equal, Expect } from '@type-challenges/utils'
+
+const tesla = ['tesla', 'model 3', 'model X', 'model Y'] as const
+const spaceX = ['FALCON 9', 'FALCON HEAVY', 'DRAGON', 'STARSHIP', 'HUMAN SPACEFLIGHT'] as const
+
+type cases = [
+  Expect<Equal<Length<typeof tesla>, 4>>,
+  Expect<Equal<Length<typeof spaceX>, 5>>,
+  // @ts-expect-error
+  Length<5>,
+  // @ts-expect-error
+  Length<'hello world'>,
+]
+```
+
+测试通过。
 
 &nbsp;
 
