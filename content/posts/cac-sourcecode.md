@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【CAC】源码阅读笔记 01"
+title: "【CAC】源码阅读笔记 01 - 工程化"
 date: 2022-07-04T20:17:08+08:00
 draft: false
 categories: ["前端"]
@@ -9,7 +9,7 @@ tags: ["CAC","TypeScript","Node.js"]
 
 ## 前言
 
-本篇博客主要用于记录和分享我自己学习 Node.js 库 [CAC](https://github.com/cacjs/cac) 的笔记，CAC 是一个开源工具，用于帮助用户构建基于命令行的应用程序，基于 Typescript 和 OOP 思想是我认为值得学习的地方。
+本系列博客主要用于记录和分享我自己学习 Node.js 库 [CAC](https://github.com/cacjs/cac) 的笔记，CAC 是一个开源工具，用于帮助用户构建基于命令行的应用程序，基于 Typescript 和 OOP 思想是我认为值得学习的地方。
 
 除了源码本身之外，工程化所使用的技术和配置，也会有详细或者简单介绍。
 
@@ -150,6 +150,135 @@ import CAC from './CAC' // path.node.source.value = ‘./CAC’
 
 &nbsp;
 
-## circle.yml 详解
+## circle.yml 配置简介
 
-(持续更新中 ...)
+`circle.yml` 用于配置 `CircleCI` 与 github 继承的自动化测试和构建任务。
+
+```yaml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    branches:
+      ignore:
+        - gh-pages # list of branches to ignore
+        - /release\/.*/ # or ignore regexes
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: install dependences
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: yarn test:cov
+      - run:
+          name: upload coverage
+          command: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Release
+          command: yarn semantic-release
+
+```
+
+其实这个配置文件写得已经比较清晰了，可以仅从语义上判断整个构建过程。
+
+### docker
+
+指定用户构建构建的 docker 环境
+
+### branches - ignore
+
+配置需要忽略的分支或者目录
+
+### steps-checkout
+
+checkout 指令用于签出代码到配置好的路径
+
+### steps-restore_cache
+
+通过 key 按顺序恢复对应的缓存，checksum 会对给定的文件名生成哈希，用于更新缓存。
+
+### run-install dependences
+
+安装依赖
+
+### save_cache
+
+保存缓存到对应的 key
+
+### run-test
+
+执行命令 `jest --coverage`，--coverage 参数会在输出中生成测试覆盖率报告。
+
+### run-upload coverage
+
+Linux 中 `<` 的意思**将后面文件作为前面命令的输入**，所以这一步在做的是从 codecov.io 获取脚本，上传测试报告
+
+### run-Release
+
+发布版本，具体可以参考 `semantic-release` 这个库
+
+&nbsp;
+
+## rollup.config.js 打包配置详解
+
+```javascript
+import nodeResolvePlugin from '@rollup/plugin-node-resolve'
+import esbuildPlugin from 'rollup-plugin-esbuild'
+import dtsPlugin from 'rollup-plugin-dts'
+
+// 辅助函数
+function createConfig({ dts, esm } = {}) {
+  let file = 'dist/index.js'
+  if (dts) {
+    file = file.replace('.js', '.d.ts')
+  }
+  if (esm) {
+    file = file.replace('.js', '.mjs')
+  }
+  return {
+    input: 'src/index.ts',
+    output: {
+      format: dts || esm ? 'esm' : 'cjs',
+      file,
+      exports: 'named',
+    },
+    plugins: [
+      nodeResolvePlugin({
+        mainFields: dts ? ['types', 'typings'] : ['module', 'main'],
+        extensions: dts ? ['.d.ts', '.ts'] : ['.js', '.json', '.mjs'],
+        customResolveOptions: {
+          moduleDirectories: dts
+            ? ['node_modules/@types', 'node_modules']
+            : ['node_modules'],
+        },
+      }),
+      !dts && require('@rollup/plugin-commonjs')(),
+      !dts &&
+        esbuildPlugin({
+          target: 'es2017',
+        }),
+      dts && dtsPlugin(),
+    ].filter(Boolean),
+  }
+}
+
+// 输出配置
+export default [
+  createConfig(),
+  createConfig({ dts: true }),
+  createConfig({ esm: true }),
+]
+```
+
+(持续更新中。。。)
+
+
+
