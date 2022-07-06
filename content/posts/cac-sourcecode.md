@@ -227,7 +227,7 @@ Linux 中 `<` 的意思**将后面文件作为前面命令的输入**，所以�
 
 &nbsp;
 
-## rollup.config.js 打包配置详解
+## rollup.config.js 打包配置简介
 
 ```javascript
 import nodeResolvePlugin from '@rollup/plugin-node-resolve'
@@ -236,7 +236,9 @@ import dtsPlugin from 'rollup-plugin-dts'
 
 // 辅助函数
 function createConfig({ dts, esm } = {}) {
+    // file 是输出结果
   let file = 'dist/index.js'
+   // 根据参数判断输出结果的后缀
   if (dts) {
     file = file.replace('.js', '.d.ts')
   }
@@ -244,8 +246,11 @@ function createConfig({ dts, esm } = {}) {
     file = file.replace('.js', '.mjs')
   }
   return {
+      // 入口文件
     input: 'src/index.ts',
+      // 输出文件配置
     output: {
+        // 指定输出格式
       format: dts || esm ? 'esm' : 'cjs',
       file,
       exports: 'named',
@@ -278,7 +283,106 @@ export default [
 ]
 ```
 
-(持续更新中。。。)
+打包配置也是非常简单，通过一个辅助函数`createConfig`，输出三种不同的结果
+
+* dts（ts 声明文件）
+* cjs（cjs 格式）
+* mjs（esm 格式）
+
+plugins 中有个比较不常见的写法，借助`Array.filter`，过滤出需要的插件。
+
+```typescript
+  plugins: [
+      nodeResolvePlugin({
+        mainFields: dts ? ['types', 'typings'] : ['module', 'main'],
+        extensions: dts ? ['.d.ts', '.ts'] : ['.js', '.json', '.mjs'],
+        customResolveOptions: {
+          moduleDirectories: dts
+            ? ['node_modules/@types', 'node_modules']
+            : ['node_modules'],
+        },
+      }),
+      !dts && require('@rollup/plugin-commonjs')(),
+      !dts &&
+        esbuildPlugin({
+          target: 'es2017',
+        }),
+      dts && dtsPlugin(),
+    ].filter(Boolean), // 返回为 true 的结果
+```
+
+&nbsp;
+
+## jest 配置
+
+```javascript
+module.exports = {
+    // 用于测试的环境，这里是 node 环境，如果需要测试 web 环境，可以配置为 jsdom
+  testEnvironment: 'node',
+    // 如果需要测试的不是原生 js 代码，则需要指定解析器
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  },
+    //匹配测试文件
+  testRegex: '(/__test__/.*|(\\.|/)(test|spec))\\.tsx?$',
+    //配置忽略的目录
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/types/'],
+    //指定文件类型
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+}
+
+```
+
+### moduleFileExtensions
+
+jest 官方建议将最常用的格式配置到最左侧，本项目几乎是纯 ts 编码的，所以将 ts 配置在第一位，是一个可以学习的最佳实践
+
+&nbsp;
+
+## index-compat.js
+
+```javascript
+const { cac, CAC, Command } = require('./dist/index')
+
+// 兼容性处理
+module.exports = cac
+
+Object.assign(module.exports, {
+  default: cac,
+  cac,
+  CAC,
+  Command,
+})
+```
+
+注意，`index-conpat.js`这个文件被作为`package.json` 中的 `exports` 字段的导出方式之一：
+
+```json
+/** package.json **/
+
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./index-compat.js"
+    },
+    "./package.json": "./package.json",
+    "./": "./"
+  },
+```
+
+exports 字段可以根据不用的导入方式返回不同的结果，所以一下这两种写法都是可以的：
+
+```javascript
+// CommonJS 写法，从 ./index-compat.js 中导出
+const cac = require('cac')
+
+// ESModule 写法，从 ./dist/index.mjs 中导出
+import cac from 'cac'
+```
+
+&nbsp;
+
+（本篇完）
 
 
 
