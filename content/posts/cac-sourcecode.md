@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【CAC】源码阅读笔记 01 - 工程化"
+title: "【CAC】源码阅读笔记系列"
 date: 2022-07-04T20:17:08+08:00
 draft: false
 categories: ["前端"]
@@ -62,6 +62,8 @@ tags: ["CAC","TypeScript","Node.js"]
 ```
 
 &nbsp;
+
+# 工程化
 
 ## scripts 目录详解
 
