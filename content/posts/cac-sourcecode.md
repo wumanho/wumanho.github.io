@@ -7,13 +7,15 @@ categories: ["前端"]
 tags: ["CAC","TypeScript","Node.js"]
 ---
 
+## 快速跳转
+
+[下一篇：CAC 源码解析](https://wumanho.cn/posts/cacsourcecode01/)
+
 ## 前言
 
 本系列博客主要用于记录和分享我自己学习 Node.js 库 [CAC](https://github.com/cacjs/cac) 的笔记，CAC 是一个开源工具，用于帮助用户构建基于命令行的应用程序，基于 Typescript 和 OOP 思想是我认为值得学习的地方。
 
-除了源码本身之外，工程化所使用的技术和配置，也会有详细或者简单介绍。
-
-
+除了源码本身之外，工程化所使用的技术和配置，也会有详细或者简单介绍，所以本章主要介绍工程化的内容，源码解析会放在下一章节。
 
 ## 目录结构
 
