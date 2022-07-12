@@ -113,9 +113,69 @@ deploy ./dist
 
 &nbsp;
 
-# CAC 实例详解
+# 源码目录介绍
 
-（持续更新中 ...）
+```shell
+src	
+├── CAC.ts
+├── Command.ts
+├── Option.ts
+├── __test__						
+│   ├── __snapshots__
+│   └── index.test.ts
+├── deno.ts
+├── index.ts
+├── node.ts
+└── utils.ts
+```
+
+在 `src` 目录中，我们可以把里面的文件分成**四个部分**来分别介绍：
+
+### deno.ts & node.ts
+
+`deno.ts` 和 `node.ts` 这两个文件做的事情是一样的，都是收集一些操作系统的辅助数据，只是分别兼容 deno 环境和 node 环境。
+
+以 `node.ts` 为例，该文件导出了两个变量，分别是 `processArgs` 和 `platformInfo`，其中 `processArgs` 用于作为命令行的默认参数，`platformInfo` 则用于在为打印帮助信息收集数据：
+
+```typescript
+export const processArgs = process.argv
+
+export const platformInfo = `${process.platform}-${process.arch} node-${process.version}`
+```
+
+### __test__
+
+测试目录
+
+### utils.ts & index.ts
+
+* utils 导出一些工具函数
+* index 作为整个库的出口，导出一个 cac 实例，更准确来说应该是一个用于创建 cac 实例的工厂函数
+
+```typescript
+import CAC from './CAC'
+import Command from './Command'
+
+/**
+ * @param name The program name to display in help and version message
+ */
+const cac = (name = '') => new CAC(name)
+
+export default cac
+export { cac, CAC, Command }
+```
+
+### CAC.ts & Command.ts & Option.ts
+
+分别对应三个类 `CAC`、`Command` 和 `Option`，这三个类涵盖了 CAC 这个库的所有核心功能实现，除此之外没有别的了。
+
+&nbsp;
+
+# 源码解析
+
+## CAC
+
+CAC 
 
 
 
