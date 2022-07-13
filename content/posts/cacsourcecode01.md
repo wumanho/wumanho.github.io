@@ -129,11 +129,11 @@ src
 └── utils.ts
 ```
 
-在 `src` 目录中，我们可以把里面的文件分成**四个部分**来分别介绍：
+在 `src` 目录中，我们可以把里面的文件分成**四个部分**来看：
 
 ### deno.ts & node.ts
 
-`deno.ts` 和 `node.ts` 这两个文件做的事情是一样的，都是收集一些操作系统的辅助数据，只是分别兼容 deno 环境和 node 环境。
+`deno.ts` 和 `node.ts` 这两个文件做的事情是一样的，都是收集一些**操作系统**的辅助数据，只是分别兼容 deno 环境和 node 环境。
 
 以 `node.ts` 为例，该文件导出了两个变量，分别是 `processArgs` 和 `platformInfo`，其中 `processArgs` 用于作为命令行的默认参数，`platformInfo` 则用于在为打印帮助信息收集数据：
 
@@ -167,15 +167,209 @@ export { cac, CAC, Command }
 
 ### CAC.ts & Command.ts & Option.ts
 
-分别对应三个类 `CAC`、`Command` 和 `Option`，这三个类涵盖了 CAC 这个库的所有核心功能实现，除此之外没有别的了。
+分别对应三个类 `CAC`、`Command` 和 `Option`，主要注意的是，这三个类涵盖了 CAC 这个库的所有核心功能实现。
 
 &nbsp;
 
 # 源码解析
 
+## 类的关系
+
+上面说到，CAC 这个库的所有核心功能由 `CAC`、`Command` 和 `Option` 这三个类实现，所以理清楚这几个类的关系就非常重要，也是对于 OOP 面向对象思想的一种学习。
+
+首先看看 `CAC` ，`CAC` 通过自身的几个属性，直接**关联** `Command` 类，与 `Options` 类没有依赖关系：
+
+```typescript
+class CAC extends EventEmitter {
+  /** 省略 **/
+  commands: Command[]			 // 保存所有子命令	
+  globalCommand: GlobalCommand   // GlobalCommand 是 Command 的子类，比较特殊，后面介绍
+  matchedCommand?: Command 		 // Command 实例
+  /** 省略 **/
+}
+```
+
+然后是 `Command`，`Command` 被 `CAC` 关联，同时自身也包含对 `CAC` 的引用，所以可以说 `Command` 跟 `CAC` 互相关联：
+
+```typescript
+class Command {
+  /** 省略 **/
+  constructor(
+    public cli: CAC
+  ) {}
+  /** 省略 **/
+}
+```
+
+此外，`Command` 对于 `Option` 存在依赖关系：
+
+```typescript
+// 处理 option 
+option(rawName: string, description: string, config?: OptionConfig) {
+    const option = new Option(rawName, description, config)
+    this.options.push(option)
+    return this
+  }
+```
+
+而 `Option` 类则只有被 `Command` 类依赖，自身主要用于处理用户传入的参数，作为一个工具类存在：
+
+```typescript
+export default class Option {
+  name: string
+  names: string[]
+  isBoolean?: boolean
+  required?: boolean
+  config: OptionConfig
+  negated: boolean
+
+  constructor(
+    public rawName: string,
+    public description: string,
+    config?: OptionConfig
+  ) { /** 省略**/}
+}
+```
+
+&nbsp;
+
 ## CAC
 
-CAC 
+CAC 类是一个最外层的类，他的概念跟接口有一点点类似。
+
+CAC 类提供了所有供用户直接使用的方法，包括 `command`、`option`、`help`、`parse` **等...** 
+
+首先看到的是他继承了 `EventEmitter` 类：
+
+```typescript
+class CAC extends EventEmitter {
+    /* .... */
+}
+```
+
+### EventEmitter
+
+继承 `EventEmitter` 意味着可以实现基于事件流的交互动作，让终端用户通过 `.on()` 等常见的手段实现事件监听。
+
+例如，在 CAC 中，用户可以通过 `.on()` 监听某个子命令，当子命令运行时，执行回调函数：
+
+```typescript
+// cli 是 CAC 实例，通过 .on() 可以监听 build 命令的运行
+cli.on('command:build', () => {
+  // Do something
+})
+```
+
+想要实现这种交互，只需要找到运行命令的代码，通过 `emit()` 函数来触发即可，参考 `parse` 函数：
+
+```typescript
+  parse(argv = processArgs,{run = true,} = {}): ParsedArgv {
+    /* 省略 ... */
+      
+    // 遍历执行所有子命令
+    for (const command of this.commands) {
+      /* 省略 ... */
+      const commandName = parsed.args[0]
+      // 将命令拼接到 emitter 后面，触发监听
+      this.emit(`command:${commandName}`, command)
+      }
+    }
+  }
+```
+
+
+
+
+
+```typescript
+class CAC extends EventEmitter {
+  /** The program name to display in help and version message */
+  name: string
+  commands: Command[]
+  globalCommand: GlobalCommand
+  matchedCommand?: Command
+  matchedCommandName?: string
+  /**
+   * Raw CLI arguments
+   */
+  rawArgs: string[]
+  /**
+   * Parsed CLI arguments
+   */
+  args: ParsedArgv['args']
+  /**
+   * Parsed CLI options, camelCased
+   */
+  options: ParsedArgv['options']
+
+  showHelpOnExit?: boolean
+  showVersionOnExit?: boolean
+
+  /**
+   * Add a global usage text.
+   *
+   * This is not used by sub-commands.
+   */
+  usage(text: string) {}
+
+  /**
+   * Add a sub-command
+   */
+  command(rawName: string, description?: string, config?: CommandConfig) {}
+
+  /**
+   * Add a global CLI option.
+   *
+   * Which is also applied to sub-commands.
+   */
+  option(rawName: string, description: string, config?: OptionConfig) {}
+
+  /**
+   * Show help message when `-h, --help` flags appear.
+   *
+   */
+  help(callback?: HelpCallback) {}
+
+  /**
+   * Show version number when `-v, --version` flags appear.
+   *
+   */
+  version(version: string, customFlags = '-v, --version') {}
+
+  /**
+   * Add a global example.
+   *
+   * This example added here will not be used by sub-commands.
+   */
+  example(example: CommandExample) {}
+
+  /**
+   * Output the corresponding help message
+   * When a sub-command is matched, output the help message for the command
+   * Otherwise output the global one.
+   *
+   */
+  outputHelp() {}
+
+  /**
+   * Output the version number.
+   *
+   */
+  outputVersion() {}
+
+  private setParsedInfo() {}
+
+  unsetMatchedCommand() {}
+
+  parse() {}
+
+  private mri() {}
+
+  runMatchedCommand() {}
+}
+```
+
+
 
 
 
