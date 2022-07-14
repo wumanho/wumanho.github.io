@@ -177,7 +177,7 @@ export { cac, CAC, Command }
 
 上面说到，CAC 这个库的所有核心功能由 `CAC`、`Command` 和 `Option` 这三个类实现，所以理清楚这几个类的关系就非常重要，也是对于 OOP 面向对象思想的一种学习。
 
-首先看看 `CAC` ，`CAC` 通过自身的几个属性，直接**关联** `Command` 类，与 `Options` 类没有依赖关系：
+首先看看 `CAC` ，`CAC` 通过自身的几个属性，直接**关联** `Command` 类，与 `Options` 类**没有依赖关系**：
 
 ```typescript
 class CAC extends EventEmitter {
@@ -189,7 +189,7 @@ class CAC extends EventEmitter {
 }
 ```
 
-然后是 `Command`，`Command` 被 `CAC` 关联，同时自身也包含对 `CAC` 的引用，所以可以说 `Command` 跟 `CAC` 互相关联：
+然后是 `Command`，`Command` **被** `CAC` **关联**，同时自身也包含对 `CAC` 的**引用**，所以可以说 `Command` 跟 `CAC` **互相关联**：
 
 ```typescript
 class Command {
@@ -201,7 +201,7 @@ class Command {
 }
 ```
 
-此外，`Command` 对于 `Option` 存在依赖关系：
+此外，`Command` 对于 `Option` 存在**依赖关系**：
 
 ```typescript
 // 处理 option 
@@ -212,7 +212,7 @@ option(rawName: string, description: string, config?: OptionConfig) {
   }
 ```
 
-而 `Option` 类则只有被 `Command` 类依赖，自身主要用于处理用户传入的参数，作为一个工具类存在：
+而 `Option` 类则只有被 `Command` 类依赖，自身主要用于处理用户传入的选项，作为一个工具类存在：
 
 ```typescript
 export default class Option {
@@ -277,97 +277,230 @@ cli.on('command:build', () => {
   }
 ```
 
-
-
-
+先大致浏览一下 `CAC` 的关键属性和方法：
 
 ```typescript
 class CAC extends EventEmitter {
-  /** The program name to display in help and version message */
+  /** name 主要用于在 help 和 version 中使用 */
   name: string
+  /** 保存所有子命令 */  
   commands: Command[]
+  /** 一个默认的 Command 实例 */  
   globalCommand: GlobalCommand
+  /** 记录当前匹配到的子命令 */  
   matchedCommand?: Command
+  /** 记录当前匹配到的子命令名称 */  
   matchedCommandName?: string
-  /**
-   * Raw CLI arguments
-   */
+  /** 记录原始参数 */
   rawArgs: string[]
-  /**
-   * Parsed CLI arguments
-   */
+  /** 解析后的参数 */
   args: ParsedArgv['args']
-  /**
-   * Parsed CLI options, camelCased
-   */
+  /** 选项 */
   options: ParsedArgv['options']
-
+  
   showHelpOnExit?: boolean
   showVersionOnExit?: boolean
 
   /**
-   * Add a global usage text.
-   *
-   * This is not used by sub-commands.
+   *  添加一个全局的用法说明
+   *  不适用于子命令，子命令的 usage 在 Command 里面	
    */
   usage(text: string) {}
 
   /**
-   * Add a sub-command
+   * 添加一个子命令
    */
   command(rawName: string, description?: string, config?: CommandConfig) {}
 
   /**
-   * Add a global CLI option.
+   * 添加一个全局选项.
    *
-   * Which is also applied to sub-commands.
+   * 全局选项会应用到子命令中.
    */
   option(rawName: string, description: string, config?: OptionConfig) {}
 
   /**
-   * Show help message when `-h, --help` flags appear.
-   *
+   * 生成 help 信息，可以通过 `-h, --help` 选项调出
    */
   help(callback?: HelpCallback) {}
 
   /**
-   * Show version number when `-v, --version` flags appear.
-   *
+   * 生成 version 信息，可以通过 `-v, --version` 选项调出
    */
   version(version: string, customFlags = '-v, --version') {}
 
   /**
-   * Add a global example.
+   * 添加一个全局用例，不适用于子命令.
    *
-   * This example added here will not be used by sub-commands.
    */
   example(example: CommandExample) {}
 
   /**
-   * Output the corresponding help message
-   * When a sub-command is matched, output the help message for the command
-   * Otherwise output the global one.
-   *
+   * 输出帮助信息
    */
   outputHelp() {}
 
   /**
-   * Output the version number.
-   *
+   * 输出版本号
    */
   outputVersion() {}
-
+  
+  /**
+   * (私有) 只在 parse 中被调用，用于将解析到的信息保存
+   */
   private setParsedInfo() {}
-
-  unsetMatchedCommand() {}
-
+  
+  /**
+   * 如果本次执行是输出帮助信息或版本信息的话会调用
+   * 将匹配的子命令信息设置为 undefined
+   */
+  unsetMatchedCommand() {
+    this.matchedCommand = undefined
+    this.matchedCommandName = undefined
+  }
+  
+  /**
+   *  解析执行命令
+   */
   parse() {}
-
+  
+  /**
+   *  (私有)借助第三方库 mri，解析选项
+   */
   private mri() {}
-
+  
+  /**
+   *  在 parse 函数中调用，执行匹配的子命令
+   */
   runMatchedCommand() {}
 }
 ```
+
+### GlobalCommand
+
+`GlobalCommand` 是 `Command` 的子类，继承了 `Command` 的所有属性和方法：
+
+```typescript
+class GlobalCommand extends Command {
+  constructor(cli: CAC) {
+    super('@@global@@', '', {}, cli)
+  }
+}
+```
+
+`GlobalCommand` 在 `CAC` 中起到一个比较关键的最用，从名字中可以看出来这是一个全局的命令，也是一种 OOP 面向对象思想的体现，这个对象的主要作用是当用户没有建立子命令时，`CAC` 需要通过这个 `GlobalCommand` 的实例来调用 `Command` 的方法。
+
+在 `CAC` 类的构造器中，默认会 new 一个 `GlobalCommand` 实例，而由于 `Command` 和 `CAC` 是互相关联的，在 `Command` 中对 `CAC` 也有依赖，所以在构建时会把自己传进去：
+
+```typescript
+  constructor(name = '') {
+    super()
+    this.name = name
+    this.commands = []
+    this.rawArgs = []
+    this.args = []
+    this.options = {}
+    this.globalCommand = new GlobalCommand(this)  // 创建全局 Command，将自己传进去
+    this.globalCommand.usage('<command> [options]')
+  }
+```
+
+有了 `globalCommand` 实例，用户就可以直接使用 `CAC` 而不需要创建子命令，例如我们可以对 basic-usage.js 作出一点修改：
+
+```javascript
+require('ts-node/register')
+const cli = require('../src/index').cac()
+
+cli.option('--type [type]', 'Choose a project type')
+
+const parsed = cli.parse()
+
+function logType(){
+   console.log(`类型:${parsed.options.type}` || '未指定 type 参数')
+}
+
+logType()
+```
+
+在 `option()` 函数中，`CAC` 通过 `globalCommand` 实例生成了一个选项：
+
+```typescript
+  // CAC.ts
+option(rawName: string, description: string, config?: OptionConfig) {
+    // 调用 Command 的 option 方法为当前实例生成选项
+    this.globalCommand.option(rawName, description, config)
+    return this
+ }
+```
+
+随后，经过 `parse()` 函数的解析，尽管没有指定可用于运行的子命令，但还是会将解析过的选项信息返回给调用者。
+
+```code
+# 调用命令
+node basic-usage.js --type test-case
+```
+
+所以可以看到，最终就像一个 Linux 命令一样，同样包含了 `可执行文件` & `选项` & `参数` 这几个要素，敲下回车，就可以得到结果。
+
+```code
+类型:test-case
+进程已结束,退出代码0
+```
+
+### 链式调用的实现和子命令
+
+`CAC` 支持链式调用，例如通过链式调用添加多个选项：
+
+```typescript
+require('ts-node/register')
+const cli = require('../src/index').cac()
+
+cli.option('--type [type]', 'Choose a project type')
+  .option('--dir [dir]', 'Choose a project dir')
+
+const parsed = cli.parse()
+
+function logType(){
+  console.log(`类型:${parsed.options.type}` || '未指定 type 参数')
+  console.log(`目录:${parsed.options.dir}` || '未指定 dir 参数')
+}
+
+logType()
+```
+
+```code
+# 调用命令
+node basic-usage.js --type test-case --dir /opt
+```
+
+在 JS 的世界中，实现链式调用的方法都是类似的，就是每次调用函数之后，都返回一个 this，指向实例本身，于是可以通过返回的 this 引用继续调用下一个函数，在 `CAC` 中，像 `option`、`help`、`version` 等基本操作都是支持链式调用的：
+
+```typescript
+  help(callback?: HelpCallback) {
+    this.globalCommand.option('-h, --help', 'Display this message')
+    this.globalCommand.helpCallback = callback
+    this.showHelpOnExit = true
+    return this
+  }
+ 
+  version(version: string, customFlags = '-v, --version') {
+    this.globalCommand.version(version, customFlags)
+    this.showVersionOnExit = true
+    return this
+  }
+  
+ option(rawName: string, description: string, config?: OptionConfig) {
+    this.globalCommand.option(rawName, description, config)
+    return this
+  }
+  
+```
+
+（更新中 ... ）
+
+
+
+
 
 
 
