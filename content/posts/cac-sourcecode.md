@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【CAC】源码阅读笔记系列"
+title: "【CAC】源码阅读笔记合集(两篇完)"
 date: 2022-07-04T20:17:08+08:00
 draft: false
 categories: ["前端"]
@@ -26,7 +26,7 @@ tags: ["CAC","TypeScript","Node.js"]
 ├── LICENSE
 ├── README.md
 ├── circle.yml								#circle.yml: CircleCI 配置文件
-├── examples   						      	#examples: 演示代码目录
+├── examples   						      	#examples: 演示代码目录，保存可以直接执行的示例代码
 │   ├── basic-usage.js
 │   ├── command-examples.js
 │   ├── command-options.js
@@ -71,7 +71,7 @@ tags: ["CAC","TypeScript","Node.js"]
 
 ## scripts 目录详解
 
-在阅读源码之前，不妨先看一看 cac 的工程化，这个项目的工程化运用的技术算是比较新的，所以估计有不少值得学习的地方，先从 script 目录入手。
+在阅读源码之前，不妨先看一看 cac 的工程化，这个项目的工程化运用的技术算是比较完善的，所以有不少值得学习的地方，我们可以先从 script 目录入手。
 
 scripts 目录用于存放 js 脚本，在本项目中仅有一个，用于兼容和构建 deno 工程，构建后会将文件输出在`deno `目录，`deno/index.ts` 会被 `mod.ts`指定为 deno 工程入口文件：
 

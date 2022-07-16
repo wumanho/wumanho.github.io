@@ -40,11 +40,11 @@ console.log(JSON.stringify(parsed, null, 2))
 
 ### option
 
-option 函数用于为应用创建选项，可以包含多个，默认情况下 option 创建的选项属于全局选项，在用户添加了 command 子命令时，option 属于该子命令
+option 方法用于为应用创建选项，可以包含多个，默认情况下 option 创建的选项属于全局选项，在用户添加了 command 子命令时，option 属于该子命令
 
 ### parse
 
-parse 函数非常关键，用于执行匹配的命令的回调函数、输出帮助信息、输出版本号等关键操作
+parse 方法非常关键，用于执行匹配的命令的回调函数、输出帮助信息、输出版本号等关键操作
 
 &nbsp;
 
@@ -68,15 +68,15 @@ cli.parse()
 
 ### command
 
-在默认情况下，cac 会创建一个全局的 globalCommand，而 command 函数用于创建一条自定义子命令，实际上是创建了一个新的 Command 实例，在新的实例后面调用的函数（例如 option 函数）都只属于该 Command 实例
+在默认情况下，cac 会创建一个全局的 globalCommand，而 command 方法用于创建一条自定义子命令，实际上是创建了一个新的 Command 实例，在新的实例后面调用的方法（例如 option 方法）都只属于该 Command 实例
 
 ### action
 
-action 函数定义一个回调函数，必须在调用 command 函数后，获取到子命令的实例才能调用。action 的作用是当匹配到对应的子命令时，执行回调函数
+action 方法定义一个回调函数，必须在调用 command 方法后，获取到子命令的实例才能调用。action 的作用是当匹配到对应的子命令时，执行回调函数
 
 ### help
 
-help 函数用于为命令创建帮助文档
+help 方法用于为命令创建帮助文档
 
 &nbsp;
 
@@ -84,7 +84,7 @@ help 函数用于为命令创建帮助文档
 
 ### example
 
-example 函数接受一个字符串，会输出到帮助文档中，例如：
+example 方法接受一个字符串，会输出到帮助文档中，例如：
 
 ```javascript
 cli
@@ -233,7 +233,7 @@ export default class Option {
 
 &nbsp;
 
-## CAC
+## CAC.ts
 
 CAC 类是一个最外层的类，他的概念跟接口有一点点类似。
 
@@ -260,7 +260,7 @@ cli.on('command:build', () => {
 })
 ```
 
-想要实现这种交互，只需要找到运行命令的代码，通过 `emit()` 函数来触发即可，参考 `parse` 函数：
+想要实现这种交互，只需要找到运行命令的代码，通过 `emit()` 函数来触发即可，参考 `parse` 方法：
 
 ```typescript
   parse(argv = processArgs,{run = true,} = {}): ParsedArgv {
@@ -277,7 +277,7 @@ cli.on('command:build', () => {
   }
 ```
 
-先大致浏览一下 `CAC` 的关键属性和方法：
+`parse` 方法比较关键，后面会详细介绍，现在先大致浏览一下 `CAC` 的关键属性和方法：
 
 ```typescript
 class CAC extends EventEmitter {
@@ -422,7 +422,7 @@ function logType(){
 logType()
 ```
 
-在 `option()` 函数中，`CAC` 通过 `globalCommand` 实例生成了一个选项：
+在 `option()` 方法中，`CAC` 通过 `globalCommand` 实例生成了一个选项：
 
 ```typescript
   // CAC.ts
@@ -433,7 +433,7 @@ option(rawName: string, description: string, config?: OptionConfig) {
  }
 ```
 
-随后，经过 `parse()` 函数的解析，尽管没有指定可用于运行的子命令，但还是会将解析过的选项信息返回给调用者。
+随后，经过 `parse()` 方法的解析，尽管没有指定可用于运行的子命令，但还是会将解析过的选项信息返回给调用者。
 
 ```code
 # 调用命令
@@ -496,7 +496,249 @@ node basic-usage.js --type test-case --dir /opt
   
 ```
 
-（更新中 ... ）
+而需要注意的是，当用户调用了 `command` 命令之后，`CAC` 会返回一个 `Command` 实例：
+
+```typescript
+  /**
+   * 添加一个子命令
+   */
+  command(rawName: string, description?: string, config?: CommandConfig) {
+      // new Command 实例
+    const command = new Command(rawName, description || '', config, this)
+     // 这个操作用于将当前已有的全局的内容挂载到子命令上
+    command.globalCommand = this.globalCommand
+      // commands 用于保存所有子命令
+    this.commands.push(command)
+      // 返回一个 command 实例
+    return command
+  }
+```
+
+于是，只要用户通过 `command` 方法创建子命令后，**在其后面的所有链式调用都只对该子命令生效，直到下一个子命令的创建。**
+
+&nbsp;
+
+## Command.ts
+
+Command 类处于中间层，它包含了大多数 `cac` api 的实现、输出帮助信息到控制台的方法也在 `Command` 中实现，还有就是对于 `Option` 类的调用，记得我们之前提到 `CAC` 是没有直接对 `Option` 进行操作的。
+
+这里不打算对 `Command` 的每个方法的实现作详细介绍，但有一个比较值得关注的，就是 `action` 方法。
+
+### action()
+
+`action()` 方法没有直接暴露在 `CAC` 中，而是仅仅属于子命令，也就是说，用户必须先通过 `command()` 创建子命令后，拿到返回的 `Command` 实例，才可以调用 `action()` 方法，否则就会报错：
+
+```javascript {hl_lines=[9]}
+cli
+  .option('-r, --recursive', 'Remove recursively')
+  .action((dir, options) => {
+    console.log('remove ' + dir + (options.recursive ? ' recursively' : ''))
+  })
+
+cli.parse()
+
+// TypeError: cli.option(...).action is not a function
+```
+
+关于 `action()` 的正确用法可以参考 `/examples/command-options.js` ：
+
+```javascript
+cli
+  .command('rm <dir>', 'Remove a dir')
+  .option('-r, --recursive', 'Remove recursively')
+  .action((dir, options) => {
+    console.log('remove ' + dir + (options.recursive ? ' recursively' : ''))
+  })
+
+cli.help()
+
+cli.parse()
+```
+
+当看到这里时，应该问自己两个问题：
+
+* 回调函数何时被执行，如何执行
+* 参数是怎么来的
+
+于是，我们带着问题来看看 `action()` 的实现。
+
+`action()` 接收一个回调函数作为参数，记录在当前 `Command` 实例中：
+
+```typescript
+  action(callback: (...args: any[]) => any) {
+    this.commandAction = callback
+    return this
+  }
+```
+
+然后就没有了 ...
+
+实际上，执行 `action()` 回调函数的动作，也存在于关键的 `parse()` 方法中。
+
+### parse()
+
+`parse()`方法通常在你的 cac 脚本最后调用，它接受两个参数，但这两个参数都已经有默认值，所以我们会看到在调用时一般不会传入任何参数，返回值是保存了解析后的信息的对象：
+
+```typescript
+parse(
+    argv = processArgs,
+    {
+      run = true,
+    } = {}
+  ): ParsedArgv {}
+```
+
+argv 的默认值 `processArgs` 就是从 `src/node.ts` 中导入的，前面已经介绍过，而第二个参数就比较有趣，其实就是一个解构语法，意思从一个该参数接收一个对象，里面有一个 key 叫做 run，类型是一个布尔值，后面函数体中用到的 run 就是从这里结构出来的。
+
+```typescript
+parse(
+    argv = processArgs,
+    {
+      run = true,
+    } = {}
+  ): ParsedArgv {
+    // 记录所有参数
+    this.rawArgs = argv
+    // 如果用户没有为该实例命名，取默认值
+    if (!this.name) {
+      this.name = argv[1] ? getFileName(argv[1]) : 'cli'
+    }
+    let shouldParse = true
+
+    // 处理子命令
+    for (const command of this.commands) {
+      // 这里调用了一个辅助函数 mri，该函数调用了一个同名的第三方库 mri 
+      // 在这里，用于找到并解析当前的子命令
+      const parsed = this.mri(argv.slice(2), command)
+	  // 这个是用户输入的子命令名称	
+      const commandName = parsed.args[0]
+      // 判断子命令是否存在，即传入的命令跟用户声明的命令是否一致
+      if (command.isMatched(commandName)) {
+          // 当子命令匹配时，shouldParse 置为 false
+        shouldParse = false
+        const parsedInfo = {
+          ...parsed,
+          args: parsed.args.slice(1),
+        }
+        // 在这里对子命令进行解析
+        this.setParsedInfo(parsedInfo, command, commandName)
+          // 触发命令事件，如果用户有监听当前命令的话，可以触发用户的回调函数
+          // 前面已经有介绍过
+        this.emit(`command:${commandName}`, command)
+      }
+    }
+	// 如果 shouldParse 没有被置为 false
+    // 意味着没有命令被匹配到
+    // 检查默认命令
+    if (shouldParse) {
+      for (const command of this.commands) {
+        if (command.name === '') {
+          shouldParse = false
+          const parsed = this.mri(argv.slice(2), command)
+          this.setParsedInfo(parsed, command)
+          this.emit(`command:!`, command)
+        }
+      }
+    }
+	
+    // 如果到这里还没匹配到命令的话，就只对参数进行解析
+    if (shouldParse) {
+      const parsed = this.mri(argv.slice(2))
+      this.setParsedInfo(parsed)
+    }
+	
+    // 判断本次执行是否是输出帮助信息，如果是的话，将 run 置为 false
+    // 例如，当用户输入 cli -h 的时候，就会进入到该方法，输出帮助信息
+    if (this.options.help && this.showHelpOnExit) {
+      this.outputHelp()
+      run = false
+      this.unsetMatchedCommand()
+    }
+	
+    // 跟上面的 help 类似，这里是判断本次执行是否是输出版本信息
+    if (this.options.version && this.showVersionOnExit && this.matchedCommandName == null) {
+      this.outputVersion()
+      run = false
+      this.unsetMatchedCommand()
+    }
+	
+    // 构建返回值，this.args 和 this.options 已经在上面的 setParsedInfo 函数中解析
+    // 并保存至实例
+    const parsedArgv = { args: this.args, options: this.options }
+	
+    // 如果 run 还是 true 的话，意味着不是 -h 也不是 --version 
+    // 而且用户也没有通过参数阻止本次运行
+    if (run) {
+        // 调用执行子命令的方法
+      this.runMatchedCommand()
+    }
+	
+    // 当遇到未知的命令时，也会触发一个事件通知
+    // 可以通过该事件，在回调函数中对用户进行一个友好的提示
+    if (!this.matchedCommand && this.args[0]) {
+      this.emit('command:*')
+    }
+
+    return parsedArgv
+  }
+```
+
+至此，我们的第一个问题「回调函数何时被执行，如何执行」就已经解决了，当 `parse()` 调用，用户没有通过参数`{run:false}` 阻止，且输入的命令与声明的命令匹配时，`action` 中的回调函数就会被执行。
+
+而剩下的第二个问题，我们需要在真正执行子命令的函数 `runMatchedCommand()` 中找到答案
+
+### runMatchedCommand()
+
+```typescript
+  runMatchedCommand() {
+      // 从实例中获取参数，选项和命令信息
+      // 需要注意的是，目前获取到的这些信息都已经被 mri 解析过了
+    const { args, options, matchedCommand: command } = this
+	
+    // 一系列检查
+    if (!command || !command.commandAction) return
+	// 是否未知的选项，传入选项格式不对或未声明会抛出异常
+    command.checkUnknownOptions()
+	// 检查选项的必填项，必填选项未传入会抛出异常
+    command.checkOptionValue()
+	// 检查必传参数，必传参数未传入会抛出异常
+    command.checkRequiredArgs()
+    // 这个数组就是用于保存所有参数的  
+    const actionArgs: any[] = []
+    // 获取子命令自身的参数
+    command.args.forEach((arg, index) => {
+        // 判断参数是否是可变参数，这个可变参数在 new Command() 的时候就处理过了
+        // 只是这边没有详细解析
+      if (arg.variadic) {
+        actionArgs.push(args.slice(index))
+      } else {
+        actionArgs.push(args[index])
+      }
+    })
+      // 全局参数补充进去
+    actionArgs.push(options)
+      // 执行回调函数！
+    return command.commandAction.apply(this, actionArgs)
+  }
+```
+
+至此，我们的第二个问题「参数是怎么来的」也已经解决了，在 `parse()` 对选项和命令进行解析后，进入到真正执行 `action` 的函数 `runMatchedCommand` 中，组合这些选项和命令，最后给到回调函数。
+
+&nbsp;
+
+# 总结
+
+所以，本次对 `CAC` 的源码学习就告一段落了。
+
+这个库可以说是麻雀虽小五脏俱全，只要仔细看一眼，总有一些意想不到的知识点等着你发掘，实际上还有关于单元测试的部分是博客中没有提及到的，一方面是我觉得这个库的单元测试以及可测试性都没有做得特别好，而且测试代码也比较简单，所以就不打算展开讲解。
+
+最后，如果有朋友看到这里的，希望你可以有所收获 :wink:。
+
+（完）
+
+
+
+
 
 
 
