@@ -86,7 +86,9 @@ export function includesHelper<T extends U, U>(
 
 ```
 
-将常量数组作为第一个参数，将常量数组通过`extends`约束为 target 的子集，然后在调用`includes`的时候将 target 断言为 `T`，这样做的话无论是代码逻辑还是类型推断都是成立的，因为当这个方法 return true 的时候，target 的断言自然是合法的，当 return false 的时候，类型推断自然也是非法的，是相对合理的做法。
+将常量数组作为第一个参数，将常量数组通过`extends`约束为 target 的子集，然后在调用`includes`的时候将 target 断言为 `T`。
+
+这样做的话无论是代码逻辑还是类型推断都是成立的，因为当这个方法 return true 的时候，target 的断言自然是合法的，当 return false 的时候，类型推断自然也是非法的，是相对合理的做法。
 
 不过，要记得这依然仅仅是为了通过 ts 的类型推断，所以业务逻辑还是需要自己去做 handle 以免报错：
 
