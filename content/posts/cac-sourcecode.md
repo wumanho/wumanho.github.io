@@ -13,7 +13,7 @@ tags: ["CAC","TypeScript","Node.js"]
 
 ## 前言
 
-本系列博客主要用于记录和分享我自己学习 Node.js 库 [CAC](https://github.com/cacjs/cac) 的笔记，CAC 是一个开源工具，用于帮助用户构建基于命令行的应用程序，基于 Typescript 和 OOP 思想是我认为值得学习的地方。
+本系列博客主要用于记录和分享我自己学习 Node.js 库 [CAC](https://github.com/cacjs/cac) 的笔记，CAC 是一个开源工具，用于帮助用户构建基于命令行的应用程序，初次关注到 CAC 是从 [vite 源码](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/cli.ts) 里面看到的，vite 的 cli 就基于 CAC 实现。它基于 Typescript 和 OOP 思想是我认为值得学习的地方。
 
 {{< admonition tip "小提示" >}}在本次源码学习中，我会重点关注设计思想和架构方面的内容，对具体的功能（如参数和选项的解析等）不会展开详细的描述。但可以保证的是，在理解了这一切之后，再去了解具体的实现，就会变得非常轻松。{{< /admonition >}}
 
