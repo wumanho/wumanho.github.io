@@ -144,3 +144,5 @@ tags: ["英语","商务英语","中级","BEC"]
 |                  cultivate customer loyalty                  |          培养客户忠诚度           |
 |                         client base                          |             客户群体              |
 | attract new customers and maintain existing or current clients |   吸引新顾客并且维护现有的顾客    |
+|                       domestic market                        |             国内市场              |
+|                 abroad / offshore / overseas                 |               海外                |
