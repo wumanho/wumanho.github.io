@@ -21,14 +21,22 @@ tags: ["英语","商务英语","中级","BEC"]
 
 ### n. staff 全体员工
 
-|           词性/词汇/短语           |     解析     |
-| :--------------------------------: | :----------: |
-|             v. recruit             |     招聘     |
-|           n. recruitment           |     招聘     |
-|   specialist recruitment agency    | 专业招聘机构 |
-| BPO = business process outsourcing |     外包     |
+|           词性/词汇/短语            |      解析       |
+| :---------------------------------: | :-------------: |
+|             v. recruit              |      招聘       |
+|           n. recruitment            |      招聘       |
+|    specialist recruitment agency    |  专业招聘机构   |
+| BPO = business process outsourcing  |      外包       |
+| employment rate / unemployment rate | 就业率 / 失业率 |
+|           retention rate            |   员工保留率    |
+|            interest rate            |      利率       |
+|            exchange rate            |      汇率       |
+|              pay rate               |    工资标准     |
+|              tax rate               |      税率       |
+|            survival rate            |     存活率      |
+|      highly competitive sector      | 高度竞争的行业  |
 
-### 招聘流程
+招聘流程
 
 |       词性/词汇/短语       |    解析    |
 | :------------------------: | :--------: |
@@ -93,7 +101,6 @@ tags: ["英语","商务英语","中级","BEC"]
 |           compulsory redundancy            |      强制性裁员      |
 |            voluntary redundancy            |      自愿性裁员      |
 |            compensation package            |       补偿方案       |
-|               retention rate               |      员工保留率      |
 |               staff turnover               |      员工流动率      |
 |              corporate image               |       企业形象       |
 |           quit / leave / resign            |       主动走人       |
@@ -146,3 +153,4 @@ tags: ["英语","商务英语","中级","BEC"]
 | attract new customers and maintain existing or current clients |   吸引新顾客并且维护现有的顾客    |
 |                       domestic market                        |             国内市场              |
 |                 abroad / offshore / overseas                 |               海外                |
+
