@@ -23,6 +23,8 @@ tags: ["leaflet","webgis","gis"]
 
 要将整个 geoman 对象存入数据库是不现实的，因为如果在控制台打印一下就会发现它自身拥有的字段和属性非常多，即使在数据库中以 json 字段存储，也会产生过多数据。
 
+![控制台信息](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/leaflet/consle.png)
+
 所以思路就是只保存关键信息，下次加载时再通过这些关键信息将图形重新加载出来。
 
 简单版：
