@@ -4,7 +4,7 @@ title: "持久化存储 leaflet geoman 图层指南"
 date: 2023-04-27T21:10:12+08:00
 draft: false
 categories: ["技术"]
-tags: ["leaflet"，"webgis","gis"]
+tags: ["leaflet","webgis","gis"]
 ---
 
 ## Leaflet-Geoman 介绍
