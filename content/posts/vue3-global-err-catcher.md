@@ -93,7 +93,7 @@ export function useErrHelper() {
   const bindWithErr = (fn) => {
     return (...args) => {
       try {
-        fn && fn(...args)
+        return fn && fn(...args)
       } catch (err) {
         console.error('捕获到了错误: ', err)
       }
@@ -114,24 +114,21 @@ export function useErrHelper() {
 
 用一个自己的业务场景举例：一个下拉框组件的回调参数可能会包含一个字符串数学表达式，而我们需要将这个表达式执行，并避免执行错误时程序崩溃：
 
+```html
+<!-- 例，伪代码 -->
+<el-select @change="setCamera"></el-select>
+```
+
 ```javascript
 /**
  * 设置相机参数
- * cmos和快门速度都是数学表达式(如 1 / 8000)，需要 eval 解析
- * 公式的合法性由后端在插入时进行校验
  * @param {* Object} val 相机参数对象
  */
 const setCamera = bindWithErr((val) => {
   if (!val) return
   cameraCondition.value = {
-    fd: val.minEquivalentFocalLength,
     cmos: eval(val.cmos),
-    rawCmos: val.cmos,
-    imgWidth: val.longPhotoSize,
-    imgHeight: val.widePhotoSize,
     shutterSpeed: eval(val.shutterSpeed),
-    rawShutterSpeed: val.shutterSpeed,
-    actualFocal: val.minFocalLength
   }
 })
 ```
@@ -145,7 +142,7 @@ export function useErrHelper() {
    
   const callWithErr = (fn, ...args) => {
     try {
-      fn && fn(...args)
+      return fn && fn(...args)
     } catch (err) {
       console.error('捕获到了错误: ', err)
     }
