@@ -153,8 +153,7 @@ class IFabric extends Emitter{
   // 添加点到画布中
   addCrossToCanvas(path, options) {
     this._activeShape = "cross";
-    const cross = new fabric.Path(path, options);
-    return this._addElementToCanvas(cross);
+    new fabric.Path(path, options);
   }
 
   // 添加多边形到画布中
