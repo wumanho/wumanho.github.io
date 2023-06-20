@@ -2,7 +2,8 @@
 weight: 2
 title: "基于 Fabric.js 实现红外照片热斑分析"
 date: 2023-02-24T20:50:23+08:00
-draft: false
+draft: true
+hiddenFromHomePage: true
 categories: ["前端"]
 tags: ["Vue3","计算机视觉","Canvas","fabricjs"]
 ---
