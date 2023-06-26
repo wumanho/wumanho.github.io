@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【Fabric】常用形状交互式即时绘制指南(上)"
+title: "【Fabric.js】常用形状交互式即时绘制指南(上)"
 date: 2023-06-20T13:39:22+08:00
 draft: false
 categories: ["前端"]
@@ -12,6 +12,7 @@ tags: ["绘制图形",Canvas","fabric.js"]
 本篇博客主要介绍使用 fabric.js 在画布中绘制常见的图形，主要包括有：
 
 * 绘制直线
+* 绘制折线
 * 绘制矩形
 * 绘制圆形
 * 绘制点
@@ -87,6 +88,9 @@ class IFabric extends Emitter{
         this._canvas.defaultCursor = "text";
         this._genText();
         break;
+      case "polyLine":
+        this._drawPolyline();
+        break;      
       case "point":
         this._drawPoint();
         break;
@@ -108,7 +112,9 @@ class IFabric extends Emitter{
 
   _drawPoint() {}
 
-  _drawCircle() {}   
+  _drawCircle() {}
+    
+  _drawPolyline() {}  
 }
 
 export default IFabric
@@ -167,6 +173,12 @@ class IFabric extends Emitter{
     this._activeShape = 'line'
     new fabric.Line(linePath, options)
   }
+  
+  // 添加折线到画布中
+  addPolyLineToCanvas(points, options) {
+    this._activeShape = "polyline";
+    new fabric.Polyline(points, options);
+  }  
 
   // 添加文本到画布中
   addTextToCanvas(text, options) {
@@ -228,6 +240,13 @@ class IFabric extends Emitter {
     const line = new fabric.Line(linePath, options);
     return this._addElementToCanvas(line);
   }
+    
+  // 添加折线到画布中
+  addPolyLineToCanvas(points, options) {
+    this._activeShape = "polyline";
+    const polyLine = new fabric.Polyline(points, options);
+    return this._addElementToCanvas(polyLine);
+  }  
 
   // 添加文本到画布中
   addTextToCanvas(text, options) {
