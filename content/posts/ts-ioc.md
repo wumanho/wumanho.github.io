@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "【TypeScript】利用装饰器实现对象管理及装饰器路由"
+title: "【TypeScript】利用装饰器特性实现对象管理及装饰器路由"
 date: 2023-09-25T10:16:23+08:00
 draft: false
 categories: ["技术"]
