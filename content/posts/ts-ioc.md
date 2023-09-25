@@ -593,7 +593,7 @@ export default class Dog {
     // 直接调用 cat.print()
     this.cat.print()
     console.log('I am dog')
-    res.send('FirstPage index running')
+    res.send('Dog running')
   }
 }
 
