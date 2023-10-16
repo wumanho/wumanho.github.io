@@ -30,4 +30,6 @@ WUMANHO 是一位 90 后程序员:man_technologist:，主力是 web 前后端技
 
 ## 联系方式
 
-wumanho@tutanota.com
+email：wumanho@tutanota.com
+
+github：[wumanho](https://github.com/wumanho)
