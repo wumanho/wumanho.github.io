@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【前端小组件】通过鼠标控制的旋转按钮"
+summary: "一个简单好用的入门级小组件"
 date: 2023-09-21T16:48:23+08:00
 draft: false
 categories: ["前端"]

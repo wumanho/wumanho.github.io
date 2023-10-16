@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【TypeScript】利用装饰器特性实现对象管理及装饰器路由"
+summary: "通过实现一个包含控制反转 IOC 容器以及装饰器路由的后端框架来深入了解 TS 装饰器"
 date: 2023-09-25T10:16:23+08:00
 draft: false
 categories: ["技术"]

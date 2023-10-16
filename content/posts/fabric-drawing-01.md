@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【Fabric.js】常用图形交互式即时绘制指南(上)"
+summary: "Fabric.js 绘制图形指南上篇，封装一个 Fabric 对象"
 date: 2023-06-20T13:39:22+08:00
 draft: false
 categories: ["前端"]

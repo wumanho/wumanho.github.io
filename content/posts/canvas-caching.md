@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "Fabric.js 源码中基于离屏 canvas 的缓存策略"
+summary: "探索 Fabric 源码，分析 Fabric 缓存策略的实现方式及缓存效果"
 date: 2023-03-30T16:00:24+08:00
 draft: false
 categories: ["前端"]

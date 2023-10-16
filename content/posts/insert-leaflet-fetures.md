@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "持久化存储 leaflet geoman 图层指南"
+summary: "本篇博客将会介绍如何将一个 Leaflet geoman 绘制的图形入库并还原进行二次编辑"
 date: 2023-04-27T21:10:12+08:00
 draft: false
 categories: ["技术"]

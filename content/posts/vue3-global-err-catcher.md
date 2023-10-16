@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "简易 Vue 通用错误处理 hooks 封装"
+summary: "将代码中同步和异步函数调用错误捕获都封装到 hooks 里面"
 date: 2022-12-10T11:24:22+08:00
 draft: false
 categories: ["前端"]

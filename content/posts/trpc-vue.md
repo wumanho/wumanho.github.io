@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "tRPC 配合 Vue 构建端到端类型安全的全栈方案简介"
+summary: "用 tRPC 和 Vue 搭建一个 monorepo 全栈项目"
 date: 2023-10-07T14:55:23+08:00
 draft: false
 categories: ["技术"]
