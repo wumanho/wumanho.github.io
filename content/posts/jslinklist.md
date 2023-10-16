@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【JavaScript数据结构】链表和双向链表"
+summary: "用 JavaScript 实现链表和双向链表结构"
 date: 2021-11-14T10:03:57+08:00
 draft: false
 categories: ["技术"]

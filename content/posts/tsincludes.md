@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【Typescript】Array.includes 函数对于常量数组的处理"
+summary: "includes 要求传入的参数类型与数组元素类型一致，那如果传入的参数是一个常量数组该如何处理"
 date: 2022-08-12T13:03:12+08:00
 draft: false
 categories: ["前端"]

@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【IDEA】Windows 配置通过终端命令行启动 Webstorm"
+summary: "像 vscode 一样快捷启动 Webstorm"
 date: 2022-08-10T21:17:29+08:00
 draft: false
 categories: ["前端"]

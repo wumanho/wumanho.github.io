@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "【JavaScript数据结构】二叉树实现"
+summary: "用 JavaScript 实现二叉树结构"
 date: 2021-12-20T20:05:57+08:00
 draft: false
 categories: ["技术"]

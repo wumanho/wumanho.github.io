@@ -1,6 +1,7 @@
 ---
 weight: 2
 title: "浅析命令行的本质（下）"
+summary: "命令行的关键四要素"
 date: 2020-12-17T15:25:07+08:00
 draft: false
 categories: ["技术"]
