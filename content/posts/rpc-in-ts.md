@@ -117,8 +117,8 @@ pnpm i @types/node -r --filter @rpc-in-ts/server
 
 服务端一共有两个 api 需要提供给调用方：
 
-* createHttpServer：用户需要通过这个 api 将服务端启动。
-* defineRouter：用户通过这个 api 来定义路由
+* `createHttpServer`：用户需要通过这个 api 将服务端启动。
+* `defineRouter`：用户通过这个 api 来定义路由
 
 ### 路由
 
