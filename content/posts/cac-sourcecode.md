@@ -4,7 +4,7 @@ title: "【CAC】源码阅读笔记合集(两篇完)"
 summary: "对 Vite 核心依赖库 CAC 的源码工程化和底层实现的学习"
 date: 2022-07-04T20:17:08+08:00
 draft: false
-categories: ["前端"]
+categories: ["前端","推荐阅读"]
 tags: ["CAC","TypeScript","Node.js"]
 ---
 

@@ -3,7 +3,7 @@ weight: 2
 title: "【NodeJS】后端开放第三方接口基本设计"
 summary: "记录 Node 后端开放第三方接口设计与实现"
 date: 2022-10-25T19:59:14+08:00
-categories: ["技术"]
+categories: ["技术","推荐阅读"]
 tags: ["JavaScript","Node.js"]
 draft: false
 ---

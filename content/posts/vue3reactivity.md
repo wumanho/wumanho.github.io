@@ -4,7 +4,7 @@ title: "Vue3 源码中的 Reactivity 学习和思考"
 summary: "写一个 Vue3 Reactivity"
 date: 2022-03-16T22:55:29+08:00
 draft: false
-categories: ["前端"]
+categories: ["前端","推荐阅读"]
 tags: ["Vue3","源码","响应式"]
 ---
 

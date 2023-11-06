@@ -4,7 +4,7 @@ title: "命令行的本质（上）- 命令如何工作"
 summary: "介绍一下什么是命令行，当用户敲下一句命令的时候，发生了什么"
 date: 2020-11-27T14:10:08+08:00
 draft: false
-categories: ["技术"]
+categories: ["技术","推荐阅读"]
 tags: ["bash","ssh"]
 ---
 

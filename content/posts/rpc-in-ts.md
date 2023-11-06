@@ -4,7 +4,7 @@ title: "【RPC】如何封装一个远程过程调用 - 实现迷你全栈 rpc �
 summary: "tRPC 源码学习，并动手实现一个包含客户端和服务端的 rpc 框架"
 date: 2023-10-25T18:09:23+08:00
 draft: false
-categories: ["技术"]
+categories: ["技术","推荐阅读"]
 tags: ["TypeScript","RPC","远程过程调用","tRPC","全栈"]
 ---
 
