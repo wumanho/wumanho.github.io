@@ -4,7 +4,7 @@ title: "2020 观演记录"
 summary: "今年看的几场现场演出复盘"
 date: 2020-12-01T10:58:24+08:00
 lastmod: 2021-01-01T20:58:24+08:00
-draft: false
+draft: true
 categories: ["生活"]
 tags: ["独立音乐"]
 ---
