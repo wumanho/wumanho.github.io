@@ -2,7 +2,7 @@
 weight: 1
 title: "商务英语中级-核心词汇【不定期更新】"
 date: 2022-10-24T20:25:54+08:00
-draft: false
+draft: true
 categories: ["语言学习"]
 tags: ["英语","商务英语","中级","BEC"]
 ---
