@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "Radiohead - The Tourist 歌词翻译"
+title: "Radiohead - The Tourist"
 date: 2020-11-23T22:52:06+08:00
 draft: false
 categories: ["生活"]
