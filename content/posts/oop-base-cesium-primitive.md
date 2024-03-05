@@ -8,7 +8,7 @@ categories: ["技术"]
 tags: ["Cesium","三维地球","面向对象","静态属性"]
 ---
 
-# 前言
+## 前言
 
 本篇博客的写作背景基于近期实现的一个需求，该需求的大致内容如下：
 
@@ -34,7 +34,7 @@ tags: ["Cesium","三维地球","面向对象","静态属性"]
 
 &nbsp;
 
-# 为什么是 Primitive
+## 为什么是 Primitive
 
 在日常开发中，出于方便，我们会使用 Cesium 提供的 Entity 类来对几何图形进行渲染和操作。
 
@@ -50,7 +50,7 @@ Entity 灵活易于使用，但 Entity 是一个高层次的概念，它可以�
 
 &nbsp;
 
-# 为什么是面向对象
+## 为什么是面向对象
 
 根据业务需求，我们需要进行管理的单位是`区域`，而不是单个 Primitive，一个区域由多个 Primitive 组成。
 
@@ -63,7 +63,7 @@ Entity 灵活易于使用，但 Entity 是一个高层次的概念，它可以�
 
 &nbsp;
 
-# 声明「区域」类
+## 声明「区域」类
 
 声明 `LocationPrimitive` 类，代表一个`区域`。
 
@@ -156,7 +156,7 @@ export default class LocationPrimitive {
 }
 ```
 
-## 创建贴地 Polygon
+### 创建贴地 Polygon
 
 ```javascript
 export default class LocationPrimitive {
@@ -190,7 +190,7 @@ export default class LocationPrimitive {
 }
 ```
 
-## 创建贴地 Polyline
+### 创建贴地 Polyline
 
 ```javascript
 export default class LocationPrimitive {
@@ -233,7 +233,7 @@ export default class LocationPrimitive {
 
 &nbsp;
 
-# static 关键字
+## static 关键字
 
 `static` 关键字常用于类中，它的作用是声明静态的方法或者属性。
 
@@ -311,11 +311,11 @@ export default class LocationPrimitive {
 
 &nbsp;
 
-# 完善区域类
+## 完善区域类
 
 接下来，对区域类进行完善，实现一些提供给外部调用的方法，就大功告成了。
 
-## 显隐切换
+### 显隐切换
 
 ```javascript
 export default class LocationPrimitive {
@@ -346,7 +346,7 @@ export default class LocationPrimitive {
 
 ![显隐](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/cesium-draw-01/toggle.gif)
 
-## 定位
+### 定位
 
 ```javascript
 export default class LocationPrimitive {
@@ -367,7 +367,7 @@ export default class LocationPrimitive {
 }
 ```
 
-## 释放资源
+### 释放资源
 
 ```javascript
 export default class LocationPrimitive {
@@ -402,7 +402,7 @@ export default class LocationPrimitive {
 
 &nbsp;
 
-# 总结
+## 总结
 
 近些年在使用 JavaScript 进行开发的开发者们，大多数是在成熟的前端框架的基础上进行开发，对 JavaScript 本身的面向对象特性了解或者使用是比较少的。
 
