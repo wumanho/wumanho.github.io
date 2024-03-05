@@ -374,7 +374,7 @@ export default class LocationPrimitive {
     // ...
     
   // 从地图上移除 primitive & 释放显存
-  free() {sssss
+  free() {
     // 移除一般图元
     this._primitives.forEach((p) => {
       p.removeAll && p.removeAll()
@@ -397,6 +397,143 @@ export default class LocationPrimitive {
     if (LocationPrimitive.LocationBillboards) LocationPrimitive.LocationBillboards = null
     if (LocationPrimitive.LocationLabels) LocationPrimitive.LocationLabels = null
   }
+}
+```
+
+&nbsp;
+
+## 提供静态工具类
+
+在现代的前端框架中，一般来说操作全局的数据都不太方便，所以我们可以提供一个纯静态的工具类，供所有组件使用。
+
+纯静态工具类中，所有属性和方法都是静态的，但是这个类会随着程序的启动而直接初始化，所以在任意组件中都可以直接使用：
+
+```javascript
+// 纯静态工具类，收集所有全局的 primitive
+export default class PrimitivesCollection {
+  // 保存所有实例化的数据
+  static data = []
+
+  /**
+   * 将接口数据初始化成 primitives
+   * @param {Array} data
+   * @param {Object} viewer
+   */
+  static rawDataToPrimitives(data, viewer) {
+    if (data && data.length > 0) {
+      data.forEach((d) => {
+        const primitiveInstance = new LocationPrimitive(d, viewer)
+        PrimitivesCollection.data.push(primitiveInstance)
+      })
+    }
+  }
+
+  /**
+   * 根据 id 定位区域
+   * @param {String} id
+   */
+  static locatedRegion(id) {
+    const instance = PrimitivesCollection.getTargetById(id)
+    if (instance) {
+      instance.located()
+    }
+  }
+
+  /**
+   * 切换指定区域的显隐
+   * @param {String} id
+   * @param {Boolean} show 是否显示
+   */
+  static toggleRegionDisplay(id, show) {
+    const instance = PrimitivesCollection.getTargetById(id)
+    if (instance) {
+      instance.setDisplay(show)
+    }
+  }
+
+  /**
+   * 销毁图元释放内存
+   * @param {String} id
+   */
+  static remove(id) {
+    const needClear = PrimitivesCollection.getTargetById(id)
+    if (needClear) {
+      needClear.free()
+      PrimitivesCollection.data = PrimitivesCollection.data.filter((d) => d.id !== id)
+    }
+  }
+
+  // 根据 id 获取目标
+  static getTargetById(id) {
+    return PrimitivesCollection.data.find((d) => d.id === id)
+  }
+
+  // 完全清理全局数据
+  static clearAll() {
+    // 获取全局 viewer
+    const viewer = getViewer()
+    PrimitivesCollection.data.forEach((p) => p.free())
+    PrimitivesCollection.data.forEach((p) => p.freeStatic())
+    PrimitivesCollection.data.length = 0
+  }
+}
+```
+
+&nbsp;
+
+## 对数据进行最细粒度更新
+
+由于有了类去管理数据，我们在进行数据更新时，就可以对现有的数据以及新数据进行 diff 比对，务求做到最细粒度的更新。
+
+例如，用户对数据进行刷新，其中有一个区域被删除，两个区域被修改，新增三个区域，那么，我们只需要把这些改动的部分找出来，对其进行操作，而不需要对所有已存在的区域进行操作，减少操作次数，以达到优化性能的目的：
+
+```javascript
+// 纯静态工具类，收集所有全局的 primitive
+export default class PrimitivesCollection {
+   // 保存所有实例化的数据
+   static data = [] 
+    
+   /**
+   * 将新旧数据进行 diff 对比差异，最小粒度更新地图上的数据
+   * 1、如果其他用户删除了某个区域，当前用户刷新列表时，这个删除动作应该同步到当前用户
+   * 2、如果其他用户新增了区域，当前用户刷新列表时，这个新增动作应该同步到当前用户
+   * 3、如果其他用户修改了区域的颜色或者名称，用户刷新列表时，这个修改动作应该同步到当前用户
+   * @param {Array} newData 新的数据（接口数据非对象数据）
+   */
+  static updateMapByDiff(newData) {
+    const viewer = getViewer()
+    // 将数组转为 map 来实现后续的快速查找，主要是为了节省遍历操作
+    const oldDataMap = PrimitivesCollection.data.reduce((data, item) => ((data[item.id] = item), data), {})
+    const newDataMap = newData.reduce((data, item) => ((data[item.id] = item), data), {})
+    // 将 map 的 key 装进 set 中，也是为了节省遍历操作
+    const oldIds = new Set(Object.keys(oldDataMap))
+    const newIds = new Set(Object.keys(newDataMap))
+    // 将 id 过滤出来
+    const addedIds = Array.from(newIds).filter((id) => !oldIds.has(id))
+    const removeIds = Array.from(oldIds).filter((id) => !newIds.has(id))
+    // 删除不再存在的项
+    removeIds.forEach((id) => PrimitivesCollection.remove(id))
+    // 新增的数据 new 成实例
+    for (let addedId in addedIds) {
+      const item = newDataMap[addedId]
+      if (item) {
+        const primitiveInstance = new LocationPrimitive(item.viewer)
+        PrimitivesCollection.data.push(primitiveInstance)
+      }
+    }
+    // 获取交集
+    const intersection = Array.from(oldIds).filter((id) => newIds.has(id))
+    // 更新存在于新旧数据中，但有变化的项
+    for (let intersectingId in intersection) {
+      const oldData = oldDataMap[intersectingId]
+      const newData = newDataMap[intersectingId]
+      if (oldData.options.areaName !== newData.areaName || oldData.options.areaColor !== newData.areaColor) {
+        PrimitivesCollection.remove(intersectingId)
+        const primitiveInstance = new LocationPrimitive(newData, viewer)
+        PrimitivesCollection.data.push(primitiveInstance)
+      }
+    }
+  } 
 }
 ```
 
