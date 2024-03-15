@@ -4,7 +4,7 @@ title: "【Cesium】基于 JavaScript 面向对象特性管理 Cesium Primitives
 summary: "尝试通过面向对象的特性对大量简单几何图形进行渲染及生命周期管理"
 date: 2024-03-04T15:46:22+08:00
 draft: false
-categories: ["技术"]
+categories: ["技术","推荐阅读"]
 tags: ["Cesium","三维地球","面向对象","静态属性"]
 ---
 
