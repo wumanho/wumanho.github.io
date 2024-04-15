@@ -10,7 +10,7 @@ tags: ["Vue3","面向对象","类","Reactivity","TypeScript"]
 
 ## 前言
 
-大概半年前，[vuejs/core]() 有一个比较有意思的 refactor PR [#8586]()，标题为 "encapsulate reactive handlers in class"，即《通过 class 类封装 reactive handlers》。
+大概半年前，[vuejs/core]([vuejs/core: 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. (github.com)](https://github.com/vuejs/core)) 有一个比较有意思的 refactor PR [#8586](https://github.com/vuejs/core/pull/8586)，标题为 "encapsulate reactive handlers in class"，即《通过 class 类封装 reactive handlers》。
 
 这是一次不影响功能的重构行为，但也算得上是大刀阔斧，毕竟 `baseHandler` 是响应式模块中的核心代码。
 
