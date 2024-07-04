@@ -1,14 +1,18 @@
 ---
 weight: 2
 title: "【Cesium】飞行区电子围栏"
-summary: "本篇博客将会尝试还原大疆司空2平台的栅栏材质飞行区"
+summary: "本篇博客将会尝试还原大疆司空2平台的栅栏飞行区材质"
 date: 2024-06-07T10:10:12+08:00
 draft: false
 categories: ["技术"]
 tags: ["DJI","司空2","gis","Cesium","圆形 polyline"]
 ---
 
-## 司空2效果
+## 前言
+
+本篇博客将会尝试还原 [大疆司空2](https://enterprise.dji.com/cn/flighthub-2) 平台的栅栏飞行区材质，并将材质应用到 Primitive 中。
+
+## 司空2 效果
 
 ### 多边形和圆形飞行区栅栏效果
 
@@ -24,13 +28,13 @@ tags: ["DJI","司空2","gis","Cesium","圆形 polyline"]
 
 &nbsp;
 
-## 绘制圆形
+## 如何绘制圆形
 
 目前 Cesium 支持的圆形 geometry 只有 ellipse，刚开始我也尝试过用 ellipse 来实现，但是栅栏效果是个 polyline 材质
 
 当内部填充区域通过 ellipse 实现，但是外围通过 polyline 来包裹的话，要实现完全贴合的包围效果会比较难。
 
-所以要实现完全贴合的包围效果，可以通过圆心坐标和半径，通过圆心坐标向外移动半径距离，得出作为填充区域的 polygon 和包围边框的 polyline 的坐标
+要以相对简单的方式实现完全贴合的包围效果，可以通过圆心坐标和半径，通过圆心坐标向外移动半径距离，得出作为填充区域的 polygon 和包围边框的 polyline 的坐标。
 
 这样就可以得到一个完全包围的圆形效果：
 
@@ -167,9 +171,8 @@ export function createFenceMaterial() {
       })
     })
     // 通过自定义材质创建 primitive
-   this._viewer.scene.groundPrimitives.add(
+   viewer.scene.groundPrimitives.add(
       new Cesium.GroundPolylinePrimitive({
-        show: true,
         geometryInstances: polyline,
         appearance: new Cesium.EllipsoidSurfaceAppearance({
           material: new Cesium.Material({
