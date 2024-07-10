@@ -132,7 +132,7 @@ export function createFenceMaterial() {
   if (!Cesium.Material._materialCache.getMaterial('PolylineFenceMaterial')) {
     Cesium.Material._materialCache.addMaterial('PolylineFenceMaterial', {
       fabric: {
-        type: PolylineFenceMaterial.materialType,
+        type: 'PolylineFenceMaterial',
         uniforms: {
           color: new Cesium.Color(1, 1, 1, 1),
           outlineColor: new Cesium.Color(1, 1, 1, 1),

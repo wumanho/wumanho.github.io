@@ -95,11 +95,11 @@ worker.onmessage = function(event) {
 
 首先我们需要明确的一点是，我们通过 `postMessage` 传递到 Worker 的数据，都需要经过克隆，而不是单纯的地址传递。
 
-换句话说，`postMessage` 传递的数据**仅支持**可以被[结构化克隆](https://link.juejin.cn/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FGuide%2FDOM%2FThe_structured_clone_algorithm)算法处理的值或 JavaScript 对象。
+换句话说，`postMessage` 传递的数据**仅支持**可以被[结构化克隆算法](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)法处理的值或 JavaScript 对象。
 
 在实际开发过程中，有很多非常常用的数据无法被传递到 Worker 中，例如 Vue3 中的响应式对象，还有 DOM 节点等。
 
-既然 DOM 节点无法被传递，那就意味着 canvas DOM 无法被传递，所以使用 OffscreenCanvas 就是为了解决这个问题。
+既然 DOM 节点无法被传递，那就意味着 canvas DOM 无法被传递，所以使用 `OffscreenCanvas` 就是为了解决这个问题。
 
 **`OffscreenCanvas`** 提供了一个可以脱离屏幕渲染的 canvas 对象。它在窗口环境和 Web Worker 环境均有效。
 
