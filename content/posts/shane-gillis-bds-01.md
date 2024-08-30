@@ -2,7 +2,7 @@
 weight: 2
 title: "【自制中文字幕】 Shane Gillis 段子 - 女朋友的前任是海豹突击队"
 date: 2024-03-04T09:15:35+08:00
-draft: flase
+draft: true
 categories: ["生活"]
 tags: ["Shane Gillis","喜剧","单口","中文字幕"]
 ---
