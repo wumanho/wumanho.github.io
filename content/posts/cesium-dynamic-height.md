@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "Cesium 在不显示地形的情况下获取地形高度"
+title: "【Cesium】在不显示地形的情况下获取地形高度"
 summary: "介绍如何使用奇技淫巧在 Cesium 不显示地形的情况下获取地形高度"
 date: 2024-11-20T11:16:02+08:00
 draft: false
