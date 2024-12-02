@@ -3,7 +3,7 @@ weight: 2
 title: "【Cesium】飞行区电子围栏"
 summary: "本篇博客将会尝试还原大疆司空2平台的栅栏飞行区材质"
 date: 2024-06-07T10:10:12+08:00
-draft: false
+draft: true
 categories: ["技术"]
 tags: ["DJI","司空2","gis","Cesium","圆形 polyline"]
 ---
