@@ -37,25 +37,25 @@ tags: ["日本","旅游","大阪","环球影城","神户","京都"]
 
 出发前参考:sweet_potato:推送的攻略，在某猪买了一张 3 天关西 Mini 周游券，心想这下美美省钱了，结果到了才知道只能搭乘 JR 用，我对于日本这些复杂的铁路交通一直是没什么概念，这张周游券到后来也没有派上多大的用场，实际上是没有坐回本属于亏了的。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4211.JPG" alt="IMG_4211" style="zoom:33%;" />
+![IMG_4211](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4211.JPG)
 
 从关西空港站到位于大阪府中央区的酒店，我选择的是乘坐南海特急的方式，简单粗暴，属于飞站霸王型的加急线路，一下飞 3-4 个站，40 分钟左右就到难波了。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4210.JPG" alt="IMG_4210" style="zoom:50%;" />
+![IMG_4210](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4210.JPG)
 
 随后换乘地铁，终于在快 7 点的时候到达心斋桥。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4213.JPG" alt="IMG_4213" style="zoom: 33%;" />
+![IMG_4213](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4213.JPG)
 
 ### 心斋桥
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4222.jpg" alt="IMG_4222" style="zoom:25%;" />
+![IMG_4222](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4222.jpg)
 
 ### 格力高广告牌
 
 终于轮到我打卡了！
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4238.JPG" alt="IMG_4238" style="zoom: 50%;" />
+![IMG_4238](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4238.JPG)
 
 ### 第一顿饭
 
@@ -65,19 +65,19 @@ tags: ["日本","旅游","大阪","环球影城","神户","京都"]
 
 重点是坐我隔壁的日本小伙子吃得老香了，后来被他感染，我也像他那样捧起碗来大口吃。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4254.JPG" alt="IMG_4254" style="zoom:50%;" />
+![IMG_4254](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4254.JPG)
 
 ### 通天阁
 
 还打卡了如龙系列很喜欢用的最终 boss 战的地点通天阁，作为如龙系列的粉丝真的很激动
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4245.jpg" alt="IMG_4245" style="zoom: 33%;" />
+![IMG_4245](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4245.jpg)
 
 ### 手绘画风的寿司店
 
 虽然没有进去吃，但是路过看到觉得很可爱哈哈哈哈
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4258.jpg" alt="IMG_4258" style="zoom:50%;" />
+![IMG_4258](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4258.jpg)
 
 &nbsp;
 
@@ -93,21 +93,21 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 于是便按着攻略，早上 7 点 30 分准时到达园区，结果没想到迎接我的竟然是：
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4271.jpg" alt="IMG_4271" style="zoom: 33%;" />
+![IMG_4271](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4271.jpg)
 
 好家伙，穷鬼真不少啊（顺带一提，我落地当天正是日本的春节假期的第一天:roll_eyes:，所以其实也是意料之中的）。
 
 ### 大门
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4269.jpg" alt="IMG_4269" style="zoom:25%;" />
+![IMG_4269](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4269.jpg)
 
 入园后，打开 app 预约了超级任天堂园区的入园时间，随后便第一时间冲了比较热门的哈利波特禁忌之旅。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4273.jpg" alt="IMG_4273" style="zoom: 25%;" />
+![IMG_4273](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4273.jpg)
 
 ### 霍格沃茨城堡
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4275.jpg" alt="IMG_4275" style="zoom:33%;" />
+![IMG_4275](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4275.jpg)
 
 ### 园区小镇
 
@@ -117,49 +117,49 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 黄油啤酒（冰）超级好喝，但是热的齁甜，建议只喝冰的。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4281.jpg" alt="IMG_4281" style="zoom: 25%;" />
+![IMG_4281](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4281.jpg)
 
 ### 侏罗纪
 
 恐龙出没注意！
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4286.jpg" alt="IMG_4286" style="zoom:25%;" />
+![IMG_4286](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4286.jpg)
 
 ### 鬼灭之刃
 
 鬼灭之刃是期间限定的项目，是 XR 沉浸式砍鬼，我个人觉得最有意思的项目，很刺激。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4288.jpg" alt="IMG_4288" style="zoom:25%;" />
+![IMG_4288](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4288.jpg)
 
 ### Chill 一下
 
 这个套餐居然只要 1500 日元，超级好吃的 Pizza + 一杯热美式，颠覆了我对景区物价的印象。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4295.jpg" alt="IMG_4295" style="zoom:25%;" />
+![IMG_4295](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4295.jpg)
 
 ### 超级任天堂
 
 我来啦，顺利预约到了入园时间，入园的时候工作人员还会让你跟她一起做 ready ~ go ! 的动作，真的超级可爱超级好玩。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4314.jpg" alt="IMG_4314" style="zoom:25%;" />
+![IMG_4314](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4314.jpg)
 
 ### 马里奥园区
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4317.jpg" alt="IMG_4317" style="zoom:25%;" />
+![IMG_4317](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4317.jpg)
 
 ### 咚奇刚王国
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4333.jpg" alt="IMG_4333" style="zoom:25%;" />
+![IMG_4333](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4333.jpg)
 
 ### Universal
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4337.jpg" alt="IMG_4337" style="zoom:25%;" />
+![IMG_4337](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4337.jpg)
 
 ### 乌冬天妇罗
 
 好好吃
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4345.JPG" alt="IMG_4345" style="zoom: 33%;" />
+![IMG_4345](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4345.JPG)
 
 &nbsp;
 
@@ -169,13 +169,13 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 这一天是一个跨市的行程，需要从大阪府坐 JR 到神户，大阪站的线路非常混乱，导致我明明已经跟着 Google Map 的指引，还是坐错了车，到了一个叫伊丹的小地方
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4352.jpg" alt="IMG_4352" style="zoom:25%;" />
+![IMG_4352](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4352.jpg)
 
 不过因为我有 Mini JR 周游券，而且时间上也比较早，所以当时也没有很着急，因为 JR 行驶在地面上，不像地铁一样黑乎乎的，所以就当沿途看一下风景也是非常美妙的体验。
 
 到达神户三宫 JR 站之后，第一时间是找点吃的，然后看到了兰州拉面，来日本，怎么能不来一碗正宗的中国兰州拉面呢
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4353.jpg" alt="IMG_4353" style="zoom:25%;" />
+![IMG_4353](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4353.jpg)
 
 开个玩笑，最后在一个地下商场的犄角旮瘩处找到一个日本大叔开的小店，客人全是本地人，没有英文菜单，感觉应该会不错。
 
@@ -183,14 +183,14 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 2250yen/200g，应该不是那种非常高档的神户牛，但味道真的不错。
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4356.JPG" alt="IMG_4356" style="zoom: 50%;" />
+![IMG_4356](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4356.JPG)
 
 今天的目的地有马温泉站距离神户市中心三宫有点距离，经过一轮非常复杂的地铁换乘之后，终于到达了目的地，有马温泉小镇
 ### 有马温泉小镇
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4376.jpg" alt="IMG_4376" style="zoom: 25%;" />
+![IMG_4376](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4376.jpg)
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4367.jpg" alt="IMG_4367" style="zoom:25%;" />
+![IMG_4367](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4367.jpg)
 
 又因为之前订得太晚，日归私汤早就被订完了，所以选了一个比较网红的大浴池，太阁之汤，好处是里面金汤和银汤池子都有。
 
@@ -198,7 +198,7 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ### 太阁之汤
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4361.jpg" alt="IMG_4361" style="zoom:25%;" />
+![IMG_4361](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4361.jpg)
 
 由于浴池里面是不能带手机拍摄的，所以就没有照片，里面人很多，中日韩欧洲人都有，大家在几个大浴池里面齐齐下饺子，非常壮观。
 
@@ -208,13 +208,13 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ### 太阁之汤内
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4371.jpg" alt="IMG_4371" style="zoom:25%;" />
+![IMG_4371](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4371.jpg)
 
 泡了大概一个多小时，就出来启程回三宫觅食
 
 ### 有马车站
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4382.jpg" alt="IMG_4382" style="zoom:25%;" />
+![IMG_4382](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4382.jpg)
 
 回到三宫瞎逛，在一些巷子里面找本地人多的地方吃饭，吃到了一家还不错的烤肉店。
 
@@ -223,17 +223,17 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ### 烤肉店
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4393.jpg" alt="IMG_4393" style="zoom:25%;" />
+![IMG_4393](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4393.jpg)
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4390.jpg" alt="IMG_4390" style="zoom: 25%;" />
+![IMG_4390](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4390.jpg)
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4389.jpg" alt="IMG_4389" style="zoom:25%;" />
+![IMG_4389](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4389.jpg)
 
 烤肉店出来后瞎逛，看到一兰拉面，又去吃了一碗，虽然是连锁店，但我觉得这是我这几天吃到最好吃的。
 
 ### 兰子
 
-<img src="https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4400.JPG" alt="IMG_4400" style="zoom: 50%;" />
+![IMG_4400](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4400.JPG)
 
 然后随便逛逛，就回去了，主要是因为温泉排队浪费了我太多时间，没有去到须磨海边，有点可惜。
 
