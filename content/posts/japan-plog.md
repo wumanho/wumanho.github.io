@@ -55,7 +55,7 @@ tags: ["日本","旅游","大阪","环球影城","神户","京都"]
 
 终于轮到我打卡了！
 
-![IMG_4238](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4238.JPG?height=600)
+![IMG_4238](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4238.jpg)
 
 ### 第一顿饭
 
