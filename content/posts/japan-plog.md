@@ -79,6 +79,8 @@ tags: ["日本","旅游","大阪","环球影城","神户","京都"]
 
 ![IMG_4258](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4258.jpg)
 
+因为搭了一天的飞机很累，随便逛了一下就回去休息了。
+
 &nbsp;
 
 ## USJ 大阪环球影城
@@ -181,7 +183,7 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 点了一份神户牛铁板牛扒，不知道是调味还是神户牛本身的原因，牛味非常的重，煎得外焦里嫩，保留了肉汁，配饭非常好吃。
 
-2250yen/200g，应该不是那种非常高档的神户牛，但味道真的不错。
+2250yen/200g，不是那种非常高档的神户牛，但味道真的不错。
 
 ![IMG_4356](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4356.JPG)
 
@@ -216,6 +218,10 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ![IMG_4382](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4382.jpg)
 
+### 三宫
+
+![IMG_4397]()
+
 回到三宫瞎逛，在一些巷子里面找本地人多的地方吃饭，吃到了一家还不错的烤肉店。
 
 来了日本这几天实在没吃到什么蔬菜，所以点了个蔬菜拼盘，结果是南瓜、蘑菇、洋葱和青椒，作为广东人真的受不了没有一点绿叶菜的日子。
@@ -229,7 +235,9 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ![IMG_4389](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4389.jpg)
 
-烤肉店出来后瞎逛，看到一兰拉面，又去吃了一碗，虽然是连锁店，但我觉得这是我这几天吃到最好吃的。
+烤肉店出来后瞎逛，看到一兰拉面，又去吃了一碗，虽然是连锁店，但我觉得这是我这几天吃到最好吃的，只要选择默认的选项，汤头浓郁又不会太腻，默认会给一点点辣子，辣度是我这种不太能吃辣的也能接受，加分不少。
+
+我真的很爱吃葱所以看起来绿绿的哈哈哈。
 
 ### 兰子
 
@@ -241,6 +249,166 @@ USJ 的特色是超级任天堂园区，这个区域由于人流量很大，所�
 
 ## 京都和跨年初诣
 
+京都是本次旅游的终点站，也是 2024 年的最后一天，所以本着为新年祈福的目的，到各大神社:shinto_shrine: 随地大小拜。
 
+顺带一提我在 28 号晚抵达大阪，在关西空港站兑换的 3 天 JR 周游券，居然是从 28 号当天开始算的，也就是说到今天（31号）已经用不了了。总之就是建议不要买。
+
+京都是这次日本之旅最喜欢的城市，又新又旧的，除了到神社参拜之外，很值得到处逛逛。
+
+### 去往京都
+
+![IMG_4406](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4406.jpg)
+
+### 京都 1 Day Pass
+
+出了京都站之后，会看到一个售卖 1 day pass 车票的地方，这个跟 JR 周游券不同，可以用来乘坐大巴+京都地铁，售价 1100 日元，在京都游玩， :bus:是少不了的，所以这个就很值得买。
+
+![IMG_4409](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4409.jpg)
+
+### 五条坂
+
+从京都站搭乘大巴一个站就可以到达清水寺下方的五条坂，需要走大概十分钟左右才能爬上去，不过已经可以远远的看到清水寺了。
+
+![IMG_4411](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4411.jpg)
+
+### 清水寺外围
+
+这里不小心拍到一个和服小姐姐，也是中国人。
+
+![IMG_4415](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4415.jpg)
+
+### 随便拍拍
+
+![IMG_4419](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4419.jpg)
+
+![IMG_4431](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4431.JPG)
+
+![IMG_4432](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4432.jpg)
+
+![IMG_4434](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4434.jpg)
+
+进入内殿需要购票，500 日元/人
+
+![IMG_4436](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4436.jpg)
+
+小姐姐们想把这个仗举起来但是失败了
+
+![IMG_4437](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4437.jpg)
+
+外国小孩参拜
+
+![IMG_4452](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4452.JPG)
+
+### 清水寺打卡机位
+
+![IMG_4456](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4456.JPG)
+
+![IMG_4459](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4459.JPG)
+
+### 不知道几年坂
+
+人头涌涌啊，很多日本人也来参拜。
+
+![IMG_4471](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4471.JPG)
+
+![IMG_4472](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4472.JPG)
+
+### 喝完的饮料
+
+当我拿着一杯喝完的饮料时我才意识到，这个杯子可能得一直跟着我了:expressionless:，虽然周围有很多卖小食的店家，但是也没有一个垃圾桶。
+
+![IMG_4475](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4475.jpg)
+
+### 伏见稻荷大社
+
+从清水寺下来，到大马路上就有个清水道巴士站，坐几个站到东福寺，就可以换乘 JR 坐一个站，到达稻荷，也就是伏见稻荷大社。
+
+![IMG_4480](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4480.JPG)
+
+![IMG_4487](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4487.JPG)
+
+![IMG_4490](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4490.JPG)
+
+### chikawa 伏见稻荷店
+
+看到了 chikawa 伏见稻荷店，貌似里面有卖京都特别版的 chikawa，但是居然要用 Line 预约，所以我进不去，真的无语了。
+
+![IMG_4492](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4492.JPG)
+
+![IMG_4493](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4493.JPG)
+
+![IMG_4495](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4495.jpg)
+
+### 千本鸟居
+
+正殿后面的山路可以通往千本鸟居。
+
+![IMG_4497](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4497.JPG)
+
+原来这些鸟居都是企业或者某些团体和个人捐赠的。
+
+![IMG_4501](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4501.JPG)
+
+![IMG_4507](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4507.JPG)
+
+要爬到山顶有点太累了，所以爬到一半就放弃，回京都市区了。
+
+### 京都市区
+
+非常喜欢京都市区的街道，有够干净的，下完雨空气也非常好。
+
+![IMG_4531](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4531.jpg)
+
+因为今晚就要跨年，估计很多店铺马上就要关门了，所以赶紧找点吃的。
+
+在京都吃了温蒂汉堡🍔，难吃得要死，没拍照。
+
+回到大阪已经 7 点多，找到了一家还在营业的烧鸟，就是今晚的晚餐了。
+
+![IMG_4537](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4537.jpg)
+
+![IMG_4539](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4539.JPG)
+
+### 跨年
+
+大阪跨年的选择很少，要么 USJ 购买跨年特别门票，要么道顿堀看跳水（跟天津大爷似的），还有就是梅田百货倒计时。
+
+这些都不太感兴趣，本来打算去四天王寺安安静静撞个钟就算了，后来:sweet_potato:刷到有位在日本的朋友说她在天满宫那边很热闹，就兴冲冲跑过去看看怎么个事。
+
+到了这边发现人头涌涌，而且都是本地人，当然也有外国人但相比前面的几个选择要少得多，感觉来对地方了。
+
+### 天神桥
+
+来到这边有点集市的感觉，热热闹闹的据说会持续到三点钟。
+
+![IMG_4540](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4540.jpg)
+
+![IMG_4541](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4541.jpg)
+
+![IMG_4542](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4542.jpg)
+
+### 天满宫
+
+到天满宫正门的时候才 11 点，就已经要排队啦。
+
+![IMG_4547](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4547.jpg)
+
+![IMG_4550](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4550.JPG)
+
+### 倒数
+
+等了大概一个小时，终于进去了，12 点的时候会亮灯，然后可以看到巫女在里面走来走去的，但具体做什么也不知道。
+
+跟日本的年轻人一起倒数，然后参拜，非常开心！
+
+![IMG_4561](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4561.jpg)
+
+### 小悲剧
+
+倒数完之后，排队参拜，出了天满宫已经 12 点半，赶紧冲到地铁，发现最后一班车已经走了，只能徒步了:sob:。
+
+最后经过 50 分钟的暴走，终于回到心斋桥的酒店。
+
+![IMG_4564](https://wumanhoblogimg.obs.cn-south-1.myhuaweicloud.com/images/jp-plogs/IMG_4564.jpg)
 
 （更新中...）
